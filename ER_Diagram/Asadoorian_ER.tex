@@ -1,0 +1,29 @@
+\documentclass{article}
+
+\usepackage{tikz}
+\usetikzlibrary{er}
+
+\tikzset{total/.style={double distance=1.5 pt}}
+
+\author{Emily Asadoorian $\vert$ CSE-341 SP21}
+\date{February 18, 2021}
+\title{County Garden Insurance E-R Design Diagram}
+
+\begin{document}
+
+\pagenumbering{gobble}
+
+\maketitle
+
+\newpage
+
+\pagenumbering{arabic}
+
+\begin{tikzpicture}[node distance=7em]
+\node[entity] (policy) {Policy};
+\node[relationship] (pays) [above left of=policy] {Pays} edge (policy);
+\node[entity] (payment) [above left of=pays] {Payment} edge[total] (pays);
+\node[attribute] (type) [above left of=payment] {Type} edge (payment);
+\end{tikzpicture}
+
+\end{document}
