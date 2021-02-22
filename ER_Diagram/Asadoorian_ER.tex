@@ -21,20 +21,19 @@
 
 \begin{tikzpicture}[node distance=7em]
 
-\node[entity,xshift=0.35\textwidth,yshift=-20em] (employee) {Employee};
-\node[entity] [above left of=employee] (agent) {Agent} edge (employee);
-\node[entity] [above right of=employee] (adjuster) {Adjuster} edge (employee);
-\node[entity,xshift=0.35\textwidth] (customer) {Customer};
-\node[entity] [below right of=customer,xshift=5em] (claim) {Claim};
-\node[entity] [right of=customer] (policy) {Policy};
-\node[entity] [right of=policy] (payment) {Payment};
-\node[attribute] [right of=payment] (type) {Type} edge (payment);
+\node[entity,xshift=0.35\textwidth,yshift=-20em] (employee) {employee};
+\node[entity] [above left of=employee] (agent) {agent} edge (employee);
+\node[entity] [above right of=employee] (adjuster) {adjuster} edge (employee);
+\node[entity,xshift=0.35\textwidth] (customer) {customer};
+\node[entity] [below right of=customer,xshift=5em] (claim) {claim};
+\node[entity] [right of=customer] (policy) {policy};
+\node[entity] [right of=policy] (payment) {payment};
 
-\node[relationship] [below left of=customer] (has) {Has} edge[total] (customer) edge (agent);
-\node[relationship] [below right of=customer] (makes) {Makes} edge (customer) edge[total] (claim);
-\node[relationship] [above right of=adjuster] (manages) {Manages} edge (adjuster) edge[total] (claim);
-\node[relationship] [above right of=customer] (maintains) {Maintains} edge (customer) edge[total] (policy);
-\node[relationship] [above right of=policy] (pays) {Pays} edge[total] (payment) edge (policy);
+\node[relationship] [below left of=customer] (has) {has} edge[total] (customer) edge (agent);
+\node[relationship] [below right of=customer] (makes) {makes} edge (customer) edge[total] (claim);
+\node[relationship] [above right of=adjuster] (manages) {manages} edge (adjuster) edge[total] (claim);
+\node[relationship] [above right of=customer] (maintains) {maintains} edge (customer) edge[total] (policy);
+\node[relationship] [above right of=policy] (pays) {pays} edge[total] (payment) edge (policy);
 
 \end{tikzpicture}
 
