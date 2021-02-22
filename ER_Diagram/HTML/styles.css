@@ -12,6 +12,19 @@ body {
     background-color: lightblue;
 }
 
+.relationship {
+    transform: rotate(45deg);
+    border: 1px solid black;
+    width: 5em;
+    height: 5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.relationship * {
+    transform: rotate(-45deg);
+}
+
 .primary-key {
     text-decoration: underline;
 }
