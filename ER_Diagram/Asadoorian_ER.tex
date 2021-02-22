@@ -21,19 +21,19 @@
 
 \begin{tikzpicture}[node distance=7em]
 
-\node[entity] (employee) {Employee};
-\node[entity] (agent) {Agent} edge (employee);
-\node[entity] (adjuster) {Adjuster} edge (employee);
-\node[entity] (claim) {Claim};
-\node[entity] (customer) {Customer};
+\node[entity,xshift=0.35\textwidth,yshift=-20em] (employee) {Employee};
+\node[entity] [above left of=employee] (agent) {Agent} edge (employee);
+\node[entity] [above right of=employee] (adjuster) {Adjuster} edge (employee);
+\node[entity,xshift=0.35\textwidth] (customer) {Customer};
+\node[entity] [below right of=customer,xshift=5em] (claim) {Claim};
 \node[entity] (policy) {Policy};
 \node[entity] (payment) {Payment};
 \node[attribute] (type) {Type} edge (payment);
 
-\node[relationship] (has) {Has} edge[total] (customer) edge (agent);
-\node[relationship] (makes) {Makes} edge (customer) edge[total] (claim);
-\node[relationship] (manages) {Manages} edge (adjuster) edge[total] (claim);
-\node[relationship] (pays) {Pays}  edge[total] (payment) edge (policy);
+\node[relationship] [below left of=customer] (has) {Has} edge[total] (customer) edge (agent);
+\node[relationship] [below right of=customer] (makes) {Makes} edge (customer) edge[total] (claim);
+\node[relationship] [above right of=adjuster] (manages) {Manages} edge (adjuster) edge[total] (claim);
+\node[relationship] (pays) {Pays} edge[total] (payment) edge (policy);
 
 \end{tikzpicture}
 
