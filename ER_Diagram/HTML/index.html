@@ -2,10 +2,30 @@
 <html>
     <head>
         <style>
-
+            body {
+                font-style: italic;
+                background-color: white;
+                color: black;
+            }
+            .entity th {
+                background-color: lightblue;
+            }
+            .primary-key {
+                text-decoration: underline;
+            }
         </style>
     </head>
     <body>
-        stuff here
+        <table class="entity">
+            <tr>
+                <th>customer</th>
+            </tr>
+            <tr>
+                <td class="primary-key">cust_id</td>
+            </tr>
+            <tr>
+                <td>name</td>
+            </tr>
+        </table>
     </body>
 </html>
