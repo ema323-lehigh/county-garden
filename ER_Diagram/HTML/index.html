@@ -8,11 +8,17 @@
                 background-color: white;
                 color: black;
             }
+            .entity {
+                border: 1px solid black;
+            }
             .entity th {
                 background-color: lightblue;
             }
             .primary-key {
                 text-decoration: underline;
+            }
+            .strong {
+                border: 4px double black;
             }
         </style>
     </head>
@@ -26,6 +32,48 @@
             </tr>
             <tr>
                 <td>name</td>
+            </tr>
+        </table>
+        <table class="entity strong">
+            <tr>
+                <th>policy</th>
+            </tr>
+            <tr>
+                <td class="primary-key">policy_num</td>
+            </tr>
+        </table>
+        <table class="entity">
+            <tr>
+                <th>payment</th>
+            </tr>
+            <tr>
+                <td>type</td>
+            </tr>
+        </table>
+        <table class="entity">
+            <tr>
+                <th>employee</th>
+            </tr>
+            <tr>
+                <td class="primary-key">emp_id</td>
+            </tr>
+        </table>
+        <table class="entity">
+            <tr>
+                <th>agent</th>
+            </tr>
+        </table>
+        <table class="entity">
+            <tr>
+                <th>adjuster</th>
+            </tr>
+        </table>
+        <table class="entity">
+            <tr>
+                <th>claim</th>
+            </tr>
+            <tr>
+                <td class="primary-key">claim_id</td>
             </tr>
         </table>
     </body>
