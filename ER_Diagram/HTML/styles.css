@@ -22,8 +22,8 @@ body {
 .relationship {
     transform: rotate(45deg);
     border: 1px solid black;
-    width: 5em;
-    height: 5em;
+    width: 4em;
+    height: 4em;
     display: flex;
     justify-content: center;
     align-items: center;
