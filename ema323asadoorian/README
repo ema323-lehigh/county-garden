@@ -9,3 +9,7 @@ Key tenets:
 - we don't care about employees' information
 - bills are expected to be paid, resulting in an initially null payment_type field
 - unpaid policy premiums result in customers getting booted
+- every claim is made against some policy, but not all policies have claims
+
+Helpful links:
+- https://www.progressive.com/answers/how-to-file-an-auto-claim/
