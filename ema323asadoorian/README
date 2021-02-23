@@ -16,6 +16,9 @@ Key tenets:
 - a policy can only be held by one customer, no matter how many are insured
 - likewise, a claim may only be made by a single customer
 - dependents may NOT[1] belong to multiple customers (ex. divorce) & no floating
+- a dependent is identified both by their name and their relationship to the customer (consider using DOB instead)
+- at the moment, the design is open to non-insurance-oriented employees, just in case
+- all policies must cover at least one item, and all items must be covered by at least one policy
 
 Helpful links:
 - https://www.progressive.com/answers/how-to-file-an-auto-claim/
