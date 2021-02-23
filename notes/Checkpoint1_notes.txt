@@ -1,0 +1,6 @@
+consider changing DOB to something more explicit
+cannot have any entities without attributes
+consider shifting positioning/connections for dependent
+contrast items versus dependents
+use 1..n for clarity in some places
+suggestion: discounts for policy, etc.
