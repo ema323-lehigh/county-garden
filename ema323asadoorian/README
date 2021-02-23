@@ -1,7 +1,8 @@
 Consideration for the ER diagram: what is at the center? What is the focus? Where does everything else flow from? The design is mainly non-hierarchical -- actually, no, the relational part is what's non-hierarchical - but whatever is seen first, whatever is central, will take most importance as a first impression.
 
 Key tenets:
-- each customer has one (dedicated) agent
+- each customer has one (dedicated) agent ALWAYS
+- meanwhile, claims may be managed by multiple adjusters
 - all policies must be held, claims made and managed, etc.
 - no employee can be both an agent and an adjuster
 - contractors may service as many or as few claims
@@ -9,7 +10,11 @@ Key tenets:
 - we don't care about employees' information
 - bills are expected to be paid, resulting in an initially null payment_type field
 - unpaid policy premiums result in customers getting booted
-- every claim is made against some policy, but not all policies have claims
+- every claim is made against some individual policy, but not all policies have claims
+- one invoice can make payments against multiple policies (? bundles)
+- as policies can be new or cancelled, they do not have mandatory invoices
+- a policy can only be held by one customer, no matter how many are insured
+- likewise, a claim may only be made by a single customer
 
 Helpful links:
 - https://www.progressive.com/answers/how-to-file-an-auto-claim/
