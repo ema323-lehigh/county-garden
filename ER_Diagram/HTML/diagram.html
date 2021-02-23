@@ -2,9 +2,10 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="styles.css" />
+        <script type="text/javascript" src="scripts.js"></script>
     </head>
     <body>
-        <table class="entity" style="top: 300px; left: 200px;">
+        <table class="entity" id="customer" style="top: 300px; left: 200px;">
             <tr>
                 <th>customer</th>
             </tr>
@@ -15,7 +16,7 @@
                 <td>name</td>
             </tr>
         </table>
-        <table class="entity strong" style="top: 300px; left: 300px;">
+        <table class="entity strong" id="policy" style="top: 300px; left: 300px;">
             <tr>
                 <th>policy</th>
             </tr>
@@ -23,7 +24,7 @@
                 <td class="primary-key">policy_num</td>
             </tr>
         </table>
-        <table class="entity" style="top: 300px; left: 400px;">
+        <table class="entity" id="payment" style="top: 300px; left: 400px;">
             <tr>
                 <th>payment</th>
             </tr>
@@ -31,7 +32,7 @@
                 <td>type</td>
             </tr>
         </table>
-        <table class="entity" style="top: 660px; left: 200px;">
+        <table class="entity" id="employee" style="top: 660px; left: 200px;">
             <tr>
                 <th>employee</th>
             </tr>
@@ -39,17 +40,17 @@
                 <td class="primary-key">emp_id</td>
             </tr>
         </table>
-        <table class="entity" style="top: 600px; left: 160px;">
+        <table class="entity" id="agent" style="top: 600px; left: 160px;">
             <tr>
                 <th>agent</th>
             </tr>
         </table>
-        <table class="entity" style="top: 600px; left: 240px;">
+        <table class="entity" id="adjuster" style="top: 600px; left: 240px;">
             <tr>
                 <th>adjuster</th>
             </tr>
         </table>
-        <table class="entity" style="top: 420px; left: 380px;">
+        <table class="entity" id="claim" style="top: 420px; left: 380px;">
             <tr>
                 <th>claim</th>
             </tr>
@@ -58,19 +59,19 @@
             </tr>
         </table>
 
-        <div class="relationship" style="top: 500px; left: 320px;">
+        <div class="relationship" style="top: 500px; left: 320px;" data-connects="adjuster claim">
             <div>manages</div>
         </div>
-        <div class="relationship" style="top: 380px; left: 290px;">
+        <div class="relationship" style="top: 380px; left: 290px;" data-connects="customer claim">
             <div>makes</div>
         </div>
-        <div class="relationship" style="top: 220px; left: 260px;">
+        <div class="relationship" style="top: 220px; left: 260px;" data-connects="customer policy">
             <div>maintains</div>
         </div>
-        <div class="relationship" style="top: 410px; left: 155px;">
+        <div class="relationship" style="top: 410px; left: 155px;" data-connects="customer agent">
             <div>has</div>
         </div>
-        <div class="relationship" style="top: 220px; left: 370px;">
+        <div class="relationship" style="top: 220px; left: 370px;" data-connects="policy payment">
             <div>pays</div>
         </div>
     </body>
