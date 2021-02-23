@@ -1,1 +1,7 @@
 Consideration for the ER diagram: what is at the center? What is the focus? Where does everything else flow from? The design is mainly non-hierarchical -- actually, no, the relational part is what's non-hierarchical - but whatever is seen first, whatever is central, will take most importance as a first impression.
+
+Key tenets:
+- each customer has one (dedicated) agent
+- all policies must be held, claims made and managed, etc.
+- no employee can be both an agent and an adjuster
+
