@@ -81,3 +81,11 @@ CREATE TABLE adjuster (
     specialty VARCHAR(20),
     PRIMARY KEY adj_id,
 )
+
+CREATE TABLE dependent (
+    name VARCHAR (100),
+    relationship VARCHAR(20),
+    birth_date DATE,
+    FOREIGN KEY cust_id REFERENCES customer
+    PRIMARY KEY (name, cust_id),
+)
