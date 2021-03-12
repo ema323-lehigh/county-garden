@@ -68,3 +68,16 @@ CREATE TABLE claim (
     FOREIGN KEY cust_id REFERENCES customer,
     FOREIGN KEY adj_id REFERENCES adjuster,
 )
+
+CREATE TABLE agent (
+    agent_id NUMBER(6),
+    name VARCHAR(100),
+    PRIMARY KEY agent_id,
+)
+
+CREATE TABLE adjuster (
+    adj_id NUMBER(6),
+    name VARCHAR(100),
+    specialty VARCHAR(20),
+    PRIMARY KEY adj_id,
+)
