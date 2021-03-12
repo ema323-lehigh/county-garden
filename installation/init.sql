@@ -3,16 +3,16 @@ CREATE TABLE policy (
     policy_type VARCHAR(20),
     quoted_price NUMBER(6,2),
     cancelled BOOLEAN,
-    PRIMARY KEY policy_id,
     FOREIGN KEY cust_id REFERENCES customer,
+    PRIMARY KEY policy_id,
 )
 
 CREATE TABLE item (
     item_id NUMBER(6),
     category VARCHAR(20),
     approx_value NUMBER(6,2),
-    PRIMARY KEY item_id,
     FOREIGN KEY policy_id REFERENCES policy,
+    PRIMARY KEY item_id,
 )
 
 CREATE TABLE customer (
@@ -22,15 +22,15 @@ CREATE TABLE customer (
     lastname VARCHAR(50),
     suffix VARCHAR(10),
     birth_date DATE,
-    PRIMARY KEY cust_id,
     FOREIGN KEY agent_id REFERENCES agent,
+    PRIMARY KEY cust_id,
 )
 
 CREATE TABLE phone_num (
     numb NUMBER(10),
     kind VARCHAR(10),
-    PRIMARY KEY numb,
     FOREIGN KEY cust_id REFERENCES customer,
+    PRIMARY KEY numb,
 )
 
 CREATE TABLE address (
@@ -38,8 +38,8 @@ CREATE TABLE address (
     city VARCHAR(50),
     state VARCHAR(2),
     zipcode NUMBER(5),
-    PRIMARY KEY (street, city),
     FOREIGN KEY cust_id REFERENCES customer,
+    PRIMARY KEY (street, city),
 )
 
 CREATE TABLE contractor (
@@ -67,6 +67,7 @@ CREATE TABLE claim (
     FOREIGN KEY policy_id REFERENCES policy,
     FOREIGN KEY cust_id REFERENCES customer,
     FOREIGN KEY adj_id REFERENCES adjuster,
+    PRIMARY KEY claim_id,
 )
 
 CREATE TABLE agent (
@@ -86,6 +87,6 @@ CREATE TABLE dependent (
     name VARCHAR (100),
     relationship VARCHAR(20),
     birth_date DATE,
-    FOREIGN KEY cust_id REFERENCES customer
+    FOREIGN KEY cust_id REFERENCES customer,
     PRIMARY KEY (name, cust_id),
 )
