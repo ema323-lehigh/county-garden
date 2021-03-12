@@ -29,7 +29,7 @@ CREATE TABLE customer (
 CREATE TABLE phone_num (
     numb NUMBER(10),
     kind VARCHAR(10),
-    PRIMARY KEY phone_num,
+    PRIMARY KEY numb,
     FOREIGN KEY cust_id REFERENCES customer,
 )
 
