@@ -24,9 +24,9 @@ public class Install {
                 String currLine = "";
                 while ((currLine = initSQLReader.readLine()) != null) {
                     if (currLine.isEmpty()) {
-                    System.out.println(currentQ);
-                    //s.executeUpdate(currentQ);
-                    currentQ = "";
+                        System.out.println(currentQ);
+                        //s.executeUpdate(currentQ);
+                        currentQ = "";
                     }
                     else {
                         currentQ += currLine;
