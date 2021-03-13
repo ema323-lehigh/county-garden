@@ -1,5 +1,6 @@
 import java.sql.*;
 import java.util.Scanner;
+import java.io.*;
 
 public class Install {
     public static void main(String[] args) {
@@ -17,7 +18,25 @@ public class Install {
         ) {
             System.out.println("...connected.");
             System.out.println("--------------------------------------------------------------------------------");
-            System.out.println("Bye.");
+            try {
+                BufferedReader initSQLReader = new BufferedReader(new FileReader(new File("init.sql")));
+                String currentQ = "";
+                String currLine = "";
+                while ((currLine = initSQLReader.readLine()) != null) {
+                    if (currLine.isEmpty()) {
+                    System.out.println(currentQ);
+                    //s.executeUpdate(currentQ);
+                    currentQ = "";
+                    }
+                    else {
+                        currentQ += currLine;
+                    }
+                }
+                initSQLReader.close();
+            }
+            catch (IOException e) {
+                System.out.println("An error occurred while attempting to read in the install script.");
+            }
             s.close();
             c.close();
         }
