@@ -24,7 +24,7 @@ public class Install {
                 String currLine = "";
                 while ((currLine = initSQLReader.readLine()) != null) {
                     if (currLine.isEmpty()) {
-                        System.out.println(currentQ);
+                        System.out.println("Creating table " + currentQ.split(" ")[2] + ".");
                         //s.executeUpdate(currentQ);
                         currentQ = "";
                     }
