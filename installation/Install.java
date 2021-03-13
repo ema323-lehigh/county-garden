@@ -22,10 +22,16 @@ public class Install {
                 BufferedReader initSQLReader = new BufferedReader(new FileReader(new File("init.sql")));
                 String currentQ = "";
                 String currLine = "";
+                String dropQ = "";
+                String createQ = "";
                 while ((currLine = initSQLReader.readLine()) != null) {
                     if (currLine.isEmpty()) {
-                        System.out.println("Creating table " + currentQ.split(" ")[2] + ".");
-                        //s.executeUpdate(currentQ);
+                        dropQ = currentQ.split(";")[0];
+                        createQ = currentQ.split(";")[1];
+                        System.out.println("Dropping table " + dropQ.split(" ")[2] + ".");
+                        //s.executeUpdate(dropQ);
+                        System.out.println("Creating table " + createQ.split(" ")[2] + ".");
+                        //s.executeUpdate(createQ);
                         currentQ = "";
                     }
                     else {

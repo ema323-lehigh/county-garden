@@ -1,3 +1,4 @@
+DROP TABLE policy;
 CREATE TABLE policy (
     policy_id NUMBER(6),
     policy_type VARCHAR(20),
@@ -7,6 +8,7 @@ CREATE TABLE policy (
     PRIMARY KEY policy_id,
 )
 
+DROP TABLE item;
 CREATE TABLE item (
     item_id NUMBER(6),
     category VARCHAR(20),
@@ -15,6 +17,7 @@ CREATE TABLE item (
     PRIMARY KEY item_id,
 )
 
+DROP TABLE customer;
 CREATE TABLE customer (
     cust_id NUMBER(6),
     firstname VARCHAR(50),
@@ -26,6 +29,7 @@ CREATE TABLE customer (
     PRIMARY KEY cust_id,
 )
 
+DROP TABLE phone_num;
 CREATE TABLE phone_num (
     numb NUMBER(10),
     kind VARCHAR(10),
@@ -33,6 +37,7 @@ CREATE TABLE phone_num (
     PRIMARY KEY numb,
 )
 
+DROP TABLE address;
 CREATE TABLE address (
     street VARCHAR(100),
     city VARCHAR(50),
@@ -42,6 +47,7 @@ CREATE TABLE address (
     PRIMARY KEY (street, city),
 )
 
+DROP TABLE contractor;
 CREATE TABLE contractor (
     firm_id NUMBER(6),
     industry VARCHAR(20),
@@ -50,6 +56,7 @@ CREATE TABLE contractor (
     PRIMARY KEY firm_id,
 )
 
+DROP TABLE services;
 CREATE TABLE services (
     service_date DATE,
     FOREIGN KEY claim_id REFERENCES claim,
@@ -57,6 +64,7 @@ CREATE TABLE services (
     PRIMARY KEY (claim_id, firm_id),
 )
 
+DROP TABLE claim;
 CREATE TABLE claim (
     claim_id NUMBER(6),
     claim_title VARCHAR(50),
@@ -70,12 +78,14 @@ CREATE TABLE claim (
     PRIMARY KEY claim_id,
 )
 
+DROP TABLE agent;
 CREATE TABLE agent (
     agent_id NUMBER(6),
     name VARCHAR(100),
     PRIMARY KEY agent_id,
 )
 
+DROP TABLE adjuster;
 CREATE TABLE adjuster (
     adj_id NUMBER(6),
     name VARCHAR(100),
@@ -83,6 +93,7 @@ CREATE TABLE adjuster (
     PRIMARY KEY adj_id,
 )
 
+DROP TABLE dependent;
 CREATE TABLE dependent (
     name VARCHAR (100),
     relationship VARCHAR(20),
