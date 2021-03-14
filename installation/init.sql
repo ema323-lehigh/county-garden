@@ -4,7 +4,8 @@ CREATE TABLE policy (
     policy_type VARCHAR(20) NOT NULL,
     quoted_price NUMBER(6,2),
     cancelled BOOLEAN NOT NULL,
-    FOREIGN KEY cust_id REFERENCES customer NOT NULL,
+    FOREIGN KEY cust_id REFERENCES customer NOT NULL
+        ON DELETE CASCADE,
     PRIMARY KEY policy_id,
 )
 
@@ -13,7 +14,8 @@ CREATE TABLE item (
     item_id NUMBER(6) NOT NULL,
     category VARCHAR(20) NOT NULL,
     approx_value NUMBER(6,2) NOT NULL,
-    FOREIGN KEY policy_id REFERENCES policy NOT NULL,
+    FOREIGN KEY policy_id REFERENCES policy NOT NULL
+        ON DELETE CASCADE,
     PRIMARY KEY item_id,
 )
 
@@ -25,7 +27,8 @@ CREATE TABLE customer (
     lastname VARCHAR(50) NOT NULL,
     suffix VARCHAR(10),
     birth_date DATE NOT NULL,
-    FOREIGN KEY agent_id REFERENCES agent NOT NULL,
+    FOREIGN KEY agent_id REFERENCES agent NOT NULL
+        ON DELETE CASCADE,
     PRIMARY KEY cust_id,
 )
 
@@ -33,7 +36,8 @@ DROP TABLE phone_num;
 CREATE TABLE phone_num (
     numb NUMBER(10) NOT NULL,
     kind VARCHAR(10) NOT NULL,
-    FOREIGN KEY cust_id REFERENCES customer NOT NULL,
+    FOREIGN KEY cust_id REFERENCES customer NOT NULL
+        ON DELETE CASCADE,
     PRIMARY KEY numb,
 )
 
@@ -43,7 +47,8 @@ CREATE TABLE address (
     city VARCHAR(50) NOT NULL,
     state VARCHAR(2) NOT NULL,
     zipcode NUMBER(5) NOT NULL,
-    FOREIGN KEY cust_id REFERENCES customer NOT NULL,
+    FOREIGN KEY cust_id REFERENCES customer NOT NULL
+        ON DELETE CASCADE,
     PRIMARY KEY (street, city),
 )
 
@@ -60,7 +65,9 @@ DROP TABLE services;
 CREATE TABLE services (
     service_date DATE NOT NULL,
     FOREIGN KEY firm_id REFERENCES contractor NOT NULL,
-    FOREIGN KEY claim_id REFERENCES claim NOT NULL,
+        ON DELETE CASCADE,
+    FOREIGN KEY claim_id REFERENCES claim NOT NULL
+        ON DELETE CASCADE,
     PRIMARY KEY (firm_id, claim_id, service_date),
 )
 
@@ -73,14 +80,18 @@ CREATE TABLE claim (
     occurred_date DATE NOT NULL,
     submitted_date DATE NOT NULL,
     FOREIGN KEY policy_id REFERENCES policy NOT NULL,
+        ON DELETE CASCADE,
     FOREIGN KEY cust_id REFERENCES customer NOT NULL,
+        ON DELETE CASCADE,
     PRIMARY KEY claim_id,
 )
 
 DROP TABLE manages;
 CREATE TABLE manages (
     FOREIGN KEY claim_id REFERENCES claim NOT NULL,
+        ON DELETE CASCADE,
     FOREIGN KEY adj_id REFERENCES adjuster NOT NULL,
+        ON DELETE CASCADE,
     PRIMARY KEY (claim_id, adj_id),
 )
 
@@ -104,7 +115,8 @@ CREATE TABLE dependent (
     name VARCHAR (100) NOT NULL,
     relationship VARCHAR(20) NOT NULL,
     birth_date DATE NOT NULL,
-    FOREIGN KEY cust_id REFERENCES customer NOT NULL,
+    FOREIGN KEY cust_id REFERENCES customer NOT NULL
+        ON DELETE CASCADE,
     PRIMARY KEY (name, cust_id),
 )
 
@@ -113,7 +125,8 @@ CREATE TABLE invoice (
     trans_id NUMBER(6) NOT NULL,
     due_date DATE NOT NULL,
     payment_type VARCHAR(10),
-    FOREIGN KEY policy_id REFERENCES policy NOT NULL,
+    FOREIGN KEY policy_id REFERENCES policy NOT NULL
+        ON DELETE CASCADE,
     PRIMARY KEY trans_id,
 )
 
@@ -122,6 +135,7 @@ CREATE TABLE payment (
     payment_id NUMBER(6) NOT NULL,
     amount NUMBER(6,2) NOT NULL,
     paid_date DATE NOT NULL,
-    FOREIGN KEY claim_id REFERENCES claim NOT NULL,
+    FOREIGN KEY claim_id REFERENCES claim NOT NULL
+        ON DELETE CASCADE,
     PRIMARY KEY payment_id,
 )
