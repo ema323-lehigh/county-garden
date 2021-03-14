@@ -1,11 +1,11 @@
-DROP TABLE agent;
+DROP TABLE agent CASCADE CONSTRAINTS;
 CREATE TABLE agent (
     agent_id NUMBER(6) NOT NULL,
     aname VARCHAR(100) NOT NULL,
     PRIMARY KEY (agent_id)
 )
 
-DROP TABLE adjuster;
+DROP TABLE adjuster CASCADE CONSTRAINTS;
 CREATE TABLE adjuster (
     adj_id NUMBER(6) NOT NULL,
     aname VARCHAR(100) NOT NULL,
@@ -13,7 +13,7 @@ CREATE TABLE adjuster (
     PRIMARY KEY (adj_id)
 )
 
-DROP TABLE customer;
+DROP TABLE customer CASCADE CONSTRAINTS;
 CREATE TABLE customer (
     cust_id NUMBER(6) NOT NULL,
     firstname VARCHAR(50) NOT NULL,
@@ -27,7 +27,7 @@ CREATE TABLE customer (
     PRIMARY KEY (cust_id)
 )
 
-DROP TABLE cust_add;
+DROP TABLE cust_add CASCADE CONSTRAINTS;
 CREATE TABLE cust_add (
     street VARCHAR(100) NOT NULL,
     city VARCHAR(50) NOT NULL,
@@ -39,7 +39,7 @@ CREATE TABLE cust_add (
     PRIMARY KEY (street, city)
 )
 
-DROP TABLE phone_num;
+DROP TABLE phone_num CASCADE CONSTRAINTS;
 CREATE TABLE phone_num (
     numb NUMBER(10) NOT NULL,
     kind VARCHAR(10) NOT NULL,
@@ -49,7 +49,7 @@ CREATE TABLE phone_num (
     PRIMARY KEY (numb)
 )
 
-DROP TABLE polisy;
+DROP TABLE polisy CASCADE CONSTRAINTS;
 CREATE TABLE polisy (
     policy_id NUMBER(6) NOT NULL,
     policy_type VARCHAR(20) NOT NULL,
@@ -61,7 +61,7 @@ CREATE TABLE polisy (
     PRIMARY KEY (policy_id)
 )
 
-DROP TABLE item;
+DROP TABLE item CASCADE CONSTRAINTS;
 CREATE TABLE item (
     item_id NUMBER(6) NOT NULL,
     category VARCHAR(20) NOT NULL,
@@ -72,7 +72,7 @@ CREATE TABLE item (
     PRIMARY KEY (item_id)
 )
 
-DROP TABLE claim;
+DROP TABLE claim CASCADE CONSTRAINTS;
 CREATE TABLE claim (
     claim_id NUMBER(6) NOT NULL,
     claim_title VARCHAR(50) NOT NULL,
@@ -89,7 +89,7 @@ CREATE TABLE claim (
     PRIMARY KEY (claim_id)
 )
 
-DROP TABLE contractor;
+DROP TABLE contractor CASCADE CONSTRAINTS;
 CREATE TABLE contractor (
     firm_id NUMBER(6) NOT NULL,
     industry VARCHAR(20) NOT NULL,
@@ -98,7 +98,7 @@ CREATE TABLE contractor (
     PRIMARY KEY (firm_id)
 )
 
-DROP TABLE firm_add;
+DROP TABLE firm_add CASCADE CONSTRAINTS;
 CREATE TABLE firm_add (
     street VARCHAR(100) NOT NULL,
     city VARCHAR(50) NOT NULL,
@@ -110,7 +110,7 @@ CREATE TABLE firm_add (
     PRIMARY KEY (street, city)
 )
 
-DROP TABLE services;
+DROP TABLE services CASCADE CONSTRAINTS;
 CREATE TABLE services (
     service_date DATE NOT NULL,
     firm_id NUMBER(6) NOT NULL,
@@ -122,7 +122,7 @@ CREATE TABLE services (
     PRIMARY KEY (firm_id, claim_id, service_date)
 )
 
-DROP TABLE manages;
+DROP TABLE manages CASCADE CONSTRAINTS;
 CREATE TABLE manages (
     claim_id NUMBER(6) NOT NULL,
     FOREIGN KEY (claim_id) REFERENCES claim(claim_id)
@@ -133,7 +133,7 @@ CREATE TABLE manages (
     PRIMARY KEY (claim_id, adj_id)
 )
 
-DROP TABLE dependentt;
+DROP TABLE dependentt CASCADE CONSTRAINTS;
 CREATE TABLE dependentt (
     dname VARCHAR (100) NOT NULL,
     relationship VARCHAR(20) NOT NULL,
@@ -144,7 +144,7 @@ CREATE TABLE dependentt (
     PRIMARY KEY (dname, relationship, cust_id)
 )
 
-DROP TABLE invoice;
+DROP TABLE invoice CASCADE CONSTRAINTS;
 CREATE TABLE invoice (
     trans_id NUMBER(6) NOT NULL,
     due_date DATE NOT NULL,
@@ -155,7 +155,7 @@ CREATE TABLE invoice (
     PRIMARY KEY (trans_id)
 )
 
-DROP TABLE payment;
+DROP TABLE payment CASCADE CONSTRAINTS;
 CREATE TABLE payment (
     payment_id NUMBER(6) NOT NULL,
     amount NUMBER(6,2) NOT NULL,
