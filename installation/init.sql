@@ -1,3 +1,54 @@
+DROP TABLE agent;
+CREATE TABLE agent (
+    agent_id NUMBER(6) NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    PRIMARY KEY (agent_id),
+)
+
+DROP TABLE adjuster;
+CREATE TABLE adjuster (
+    adj_id NUMBER(6) NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    specialty VARCHAR(20),
+    PRIMARY KEY (adj_id),
+)
+
+DROP TABLE customer;
+CREATE TABLE customer (
+    cust_id NUMBER(6) NOT NULL,
+    firstname VARCHAR(50) NOT NULL,
+    middlename VARCHAR(50),
+    lastname VARCHAR(50) NOT NULL,
+    suffix VARCHAR(10),
+    birth_date DATE NOT NULL,
+    agent_id NUMBER(6) NOT NULL,
+    FOREIGN KEY (agent_id) REFERENCES agent(agent_id)
+        ON DELETE CASCADE,
+    PRIMARY KEY (cust_id),
+)
+
+DROP TABLE cust_add;
+CREATE TABLE cust_add (
+    street VARCHAR(100) NOT NULL,
+    city VARCHAR(50) NOT NULL,
+    state VARCHAR(2) NOT NULL,
+    zipcode NUMBER(5) NOT NULL,
+    cust_id NUMBER(6) NOT NULL,
+    FOREIGN KEY (cust_id) REFERENCES customer(cust_id)
+        ON DELETE CASCADE,
+    PRIMARY KEY (street, city),
+)
+
+DROP TABLE phone_num;
+CREATE TABLE phone_num (
+    numb NUMBER(10) NOT NULL,
+    kind VARCHAR(10) NOT NULL,
+    cust_id NUMBER(6) NOT NULL,
+    FOREIGN KEY (cust_id) REFERENCES customer(cust_id)
+        ON DELETE CASCADE,
+    PRIMARY KEY (numb),
+)
+
 DROP TABLE polisy;
 CREATE TABLE polisy (
     policy_id NUMBER(6) NOT NULL,
@@ -21,40 +72,21 @@ CREATE TABLE item (
     PRIMARY KEY (item_id),
 )
 
-DROP TABLE customer;
-CREATE TABLE customer (
-    cust_id NUMBER(6) NOT NULL,
-    firstname VARCHAR(50) NOT NULL,
-    middlename VARCHAR(50),
-    lastname VARCHAR(50) NOT NULL,
-    suffix VARCHAR(10),
-    birth_date DATE NOT NULL,
-    agent_id NUMBER(6) NOT NULL,
-    FOREIGN KEY (agent_id) REFERENCES agent(agent_id)
+DROP TABLE claim;
+CREATE TABLE claim (
+    claim_id NUMBER(6) NOT NULL,
+    claim_title VARCHAR(50) NOT NULL,
+    location VARCHAR(100) NOT NULL,
+    description VARCHAR(280) NOT NULL,
+    occurred_date DATE NOT NULL,
+    submitted_date DATE NOT NULL,
+    policy_id NUMBER(6) NOT NULL,
+    FOREIGN KEY (policy_id) REFERENCES policy(policy_id),
         ON DELETE CASCADE,
-    PRIMARY KEY (cust_id),
-)
-
-DROP TABLE phone_num;
-CREATE TABLE phone_num (
-    numb NUMBER(10) NOT NULL,
-    kind VARCHAR(10) NOT NULL,
     cust_id NUMBER(6) NOT NULL,
-    FOREIGN KEY (cust_id) REFERENCES customer(cust_id)
+    FOREIGN KEY (cust_id) REFERENCES customer(cust_id),
         ON DELETE CASCADE,
-    PRIMARY KEY (numb),
-)
-
-DROP TABLE cust_add;
-CREATE TABLE cust_add (
-    street VARCHAR(100) NOT NULL,
-    city VARCHAR(50) NOT NULL,
-    state VARCHAR(2) NOT NULL,
-    zipcode NUMBER(5) NOT NULL,
-    cust_id NUMBER(6) NOT NULL,
-    FOREIGN KEY (cust_id) REFERENCES customer(cust_id)
-        ON DELETE CASCADE,
-    PRIMARY KEY (street, city),
+    PRIMARY KEY (claim_id),
 )
 
 DROP TABLE contractor;
@@ -78,23 +110,6 @@ CREATE TABLE services (
     PRIMARY KEY (firm_id, claim_id, service_date),
 )
 
-DROP TABLE claim;
-CREATE TABLE claim (
-    claim_id NUMBER(6) NOT NULL,
-    claim_title VARCHAR(50) NOT NULL,
-    location VARCHAR(100) NOT NULL,
-    description VARCHAR(280) NOT NULL,
-    occurred_date DATE NOT NULL,
-    submitted_date DATE NOT NULL,
-    policy_id NUMBER(6) NOT NULL,
-    FOREIGN KEY (policy_id) REFERENCES policy(policy_id),
-        ON DELETE CASCADE,
-    cust_id NUMBER(6) NOT NULL,
-    FOREIGN KEY (cust_id) REFERENCES customer(cust_id),
-        ON DELETE CASCADE,
-    PRIMARY KEY (claim_id),
-)
-
 DROP TABLE manages;
 CREATE TABLE manages (
     claim_id NUMBER(6) NOT NULL,
@@ -104,21 +119,6 @@ CREATE TABLE manages (
     FOREIGN KEY (adj_id) REFERENCES adjuster(adj_id)
         ON DELETE CASCADE,
     PRIMARY KEY (claim_id, adj_id),
-)
-
-DROP TABLE agent;
-CREATE TABLE agent (
-    agent_id NUMBER(6) NOT NULL,
-    name VARCHAR(100) NOT NULL,
-    PRIMARY KEY (agent_id),
-)
-
-DROP TABLE adjuster;
-CREATE TABLE adjuster (
-    adj_id NUMBER(6) NOT NULL,
-    name VARCHAR(100) NOT NULL,
-    specialty VARCHAR(20),
-    PRIMARY KEY (adj_id),
 )
 
 DROP TABLE dependentt;
