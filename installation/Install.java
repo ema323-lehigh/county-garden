@@ -19,6 +19,7 @@ public class Install {
             System.out.println("...connected.");
             System.out.println("--------------------------------------------------------------------------------");
             try {
+                c.setAutoCommit(false);
                 BufferedReader initSQLReader = new BufferedReader(new FileReader(new File("init.sql")));
                 String currentQ = "";
                 String currLine = "";
@@ -40,6 +41,7 @@ public class Install {
                     }
                 }
                 initSQLReader.close();
+                c.commit();
             }
             catch (IOException e) {
                 System.out.println("An error occurred while attempting to read in the install script.");
