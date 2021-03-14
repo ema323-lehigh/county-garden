@@ -28,10 +28,11 @@ public class Install {
                     if (currLine.isEmpty()) {
                         dropQ = currentQ.split(";")[0];
                         createQ = currentQ.split(";")[1];
-                        System.out.println("Dropping table " + dropQ.split(" ")[2] + ".");
-                        //s.executeUpdate(dropQ);
-                        System.out.println("Creating table " + createQ.split(" ")[2] + ".");
-                        //s.executeUpdate(createQ);
+                        System.out.println("Dropping table " + dropQ.split(" ")[2] + "...");
+                        s.executeUpdate(dropQ);
+                        System.out.println("Creating table " + createQ.split(" ")[2] + "...");
+                        s.executeUpdate(createQ);
+                        System.out.println("Done.");
                         currentQ = "";
                     }
                     else {
@@ -47,7 +48,7 @@ public class Install {
             c.close();
         }
         catch (SQLException e) {
-            System.out.println("Failed to connect. Please try again later.");
+            System.out.println("Failed to connect or execute. Please try again later.");
         }
         finally {
             input.close();
