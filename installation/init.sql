@@ -74,8 +74,14 @@ CREATE TABLE claim (
     submitted_date DATE,
     FOREIGN KEY policy_id REFERENCES policy,
     FOREIGN KEY cust_id REFERENCES customer,
-    FOREIGN KEY adj_id REFERENCES adjuster,
     PRIMARY KEY claim_id,
+)
+
+DROP TABLE manages;
+CREATE TABLE manages (
+    FOREIGN KEY claim_id REFERENCES claim,
+    FOREIGN KEY adj_id REFERENCES adjuster,
+    PRIMARY KEY (claim_id, adj_id),
 )
 
 DROP TABLE agent;
