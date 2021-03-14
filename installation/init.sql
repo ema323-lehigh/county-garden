@@ -1,5 +1,5 @@
-DROP TABLE policy;
-CREATE TABLE policy (
+DROP TABLE polisy;
+CREATE TABLE polisy (
     policy_id NUMBER(6) NOT NULL,
     policy_type VARCHAR(20) NOT NULL,
     quoted_price NUMBER(6,2),
@@ -45,8 +45,8 @@ CREATE TABLE phone_num (
     PRIMARY KEY (numb),
 )
 
-DROP TABLE address;
-CREATE TABLE address (
+DROP TABLE cust_add;
+CREATE TABLE cust_add (
     street VARCHAR(100) NOT NULL,
     city VARCHAR(50) NOT NULL,
     state VARCHAR(2) NOT NULL,
@@ -121,8 +121,8 @@ CREATE TABLE adjuster (
     PRIMARY KEY (adj_id),
 )
 
-DROP TABLE dependent;
-CREATE TABLE dependent (
+DROP TABLE dependentt;
+CREATE TABLE dependentt (
     name VARCHAR (100) NOT NULL,
     relationship VARCHAR(20) NOT NULL,
     birth_date DATE NOT NULL,
