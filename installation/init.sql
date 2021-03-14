@@ -54,7 +54,7 @@ CREATE TABLE polisy (
     policy_id NUMBER(6) NOT NULL,
     policy_type VARCHAR(20) NOT NULL,
     quoted_price NUMBER(6,2),
-    cancelled BOOLEAN NOT NULL,
+    cancelled NUMBER(1) NOT NULL CHECK(cancelled = 0 OR cancelled = 1),
     cust_id NUMBER(6) NOT NULL,
     FOREIGN KEY (cust_id) REFERENCES customer(cust_id)
         ON DELETE CASCADE,
