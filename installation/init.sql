@@ -76,15 +76,15 @@ DROP TABLE claim CASCADE CONSTRAINTS;
 CREATE TABLE claim (
     claim_id NUMBER(6) NOT NULL,
     claim_title VARCHAR(50) NOT NULL,
-    claim_loc VARCHAR(100) NOT NULL,
-    claim_desc VARCHAR(280) NOT NULL,
+    event_loc VARCHAR(100) NOT NULL,
+    event_desc VARCHAR(280) NOT NULL,
     occurred_date DATE NOT NULL,
     submitted_date DATE NOT NULL,
     policy_id NUMBER(6) NOT NULL,
-    FOREIGN KEY (policy_id) REFERENCES polisy(policy_id),
+    FOREIGN KEY (policy_id) REFERENCES polisy(policy_id)
         ON DELETE CASCADE,
     cust_id NUMBER(6) NOT NULL,
-    FOREIGN KEY (cust_id) REFERENCES customer(cust_id),
+    FOREIGN KEY (cust_id) REFERENCES customer(cust_id)
         ON DELETE CASCADE,
     PRIMARY KEY (claim_id)
 )
@@ -104,7 +104,7 @@ CREATE TABLE firm_add (
     city VARCHAR(50) NOT NULL,
     fstate VARCHAR(2) NOT NULL,
     zipcode NUMBER(5) NOT NULL,
-    cust_id NUMBER(6) NOT NULL,
+    firm_id NUMBER(6) NOT NULL,
     FOREIGN KEY (firm_id) REFERENCES contractor(firm_id)
         ON DELETE CASCADE,
     PRIMARY KEY (street, city)
