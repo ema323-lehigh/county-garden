@@ -1,4 +1,4 @@
-DROP TABLE policy IF EXISTS;
+-- DROP TABLE policy IF EXISTS;
 CREATE TABLE policy (
     policy_id NUMBER(6) NOT NULL,
     policy_type VARCHAR(20) NOT NULL,
@@ -9,7 +9,7 @@ CREATE TABLE policy (
     PRIMARY KEY policy_id,
 )
 
-DROP TABLE item IF EXISTS;
+-- DROP TABLE item IF EXISTS;
 CREATE TABLE item (
     item_id NUMBER(6) NOT NULL,
     category VARCHAR(20) NOT NULL,
@@ -19,7 +19,7 @@ CREATE TABLE item (
     PRIMARY KEY item_id,
 )
 
-DROP TABLE customer IF EXISTS;
+-- DROP TABLE customer IF EXISTS;
 CREATE TABLE customer (
     cust_id NUMBER(6) NOT NULL,
     firstname VARCHAR(50) NOT NULL,
@@ -32,7 +32,7 @@ CREATE TABLE customer (
     PRIMARY KEY cust_id,
 )
 
-DROP TABLE phone_num IF EXISTS;
+-- DROP TABLE phone_num IF EXISTS;
 CREATE TABLE phone_num (
     numb NUMBER(10) NOT NULL,
     kind VARCHAR(10) NOT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE phone_num (
     PRIMARY KEY numb,
 )
 
-DROP TABLE address IF EXISTS;
+-- DROP TABLE address IF EXISTS;
 CREATE TABLE address (
     street VARCHAR(100) NOT NULL,
     city VARCHAR(50) NOT NULL,
@@ -52,7 +52,7 @@ CREATE TABLE address (
     PRIMARY KEY (street, city),
 )
 
-DROP TABLE contractor IF EXISTS;
+-- DROP TABLE contractor IF EXISTS;
 CREATE TABLE contractor (
     firm_id NUMBER(6) NOT NULL,
     industry VARCHAR(20) NOT NULL,
@@ -61,7 +61,7 @@ CREATE TABLE contractor (
     PRIMARY KEY firm_id,
 )
 
-DROP TABLE services IF EXISTS;
+-- DROP TABLE services IF EXISTS;
 CREATE TABLE services (
     service_date DATE NOT NULL,
     FOREIGN KEY firm_id REFERENCES contractor NOT NULL,
@@ -71,7 +71,7 @@ CREATE TABLE services (
     PRIMARY KEY (firm_id, claim_id, service_date),
 )
 
-DROP TABLE claim IF EXISTS;
+-- DROP TABLE claim IF EXISTS;
 CREATE TABLE claim (
     claim_id NUMBER(6) NOT NULL,
     claim_title VARCHAR(50) NOT NULL,
@@ -86,7 +86,7 @@ CREATE TABLE claim (
     PRIMARY KEY claim_id,
 )
 
-DROP TABLE manages IF EXISTS;
+-- DROP TABLE manages IF EXISTS;
 CREATE TABLE manages (
     FOREIGN KEY claim_id REFERENCES claim NOT NULL,
         ON DELETE CASCADE,
@@ -95,14 +95,14 @@ CREATE TABLE manages (
     PRIMARY KEY (claim_id, adj_id),
 )
 
-DROP TABLE agent IF EXISTS;
+-- DROP TABLE agent IF EXISTS;
 CREATE TABLE agent (
     agent_id NUMBER(6) NOT NULL,
     name VARCHAR(100) NOT NULL,
     PRIMARY KEY agent_id,
 )
 
-DROP TABLE adjuster IF EXISTS;
+-- DROP TABLE adjuster IF EXISTS;
 CREATE TABLE adjuster (
     adj_id NUMBER(6) NOT NULL,
     name VARCHAR(100) NOT NULL,
@@ -110,7 +110,7 @@ CREATE TABLE adjuster (
     PRIMARY KEY adj_id,
 )
 
-DROP TABLE dependent IF EXISTS;
+-- DROP TABLE dependent IF EXISTS;
 CREATE TABLE dependent (
     name VARCHAR (100) NOT NULL,
     relationship VARCHAR(20) NOT NULL,
@@ -120,7 +120,7 @@ CREATE TABLE dependent (
     PRIMARY KEY (name, relationship, cust_id),
 )
 
-DROP TABLE invoice IF EXISTS;
+-- DROP TABLE invoice IF EXISTS;
 CREATE TABLE invoice (
     trans_id NUMBER(6) NOT NULL,
     due_date DATE NOT NULL,
@@ -130,7 +130,7 @@ CREATE TABLE invoice (
     PRIMARY KEY trans_id,
 )
 
-DROP TABLE payment IF EXISTS;
+-- DROP TABLE payment IF EXISTS;
 CREATE TABLE payment (
     payment_id NUMBER(6) NOT NULL,
     amount NUMBER(6,2) NOT NULL,
