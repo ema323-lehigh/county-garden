@@ -98,6 +98,18 @@ CREATE TABLE contractor (
     PRIMARY KEY (firm_id),
 )
 
+DROP TABLE firm_add;
+CREATE TABLE firm_add (
+    street VARCHAR(100) NOT NULL,
+    city VARCHAR(50) NOT NULL,
+    state VARCHAR(2) NOT NULL,
+    zipcode NUMBER(5) NOT NULL,
+    cust_id NUMBER(6) NOT NULL,
+    FOREIGN KEY (firm_id) REFERENCES contractor(firm_id)
+        ON DELETE CASCADE,
+    PRIMARY KEY (street, city),
+)
+
 DROP TABLE services;
 CREATE TABLE services (
     service_date DATE NOT NULL,

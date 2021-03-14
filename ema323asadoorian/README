@@ -23,6 +23,7 @@ Key tenets:
 - quoted prices need not always be available, so they will be null at first
 - all invoices are paid in full, while payments may be partial on claims
 - consider: should records (besides ex. dependents, contact info) remain after their controller disappears?
+- as it happens we can insure our contractors' stuff (by way of same address & owner's name)
 
 Helpful links:
 - https://www.progressive.com/answers/how-to-file-an-auto-claim/
