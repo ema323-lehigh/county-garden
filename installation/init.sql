@@ -117,7 +117,7 @@ CREATE TABLE dependent (
     birth_date DATE NOT NULL,
     FOREIGN KEY cust_id REFERENCES customer NOT NULL
         ON DELETE CASCADE,
-    PRIMARY KEY (name, cust_id),
+    PRIMARY KEY (name, relationship, cust_id),
 )
 
 DROP TABLE invoice;
