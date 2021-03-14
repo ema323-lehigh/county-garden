@@ -20,6 +20,7 @@ Key tenets:
 - at the moment, the design is open to non-insurance-oriented employees, just in case
 - all policies must cover at least one item, and all items must be covered by at least one policy
 - each payment goes towards one and only one claim, identified by its payment number on that claim
+- quoted prices need not always be availabel
 
 Helpful links:
 - https://www.progressive.com/answers/how-to-file-an-auto-claim/
