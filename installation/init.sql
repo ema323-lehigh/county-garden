@@ -56,12 +56,12 @@ CREATE TABLE contractor (
     PRIMARY KEY firm_id,
 )
 
-DROP TABLE services;
-CREATE TABLE services (
+DROP TABLE serviced;
+CREATE TABLE serviced (
     service_date DATE,
-    FOREIGN KEY claim_id REFERENCES claim,
     FOREIGN KEY firm_id REFERENCES contractor,
-    PRIMARY KEY (claim_id, firm_id),
+    FOREIGN KEY claim_id REFERENCES claim,
+    PRIMARY KEY (firm_id, claim_id, service_date),
 )
 
 DROP TABLE claim;
@@ -70,8 +70,8 @@ CREATE TABLE claim (
     claim_title VARCHAR(50),
     location VARCHAR(100),
     description VARCHAR(280),
-    submitted_date DATE,
     occurred_date DATE,
+    submitted_date DATE,
     FOREIGN KEY policy_id REFERENCES policy,
     FOREIGN KEY cust_id REFERENCES customer,
     FOREIGN KEY adj_id REFERENCES adjuster,
