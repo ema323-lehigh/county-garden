@@ -2,7 +2,7 @@ DROP TABLE agent;
 CREATE TABLE agent (
     agent_id NUMBER(6) NOT NULL,
     aname VARCHAR(100) NOT NULL,
-    PRIMARY KEY (agent_id),
+    PRIMARY KEY (agent_id)
 )
 
 DROP TABLE adjuster;
@@ -10,7 +10,7 @@ CREATE TABLE adjuster (
     adj_id NUMBER(6) NOT NULL,
     aname VARCHAR(100) NOT NULL,
     specialty VARCHAR(20),
-    PRIMARY KEY (adj_id),
+    PRIMARY KEY (adj_id)
 )
 
 DROP TABLE customer;
@@ -24,7 +24,7 @@ CREATE TABLE customer (
     agent_id NUMBER(6) NOT NULL,
     FOREIGN KEY (agent_id) REFERENCES agent(agent_id)
         ON DELETE CASCADE,
-    PRIMARY KEY (cust_id),
+    PRIMARY KEY (cust_id)
 )
 
 DROP TABLE cust_add;
@@ -36,7 +36,7 @@ CREATE TABLE cust_add (
     cust_id NUMBER(6) NOT NULL,
     FOREIGN KEY (cust_id) REFERENCES customer(cust_id)
         ON DELETE CASCADE,
-    PRIMARY KEY (street, city),
+    PRIMARY KEY (street, city)
 )
 
 DROP TABLE phone_num;
@@ -46,7 +46,7 @@ CREATE TABLE phone_num (
     cust_id NUMBER(6) NOT NULL,
     FOREIGN KEY (cust_id) REFERENCES customer(cust_id)
         ON DELETE CASCADE,
-    PRIMARY KEY (numb),
+    PRIMARY KEY (numb)
 )
 
 DROP TABLE polisy;
@@ -58,7 +58,7 @@ CREATE TABLE polisy (
     cust_id NUMBER(6) NOT NULL,
     FOREIGN KEY (cust_id) REFERENCES customer(cust_id)
         ON DELETE CASCADE,
-    PRIMARY KEY (policy_id),
+    PRIMARY KEY (policy_id)
 )
 
 DROP TABLE item;
@@ -69,7 +69,7 @@ CREATE TABLE item (
     policy_id NUMBER(6) NOT NULL,
     FOREIGN KEY (policy_id) REFERENCES policy(policy_id)
         ON DELETE CASCADE,
-    PRIMARY KEY (item_id),
+    PRIMARY KEY (item_id)
 )
 
 DROP TABLE claim;
@@ -86,7 +86,7 @@ CREATE TABLE claim (
     cust_id NUMBER(6) NOT NULL,
     FOREIGN KEY (cust_id) REFERENCES customer(cust_id),
         ON DELETE CASCADE,
-    PRIMARY KEY (claim_id),
+    PRIMARY KEY (claim_id)
 )
 
 DROP TABLE contractor;
@@ -95,7 +95,7 @@ CREATE TABLE contractor (
     industry VARCHAR(20) NOT NULL,
     cname VARCHAR(50) NOT NULL,
     phone VARCHAR(10) NOT NULL,
-    PRIMARY KEY (firm_id),
+    PRIMARY KEY (firm_id)
 )
 
 DROP TABLE firm_add;
@@ -107,7 +107,7 @@ CREATE TABLE firm_add (
     cust_id NUMBER(6) NOT NULL,
     FOREIGN KEY (firm_id) REFERENCES contractor(firm_id)
         ON DELETE CASCADE,
-    PRIMARY KEY (street, city),
+    PRIMARY KEY (street, city)
 )
 
 DROP TABLE services;
@@ -119,7 +119,7 @@ CREATE TABLE services (
     claim_id NUMBER(6) NOT NULL,
     FOREIGN KEY (claim_id) REFERENCES claim(claim_id)
         ON DELETE CASCADE,
-    PRIMARY KEY (firm_id, claim_id, service_date),
+    PRIMARY KEY (firm_id, claim_id, service_date)
 )
 
 DROP TABLE manages;
@@ -130,7 +130,7 @@ CREATE TABLE manages (
     adj_id NUMBER(6) NOT NULL,
     FOREIGN KEY (adj_id) REFERENCES adjuster(adj_id)
         ON DELETE CASCADE,
-    PRIMARY KEY (claim_id, adj_id),
+    PRIMARY KEY (claim_id, adj_id)
 )
 
 DROP TABLE dependentt;
@@ -141,7 +141,7 @@ CREATE TABLE dependentt (
     cust_id NUMBER(6) NOT NULL,
     FOREIGN KEY (cust_id) REFERENCES customer(cust_id)
         ON DELETE CASCADE,
-    PRIMARY KEY (dname, relationship, cust_id),
+    PRIMARY KEY (dname, relationship, cust_id)
 )
 
 DROP TABLE invoice;
@@ -152,7 +152,7 @@ CREATE TABLE invoice (
     policy_id NUMBER(6) NOT NULL,
     FOREIGN KEY (policy_id) REFERENCES policy(policy_id)
         ON DELETE CASCADE,
-    PRIMARY KEY (trans_id),
+    PRIMARY KEY (trans_id)
 )
 
 DROP TABLE payment;
@@ -163,5 +163,5 @@ CREATE TABLE payment (
     claim_id NUMBER(6) NOT NULL,
     FOREIGN KEY (claim_id) REFERENCES claim(claim_id)
         ON DELETE CASCADE,
-    PRIMARY KEY (payment_id),
+    PRIMARY KEY (payment_id)
 )
