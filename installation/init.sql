@@ -107,3 +107,21 @@ CREATE TABLE dependent (
     FOREIGN KEY cust_id REFERENCES customer NOT NULL,
     PRIMARY KEY (name, cust_id),
 )
+
+DROP TABLE invoice;
+CREATE TABLE invoice (
+    trans_id NUMBER(6) NOT NULL,
+    due_date DATE NOT NULL,
+    payment_type VARCHAR(10),
+    FOREIGN KEY policy_id REFERENCES policy NOT NULL,
+    PRIMARY KEY trans_id,
+)
+
+DROP TABLE payment;
+CREATE TABLE payment (
+    payment_id NUMBER(6) NOT NULL,
+    amount NUMBER(6,2) NOT NULL,
+    paid_date DATE NOT NULL,
+    FOREIGN KEY claim_id REFERENCES claim NOT NULL,
+    PRIMARY KEY payment_id,
+)
