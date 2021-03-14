@@ -1,14 +1,14 @@
 DROP TABLE agent;
 CREATE TABLE agent (
     agent_id NUMBER(6) NOT NULL,
-    name VARCHAR(100) NOT NULL,
+    aname VARCHAR(100) NOT NULL,
     PRIMARY KEY (agent_id),
 )
 
 DROP TABLE adjuster;
 CREATE TABLE adjuster (
     adj_id NUMBER(6) NOT NULL,
-    name VARCHAR(100) NOT NULL,
+    aname VARCHAR(100) NOT NULL,
     specialty VARCHAR(20),
     PRIMARY KEY (adj_id),
 )
@@ -31,7 +31,7 @@ DROP TABLE cust_add;
 CREATE TABLE cust_add (
     street VARCHAR(100) NOT NULL,
     city VARCHAR(50) NOT NULL,
-    state VARCHAR(2) NOT NULL,
+    astate VARCHAR(2) NOT NULL,
     zipcode NUMBER(5) NOT NULL,
     cust_id NUMBER(6) NOT NULL,
     FOREIGN KEY (cust_id) REFERENCES customer(cust_id)
@@ -76,8 +76,8 @@ DROP TABLE claim;
 CREATE TABLE claim (
     claim_id NUMBER(6) NOT NULL,
     claim_title VARCHAR(50) NOT NULL,
-    location VARCHAR(100) NOT NULL,
-    description VARCHAR(280) NOT NULL,
+    claim_loc VARCHAR(100) NOT NULL,
+    claim_desc VARCHAR(280) NOT NULL,
     occurred_date DATE NOT NULL,
     submitted_date DATE NOT NULL,
     policy_id NUMBER(6) NOT NULL,
@@ -93,7 +93,7 @@ DROP TABLE contractor;
 CREATE TABLE contractor (
     firm_id NUMBER(6) NOT NULL,
     industry VARCHAR(20) NOT NULL,
-    name VARCHAR(50) NOT NULL,
+    cname VARCHAR(50) NOT NULL,
     phone VARCHAR(10) NOT NULL,
     PRIMARY KEY (firm_id),
 )
@@ -102,7 +102,7 @@ DROP TABLE firm_add;
 CREATE TABLE firm_add (
     street VARCHAR(100) NOT NULL,
     city VARCHAR(50) NOT NULL,
-    state VARCHAR(2) NOT NULL,
+    fstate VARCHAR(2) NOT NULL,
     zipcode NUMBER(5) NOT NULL,
     cust_id NUMBER(6) NOT NULL,
     FOREIGN KEY (firm_id) REFERENCES contractor(firm_id)
@@ -135,13 +135,13 @@ CREATE TABLE manages (
 
 DROP TABLE dependentt;
 CREATE TABLE dependentt (
-    name VARCHAR (100) NOT NULL,
+    dname VARCHAR (100) NOT NULL,
     relationship VARCHAR(20) NOT NULL,
     birth_date DATE NOT NULL,
     cust_id NUMBER(6) NOT NULL,
     FOREIGN KEY (cust_id) REFERENCES customer(cust_id)
         ON DELETE CASCADE,
-    PRIMARY KEY (name, relationship, cust_id),
+    PRIMARY KEY (dname, relationship, cust_id),
 )
 
 DROP TABLE invoice;
