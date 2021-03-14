@@ -67,7 +67,7 @@ CREATE TABLE item (
     category VARCHAR(20) NOT NULL,
     approx_value NUMBER(6,2) NOT NULL,
     policy_id NUMBER(6) NOT NULL,
-    FOREIGN KEY (policy_id) REFERENCES policy(policy_id)
+    FOREIGN KEY (policy_id) REFERENCES polisy(policy_id)
         ON DELETE CASCADE,
     PRIMARY KEY (item_id)
 )
@@ -81,7 +81,7 @@ CREATE TABLE claim (
     occurred_date DATE NOT NULL,
     submitted_date DATE NOT NULL,
     policy_id NUMBER(6) NOT NULL,
-    FOREIGN KEY (policy_id) REFERENCES policy(policy_id),
+    FOREIGN KEY (policy_id) REFERENCES polisy(policy_id),
         ON DELETE CASCADE,
     cust_id NUMBER(6) NOT NULL,
     FOREIGN KEY (cust_id) REFERENCES customer(cust_id),
@@ -150,7 +150,7 @@ CREATE TABLE invoice (
     due_date DATE NOT NULL,
     payment_type VARCHAR(10),
     policy_id NUMBER(6) NOT NULL,
-    FOREIGN KEY (policy_id) REFERENCES policy(policy_id)
+    FOREIGN KEY (policy_id) REFERENCES polisy(policy_id)
         ON DELETE CASCADE,
     PRIMARY KEY (trans_id)
 )
