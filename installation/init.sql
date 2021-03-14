@@ -56,8 +56,8 @@ CREATE TABLE contractor (
     PRIMARY KEY firm_id,
 )
 
-DROP TABLE serviced;
-CREATE TABLE serviced (
+DROP TABLE services;
+CREATE TABLE services (
     service_date DATE,
     FOREIGN KEY firm_id REFERENCES contractor,
     FOREIGN KEY claim_id REFERENCES claim,
