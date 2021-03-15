@@ -45,14 +45,14 @@ public class Install {
             }
             catch (IOException e) {
                 System.out.println("An error occurred while attempting to read in the install script.");
-                if (args[1].equals("-d")) { System.out.print(e); }
+                if ((args.length > 0) && args[0].equals("-d")) { System.out.print(e); }
             }
             s.close();
             c.close();
         }
         catch (SQLException e) {
             System.out.println("Failed to connect or execute. Please try again later.");
-            if (args[1].equals("-d")) { System.out.print(e); }
+            if ((args.length > 0) && args[0].equals("-d")) { System.out.print(e); }
         }
         finally {
             input.close();
