@@ -1,15 +1,27 @@
+DROP TABLE employee CASCADE CONSTRAINTS;
+CREATE TABLE employee (
+    emp_id NUMBER(6) NOT NULL,
+    ename VARCHAR(100) NOT NULL,
+    PRIMARY KEY (emp_id, ename)
+)
+
 DROP TABLE agent CASCADE CONSTRAINTS;
 CREATE TABLE agent (
+    years_experience NUMBER(2),
     agent_id NUMBER(6) NOT NULL,
     aname VARCHAR(100) NOT NULL,
+    FOREIGN KEY (agent_id, aname) REFERENCES employee(emp_id, ename)
+        ON DELETE CASCADE,
     PRIMARY KEY (agent_id)
 )
 
 DROP TABLE adjuster CASCADE CONSTRAINTS;
 CREATE TABLE adjuster (
+    specialty VARCHAR(20),
     adj_id NUMBER(6) NOT NULL,
     aname VARCHAR(100) NOT NULL,
-    specialty VARCHAR(20),
+    FOREIGN KEY (adj_id, aname) REFERENCES employee(emp_id, ename)
+        ON DELETE CASCADE,
     PRIMARY KEY (adj_id)
 )
 
