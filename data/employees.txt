@@ -1,0 +1,12 @@
+INSERT INTO employees VALUES (224950, 'Michael Myers');
+INSERT INTO employees VALUES (005489, 'Joshua Wolfe');
+INSERT INTO employees VALUES (313502, 'Bridget Sawamoto');
+INSERT INTO employees VALUES (591024, 'Curry Kerbeck');
+INSERT INTO employees VALUES (861403, 'Bob Bresnen');
+INSERT INTO employees VALUES (349137, 'Jeremy Ferdinand');
+INSERT INTO employees VALUES (130918, 'Sue Lovelace');
+INSERT INTO employees VALUES (676237, 'Janine Morris');
+INSERT INTO employees VALUES (865006, 'Cassandra Salerno');
+INSERT INTO employees VALUES (733232, 'Shawna Dlugosz');
+INSERT INTO employees VALUES (646136, 'Trevor Ping');
+INSERT INTO employees VALUES (170321, 'Celia Wigg');
