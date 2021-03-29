@@ -5,7 +5,7 @@ DECLARE already_exists NUMBER;
 BEGIN
     SELECT COUNT(*) INTO already_exists FROM adjuster WHERE adjuster.emp_id = :NEW.emp_id;
     IF (already_exists > 0) THEN
-        DBMS_OUTPUT.PUT_LINE('This employee cannot be added as an agent; it already exists as an adjuster.');
+        RAISE_APPLICATION_ERROR(-20999, 'This employee cannot be added as an agent; it already exists as an adjuster.');
     END IF;
 END;
 
@@ -16,6 +16,6 @@ DECLARE already_exists NUMBER;
 BEGIN
     SELECT COUNT(*) INTO already_exists FROM adjuster WHERE adjuster.emp_id = :NEW.emp_id;
     IF (already_exists > 0) THEN
-        DBMS_OUTPUT.PUT_LINE('This employee cannot be added as an adjuster; it already exists as an agent.');
+        RAISE_APPLICATION_ERROR(-20999, 'This employee cannot be added as an adjuster; it already exists as an agent.');
     END IF;
 END;
