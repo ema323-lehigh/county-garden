@@ -8,21 +8,21 @@ CREATE TABLE employee (
 DROP TABLE agent CASCADE CONSTRAINTS;
 CREATE TABLE agent (
     years_experience NUMBER(2),
-    agent_id NUMBER(6) NOT NULL,
-    aname VARCHAR(100) NOT NULL,
-    FOREIGN KEY (agent_id, aname) REFERENCES employee(emp_id, ename)
+    emp_id NUMBER(6) NOT NULL,
+    ename VARCHAR(100) NOT NULL,
+    FOREIGN KEY (emp_id, ename) REFERENCES employee(emp_id, ename)
         ON DELETE CASCADE,
-    PRIMARY KEY (agent_id)
+    PRIMARY KEY (emp_id)
 )
 
 DROP TABLE adjuster CASCADE CONSTRAINTS;
 CREATE TABLE adjuster (
     specialty VARCHAR(20),
-    adj_id NUMBER(6) NOT NULL,
-    aname VARCHAR(100) NOT NULL,
-    FOREIGN KEY (adj_id, aname) REFERENCES employee(emp_id, ename)
+    emp_id NUMBER(6) NOT NULL,
+    ename VARCHAR(100) NOT NULL,
+    FOREIGN KEY (emp_id, ename) REFERENCES employee(emp_id, ename)
         ON DELETE CASCADE,
-    PRIMARY KEY (adj_id)
+    PRIMARY KEY (emp_id)
 )
 
 DROP TABLE customer CASCADE CONSTRAINTS;
@@ -34,7 +34,7 @@ CREATE TABLE customer (
     suffix VARCHAR(10),
     birth_date DATE NOT NULL,
     agent_id NUMBER(6) NOT NULL,
-    FOREIGN KEY (agent_id) REFERENCES agent(agent_id)
+    FOREIGN KEY (agent_id) REFERENCES agent(emp_id)
         ON DELETE CASCADE,
     PRIMARY KEY (cust_id)
 )
@@ -140,7 +140,7 @@ CREATE TABLE manages (
     FOREIGN KEY (claim_id) REFERENCES claim(claim_id)
         ON DELETE CASCADE,
     adj_id NUMBER(6) NOT NULL,
-    FOREIGN KEY (adj_id) REFERENCES adjuster(adj_id)
+    FOREIGN KEY (adj_id) REFERENCES adjuster(emp_id)
         ON DELETE CASCADE,
     PRIMARY KEY (claim_id, adj_id)
 )
