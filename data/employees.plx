@@ -21,6 +21,7 @@ for (my $i = 0; $i < 12; $i++) {
     $records{&rand_id} = join(' ', $fnames[rand(@fnames)], $lnames[rand(@lnames)]);
 }
 
+open(EMPLOYEES, '>', "employees.txt") or die $!;
 foreach my $key (keys %records) {
-    print "$key: $records{$key}\n";
+    print EMPLOYEES "INSERT INTO employees VALUES ($key, '$records{$key}');\n";
 }
