@@ -14,7 +14,7 @@ sub rand_id {
     return $numstring;
 }
 
-open(NAMES, '<', "names.txt") or die $!;
+open(NAMES, '<', "_names.txt") or die $!;
 $/ = undef; # slurp to the end
 my @lines = split('\n', <NAMES>);
 my @fnames = shuffle(split(',', $lines[0]));
