@@ -1,0 +1,7 @@
+INSERT INTO adjuster VALUES (235015, 'Jack Clark', wellness)
+INSERT INTO adjuster VALUES (924051, 'Miles Origo', property)
+INSERT INTO adjuster VALUES (930189, 'Sigmund Zekeret', collision)
+INSERT INTO adjuster VALUES (782161, 'Trevor Lyatt', machinery)
+INSERT INTO adjuster VALUES (112722, 'Michael Lucas', property)
+INSERT INTO adjuster VALUES (484924, 'Jacob Wolfe', collision)
+INSERT INTO adjuster VALUES (897699, 'Spencer Megrez', valuables)
