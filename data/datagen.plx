@@ -23,12 +23,23 @@ my @initials = ('A'..'Z');
 my @suffixes = ('Jr.', 'Sr.', 'Esq.', 'PhD.', 'I', 'II', 'III');
 
 my %emprecs = ();
+my @specialties = ('collision', 'valuables', 'property', 'machinery', 'wellness');
 for (my $i = 0; $i < 12; $i++) {
     $emprecs{&rand_id} = join(' ', shift(@fnames), shift(@lnames));
 }
 open(EMPLOYEES, '>', "employees.txt") or die $!;
+open(AGENTS, '>', "agents.txt") or die $!;
+open(ADJUSTERS, '>', "adjusters.txt") or die $!;
 foreach my $key (keys %emprecs) {
     print EMPLOYEES "INSERT INTO employee VALUES ($key, '$emprecs{$key}');\n";
+    if (int(rand(10)) > 5) {
+        my $years_exp = int(rand(26));
+        print AGENTS "INSERT INTO agent VALUES ($key, '$emprecs{$key}', $years_exp)\n";
+    }
+    else {
+        my $specialty = $specialties[rand(@specialties)];
+        print ADJUSTERS "INSERT INTO adjuster VALUES ($key, '$emprecs{$key}', $specialty)\n";
+    }
 }
 
 my %custrecs = ();
