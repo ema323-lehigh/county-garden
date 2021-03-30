@@ -21,6 +21,7 @@ my @fnames = shuffle(split(',', $lines[0]));
 my @lnames = shuffle(split(',', $lines[1]));
 my @initials = ('A'..'Z');
 my @suffixes = ('Jr.', 'Sr.', 'Esq.', 'PhD.', 'I', 'II', 'III');
+my @relationships = ('parent', 'child', 'cousin', 'ward', 'sibling');
 
 my %emprecs = (); my %agentrecs = (); my %adjrecs = ();
 my @specialties = ('collision', 'valuables', 'property', 'machinery', 'wellness');
@@ -58,8 +59,17 @@ for (my $i = 0; $i < 60; $i++) {
     $custrecs{$curr_id}{$agent} = (keys %agentrecs)[rand(keys %agentrecs)];
 }
 open(CUSTOMERS, '>', "customers.txt") or die $!;
+open(DEPENDENTS, '>', "dependents.txt") or die $!;
 foreach my $key (keys %custrecs) {
     print CUSTOMERS "INSERT INTO customer VALUES ($key,
         '$custrecs{$key}{$fname}', '$custrecs{$key}{$minitial}', '$custrecs{$key}{$lname}',
         '$custrecs{$key}{$suffix}', DATE '$custrecs{$key}{$dob}', $custrecs{$key}{$agent});\n";
+    #if ($custrecs{$key}{$dob} < '1990-01-01') {
+        for (my $i = 0; $i < int(rand(2)); $i++) {
+            my $dname = shift(@fnames);
+            my $relationship = $relationships[rand(@relationships)];
+            my $dob = rand_date( min => '1920-01-01', max => '2020-01-01' );
+            print DEPENDENTS "INSERT INTO dependentt VALUES ('$dname $custrecs{$key}{$lname}', '$relationship', DATE '$dob', $key);\n";
+        }
+    #}
 }
