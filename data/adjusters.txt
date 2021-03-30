@@ -1,7 +1,10 @@
-INSERT INTO adjuster VALUES (210648, 'Kathy Megrez', 'machinery');
-INSERT INTO adjuster VALUES (912757, 'Maggie Barno', 'machinery');
-INSERT INTO adjuster VALUES (575195, 'Duncan Toucanian', 'machinery');
-INSERT INTO adjuster VALUES (790389, 'Celia Myers', 'wellness');
-INSERT INTO adjuster VALUES (838292, 'Dorothy Chan', 'collision');
-INSERT INTO adjuster VALUES (399268, 'Charlie Scott', 'wellness');
-INSERT INTO adjuster VALUES (962442, 'Herff Wenowski', 'wellness');
+INSERT INTO adjuster VALUES (818896, 'Curry Ezra', 'wellness');
+INSERT INTO adjuster VALUES (992882, 'Jonathon Fibonacci', 'collision');
+INSERT INTO adjuster VALUES (818126, 'Devan Pelessian', 'machinery');
+INSERT INTO adjuster VALUES (321489, 'Cole Fermio', 'valuables');
+INSERT INTO adjuster VALUES (980440, 'Ezra Watson', 'machinery');
+INSERT INTO adjuster VALUES (022244, 'Bob Gadot', 'machinery');
+INSERT INTO adjuster VALUES (915490, 'Nathan Moyer', 'property');
+INSERT INTO adjuster VALUES (835496, 'Celia Jones', 'wellness');
+INSERT INTO adjuster VALUES (282499, 'Maggie Horn', 'machinery');
+INSERT INTO adjuster VALUES (134331, 'Hugo Sonair', 'wellness');

@@ -1,244 +1,266 @@
 DELETE employee;
-INSERT INTO employee VALUES (210648, 'Kathy Megrez');
-INSERT INTO employee VALUES (485619, 'Simone Origo');
-INSERT INTO employee VALUES (912757, 'Maggie Barno');
-INSERT INTO employee VALUES (881651, 'Wyatt Zhang');
-INSERT INTO employee VALUES (575195, 'Duncan Toucanian');
-INSERT INTO employee VALUES (790389, 'Celia Myers');
-INSERT INTO employee VALUES (838292, 'Dorothy Chan');
-INSERT INTO employee VALUES (399268, 'Charlie Scott');
-INSERT INTO employee VALUES (962442, 'Herff Wenowski');
-INSERT INTO employee VALUES (284247, 'Spencer Matser');
-INSERT INTO employee VALUES (204823, 'Ezra Ping');
-INSERT INTO employee VALUES (779888, 'Sharon Michelson');
+INSERT INTO employee VALUES (818896, 'Curry Ezra');
+INSERT INTO employee VALUES (992882, 'Jonathon Fibonacci');
+INSERT INTO employee VALUES (438097, 'Gerry Chan');
+INSERT INTO employee VALUES (818126, 'Devan Pelessian');
+INSERT INTO employee VALUES (400771, 'Matthew Hogeland');
+INSERT INTO employee VALUES (321489, 'Cole Fermio');
+INSERT INTO employee VALUES (980440, 'Ezra Watson');
+INSERT INTO employee VALUES (022244, 'Bob Gadot');
+INSERT INTO employee VALUES (915490, 'Nathan Moyer');
+INSERT INTO employee VALUES (835496, 'Celia Jones');
+INSERT INTO employee VALUES (282499, 'Maggie Horn');
+INSERT INTO employee VALUES (134331, 'Hugo Sonair');
 
 DELETE agent;
-INSERT INTO agent VALUES (485619, 'Simone Origo', 24);
-INSERT INTO agent VALUES (881651, 'Wyatt Zhang', 16);
-INSERT INTO agent VALUES (284247, 'Spencer Matser', 17);
-INSERT INTO agent VALUES (204823, 'Ezra Ping', 14);
-INSERT INTO agent VALUES (779888, 'Sharon Michelson', 20);
+INSERT INTO agent VALUES (438097, 'Gerry Chan', 5);
+INSERT INTO agent VALUES (400771, 'Matthew Hogeland', 7);
 
 DELETE adjuster;
-INSERT INTO adjuster VALUES (210648, 'Kathy Megrez', 'machinery');
-INSERT INTO adjuster VALUES (912757, 'Maggie Barno', 'machinery');
-INSERT INTO adjuster VALUES (575195, 'Duncan Toucanian', 'machinery');
-INSERT INTO adjuster VALUES (790389, 'Celia Myers', 'wellness');
-INSERT INTO adjuster VALUES (838292, 'Dorothy Chan', 'collision');
-INSERT INTO adjuster VALUES (399268, 'Charlie Scott', 'wellness');
-INSERT INTO adjuster VALUES (962442, 'Herff Wenowski', 'wellness');
+INSERT INTO adjuster VALUES (818896, 'Curry Ezra', 'wellness');
+INSERT INTO adjuster VALUES (992882, 'Jonathon Fibonacci', 'collision');
+INSERT INTO adjuster VALUES (818126, 'Devan Pelessian', 'machinery');
+INSERT INTO adjuster VALUES (321489, 'Cole Fermio', 'valuables');
+INSERT INTO adjuster VALUES (980440, 'Ezra Watson', 'machinery');
+INSERT INTO adjuster VALUES (022244, 'Bob Gadot', 'machinery');
+INSERT INTO adjuster VALUES (915490, 'Nathan Moyer', 'property');
+INSERT INTO adjuster VALUES (835496, 'Celia Jones', 'wellness');
+INSERT INTO adjuster VALUES (282499, 'Maggie Horn', 'machinery');
+INSERT INTO adjuster VALUES (134331, 'Hugo Sonair', 'wellness');
 
 DELETE customer;
-INSERT INTO customer VALUES (063520,
-        'Katherine', 'T', 'Wolfe',
-        '', DATE '1962-03-01', 779888);
-INSERT INTO customer VALUES (223319,
-        'Jack', '', 'Weaver',
-        '', DATE '1925-06-17', 284247);
-INSERT INTO customer VALUES (847159,
-        'Jacob', 'S', 'Kent',
-        '', DATE '1949-10-14', 204823);
-INSERT INTO customer VALUES (755125,
-        'Lowell', '', 'Whitton',
-        '', DATE '1975-08-06', 204823);
-INSERT INTO customer VALUES (111861,
-        'Carson', '', 'Persephone',
-        '', DATE '1985-09-20', 204823);
-INSERT INTO customer VALUES (066232,
-        'Leland', 'X', 'Horn',
-        '', DATE '1954-01-06', 485619);
-INSERT INTO customer VALUES (475139,
-        'Dylan', 'I', 'Becker',
-        '', DATE '1946-10-12', 881651);
-INSERT INTO customer VALUES (203510,
-        'Lauryn', 'C', 'Goguyeva',
-        '', DATE '1984-11-26', 485619);
-INSERT INTO customer VALUES (384621,
-        'Wynona', '', 'Cameron',
-        '', DATE '1927-05-08', 881651);
-INSERT INTO customer VALUES (325188,
-        'Ethan', 'Q', 'Sheridan',
-        '', DATE '1965-11-01', 881651);
-INSERT INTO customer VALUES (003275,
-        'Christopher', '', 'Ferdinand',
-        '', DATE '1988-02-25', 881651);
-INSERT INTO customer VALUES (383623,
-        'Diane', 'B', 'Welbis',
-        'Esq.', DATE '1946-05-23', 485619);
-INSERT INTO customer VALUES (911835,
-        'Jason', 'S', 'Lyatt',
-        '', DATE '1985-03-09', 204823);
-INSERT INTO customer VALUES (884507,
-        'Dawn', '', 'Weghofer',
-        '', DATE '1951-04-17', 881651);
-INSERT INTO customer VALUES (012541,
-        'Adrian', 'Y', 'Jones',
-        '', DATE '1932-05-22', 284247);
-INSERT INTO customer VALUES (069113,
-        'Henry', 'B', 'Kerbeck',
-        '', DATE '1965-07-06', 485619);
-INSERT INTO customer VALUES (243483,
-        'Bob', 'C', 'Ventus',
-        'Jr.', DATE '1959-12-14', 779888);
-INSERT INTO customer VALUES (285859,
-        'Sander', '', 'Lin',
-        '', DATE '1954-05-05', 204823);
-INSERT INTO customer VALUES (342311,
-        'Kylie', '', 'Morris',
-        '', DATE '1951-12-22', 779888);
-INSERT INTO customer VALUES (797171,
-        'Chuck', '', 'Alphonse',
-        '', DATE '1957-03-10', 779888);
-INSERT INTO customer VALUES (422676,
-        'Cole', '', 'Ezra',
-        '', DATE '1925-07-08', 284247);
-INSERT INTO customer VALUES (840509,
-        'Trevor', '', 'Sawamoto',
-        '', DATE '1993-03-15', 204823);
-INSERT INTO customer VALUES (104415,
-        'Iona', '', 'Thornley',
-        '', DATE '1978-03-18', 284247);
-INSERT INTO customer VALUES (100990,
-        'Olivia', 'F', 'Lovelace',
-        '', DATE '1980-12-16', 485619);
-INSERT INTO customer VALUES (542198,
-        'Eugene', '', 'Bledsoe',
-        '', DATE '1957-10-06', 779888);
-INSERT INTO customer VALUES (657807,
-        'Danny', 'D', 'Daphnes',
-        '', DATE '1922-02-24', 881651);
-INSERT INTO customer VALUES (388022,
-        'Allan', 'K', 'Katten',
-        '', DATE '1953-09-05', 881651);
-INSERT INTO customer VALUES (513338,
-        'Jonathon', 'B', 'Intoch',
-        '', DATE '1978-04-02', 485619);
-INSERT INTO customer VALUES (074677,
-        'Simon', 'U', 'Fermio',
-        '', DATE '1961-07-31', 881651);
-INSERT INTO customer VALUES (816508,
-        'Jin', 'G', 'Clark',
-        '', DATE '1976-03-21', 485619);
-INSERT INTO customer VALUES (102905,
-        'Janine', '', 'Bresnen',
-        'III', DATE '1993-08-23', 204823);
-INSERT INTO customer VALUES (348790,
-        'Eva', '', 'Briggs',
-        '', DATE '1922-12-20', 204823);
-INSERT INTO customer VALUES (910374,
-        'Pearl', '', 'Dlugosz',
-        '', DATE '1920-06-28', 881651);
-INSERT INTO customer VALUES (933521,
-        'Laura', 'N', 'Finlay',
-        '', DATE '1964-11-10', 485619);
-INSERT INTO customer VALUES (445454,
-        'Jaylie', '', 'Wigg',
-        '', DATE '1998-12-09', 779888);
-INSERT INTO customer VALUES (789396,
-        'Rose', '', 'Necker',
-        '', DATE '1997-07-20', 881651);
-INSERT INTO customer VALUES (483488,
-        'Taylor', 'W', 'Riddell',
-        'Esq.', DATE '1970-06-03', 204823);
-INSERT INTO customer VALUES (088624,
-        'Millicent', 'Y', 'Docketti',
-        '', DATE '1964-08-26', 485619);
-INSERT INTO customer VALUES (149490,
-        'Hugo', '', 'McKinnon',
-        '', DATE '1940-02-23', 779888);
-INSERT INTO customer VALUES (978222,
-        'Kimberly', '', 'Fibonacci',
-        '', DATE '1984-10-07', 881651);
-INSERT INTO customer VALUES (955352,
-        'Dion', 'V', 'Perry',
-        '', DATE '1964-06-15', 779888);
-INSERT INTO customer VALUES (181723,
-        'Shawna', '', 'Dorn',
-        '', DATE '1998-02-15', 881651);
-INSERT INTO customer VALUES (522801,
-        'Benjamin', 'J', 'Zekeret',
-        'Jr.', DATE '1964-06-11', 881651);
-INSERT INTO customer VALUES (323307,
-        'Jack', '', 'Watson',
-        '', DATE '1991-09-21', 204823);
-INSERT INTO customer VALUES (580341,
-        'Zelda', 'N', 'Hernandez',
-        '', DATE '1926-08-01', 284247);
-INSERT INTO customer VALUES (798492,
-        'Curry', '', 'Pelessian',
-        '', DATE '1948-10-04', 485619);
-INSERT INTO customer VALUES (846405,
-        'Joshua', '', 'Gadot',
-        '', DATE '1976-12-06', 485619);
-INSERT INTO customer VALUES (514831,
-        'Nia', '', 'Hogeland',
-        '', DATE '1947-10-07', 779888);
-INSERT INTO customer VALUES (631555,
-        'John', 'D', 'Bennett',
-        '', DATE '1934-02-13', 284247);
-INSERT INTO customer VALUES (508549,
-        'Catie', 'F', 'Bryant',
-        '', DATE '1986-08-12', 284247);
-INSERT INTO customer VALUES (629969,
-        'Nicholas', '', 'Kelbow',
-        '', DATE '1994-09-21', 204823);
-INSERT INTO customer VALUES (299168,
-        'Regina', '', 'Moyer',
-        '', DATE '1965-05-09', 284247);
-INSERT INTO customer VALUES (871333,
-        'Michael', '', 'Nguyen',
-        '', DATE '1970-09-01', 204823);
-INSERT INTO customer VALUES (218011,
-        'Mito', 'B', 'Yarpan',
-        '', DATE '1978-01-23', 485619);
-INSERT INTO customer VALUES (297282,
-        'Cassandra', '', 'Tecrenzio',
-        '', DATE '1922-11-06', 485619);
-INSERT INTO customer VALUES (495327,
-        'Nathanael', 'W', 'Lucas',
-        '', DATE '1932-08-13', 204823);
-INSERT INTO customer VALUES (513539,
-        'Bliss', 'B', 'Salerno',
-        '', DATE '1971-02-25', 485619);
-INSERT INTO customer VALUES (960899,
-        'Rex', '', 'Maxwell',
-        '', DATE '1969-11-06', 485619);
-INSERT INTO customer VALUES (852146,
-        'Robbie', 'T', 'Bowler',
-        '', DATE '1960-01-06', 204823);
-INSERT INTO customer VALUES (405519,
-        'Emma', '', 'Sonair',
-        '', DATE '1978-10-07', 881651);
+INSERT INTO customer VALUES (827513,
+        'Wendy', 'E', 'Clark',
+        '', DATE '1964-02-26', 438097);
+INSERT INTO customer VALUES (718249,
+        'Simon', '', 'Lin',
+        '', DATE '1994-12-30', 400771);
+INSERT INTO customer VALUES (914650,
+        'Nicholas', 'I', 'Bryant',
+        '', DATE '1942-10-16', 438097);
+INSERT INTO customer VALUES (919714,
+        'Spencer', '', 'Blake',
+        '', DATE '1951-03-29', 438097);
+INSERT INTO customer VALUES (176275,
+        'Ronald', '', 'McKinnon',
+        '', DATE '1969-04-23', 400771);
+INSERT INTO customer VALUES (009776,
+        'Charlie', '', 'Ocypete',
+        '', DATE '1965-09-24', 400771);
+INSERT INTO customer VALUES (454877,
+        'Leland', '', 'Riddell',
+        'Esq.', DATE '1989-01-25', 438097);
+INSERT INTO customer VALUES (197878,
+        'Trevor', 'Y', 'Salerno',
+        '', DATE '1982-08-02', 400771);
+INSERT INTO customer VALUES (400753,
+        'Sidney', 'J', 'Morris',
+        '', DATE '1936-01-02', 400771);
+INSERT INTO customer VALUES (170107,
+        'Eva', '', 'Goguyeva',
+        '', DATE '1922-12-11', 400771);
+INSERT INTO customer VALUES (119977,
+        'Adrian', '', 'Wigg',
+        '', DATE '1966-08-14', 438097);
+INSERT INTO customer VALUES (468814,
+        'Debbie', '', 'Scott',
+        '', DATE '1966-10-24', 438097);
+INSERT INTO customer VALUES (742136,
+        'Sid', 'W', 'Kerbeck',
+        '', DATE '1946-11-10', 400771);
+INSERT INTO customer VALUES (906482,
+        'David', 'D', 'Wenowski',
+        '', DATE '1978-10-14', 400771);
+INSERT INTO customer VALUES (608901,
+        'Iona', '', 'Megrez',
+        '', DATE '1976-01-31', 438097);
+INSERT INTO customer VALUES (742603,
+        'Duncan', '', 'Alphonse',
+        '', DATE '1977-12-12', 438097);
+INSERT INTO customer VALUES (937903,
+        'Brian', '', 'Whitton',
+        '', DATE '1948-12-08', 438097);
+INSERT INTO customer VALUES (357388,
+        'Diane', '', 'Persephone',
+        '', DATE '1985-07-27', 400771);
+INSERT INTO customer VALUES (881289,
+        'Mito', '', 'Matser',
+        '', DATE '1999-05-30', 438097);
+INSERT INTO customer VALUES (178395,
+        'Mario', 'N', 'Finlay',
+        '', DATE '1929-03-31', 438097);
+INSERT INTO customer VALUES (725159,
+        'Lowell', '', 'Ferdinand',
+        '', DATE '1940-03-28', 438097);
+INSERT INTO customer VALUES (126099,
+        'Nick', 'E', 'Nguyen',
+        '', DATE '1932-07-16', 438097);
+INSERT INTO customer VALUES (077751,
+        'Kai', 'C', 'Becker',
+        '', DATE '1922-12-18', 438097);
+INSERT INTO customer VALUES (113436,
+        'Lisa', '', 'Welbis',
+        '', DATE '1993-08-22', 438097);
+INSERT INTO customer VALUES (264083,
+        'Salvatore', '', 'Necker',
+        '', DATE '1998-06-07', 438097);
+INSERT INTO customer VALUES (830633,
+        'Ken', 'H', 'Bowler',
+        '', DATE '1944-06-05', 400771);
+INSERT INTO customer VALUES (598126,
+        'Brianna', 'X', 'Weghofer',
+        '', DATE '1959-04-08', 438097);
+INSERT INTO customer VALUES (253272,
+        'Wyatt', 'T', 'Tecrenzio',
+        '', DATE '1954-04-02', 400771);
+INSERT INTO customer VALUES (629028,
+        'Samantha', '', 'Brownstone',
+        '', DATE '1945-01-01', 438097);
+INSERT INTO customer VALUES (675766,
+        'Zelda', '', 'Kelbow',
+        '', DATE '1933-08-27', 438097);
+INSERT INTO customer VALUES (203246,
+        'Mikhail', '', 'Ping',
+        '', DATE '1934-08-20', 400771);
+INSERT INTO customer VALUES (341833,
+        'Regina', 'U', 'Perry',
+        '', DATE '1959-09-30', 400771);
+INSERT INTO customer VALUES (806509,
+        'Kylie', 'C', 'Dorn',
+        '', DATE '1962-11-08', 400771);
+INSERT INTO customer VALUES (304785,
+        'Kimberly', 'T', 'Zekeret',
+        '', DATE '1989-10-28', 400771);
+INSERT INTO customer VALUES (174967,
+        'Kevin', '', 'Bresnen',
+        '', DATE '1959-05-12', 400771);
+INSERT INTO customer VALUES (606392,
+        'Kathy', 'Z', 'Origo',
+        '', DATE '1950-01-12', 438097);
+INSERT INTO customer VALUES (400099,
+        'Allan', '', 'Lovelace',
+        '', DATE '1994-07-10', 438097);
+INSERT INTO customer VALUES (028609,
+        'Rex', 'R', 'Thornley',
+        '', DATE '1971-11-04', 438097);
+INSERT INTO customer VALUES (076034,
+        'Benjamin', '', 'Barno',
+        '', DATE '1920-07-04', 400771);
+INSERT INTO customer VALUES (296064,
+        'Flora', 'J', 'Docketti',
+        '', DATE '1962-05-31', 400771);
+INSERT INTO customer VALUES (855259,
+        'Greg', 'P', 'Zhang',
+        '', DATE '1964-11-10', 400771);
+INSERT INTO customer VALUES (171341,
+        'Dion', 'U', 'Bennett',
+        'I', DATE '1998-01-23', 400771);
+INSERT INTO customer VALUES (392285,
+        'Emily', '', 'Myers',
+        '', DATE '1974-11-17', 400771);
+INSERT INTO customer VALUES (384567,
+        'Richie', '', 'Lyatt',
+        '', DATE '1936-06-03', 438097);
+INSERT INTO customer VALUES (521297,
+        'Laura', '', 'Toucanian',
+        '', DATE '1938-05-21', 438097);
+INSERT INTO customer VALUES (132764,
+        'Shawna', 'B', 'Sheridan',
+        '', DATE '1986-04-14', 400771);
+INSERT INTO customer VALUES (357648,
+        'Bliss', '', 'Sawamoto',
+        '', DATE '1944-03-24', 400771);
+INSERT INTO customer VALUES (031291,
+        'Simone', '', 'Smith',
+        '', DATE '1963-01-01', 400771);
+INSERT INTO customer VALUES (280121,
+        'Sue', '', 'Maxwell',
+        '', DATE '1946-05-10', 400771);
+INSERT INTO customer VALUES (520264,
+        'Alfredo', 'V', 'Yarpan',
+        '', DATE '1944-12-01', 438097);
+INSERT INTO customer VALUES (104500,
+        'Derek', '', 'Suda',
+        '', DATE '1984-12-15', 400771);
+INSERT INTO customer VALUES (650689,
+        'Catie', '', 'Dlugosz',
+        '', DATE '1957-08-08', 400771);
+INSERT INTO customer VALUES (254140,
+        'Demeter', '', 'Hernandez',
+        '', DATE '1993-12-05', 438097);
+INSERT INTO customer VALUES (988481,
+        'Ricky', 'Y', 'Katten',
+        '', DATE '1967-11-29', 400771);
+INSERT INTO customer VALUES (036060,
+        'Joshua', '', 'Bledsoe',
+        '', DATE '1951-01-27', 400771);
+INSERT INTO customer VALUES (830118,
+        'Travis', 'C', 'Michelson',
+        '', DATE '1941-11-20', 438097);
+INSERT INTO customer VALUES (381649,
+        'Sharon', 'S', 'Cameron',
+        '', DATE '1930-04-30', 400771);
+INSERT INTO customer VALUES (474672,
+        'Haedelich', 'Q', 'Lucas',
+        '', DATE '1974-06-23', 400771);
+INSERT INTO customer VALUES (487711,
+        'Sigmund', 'W', 'Ritson',
+        '', DATE '1931-05-30', 400771);
+INSERT INTO customer VALUES (676374,
+        'Dawn', '', 'Daphnes',
+        '', DATE '1959-03-01', 400771);
 
 DELETE dependentt;
-INSERT INTO dependentt VALUES ('Flora Kent', 'parent', DATE '1999-09-09', 847159);
-INSERT INTO dependentt VALUES ('Travis Whitton', 'cousin', DATE '1991-10-01', 755125);
-INSERT INTO dependentt VALUES ('Sue Becker', 'parent', DATE '1945-04-16', 475139);
-INSERT INTO dependentt VALUES ('Julie Goguyeva', 'sibling', DATE '1940-07-07', 203510);
-INSERT INTO dependentt VALUES ('Sigmund Cameron', 'cousin', DATE '1947-11-22', 384621);
-INSERT INTO dependentt VALUES ('Kai Ferdinand', 'ward', DATE '1936-03-30', 003275);
-INSERT INTO dependentt VALUES ('Demeter Lyatt', 'ward', DATE '1980-01-29', 911835);
-INSERT INTO dependentt VALUES ('Ciara Weghofer', 'parent', DATE '1999-11-14', 884507);
-INSERT INTO dependentt VALUES ('Tracy Lin', 'child', DATE '2012-06-24', 285859);
-INSERT INTO dependentt VALUES ('Bridget Ezra', 'ward', DATE '1957-11-06', 422676);
-INSERT INTO dependentt VALUES ('Greg Thornley', 'cousin', DATE '1942-05-02', 104415);
-INSERT INTO dependentt VALUES ('Matthew Bledsoe', 'cousin', DATE '1986-09-06', 542198);
-INSERT INTO dependentt VALUES ('Brian Daphnes', 'sibling', DATE '1997-09-02', 657807);
-INSERT INTO dependentt VALUES ('Joseph Katten', 'cousin', DATE '1990-08-10', 388022);
-INSERT INTO dependentt VALUES ('David Fermio', 'parent', DATE '1966-08-25', 074677);
-INSERT INTO dependentt VALUES ('Wendy Clark', 'sibling', DATE '1991-11-01', 816508);
-INSERT INTO dependentt VALUES ('Zachary Dlugosz', 'ward', DATE '1961-04-12', 910374);
-INSERT INTO dependentt VALUES ('Miles Finlay', 'child', DATE '1990-11-06', 933521);
-INSERT INTO dependentt VALUES ('Jeremy Wigg', 'ward', DATE '1987-12-28', 445454);
-INSERT INTO dependentt VALUES ('Haedelich Necker', 'cousin', DATE '1996-10-19', 789396);
-INSERT INTO dependentt VALUES ('Addam Riddell', 'parent', DATE '1988-08-31', 483488);
-INSERT INTO dependentt VALUES ('Mario Docketti', 'parent', DATE '1974-10-09', 088624);
-INSERT INTO dependentt VALUES ('Mildred Dorn', 'sibling', DATE '1958-03-27', 181723);
-INSERT INTO dependentt VALUES ('Ryan Zekeret', 'parent', DATE '1948-02-05', 522801);
-INSERT INTO dependentt VALUES ('Helen Pelessian', 'child', DATE '1943-07-15', 798492);
-INSERT INTO dependentt VALUES ('Katrina Gadot', 'parent', DATE '1926-07-25', 846405);
-INSERT INTO dependentt VALUES ('Mikhail Bennett', 'sibling', DATE '1998-12-13', 631555);
-INSERT INTO dependentt VALUES ('Ronald Tecrenzio', 'child', DATE '1963-11-16', 297282);
-INSERT INTO dependentt VALUES ('Derek Maxwell', 'parent', DATE '1962-03-25', 960899);
-INSERT INTO dependentt VALUES ('Brianna Sonair', 'parent', DATE '1944-10-30', 405519);
+INSERT INTO dependentt VALUES ('Ryan Lin', 'parent', DATE '2007-10-30', 718249);
+INSERT INTO dependentt VALUES ('Millicent Lin', 'cousin', DATE '1955-10-15', 718249);
+INSERT INTO dependentt VALUES ('Emma Bryant', 'cousin', DATE '1987-12-30', 914650);
+INSERT INTO dependentt VALUES ('Janine Blake', 'child', DATE '1996-02-17', 919714);
+INSERT INTO dependentt VALUES ('Michael Blake', 'parent', DATE '1964-04-28', 919714);
+INSERT INTO dependentt VALUES ('Jack Ocypete', 'ward', DATE '1923-06-23', 009776);
+INSERT INTO dependentt VALUES ('Nia Salerno', 'ward', DATE '1997-02-01', 197878);
+INSERT INTO dependentt VALUES ('Ethan Goguyeva', 'child', DATE '1974-06-13', 170107);
+INSERT INTO dependentt VALUES ('Jacob Wenowski', 'ward', DATE '1981-01-31', 906482);
+INSERT INTO dependentt VALUES ('Jack Wenowski', 'child', DATE '1992-10-02', 906482);
+INSERT INTO dependentt VALUES ('Rose Megrez', 'parent', DATE '1973-08-01', 608901);
+INSERT INTO dependentt VALUES ('Julie Alphonse', 'cousin', DATE '1923-05-09', 742603);
+INSERT INTO dependentt VALUES ('Lauryn Whitton', 'sibling', DATE '1978-12-13', 937903);
+INSERT INTO dependentt VALUES ('Luigi Persephone', 'child', DATE '1955-05-11', 357388);
+INSERT INTO dependentt VALUES ('Bridget Matser', 'parent', DATE '1963-03-24', 881289);
+INSERT INTO dependentt VALUES ('Christopher Matser', 'sibling', DATE '1937-10-09', 881289);
+INSERT INTO dependentt VALUES ('Tommy Finlay', 'cousin', DATE '1943-12-30', 178395);
+INSERT INTO dependentt VALUES ('Eugene Finlay', 'sibling', DATE '1970-06-19', 178395);
+INSERT INTO dependentt VALUES ('Ciara Ferdinand', 'parent', DATE '2018-08-09', 725159);
+INSERT INTO dependentt VALUES ('Brooks Nguyen', 'child', DATE '1956-09-18', 126099);
+INSERT INTO dependentt VALUES ('Addam Weghofer', 'parent', DATE '1929-08-13', 598126);
+INSERT INTO dependentt VALUES ('Tracy Tecrenzio', 'child', DATE '1965-01-22', 253272);
+INSERT INTO dependentt VALUES ('Barry Tecrenzio', 'parent', DATE '1922-12-28', 253272);
+INSERT INTO dependentt VALUES ('Robbie Brownstone', 'child', DATE '1930-04-09', 629028);
+INSERT INTO dependentt VALUES ('Jin Brownstone', 'ward', DATE '1986-02-25', 629028);
+INSERT INTO dependentt VALUES ('Wilfred Kelbow', 'child', DATE '1957-12-23', 675766);
+INSERT INTO dependentt VALUES ('Katrina Kelbow', 'sibling', DATE '1994-03-30', 675766);
+INSERT INTO dependentt VALUES ('Jeremy Perry', 'parent', DATE '1997-01-30', 341833);
+INSERT INTO dependentt VALUES ('Nathanael Dorn', 'ward', DATE '1935-12-20', 806509);
+INSERT INTO dependentt VALUES ('Dylan Zekeret', 'cousin', DATE '2019-11-30', 304785);
+INSERT INTO dependentt VALUES ('Katherine Lovelace', 'parent', DATE '1998-08-17', 400099);
+INSERT INTO dependentt VALUES ('Miles Lovelace', 'cousin', DATE '1996-07-01', 400099);
+INSERT INTO dependentt VALUES ('Joseph Zhang', 'cousin', DATE '2019-06-07', 855259);
+INSERT INTO dependentt VALUES ('Mildred Bennett', 'ward', DATE '1957-03-09', 171341);
+INSERT INTO dependentt VALUES ('Vic Bennett', 'cousin', DATE '1991-09-27', 171341);
+INSERT INTO dependentt VALUES ('Sander Myers', 'ward', DATE '1983-11-17', 392285);
+INSERT INTO dependentt VALUES ('Taylor Myers', 'ward', DATE '2015-01-07', 392285);
+INSERT INTO dependentt VALUES ('Cassandra Lyatt', 'child', DATE '1929-04-17', 384567);
+INSERT INTO dependentt VALUES ('Wynona Lyatt', 'ward', DATE '2012-05-30', 384567);
+INSERT INTO dependentt VALUES ('John Toucanian', 'sibling', DATE '1980-03-17', 521297);
+INSERT INTO dependentt VALUES ('Zachary Sawamoto', 'ward', DATE '1968-03-23', 357648);
+INSERT INTO dependentt VALUES ('Stephanie Smith', 'cousin', DATE '1945-09-24', 031291);
+INSERT INTO dependentt VALUES ('Gary Yarpan', 'cousin', DATE '1978-01-03', 520264);
+INSERT INTO dependentt VALUES ('Jaylie Suda', 'parent', DATE '1991-09-26', 104500);
+INSERT INTO dependentt VALUES ('Carson Suda', 'child', DATE '1936-01-12', 104500);
+INSERT INTO dependentt VALUES ('Ernie Hernandez', 'ward', DATE '1988-09-28', 254140);
+INSERT INTO dependentt VALUES ('Danny Katten', 'ward', DATE '1926-09-21', 988481);
+INSERT INTO dependentt VALUES ('Chuck Bledsoe', 'cousin', DATE '1973-01-30', 036060);
+INSERT INTO dependentt VALUES ('Pearl Michelson', 'parent', DATE '1939-10-19', 830118);
+INSERT INTO dependentt VALUES ('Gustav Michelson', 'ward', DATE '1987-11-28', 830118);
+INSERT INTO dependentt VALUES ('Helen Cameron', 'sibling', DATE '1930-05-07', 381649);
+INSERT INTO dependentt VALUES ('Cody Cameron', 'ward', DATE '1986-07-20', 381649);
 
