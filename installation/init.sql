@@ -7,9 +7,9 @@ CREATE TABLE employee (
 
 DROP TABLE agent CASCADE CONSTRAINTS;
 CREATE TABLE agent (
-    years_experience NUMBER(2),
     emp_id NUMBER(6) NOT NULL,
     ename VARCHAR(100) NOT NULL,
+    years_experience NUMBER(2),
     FOREIGN KEY (emp_id, ename) REFERENCES employee(emp_id, ename)
         ON DELETE CASCADE,
     PRIMARY KEY (emp_id)
@@ -17,9 +17,9 @@ CREATE TABLE agent (
 
 DROP TABLE adjuster CASCADE CONSTRAINTS;
 CREATE TABLE adjuster (
-    specialty VARCHAR(20),
     emp_id NUMBER(6) NOT NULL,
     ename VARCHAR(100) NOT NULL,
+    specialty VARCHAR(20),
     FOREIGN KEY (emp_id, ename) REFERENCES employee(emp_id, ename)
         ON DELETE CASCADE,
     PRIMARY KEY (emp_id)
