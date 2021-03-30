@@ -1,4 +1,5 @@
-INSERT INTO agent VALUES (933819, 'Curry Ventus', 4);
-INSERT INTO agent VALUES (094033, 'Zelda McKinnon', 5);
-INSERT INTO agent VALUES (434716, 'Ronald Bowler', 15);
-INSERT INTO agent VALUES (490508, 'Jeremy Chan', 25);
+INSERT INTO agent VALUES (485619, 'Simone Origo', 24);
+INSERT INTO agent VALUES (881651, 'Wyatt Zhang', 16);
+INSERT INTO agent VALUES (284247, 'Spencer Matser', 17);
+INSERT INTO agent VALUES (204823, 'Ezra Ping', 14);
+INSERT INTO agent VALUES (779888, 'Sharon Michelson', 20);

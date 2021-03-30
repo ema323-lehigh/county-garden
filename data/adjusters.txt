@@ -1,8 +1,7 @@
-INSERT INTO adjuster VALUES (575581, 'Derek Lucas', 'property');
-INSERT INTO adjuster VALUES (559660, 'Benjamin Whitton', 'wellness');
-INSERT INTO adjuster VALUES (858877, 'Janine Hogeland', 'collision');
-INSERT INTO adjuster VALUES (079144, 'Ryan Fermio', 'collision');
-INSERT INTO adjuster VALUES (453886, 'Nathanael Jones', 'valuables');
-INSERT INTO adjuster VALUES (823153, 'Michael Barno', 'machinery');
-INSERT INTO adjuster VALUES (945639, 'Robbie Welbis', 'machinery');
-INSERT INTO adjuster VALUES (119674, 'Mario Becker', 'collision');
+INSERT INTO adjuster VALUES (210648, 'Kathy Megrez', 'machinery');
+INSERT INTO adjuster VALUES (912757, 'Maggie Barno', 'machinery');
+INSERT INTO adjuster VALUES (575195, 'Duncan Toucanian', 'machinery');
+INSERT INTO adjuster VALUES (790389, 'Celia Myers', 'wellness');
+INSERT INTO adjuster VALUES (838292, 'Dorothy Chan', 'collision');
+INSERT INTO adjuster VALUES (399268, 'Charlie Scott', 'wellness');
+INSERT INTO adjuster VALUES (962442, 'Herff Wenowski', 'wellness');
