@@ -1,3 +1,4 @@
+DELETE employee;
 INSERT INTO employee VALUES (353865, 'Diane Myers');
 INSERT INTO employee VALUES (986718, 'Laura Jones');
 INSERT INTO employee VALUES (825192, 'Simon Hogeland');
@@ -11,12 +12,14 @@ INSERT INTO employee VALUES (079368, 'Jason Origo');
 INSERT INTO employee VALUES (924649, 'Jeremy Scott');
 INSERT INTO employee VALUES (147732, 'Travis Briggs');
 
+DELETE agent;
 INSERT INTO agent VALUES (353865, 'Diane Myers', 17);
 INSERT INTO agent VALUES (567966, 'Nathanael Kelbow', 6);
 INSERT INTO agent VALUES (334995, 'Miles Watson', 11);
 INSERT INTO agent VALUES (552731, 'Bliss Chan', 4);
 INSERT INTO agent VALUES (147732, 'Travis Briggs', 4);
 
+DELETE adjuster;
 INSERT INTO adjuster VALUES (986718, 'Laura Jones', collision);
 INSERT INTO adjuster VALUES (825192, 'Simon Hogeland', wellness);
 INSERT INTO adjuster VALUES (613274, 'Rex Perry', machinery);
@@ -25,6 +28,7 @@ INSERT INTO adjuster VALUES (130910, 'Dylan Welbis', collision);
 INSERT INTO adjuster VALUES (079368, 'Jason Origo', valuables);
 INSERT INTO adjuster VALUES (924649, 'Jeremy Scott', machinery);
 
+DELETE customer;
 INSERT INTO customer VALUES (829075,
         'Sigmund', '', 'Docketti',
         'III', 1935-08-15, 437533);
