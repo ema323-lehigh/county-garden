@@ -1,4 +1,4 @@
-INSERT INTO agent VALUES (840845, 'Helen Hogeland', 12);
-INSERT INTO agent VALUES (163122, 'Simon Cameron', 4);
-INSERT INTO agent VALUES (673149, 'Sigmund Salerno', 21);
-INSERT INTO agent VALUES (431864, 'Joshua Wenowski', 10);
+INSERT INTO agent VALUES (817635, 'Salvatore Zhang', 16);
+INSERT INTO agent VALUES (637471, 'Sue Wigg', 5);
+INSERT INTO agent VALUES (463341, 'Eva Dorn', 4);
+INSERT INTO agent VALUES (565774, 'Iona Alphonse', 0);

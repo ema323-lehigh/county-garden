@@ -79,7 +79,7 @@ foreach my $key (keys %custrecs) {
         my $policy_id = &rand_id;
         my $policy_type = $specialties[rand(@specialties)];
         my $quoted_price = int((rand() * 500) * 100) / 100;
-        my $cancelled = 0; if (int(rand(10) > 8)) { my $cancelled = 1; }
+        my $cancelled = 0; if (int(rand(10) > 8)) { $cancelled = 1; }
         print POLICIES "INSERT INTO polisy VALUES ($policy_id, '$policy_type', $quoted_price, $cancelled, $key);\n";
     }
 }
