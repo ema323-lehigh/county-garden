@@ -25,6 +25,8 @@ my @relationships = ('parent', 'child', 'cousin', 'ward', 'sibling');
 
 my %emprecs = (); my %agentrecs = (); my %adjrecs = ();
 my @specialties = ('collision', 'valuables', 'property', 'machinery', 'wellness');
+my @categories = ('jewelry', 'fine art', 'musical instruments', 'computer equipment');
+my @vehicles = ('sedan', 'SUV', 'moped', 'motorcycle', 'mobile home', 'coupe');
 for (my $i = 0; $i < 12; $i++) {
     $emprecs{&rand_id} = join(' ', shift(@fnames), shift(@lnames));
 }
@@ -61,6 +63,7 @@ for (my $i = 0; $i < 60; $i++) {
 open(CUSTOMERS, '>', "customers.txt") or die $!;
 open(DEPENDENTS, '>', "dependents.txt") or die $!;
 open(POLICIES, '>', "policies.txt") or die $!;
+open(ITEMS, '>', "items.txt") or die $!;
 foreach my $key (keys %custrecs) {
     print CUSTOMERS "INSERT INTO customer VALUES ($key,
         '$custrecs{$key}{$fname}', '$custrecs{$key}{$minitial}', '$custrecs{$key}{$lname}',
@@ -81,5 +84,15 @@ foreach my $key (keys %custrecs) {
         my $quoted_price = int((rand() * 500) * 100) / 100;
         my $cancelled = 0; if (int(rand(10) > 8)) { $cancelled = 1; }
         print POLICIES "INSERT INTO polisy VALUES ($policy_id, '$policy_type', $quoted_price, $cancelled, $key);\n";
+        my $item_bounds = int(rand(3));
+        if ($policy_type eq "collision" || $policy_type eq "valuables") {
+            for (my $i = 0; $i < $item_bounds; $i++) {
+                my $item_id = &rand_id; my $item_type = "";
+                if ($policy_type eq "valuables") { $item_type = $categories[rand(@categories)]; }
+                if ($policy_type eq "collision") { $item_type = $vehicles[rand(@vehicles)]; }
+                my $approx_value = int((rand() * 100000) * 100) / 100;
+                print ITEMS "INSERT INTO item VALUES ($item_id, '$item_type', $approx_value, $policy_id);\n";
+            }
+        }
     }
 }

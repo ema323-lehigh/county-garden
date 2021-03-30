@@ -20,3 +20,6 @@ echo -e '' >> copythis.txt
 echo "DELETE polisy;" >> copythis.txt
 cat policies.txt >> copythis.txt
 echo -e '' >> copythis.txt
+echo "DELETE item;" >> copythis.txt
+cat items.txt >> copythis.txt
+echo -e '' >> copythis.txt
