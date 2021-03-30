@@ -65,7 +65,8 @@ foreach my $key (keys %custrecs) {
         '$custrecs{$key}{$fname}', '$custrecs{$key}{$minitial}', '$custrecs{$key}{$lname}',
         '$custrecs{$key}{$suffix}', DATE '$custrecs{$key}{$dob}', $custrecs{$key}{$agent});\n";
     #if ($custrecs{$key}{$dob} < '1990-01-01') {
-        for (my $i = 0; $i < int(rand(2)); $i++) {
+        my $dep_bounds = int(rand(3));
+        for (my $i = 0; $i < $dep_bounds; $i++) {
             my $dname = shift(@fnames);
             my $relationship = $relationships[rand(@relationships)];
             my $dob = rand_date( min => '1920-01-01', max => '2020-01-01' );
