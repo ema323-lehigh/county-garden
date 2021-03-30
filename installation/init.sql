@@ -29,7 +29,7 @@ DROP TABLE customer CASCADE CONSTRAINTS;
 CREATE TABLE customer (
     cust_id NUMBER(6) NOT NULL,
     firstname VARCHAR(50) NOT NULL,
-    middlename VARCHAR(50),
+    minitial VARCHAR(1),
     lastname VARCHAR(50) NOT NULL,
     suffix VARCHAR(10),
     birth_date DATE NOT NULL,
