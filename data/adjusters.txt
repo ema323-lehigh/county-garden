@@ -1,7 +1,6 @@
-INSERT INTO adjuster VALUES (986718, 'Laura Jones', collision);
-INSERT INTO adjuster VALUES (825192, 'Simon Hogeland', wellness);
-INSERT INTO adjuster VALUES (613274, 'Rex Perry', machinery);
-INSERT INTO adjuster VALUES (437533, 'Eva Moyer', property);
-INSERT INTO adjuster VALUES (130910, 'Dylan Welbis', collision);
-INSERT INTO adjuster VALUES (079368, 'Jason Origo', valuables);
-INSERT INTO adjuster VALUES (924649, 'Jeremy Scott', machinery);
+INSERT INTO adjuster VALUES (144291, 'Ronald Persephone', collision);
+INSERT INTO adjuster VALUES (037908, 'Demeter Finlay', valuables);
+INSERT INTO adjuster VALUES (541090, 'Cassandra Morris', property);
+INSERT INTO adjuster VALUES (132058, 'Rex Goguyeva', valuables);
+INSERT INTO adjuster VALUES (365815, 'Dawn Fermio', machinery);
+INSERT INTO adjuster VALUES (395853, 'Cheryl Bowler', machinery);

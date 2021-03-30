@@ -1,5 +1,6 @@
-INSERT INTO agent VALUES (353865, 'Diane Myers', 17);
-INSERT INTO agent VALUES (567966, 'Nathanael Kelbow', 6);
-INSERT INTO agent VALUES (334995, 'Miles Watson', 11);
-INSERT INTO agent VALUES (552731, 'Bliss Chan', 4);
-INSERT INTO agent VALUES (147732, 'Travis Briggs', 4);
+INSERT INTO agent VALUES (820309, 'Bridget Ritson', 2);
+INSERT INTO agent VALUES (162052, 'Taylor Ferdinand', 2);
+INSERT INTO agent VALUES (895767, 'Flora Moyer', 3);
+INSERT INTO agent VALUES (417742, 'Celia Daphnes', 8);
+INSERT INTO agent VALUES (971638, 'Robbie Ping', 10);
+INSERT INTO agent VALUES (289259, 'Spencer Blake', 15);

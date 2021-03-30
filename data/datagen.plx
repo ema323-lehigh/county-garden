@@ -59,5 +59,5 @@ open(CUSTOMERS, '>', "customers.txt") or die $!;
 foreach my $key (keys %custrecs) {
     print CUSTOMERS "INSERT INTO customer VALUES ($key,
         '$custrecs{$key}{$fname}', '$custrecs{$key}{$minitial}', '$custrecs{$key}{$lname}',
-        '$custrecs{$key}{$suffix}', $custrecs{$key}{$dob}, $custrecs{$key}{$agent});\n";
+        '$custrecs{$key}{$suffix}', DATE '$custrecs{$key}{$dob}', $custrecs{$key}{$agent});\n";
 }
