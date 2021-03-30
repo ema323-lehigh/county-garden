@@ -1,2 +1,4 @@
-INSERT INTO agent VALUES (438097, 'Gerry Chan', 5);
-INSERT INTO agent VALUES (400771, 'Matthew Hogeland', 7);
+INSERT INTO agent VALUES (840845, 'Helen Hogeland', 12);
+INSERT INTO agent VALUES (163122, 'Simon Cameron', 4);
+INSERT INTO agent VALUES (673149, 'Sigmund Salerno', 21);
+INSERT INTO agent VALUES (431864, 'Joshua Wenowski', 10);
