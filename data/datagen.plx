@@ -60,6 +60,7 @@ for (my $i = 0; $i < 60; $i++) {
 }
 open(CUSTOMERS, '>', "customers.txt") or die $!;
 open(DEPENDENTS, '>', "dependents.txt") or die $!;
+open(POLICIES, '>', "policies.txt") or die $!;
 foreach my $key (keys %custrecs) {
     print CUSTOMERS "INSERT INTO customer VALUES ($key,
         '$custrecs{$key}{$fname}', '$custrecs{$key}{$minitial}', '$custrecs{$key}{$lname}',
@@ -73,4 +74,12 @@ foreach my $key (keys %custrecs) {
             print DEPENDENTS "INSERT INTO dependentt VALUES ('$dname $custrecs{$key}{$lname}', '$relationship', DATE '$dob', $key);\n";
         }
     #}
+    my $policy_bounds = int(rand(3));
+    for (my $i = 0; $i < $policy_bounds; $i++) {
+        my $policy_id = &rand_id;
+        my $policy_type = $specialties[rand(@specialties)];
+        my $quoted_price = int((rand() * 500) * 100) / 100;
+        my $cancelled = 0; if (int(rand(10) > 8)) { my $cancelled = 1; }
+        print POLICIES "INSERT INTO polisy VALUES ($policy_id, '$policy_type', $quoted_price, $cancelled, $key);\n";
+    }
 }

@@ -17,3 +17,6 @@ echo -e '' >> copythis.txt
 echo "DELETE dependentt;" >> copythis.txt
 cat dependents.txt >> copythis.txt
 echo -e '' >> copythis.txt
+echo "DELETE polisy;" >> copythis.txt
+cat policies.txt >> copythis.txt
+echo -e '' >> copythis.txt
