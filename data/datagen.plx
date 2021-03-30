@@ -22,7 +22,7 @@ my @lnames = shuffle(split(',', $lines[1]));
 my @initials = ('A'..'Z');
 my @suffixes = ('Jr.', 'Sr.', 'Esq.', 'PhD.', 'I', 'II', 'III');
 
-my %emprecs = ();
+my %emprecs = (); my %agentrecs = (); my %adjrecs = ();
 my @specialties = ('collision', 'valuables', 'property', 'machinery', 'wellness');
 for (my $i = 0; $i < 12; $i++) {
     $emprecs{&rand_id} = join(' ', shift(@fnames), shift(@lnames));
@@ -35,10 +35,12 @@ foreach my $key (keys %emprecs) {
     if (int(rand(10)) > 5) {
         my $years_exp = int(rand(26));
         print AGENTS "INSERT INTO agent VALUES ($key, '$emprecs{$key}', $years_exp);\n";
+        $agentrecs{$key} = $years_exp;
     }
     else {
         my $specialty = $specialties[rand(@specialties)];
-        print ADJUSTERS "INSERT INTO adjuster VALUES ($key, '$emprecs{$key}', $specialty);\n";
+        print ADJUSTERS "INSERT INTO adjuster VALUES ($key, '$emprecs{$key}', '$specialty');\n";
+        $adjrecs{$key} = $specialty;
     }
 }
 
@@ -53,7 +55,7 @@ for (my $i = 0; $i < 60; $i++) {
     if (int(rand(10)) > 8) { $custrecs{$curr_id}{$suffix} = $suffixes[rand(@suffixes)]; }
         else { $custrecs{$curr_id}{$suffix} = ""; }
     $custrecs{$curr_id}{$dob} = rand_date( min => '1920-01-01', max => '1999-12-31' );
-    $custrecs{$curr_id}{$agent} = (keys %emprecs)[rand(keys %emprecs)];
+    $custrecs{$curr_id}{$agent} = (keys %agentrecs)[rand(keys %agentrecs)];
 }
 open(CUSTOMERS, '>', "customers.txt") or die $!;
 foreach my $key (keys %custrecs) {
