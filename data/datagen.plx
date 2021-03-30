@@ -34,11 +34,11 @@ foreach my $key (keys %emprecs) {
     print EMPLOYEES "INSERT INTO employee VALUES ($key, '$emprecs{$key}');\n";
     if (int(rand(10)) > 5) {
         my $years_exp = int(rand(26));
-        print AGENTS "INSERT INTO agent VALUES ($key, '$emprecs{$key}', $years_exp)\n";
+        print AGENTS "INSERT INTO agent VALUES ($key, '$emprecs{$key}', $years_exp);\n";
     }
     else {
         my $specialty = $specialties[rand(@specialties)];
-        print ADJUSTERS "INSERT INTO adjuster VALUES ($key, '$emprecs{$key}', $specialty)\n";
+        print ADJUSTERS "INSERT INTO adjuster VALUES ($key, '$emprecs{$key}', $specialty);\n";
     }
 }
 

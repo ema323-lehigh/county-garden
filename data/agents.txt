@@ -1,5 +1,5 @@
-INSERT INTO agent VALUES (981963, 'Dorothy Briggs', 10)
-INSERT INTO agent VALUES (014953, 'Mario Smith', 12)
-INSERT INTO agent VALUES (060842, 'Millicent Fibonacci', 5)
-INSERT INTO agent VALUES (831030, 'Eugene Hogeland', 17)
-INSERT INTO agent VALUES (215842, 'Jaylie Necker', 11)
+INSERT INTO agent VALUES (353865, 'Diane Myers', 17);
+INSERT INTO agent VALUES (567966, 'Nathanael Kelbow', 6);
+INSERT INTO agent VALUES (334995, 'Miles Watson', 11);
+INSERT INTO agent VALUES (552731, 'Bliss Chan', 4);
+INSERT INTO agent VALUES (147732, 'Travis Briggs', 4);
