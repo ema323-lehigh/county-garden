@@ -14,7 +14,7 @@ sub rand_id {
     return $numstring;
 }
 
-open(NAMES, '<', "_names.txt") or die $!;
+open(NAMES, '<', "names.txt") or die $!;
 $/ = undef; # slurp to the end
 my @lines = split('\n', <NAMES>);
 my @fnames = shuffle(split(',', $lines[0]));
@@ -30,9 +30,9 @@ my @vehicles = ('sedan', 'SUV', 'moped', 'motorcycle', 'mobile home', 'coupe');
 for (my $i = 0; $i < 12; $i++) {
     $emprecs{&rand_id} = join(' ', shift(@fnames), shift(@lnames));
 }
-open(EMPLOYEES, '>', "employees.txt") or die $!;
-open(AGENTS, '>', "agents.txt") or die $!;
-open(ADJUSTERS, '>', "adjusters.txt") or die $!;
+open(EMPLOYEES, '>', "output/employees.txt") or die $!;
+open(AGENTS, '>', "output/agents.txt") or die $!;
+open(ADJUSTERS, '>', "output/adjusters.txt") or die $!;
 foreach my $key (keys %emprecs) {
     print EMPLOYEES "INSERT INTO employee VALUES ($key, '$emprecs{$key}');\n";
     if (int(rand(10)) > 5) {
@@ -60,10 +60,10 @@ for (my $i = 0; $i < 60; $i++) {
     $custrecs{$curr_id}{$dob} = rand_date( min => '1920-01-01', max => '1999-12-31' );
     $custrecs{$curr_id}{$agent} = (keys %agentrecs)[rand(keys %agentrecs)];
 }
-open(CUSTOMERS, '>', "customers.txt") or die $!;
-open(DEPENDENTS, '>', "dependents.txt") or die $!;
-open(POLICIES, '>', "policies.txt") or die $!;
-open(ITEMS, '>', "items.txt") or die $!;
+open(CUSTOMERS, '>', "output/customers.txt") or die $!;
+open(DEPENDENTS, '>', "output/dependents.txt") or die $!;
+open(POLICIES, '>', "output/policies.txt") or die $!;
+open(ITEMS, '>', "output/items.txt") or die $!;
 foreach my $key (keys %custrecs) {
     print CUSTOMERS "INSERT INTO customer VALUES ($key,
         '$custrecs{$key}{$fname}', '$custrecs{$key}{$minitial}', '$custrecs{$key}{$lname}',
