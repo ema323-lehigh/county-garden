@@ -1,5 +1,5 @@
-consider changing DOB to something more explicit
-cannot have any entities without attributes
+consider changing DOB to something more explicit - DONE
+cannot have any entities without attributes - DONE
 consider shifting positioning/connections for dependent
 contrast items versus dependents
 use 1..n for clarity in some places
