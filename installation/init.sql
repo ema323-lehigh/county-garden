@@ -28,9 +28,9 @@ CREATE TABLE adjuster (
 DROP TABLE customer CASCADE CONSTRAINTS;
 CREATE TABLE customer (
     cust_id NUMBER(6) NOT NULL,
-    firstname VARCHAR(50) NOT NULL,
+    fname VARCHAR(50) NOT NULL,
     minitial VARCHAR(1),
-    lastname VARCHAR(50) NOT NULL,
+    lname VARCHAR(50) NOT NULL,
     suffix VARCHAR(10),
     birth_date DATE NOT NULL,
     agent_id NUMBER(6) NOT NULL,
