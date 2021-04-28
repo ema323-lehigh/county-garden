@@ -29,8 +29,10 @@ public class Install {
                     if (currLine.isEmpty()) {
                         dropQ = currentQ.split(";")[0];
                         createQ = currentQ.split(";")[1];
-                        System.out.println("Dropping table " + dropQ.split(" ")[2] + "...");
-                        s.executeUpdate(dropQ);
+                        if ((args.length > 0) && args[0].equals("-d")) {
+                            System.out.println("Dropping table " + dropQ.split(" ")[2] + "...");
+                            s.executeUpdate(dropQ);
+                        }
                         System.out.println("Creating table " + createQ.split(" ")[2] + "...");
                         s.executeUpdate(createQ);
                         System.out.println("Done.");
@@ -45,14 +47,14 @@ public class Install {
             }
             catch (IOException e) {
                 System.out.println("An error occurred while attempting to read in the install script.");
-                if ((args.length > 0) && args[0].equals("-d")) { System.out.print(e); }
+                if ((args.length > 0) && args[0].equals("-e")) { System.out.print(e); }
             }
             s.close();
             c.close();
         }
         catch (SQLException e) {
             System.out.println("Failed to connect or execute. Please try again later.");
-            if ((args.length > 0) && args[0].equals("-d")) { System.out.print(e); }
+            if ((args.length > 0) && args[0].equals("-e")) { System.out.print(e); }
         }
         finally {
             input.close();

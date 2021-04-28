@@ -48,7 +48,8 @@ CREATE TABLE cust_add (
     cust_id NUMBER(6) NOT NULL,
     FOREIGN KEY (cust_id) REFERENCES customer(cust_id)
         ON DELETE CASCADE,
-    PRIMARY KEY (street, city)
+    CONSTRAINT one_cust_add UNIQUE (cust_id),
+    PRIMARY KEY (street, city, cust_id)
 )
 
 DROP TABLE phone_num CASCADE CONSTRAINTS;
@@ -119,7 +120,7 @@ CREATE TABLE firm_add (
     firm_id NUMBER(6) NOT NULL,
     FOREIGN KEY (firm_id) REFERENCES contractor(firm_id)
         ON DELETE CASCADE,
-    PRIMARY KEY (street, city)
+    PRIMARY KEY (street, city, firm_id)
 )
 
 DROP TABLE services CASCADE CONSTRAINTS;
