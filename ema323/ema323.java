@@ -13,23 +13,24 @@ public class ema323 {
         System.out.println("Connecting...");
         String dbdeets = "jdbc:oracle:thin:@edgar1.cse.lehigh.edu:1521:cse241";
 
-        try (
-            Connection c = DriverManager.getConnection(dbdeets, username, password);
-            Statement s = c.createStatement();
-        ) {
+        try (Connection c = DriverManager.getConnection(dbdeets, username, password);) {
             System.out.println("...connected.");
             System.out.println("--------------------------------------------------------------------------------");
             c.setAutoCommit(false);
-            ResultSet r = s.executeQuery("SELECT * FROM customer");
-            while (r.next()) {
-                System.out.println(r.getString("firstname") + " " + r.getString("lastname"));
-            }     
-            s.close();
+            try (CallableStatement s = c.prepareCall("{CALL custdata}");) {
+                s.execute();
+                System.out.println(s);
+                s.close();
+            }
+            catch (SQLException e) {
+                System.out.println("Failed to execute. Please try again later.");
+                if ((args.length > 0) && args[0].equals("-d")) { System.out.println(e); } 
+            }
             c.close();
         }
         catch (SQLException e) {
-            System.out.println("Failed to connect or execute. Please try again later.");
-            if ((args.length > 0) && args[0].equals("-d")) { System.out.print(e); }
+            System.out.println("Failed to connect. Please try again later.");
+            if ((args.length > 0) && args[0].equals("-d")) { System.out.println(e); }
         }
         finally {
             input.close();
