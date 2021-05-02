@@ -17,6 +17,16 @@ public class ema323 {
             System.out.println("...connected.");
             System.out.println("--------------------------------------------------------------------------------");
             c.setAutoCommit(false);
+            System.out.println("Welcome. Are you an agent or a customer?");
+            int choice = inputRequest(new String[] {"agent", "customer"}, input);
+            switch (choice) {
+                case 1:
+                    System.out.println("Wonderful to have you doing business for us.");
+                    break;
+                case 2:
+                    System.out.println("Wonderful to have you doing business with us.");
+                    break;
+            }
             try (CallableStatement s = c.prepareCall("{CALL custdata}");) {
                 s.execute();
                 System.out.println(s);
@@ -35,6 +45,27 @@ public class ema323 {
         finally {
             input.close();
             System.out.println("--------------------------------------------------------------------------------");
+        }
+    }
+
+    public static int inputRequest(String[] choices, Scanner input) {
+        int choice;
+        for (int i = 0; i < choices.length; i++) {
+            System.out.println((i + 1) + ") " + choices[i]);
+        }
+        while (true) {
+            if (input.hasNextInt()) {
+                choice = input.nextInt();
+                if ((choice > 0) && (choice <= choices.length)) {
+                    return choice;
+                }
+                else {
+                    System.out.println("Please enter an integer corresponding to one of the choices above.");
+                }
+            }
+            else {
+                System.out.println("Please enter an integer corresponding to one of the choices above.");
+            }
         }
     }
 }
