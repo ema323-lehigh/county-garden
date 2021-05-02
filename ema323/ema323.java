@@ -22,19 +22,11 @@ public class ema323 {
             switch (choice) {
                 case 1:
                     System.out.println("Wonderful to have you doing business for us.");
+                    agent agentt = new agent(); agentt.agentDriver(c, input);
                     break;
                 case 2:
                     System.out.println("Wonderful to have you doing business with us.");
                     break;
-            }
-            try (CallableStatement s = c.prepareCall("{CALL custdata}");) {
-                s.execute();
-                System.out.println(s);
-                s.close();
-            }
-            catch (SQLException e) {
-                System.out.println("Failed to execute. Please try again later.");
-                if ((args.length > 0) && args[0].equals("-d")) { System.out.println(e); } 
             }
             c.close();
         }
@@ -56,6 +48,7 @@ public class ema323 {
         while (true) {
             if (input.hasNextInt()) {
                 choice = input.nextInt();
+                input.nextLine();
                 if ((choice > 0) && (choice <= choices.length)) {
                     return choice;
                 }
@@ -65,6 +58,7 @@ public class ema323 {
             }
             else {
                 System.out.println("Please enter an integer corresponding to one of the choices above.");
+                input.nextLine();
             }
         }
     }
