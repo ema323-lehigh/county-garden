@@ -23,17 +23,13 @@ public class Adjuster {
             System.out.println("Welcome, " + r.getString("aname").split(" ", 2)[0] + ".");
             while (true) {
                 System.out.println("What would you like to do?");
-                int choice = adjUtility.inputRequest(new String[] {"assign claims", "manage claims", "quit"}, input);
+                int choice = adjUtility.inputRequest(new String[] {"assign claims", "manage claims"}, input);
                 switch (choice) {
                     case 1:
                         assignClaims(c, input, adjList);
                         break;
                     case 2:
                         manageClaims(c, input, adjID);
-                        break;
-                    case 3:
-                        System.out.println("Bye now!");
-                        System.exit(0);
                         break;
                 }
             }
