@@ -17,14 +17,18 @@ public class ema323 {
             System.out.println("...connected.");
             System.out.println("--------------------------------------------------------------------------------");
             c.setAutoCommit(false);
-            System.out.println("Welcome. Are you an agent or a customer?");
-            int choice = inputRequest(new String[] {"agent", "customer"}, input);
+            System.out.println("Welcome. Are you...which type of user in our system?");
+            int choice = inputRequest(new String[] {"agent", "adjuster", "customer"}, input);
             switch (choice) {
                 case 1:
                     System.out.println("Wonderful to have you doing business for us.");
                     agent agentt = new agent(); agentt.agentDriver(c, input);
                     break;
                 case 2:
+                    System.out.println("Wonderful to have you doing business for us.");
+                    adjuster adjusterr = new adjuster(); adjusterr.adjusterDriver(c, input);
+                    break;
+                case 3:
                     System.out.println("Wonderful to have you doing business with us.");
                     break;
             }
