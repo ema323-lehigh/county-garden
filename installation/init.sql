@@ -96,9 +96,6 @@ CREATE TABLE claim (
     policy_id NUMBER(6) NOT NULL,
     FOREIGN KEY (policy_id) REFERENCES polisy(policy_id)
         ON DELETE CASCADE,
-    cust_id NUMBER(6) NOT NULL,
-    FOREIGN KEY (cust_id) REFERENCES customer(cust_id)
-        ON DELETE CASCADE,
     PRIMARY KEY (claim_id)
 )
 

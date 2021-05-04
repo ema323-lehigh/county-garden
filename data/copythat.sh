@@ -23,6 +23,9 @@ echo -e '' >> copythis.txt
 echo "DELETE polisy;" >> copythis.txt
 cat output/policies.txt >> copythis.txt
 echo -e '' >> copythis.txt
+echo "DELETE claim;" >> copythis.txt
+cat output/claims.txt >> copythis.txt
+echo -e '' >> copythis.txt
 echo "DELETE item;" >> copythis.txt
 cat output/items.txt >> copythis.txt
 echo -e '' >> copythis.txt

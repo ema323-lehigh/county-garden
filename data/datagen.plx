@@ -26,6 +26,9 @@ my @streets = ('Walnut', 'Cherry', 'Pine', 'Center', 'Birch', 'Cole', 'Winonine'
 my @abbrevs = ('St.', 'Rd.', 'Ln.', 'Blvd.', 'Pike', 'Ave.');
 my @cities = ('Placeau', 'Runcham', 'Wantage', 'Canade', 'Bloomis', 'Lackawanna', 'Butzville', 'Bethlehem');
 
+my @descriptions = ("Gosh it was awful.", "It was their fault", "I demand full reparations!", "It was like this, you see...", "They came at us so fast!", "I don''t remember it at all.");
+my @titles = ("The _____ Incident", "Bash-Up on Mile 42", "The Idiosyncrasy Files", "Nose Funk No. 9", "Class of ''82 Brawler", "Theft of Heart", "Why Do We Give These Titles, Anyway?", "Broken Legs Are Catching, You Know", "This Feels Like a Silly Choice of Field", "You''ll Never Believe It", "Somehow I Feel These Repeat");
+
 my %emprecs = (); my %agentrecs = (); my %adjrecs = ();
 my @specialties = ('collision', 'valuables', 'property', 'machinery', 'wellness');
 my @categories = ('jewelry', 'fine art', 'musical instruments', 'computer equipment');
@@ -67,6 +70,7 @@ open(CUSTOMERS, '>', "output/customers.txt") or die $!;
 open(DEPENDENTS, '>', "output/dependents.txt") or die $!;
 open(ADDRESSES, '>', "output/addresses.txt") or die $!;
 open(POLICIES, '>', "output/policies.txt") or die $!;
+open(CLAIMS, '>', "output/claims.txt") or die $!;
 open(ITEMS, '>', "output/items.txt") or die $!;
 foreach my $key (keys %custrecs) {
     print CUSTOMERS "INSERT INTO customer VALUES ($key,
@@ -102,10 +106,19 @@ foreach my $key (keys %custrecs) {
                 print ITEMS "INSERT INTO item VALUES ($item_id, '$item_type', $approx_value, $policy_id);\n";
             }
         }
+        if (int(rand(2)) % 2 == 0) {
+            my $address = int(rand(300)) . " " . $streets[rand(@streets)] . " " . $abbrevs[rand(@abbrevs)];
+            my $state = $initials[rand(@initials)] . $initials[rand(@initials)];
+            my $city = $cities[rand(@cities)]; my $zipcode = int(rand(9999));
+            my $claim_loc = "$address, $state, $city, $zipcode";
+            my $claim_id = &rand_id; my $description = $descriptions[rand(@descriptions)];
+            my $date1 = rand_date( min => '2000-01-01', max => '2021-05-01' );
+            my $date2 = (int(rand(10)) * 86400); my $title = $titles[rand(@titles)];
+            print CLAIMS "INSERT INTO claim VALUES ($claim_id, '$title', '$claim_loc', '$description', DATE '$date1', DATE '$date1' + $date2, $policy_id);\n";
+        }
     }
 }
 
-my %firmrecs = ();
 my @businesses = ("Great Value Ampersand Sons", "John Rice Catastrophics", "Everything You Hope You Never Need", "Urgent Care For...Something", "O''Reilly Associates");
 open(CONTRACTORS, '>', "output/contractors.txt") or die $!;
 open(FIRMADDS, '>', "output/firmadds.txt") or die $!;

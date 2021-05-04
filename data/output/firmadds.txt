@@ -1,5 +1,5 @@
-INSERT into firm_add VALUES ('19 Winonine Ln.', 'Butzville', 'ZD', 4472, 981661);
-INSERT into firm_add VALUES ('131 Center Rd.', 'Lackawanna', 'UU', 6959, 518097);
-INSERT into firm_add VALUES ('232 Birch Blvd.', 'Bethlehem', 'FO', 545, 473918);
-INSERT into firm_add VALUES ('56 Birch Rd.', 'Placeau', 'OT', 5541, 574902);
-INSERT into firm_add VALUES ('135 Birch Ave.', 'Bloomis', 'DA', 8460, 032787);
+INSERT into firm_add VALUES ('279 Cole Blvd.', 'Lackawanna', 'LW', 6865, 702163);
+INSERT into firm_add VALUES ('173 Lamia St.', 'Butzville', 'LI', 9215, 506825);
+INSERT into firm_add VALUES ('63 Birch St.', 'Bloomis', 'PA', 2613, 583724);
+INSERT into firm_add VALUES ('17 Center Blvd.', 'Canade', 'KP', 6533, 656092);
+INSERT into firm_add VALUES ('266 Winonine St.', 'Butzville', 'YZ', 6010, 300537);

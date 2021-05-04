@@ -1,5 +1,5 @@
-INSERT INTO agent VALUES (860781, 'Salvatore Lucas', 13);
-INSERT INTO agent VALUES (938807, 'Haedelich Hogeland', 0);
-INSERT INTO agent VALUES (375700, 'Vic Blake', 21);
-INSERT INTO agent VALUES (790441, 'Kai Michelson', 3);
-INSERT INTO agent VALUES (691052, 'Ethan McKinnon', 13);
+INSERT INTO agent VALUES (950870, 'Danny Morris', 16);
+INSERT INTO agent VALUES (490989, 'Emma Yarpan', 16);
+INSERT INTO agent VALUES (584925, 'Carson Toucanian', 0);
+INSERT INTO agent VALUES (111634, 'Debbie Bennett', 2);
+INSERT INTO agent VALUES (619785, 'Ernie Riddell', 3);

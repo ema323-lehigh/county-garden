@@ -1,7 +1,7 @@
-INSERT INTO adjuster VALUES (405998, 'Dawn Riddell', 'valuables');
-INSERT INTO adjuster VALUES (627547, 'Kevin Wenowski', 'machinery');
-INSERT INTO adjuster VALUES (442555, 'Debbie Pelessian', 'valuables');
-INSERT INTO adjuster VALUES (887125, 'Brooks Brownstone', 'valuables');
-INSERT INTO adjuster VALUES (921525, 'Nia Smith', 'collision');
-INSERT INTO adjuster VALUES (775465, 'Christopher Goguyeva', 'valuables');
-INSERT INTO adjuster VALUES (297631, 'Taylor Ocypete', 'wellness');
+INSERT INTO adjuster VALUES (706459, 'Miles Welbis', 'machinery');
+INSERT INTO adjuster VALUES (098058, 'Courtney Ferdinand', 'property');
+INSERT INTO adjuster VALUES (547744, 'Olivia Intoch', 'collision');
+INSERT INTO adjuster VALUES (964444, 'Lisa Nguyen', 'machinery');
+INSERT INTO adjuster VALUES (705182, 'Mikhail Thornley', 'property');
+INSERT INTO adjuster VALUES (821281, 'Matthew Alphonse', 'collision');
+INSERT INTO adjuster VALUES (261732, 'Regina Matser', 'wellness');
