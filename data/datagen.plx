@@ -22,6 +22,9 @@ my @lnames = shuffle(split(',', $lines[1]));
 my @initials = ('A'..'Z');
 my @suffixes = ('Jr.', 'Sr.', 'Esq.', 'PhD.', 'I', 'II', 'III');
 my @relationships = ('parent', 'child', 'cousin', 'ward', 'sibling');
+my @streets = ('Walnut', 'Cherry', 'Pine', 'Center', 'Birch', 'Cole', 'Winonine', 'Lamia');
+my @abbrevs = ('St.', 'Rd.', 'Ln.', 'Blvd.', 'Pike', 'Ave.');
+my @cities = ('Placeau', 'Runcham', 'Wantage', 'Canade', 'Bloomis', 'Lackawanna', 'Butzville', 'Bethlehem');
 
 my %emprecs = (); my %agentrecs = (); my %adjrecs = ();
 my @specialties = ('collision', 'valuables', 'property', 'machinery', 'wellness');
@@ -62,12 +65,17 @@ for (my $i = 0; $i < 60; $i++) {
 }
 open(CUSTOMERS, '>', "output/customers.txt") or die $!;
 open(DEPENDENTS, '>', "output/dependents.txt") or die $!;
+open(ADDRESSES, '>', "output/addresses.txt") or die $!;
 open(POLICIES, '>', "output/policies.txt") or die $!;
 open(ITEMS, '>', "output/items.txt") or die $!;
 foreach my $key (keys %custrecs) {
     print CUSTOMERS "INSERT INTO customer VALUES ($key,
         '$custrecs{$key}{$fname}', '$custrecs{$key}{$minitial}', '$custrecs{$key}{$lname}',
         '$custrecs{$key}{$suffix}', DATE '$custrecs{$key}{$dob}', $custrecs{$key}{$agent});\n";
+    my $address = int(rand(300)) . " " . $streets[rand(@streets)] . " " . $abbrevs[rand(@abbrevs)];
+    my $state = $initials[rand(@initials)] . $initials[rand(@initials)];
+    my $city = $cities[rand(@cities)]; my $zipcode = int(rand(9999));
+    print ADDRESSES "INSERT into cust_add VALUES ('$address', '$city', '$state', $zipcode, $key);\n";
     #if ($custrecs{$key}{$dob} < '1990-01-01') {
         my $dep_bounds = int(rand(3));
         for (my $i = 0; $i < $dep_bounds; $i++) {

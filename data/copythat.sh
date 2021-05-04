@@ -14,6 +14,9 @@ echo -e '' >> copythis.txt
 echo "DELETE customer;" >> copythis.txt
 cat output/customers.txt >> copythis.txt
 echo -e '' >> copythis.txt
+echo "DELETE cust_add;" >> copythis.txt
+cat output/addresses.txt >> copythis.txt
+echo -e '' >> copythis.txt
 echo "DELETE dependentt;" >> copythis.txt
 cat output/dependents.txt >> copythis.txt
 echo -e '' >> copythis.txt
