@@ -22,6 +22,29 @@ public class Customer {
             r.next(); // returns a boolean so we have to advance from up here
             System.out.println("Welcome, " + r.getString("fname") + ". You are a distinguished member of our little");
             System.out.println("insurance family, and we're glad to have you working with us today.");
+            customerInfo(c, custID);
+        }
+        catch (SQLException e) {
+            throw e;
+        }
+    }
+
+    private static void customerInfo(Connection c, int custID) throws SQLException {
+        try (Statement s = c.createStatement();) {
+            ResultSet r; // for symmetry/parallelism
+            r = s.executeQuery("SELECT TO_CHAR(cust_id, '000009') AS cust_id, fname, lname, minitial, suffix, birth_date, agent_id FROM customer WHERE cust_id = " + custID);
+            r.next(); //String custerID = r.getString("cust_id");
+            String custName = r.getString("lname") + ", " + r.getString("fname");
+            String minitial = r.getString("minitial"); if (minitial != null) { custName += " " + minitial + "."; }
+            String suffix = r.getString("suffix"); if (suffix != null) { custName += ", " + suffix; }
+            //String birthDate = r.getString("birth_date");
+            r = s.executeQuery("SELECT agent_id, aname FROM agent WHERE agent.agent_id = " + r.getInt("agent_id"));
+            r.next(); String agentID = r.getString("agent_id"); String agentName = r.getString("aname");
+            r = s.executeQuery("SELECT COUNT(*) FROM polisy WHERE cust_id = " + custID);
+            int numPolicies = 0; if (r.next()) { numPolicies = r.getInt(1); }
+            r = s.executeQuery("SELECT COUNT(*) FROM dependentt WHERE cust_id = " + custID);
+            int numDependents = 0; if (r.next()) { numDependents = r.getInt(1); }
+            System.out.println("(" + custID + ") " + custName + " | " + numPolicies + " policies | " + numDependents + " dependents");
         }
         catch (SQLException e) {
             throw e;
