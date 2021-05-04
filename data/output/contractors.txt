@@ -1,0 +1,5 @@
+INSERT INTO contractor VALUES (981661, 'machinery', 'Great Value Ampersand Sons', 5555550000);
+INSERT INTO contractor VALUES (518097, 'property', 'John Rice Catastrophics', 5555550017);
+INSERT INTO contractor VALUES (473918, 'machinery', 'Everything You Hope You Never Need', 5555550034);
+INSERT INTO contractor VALUES (574902, 'wellness', 'Urgent Care For...Something', 5555550051);
+INSERT INTO contractor VALUES (032787, 'wellness', 'O''Reilly Associates', 5555550068);

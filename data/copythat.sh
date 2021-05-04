@@ -26,3 +26,9 @@ echo -e '' >> copythis.txt
 echo "DELETE item;" >> copythis.txt
 cat output/items.txt >> copythis.txt
 echo -e '' >> copythis.txt
+echo "DELETE contractor;" >> copythis.txt
+cat output/contractors.txt >> copythis.txt
+echo -e '' >> copythis.txt
+echo "DELETE firm_add;" >> copythis.txt
+cat output/firmadds.txt >> copythis.txt
+echo -e '' >> copythis.txt

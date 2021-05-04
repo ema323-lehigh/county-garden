@@ -1,0 +1,5 @@
+INSERT into firm_add VALUES ('19 Winonine Ln.', 'Butzville', 'ZD', 4472, 981661);
+INSERT into firm_add VALUES ('131 Center Rd.', 'Lackawanna', 'UU', 6959, 518097);
+INSERT into firm_add VALUES ('232 Birch Blvd.', 'Bethlehem', 'FO', 545, 473918);
+INSERT into firm_add VALUES ('56 Birch Rd.', 'Placeau', 'OT', 5541, 574902);
+INSERT into firm_add VALUES ('135 Birch Ave.', 'Bloomis', 'DA', 8460, 032787);

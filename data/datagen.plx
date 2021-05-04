@@ -104,3 +104,20 @@ foreach my $key (keys %custrecs) {
         }
     }
 }
+
+my %firmrecs = ();
+my @businesses = ("Great Value Ampersand Sons", "John Rice Catastrophics", "Everything You Hope You Never Need", "Urgent Care For...Something", "O''Reilly Associates");
+open(CONTRACTORS, '>', "output/contractors.txt") or die $!;
+open(FIRMADDS, '>', "output/firmadds.txt") or die $!;
+for (my $i = 0; $i < 5; $i++) {
+    my $curr_id = &rand_id;
+    my $industry = $specialties[rand(@specialties)];
+    my $firmnum = 5555550000 + ($i * 17);
+    my $cname = shift(@businesses);
+    print CONTRACTORS "INSERT INTO contractor VALUES ($curr_id, '$industry', '$cname', $firmnum);\n";
+
+    my $address = int(rand(300)) . " " . $streets[rand(@streets)] . " " . $abbrevs[rand(@abbrevs)];
+    my $state = $initials[rand(@initials)] . $initials[rand(@initials)];
+    my $city = $cities[rand(@cities)]; my $zipcode = int(rand(9999));
+    print FIRMADDS "INSERT into firm_add VALUES ('$address', '$city', '$state', $zipcode, $curr_id);\n";
+}
