@@ -2,7 +2,7 @@ import java.sql.*;
 import java.io.*;
 import java.util.Scanner;
 
-public class agent {
+public class Agent {
     public static void agentDriver(Connection c, Scanner input) throws SQLException {
         System.out.println("Which agent are you? I will provide a listing for convenience.");
         try (Statement s = c.createStatement();) {

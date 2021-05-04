@@ -22,11 +22,11 @@ public class ema323 {
             switch (choice) {
                 case 1:
                     System.out.println("Wonderful to have you doing business for us.");
-                    agent agentt = new agent(); agentt.agentDriver(c, input);
+                    Agent agent = new Agent(); agent.agentDriver(c, input);
                     break;
                 case 2:
                     System.out.println("Wonderful to have you doing business for us.");
-                    adjuster adjusterr = new adjuster(); adjusterr.adjusterDriver(c, input);
+                    Adjuster adjuster = new Adjuster(); adjuster.adjusterDriver(c, input);
                     break;
                 case 3:
                     System.out.println("Wonderful to have you doing business with us.");

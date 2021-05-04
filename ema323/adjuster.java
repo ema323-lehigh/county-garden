@@ -2,7 +2,7 @@ import java.sql.*;
 import java.io.*;
 import java.util.Scanner;
 
-public class adjuster {
+public class Adjuster {
     public static void adjusterDriver(Connection c, Scanner input) throws SQLException {
         System.out.println("Which adjuster are you? I will provide a listing for convenience.");
         try (Statement s = c.createStatement();) {
