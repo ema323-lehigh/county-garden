@@ -14,7 +14,9 @@ public class Utility {
                 choice = input.nextInt();
                 input.nextLine();
                 if (choice == (choices.length + 1)) {
+                    System.out.println("--------------------------------------------------------------------------------");
                     System.out.println("Bye now!");
+                    System.out.println("--------------------------------------------------------------------------------");
                     input.close();
                     System.exit(0);
                 }
@@ -43,7 +45,9 @@ public class Utility {
                 choice = input.nextInt();
                 input.nextLine();
                 if (choice == choices.length + 1) {
+                    System.out.println("--------------------------------------------------------------------------------");
                     System.out.println("Bye now!");
+                    System.out.println("--------------------------------------------------------------------------------");
                     input.close();
                     System.exit(0);
                 }
@@ -72,7 +76,9 @@ public class Utility {
                 choice = input.nextInt();
                 input.nextLine();
                 if (choice == choices.length + 1) {
+                    System.out.println("--------------------------------------------------------------------------------");
                     System.out.println("Bye now!");
+                    System.out.println("--------------------------------------------------------------------------------");
                     input.close();
                     System.exit(0);
                 }
@@ -101,7 +107,9 @@ public class Utility {
                 choice = input.nextInt();
                 input.nextLine();
                 if (choice == choices.length + 1) {
+                    System.out.println("--------------------------------------------------------------------------------");
                     System.out.println("Bye now!");
+                    System.out.println("--------------------------------------------------------------------------------");
                     input.close();
                     System.exit(0);
                 }

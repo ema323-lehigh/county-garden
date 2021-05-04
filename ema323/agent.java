@@ -8,18 +8,27 @@ public class Agent {
         try (Statement s = c.createStatement();) {
             ResultSet r = s.executeQuery("SELECT agent_id, aname FROM agent ORDER BY aname");
             String[][] agentList = new String[20][2]; int i = 0; // assuming a safe reasonable number of agents
-            while (r.next()) {
-                agentList[i][0] = String.format("%06d", r.getInt("agent_id"));
-                agentList[i][1] = r.getString("aname");
-                i++;
+            if (r.next()) {
+                do {
+                    agentList[i][0] = String.format("%06d", r.getInt("agent_id"));
+                    agentList[i][1] = r.getString("aname");
+                    i++;
+                } while (r.next());
+                System.out.println("--------------------------------------------------------------------------------");
+                Utility agentUtility = new Utility();
+                int agentID = agentUtility.inputRequestByID(agentList, input);
+                System.out.println("--------------------------------------------------------------------------------");
+                r = s.executeQuery("SELECT aname FROM agent WHERE agent_id = " + agentID);
+                r.next(); // returns a boolean so we have to advance from up here
+                System.out.println("Welcome, " + r.getString("aname").split(" ", 2)[0] + ".");
             }
-            System.out.println("--------------------------------------------------------------------------------");
-            Utility agentUtility = new Utility();
-            int agentID = agentUtility.inputRequestByID(agentList, input);
-            System.out.println("--------------------------------------------------------------------------------");
-            r = s.executeQuery("SELECT aname FROM agent WHERE agent_id = " + agentID);
-            r.next(); // returns a boolean so we have to advance from up here
-            System.out.println("Welcome, " + r.getString("aname").split(" ", 2)[0] + ".");
+            else {
+                System.out.println("--------------------------------------------------------------------------------");
+                System.out.println("Well, looks like we don't have any agents after all.");
+                System.out.println("We've no mechanism by which to quit, so I don't see how that could be.");
+                System.out.println("Either way...scram! :)");
+                System.out.println("--------------------------------------------------------------------------------");
+            }
         }
         catch (SQLException e) {
             throw e;

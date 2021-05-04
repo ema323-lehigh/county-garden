@@ -9,20 +9,27 @@ public class Customer {
         try (Statement s = c.createStatement();) {
             ResultSet r = s.executeQuery("SELECT cust_id, fname, lname FROM customer ORDER BY lname");
             String[][] custList = new String[100][2]; int i = 0; // assuming a safe reasonable number of customers
-            while (r.next()) {
-                custList[i][0] = String.format("%06d", r.getInt("cust_id"));
-                custList[i][1] = r.getString("fname") + " " + r.getString("lname");
-                i++;
+            if (r.next()) {
+                do {
+                    custList[i][0] = String.format("%06d", r.getInt("cust_id"));
+                    custList[i][1] = r.getString("fname") + " " + r.getString("lname");
+                    i++;
+                } while (r.next());
+                System.out.println("--------------------------------------------------------------------------------");
+                Utility custUtility = new Utility();
+                int custID = custUtility.inputRequestByMutedID(custList, input);
+                System.out.println("--------------------------------------------------------------------------------");
+                r = s.executeQuery("SELECT fname FROM customer WHERE cust_id = " + custID);
+                r.next(); // returns a boolean so we have to advance from up here
+                System.out.println("Welcome, " + r.getString("fname") + ". You are a distinguished member of our little");
+                System.out.println("insurance family, and we're glad to have you working with us today.");
+                customerInfo(c, custID);
             }
-            System.out.println("--------------------------------------------------------------------------------");
-            Utility custUtility = new Utility();
-            int custID = custUtility.inputRequestByMutedID(custList, input);
-            System.out.println("--------------------------------------------------------------------------------");
-            r = s.executeQuery("SELECT fname FROM customer WHERE cust_id = " + custID);
-            r.next(); // returns a boolean so we have to advance from up here
-            System.out.println("Welcome, " + r.getString("fname") + ". You are a distinguished member of our little");
-            System.out.println("insurance family, and we're glad to have you working with us today.");
-            customerInfo(c, custID);
+            else {
+                System.out.println("--------------------------------------------------------------------------------");
+                System.out.println("Never mind, we don't have any customers. An agent will have to sign you up.");
+                System.out.println("--------------------------------------------------------------------------------");
+            }
         }
         catch (SQLException e) {
             throw e;
