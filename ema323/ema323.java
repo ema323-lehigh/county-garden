@@ -18,7 +18,8 @@ public class ema323 {
             System.out.println("--------------------------------------------------------------------------------");
             c.setAutoCommit(false);
             System.out.println("Welcome. Are you...which type of user in our system?");
-            int choice = inputRequest(new String[] {"agent", "adjuster", "customer"}, input);
+            Utility mainUtility = new Utility(); // pull in object from shared functions class
+            int choice = mainUtility.inputRequest(new String[] {"agent", "adjuster", "customer"}, input);
             switch (choice) {
                 case 1:
                     System.out.println("Wonderful to have you doing business for us.");
@@ -42,29 +43,6 @@ public class ema323 {
         finally {
             input.close();
             System.out.println("--------------------------------------------------------------------------------");
-        }
-    }
-
-    public static int inputRequest(String[] choices, Scanner input) {
-        int choice;
-        for (int i = 0; i < choices.length; i++) {
-            System.out.println((i + 1) + ") " + choices[i]);
-        }
-        while (true) {
-            if (input.hasNextInt()) {
-                choice = input.nextInt();
-                input.nextLine();
-                if ((choice > 0) && (choice <= choices.length)) {
-                    return choice;
-                }
-                else {
-                    System.out.println("Please enter an integer corresponding to one of the choices above.");
-                }
-            }
-            else {
-                System.out.println("Please enter an integer corresponding to one of the choices above.");
-                input.nextLine();
-            }
         }
     }
 }

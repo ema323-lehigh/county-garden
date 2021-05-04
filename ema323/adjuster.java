@@ -14,7 +14,8 @@ public class Adjuster {
                 i++;
             }
             System.out.println("--------------------------------------------------------------------------------");
-            int adjID = inputRequestByID(adjList, input);
+            Utility adjUtility = new Utility();
+            int adjID = adjUtility.inputRequestByID(adjList, input);
             System.out.println("--------------------------------------------------------------------------------");
             r = s.executeQuery("SELECT aname FROM adjuster WHERE adj_id = " + adjID);
             r.next(); // returns a boolean so we have to advance from up here
@@ -22,29 +23,6 @@ public class Adjuster {
         }
         catch (SQLException e) {
             throw e;
-        }
-    }
-
-    public static int inputRequestByID(String[][] choices, Scanner input) {
-        int choice;
-        for (int i = 0; i < choices.length; i++) {
-            if (choices[i][0] != null) { System.out.println((i + 1) + ") " + choices[i][1] + " (" + choices[i][0] + ")"); }
-        }
-        while (true) {
-            if (input.hasNextInt()) {
-                choice = input.nextInt();
-                input.nextLine();
-                if ((choice > 0) && (choice <= choices.length)) {
-                    return Integer.parseInt(choices[choice - 1][0]);
-                }
-                else {
-                    System.out.println("Please enter an integer corresponding to one of the choices above.");
-                }
-            }
-            else {
-                System.out.println("Please enter an integer corresponding to one of the choices above.");
-                input.nextLine();
-            }
         }
     }
 }
