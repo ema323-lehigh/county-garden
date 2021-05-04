@@ -1,180 +1,180 @@
-INSERT INTO customer VALUES (293722,
-        'Curry', 'H', 'Sonair',
-        'Sr.', DATE '1935-01-13', 619785);
-INSERT INTO customer VALUES (508736,
-        'Katherine', '', 'Persephone',
-        '', DATE '1960-04-05', 111634);
-INSERT INTO customer VALUES (016353,
-        'Bliss', 'E', 'McKinnon',
-        'II', DATE '1952-03-06', 111634);
-INSERT INTO customer VALUES (147297,
-        'Simone', '', 'Scott',
-        '', DATE '1985-01-28', 950870);
-INSERT INTO customer VALUES (018068,
-        'Adrian', '', 'Ezra',
-        '', DATE '1932-11-03', 950870);
-INSERT INTO customer VALUES (332818,
-        'Herff', '', 'Bledsoe',
-        '', DATE '1956-07-18', 619785);
-INSERT INTO customer VALUES (553023,
-        'Jin', '', 'Jones',
-        '', DATE '1965-04-08', 111634);
-INSERT INTO customer VALUES (974438,
-        'Benjamin', 'G', 'Kelbow',
-        '', DATE '1931-11-04', 950870);
-INSERT INTO customer VALUES (770176,
-        'Sander', '', 'Ventus',
-        '', DATE '1986-02-07', 490989);
-INSERT INTO customer VALUES (069073,
-        'Kai', '', 'Lucas',
-        '', DATE '1952-08-03', 584925);
-INSERT INTO customer VALUES (851662,
-        'Tracy', 'K', 'Horn',
-        '', DATE '1945-05-02', 619785);
-INSERT INTO customer VALUES (159618,
-        'Wyatt', 'Y', 'Wolfe',
-        '', DATE '1980-12-13', 619785);
-INSERT INTO customer VALUES (514222,
-        'Haedelich', 'G', 'Zekeret',
-        '', DATE '1974-01-06', 619785);
-INSERT INTO customer VALUES (028075,
-        'Dion', '', 'Dorn',
-        '', DATE '1991-11-27', 619785);
-INSERT INTO customer VALUES (013715,
-        'Sid', '', 'Weghofer',
-        '', DATE '1954-08-11', 950870);
-INSERT INTO customer VALUES (126854,
-        'Bob', 'L', 'Myers',
-        '', DATE '1994-09-20', 111634);
-INSERT INTO customer VALUES (807239,
-        'Jason', '', 'Megrez',
-        '', DATE '1970-05-03', 490989);
-INSERT INTO customer VALUES (386364,
-        'Richie', 'H', 'Finlay',
-        '', DATE '1975-12-30', 584925);
-INSERT INTO customer VALUES (866397,
-        'Joseph', '', 'Bryant',
-        '', DATE '1966-07-11', 490989);
-INSERT INTO customer VALUES (019073,
-        'Sharon', '', 'Weaver',
-        '', DATE '1981-06-13', 111634);
-INSERT INTO customer VALUES (632610,
-        'Trevor', '', 'Lovelace',
-        '', DATE '1989-03-20', 619785);
-INSERT INTO customer VALUES (108241,
-        'Jaylie', '', 'Pelessian',
-        '', DATE '1951-08-07', 950870);
-INSERT INTO customer VALUES (366738,
-        'Ciara', '', 'Bowler',
-        '', DATE '1987-07-15', 490989);
-INSERT INTO customer VALUES (006686,
-        'Jack', 'Q', 'Cameron',
-        '', DATE '1994-12-28', 619785);
-INSERT INTO customer VALUES (369176,
-        'Barry', '', 'Bresnen',
-        '', DATE '1973-03-05', 619785);
-INSERT INTO customer VALUES (358082,
-        'Stephanie', 'J', 'Ocypete',
-        'II', DATE '1921-04-05', 950870);
-INSERT INTO customer VALUES (077858,
-        'Laura', '', 'Becker',
-        '', DATE '1927-11-19', 490989);
-INSERT INTO customer VALUES (406541,
-        'Tommy', 'A', 'Sawamoto',
-        '', DATE '1924-06-16', 950870);
-INSERT INTO customer VALUES (689546,
-        'Devan', 'N', 'Docketti',
-        '', DATE '1988-02-26', 111634);
-INSERT INTO customer VALUES (381980,
-        'Dawn', '', 'Katten',
-        '', DATE '1996-07-17', 584925);
-INSERT INTO customer VALUES (121314,
-        'Ken', 'X', 'Gadot',
-        '', DATE '1998-07-20', 111634);
-INSERT INTO customer VALUES (341627,
-        'Eva', '', 'Fibonacci',
-        '', DATE '1976-02-23', 584925);
-INSERT INTO customer VALUES (190392,
-        'Pearl', 'W', 'Moyer',
-        '', DATE '1977-09-05', 619785);
-INSERT INTO customer VALUES (802978,
-        'Kylie', '', 'Suda',
-        '', DATE '1947-07-29', 490989);
-INSERT INTO customer VALUES (678858,
-        'Michael', 'T', 'Necker',
-        '', DATE '1993-07-14', 490989);
-INSERT INTO customer VALUES (648897,
-        'Brianna', '', 'Hogeland',
-        '', DATE '1930-01-02', 584925);
-INSERT INTO customer VALUES (209324,
-        'Simon', '', 'Barno',
-        '', DATE '1924-05-19', 584925);
-INSERT INTO customer VALUES (580893,
-        'Iona', 'Y', 'Whitton',
-        '', DATE '1962-06-03', 111634);
-INSERT INTO customer VALUES (827604,
-        'Millicent', '', 'Ritson',
-        '', DATE '1947-02-02', 584925);
-INSERT INTO customer VALUES (964567,
-        'Celia', '', 'Tecrenzio',
-        '', DATE '1929-06-29', 490989);
-INSERT INTO customer VALUES (168004,
-        'Zelda', '', 'Clark',
-        '', DATE '1923-08-19', 490989);
-INSERT INTO customer VALUES (824023,
-        'Jack', 'C', 'Perry',
-        '', DATE '1931-06-30', 490989);
-INSERT INTO customer VALUES (591860,
-        'Luigi', '', 'Zhang',
-        '', DATE '1927-02-01', 111634);
-INSERT INTO customer VALUES (302258,
-        'Emily', '', 'Lin',
-        '', DATE '1965-12-13', 619785);
-INSERT INTO customer VALUES (392703,
-        'Kathy', '', 'Smith',
-        '', DATE '1940-03-05', 490989);
-INSERT INTO customer VALUES (868782,
-        'Nathanael', '', 'Hernandez',
-        'Jr.', DATE '1971-08-20', 490989);
-INSERT INTO customer VALUES (071555,
-        'Leland', '', 'Salerno',
-        '', DATE '1927-11-08', 584925);
-INSERT INTO customer VALUES (337682,
-        'Sidney', '', 'Lyatt',
-        '', DATE '1986-01-07', 619785);
-INSERT INTO customer VALUES (664368,
-        'Greg', '', 'Briggs',
-        '', DATE '1994-07-29', 950870);
-INSERT INTO customer VALUES (166712,
-        'John', '', 'Fermio',
-        '', DATE '1990-06-03', 619785);
-INSERT INTO customer VALUES (993707,
-        'Gerry', 'Q', 'Goguyeva',
-        '', DATE '1974-05-31', 111634);
-INSERT INTO customer VALUES (942367,
-        'Cheryl', 'S', 'Blake',
-        '', DATE '1968-04-09', 950870);
-INSERT INTO customer VALUES (531110,
-        'Kevin', '', 'Dlugosz',
-        '', DATE '1952-08-11', 950870);
-INSERT INTO customer VALUES (173535,
-        'Bridget', 'U', 'Origo',
-        '', DATE '1951-05-10', 584925);
-INSERT INTO customer VALUES (399638,
-        'Maggie', 'B', 'Chan',
-        '', DATE '1939-04-24', 950870);
-INSERT INTO customer VALUES (230518,
-        'Addam', 'J', 'Daphnes',
-        '', DATE '1949-01-14', 619785);
-INSERT INTO customer VALUES (638219,
-        'Robbie', 'I', 'Wenowski',
-        '', DATE '1992-01-17', 490989);
-INSERT INTO customer VALUES (461526,
-        'Salvatore', 'R', 'Watson',
-        '', DATE '1937-08-06', 619785);
-INSERT INTO customer VALUES (582513,
-        'Diane', '', 'Sheridan',
-        '', DATE '1946-12-04', 619785);
-INSERT INTO customer VALUES (053676,
-        'Jeremy', 'L', 'Kent',
-        '', DATE '1942-06-03', 490989);
+INSERT INTO customer VALUES (544106,
+        'Cassandra', '', 'Kent',
+        '', DATE '1930-02-10', 698669);
+INSERT INTO customer VALUES (021692,
+        'Pearl', '', 'Cameron',
+        '', DATE '1981-09-25', 949824);
+INSERT INTO customer VALUES (426821,
+        'Emily', '', 'Bledsoe',
+        '', DATE '1938-05-28', 698669);
+INSERT INTO customer VALUES (835072,
+        'Zelda', 'W', 'Katten',
+        '', DATE '1937-03-28', 417885);
+INSERT INTO customer VALUES (911930,
+        'Mito', '', 'Maxwell',
+        '', DATE '1983-08-14', 116238);
+INSERT INTO customer VALUES (630391,
+        'Trevor', 'N', 'Lyatt',
+        '', DATE '1992-07-06', 949824);
+INSERT INTO customer VALUES (024138,
+        'Jason', '', 'Hogeland',
+        '', DATE '1955-11-05', 371262);
+INSERT INTO customer VALUES (744137,
+        'Regina', '', 'Chan',
+        '', DATE '1971-09-09', 714582);
+INSERT INTO customer VALUES (823040,
+        'Nathan', 'S', 'Alphonse',
+        'III', DATE '1936-08-13', 698669);
+INSERT INTO customer VALUES (783849,
+        'Cody', '', 'Ritson',
+        '', DATE '1923-12-11', 116238);
+INSERT INTO customer VALUES (910198,
+        'Samantha', 'A', 'Lovelace',
+        '', DATE '1967-10-11', 714582);
+INSERT INTO customer VALUES (650974,
+        'David', 'R', 'Sheridan',
+        '', DATE '1984-10-18', 698669);
+INSERT INTO customer VALUES (931341,
+        'Jeremy', 'J', 'Clark',
+        '', DATE '1920-03-24', 698669);
+INSERT INTO customer VALUES (927567,
+        'Haedelich', 'E', 'Moyer',
+        '', DATE '1982-04-24', 698669);
+INSERT INTO customer VALUES (781706,
+        'Sue', 'T', 'Bresnen',
+        '', DATE '1996-04-03', 714582);
+INSERT INTO customer VALUES (456904,
+        'Sander', 'B', 'Kerbeck',
+        'Sr.', DATE '1980-09-23', 698669);
+INSERT INTO customer VALUES (144526,
+        'Dylan', 'I', 'Michelson',
+        '', DATE '1921-05-18', 116238);
+INSERT INTO customer VALUES (177695,
+        'Janine', '', 'Ferdinand',
+        '', DATE '1955-10-21', 116238);
+INSERT INTO customer VALUES (760056,
+        'Gustav', '', 'Intoch',
+        '', DATE '1979-06-29', 116238);
+INSERT INTO customer VALUES (501551,
+        'Carson', 'F', 'Hernandez',
+        '', DATE '1969-03-17', 949824);
+INSERT INTO customer VALUES (154100,
+        'Ezra', 'I', 'Docketti',
+        'Sr.', DATE '1920-02-01', 714582);
+INSERT INTO customer VALUES (835235,
+        'Vic', 'M', 'Sawamoto',
+        '', DATE '1990-12-19', 417885);
+INSERT INTO customer VALUES (920072,
+        'Bliss', 'P', 'Tecrenzio',
+        '', DATE '1982-04-10', 714582);
+INSERT INTO customer VALUES (112876,
+        'Rex', 'X', 'Scott',
+        '', DATE '1981-10-23', 949824);
+INSERT INTO customer VALUES (416852,
+        'Bob', '', 'Weghofer',
+        '', DATE '1941-11-04', 371262);
+INSERT INTO customer VALUES (539541,
+        'Simon', '', 'Kelbow',
+        '', DATE '1965-07-13', 714582);
+INSERT INTO customer VALUES (366966,
+        'Lauryn', '', 'Megrez',
+        '', DATE '1980-09-12', 714582);
+INSERT INTO customer VALUES (122107,
+        'Robbie', 'E', 'Wolfe',
+        '', DATE '1990-11-08', 698669);
+INSERT INTO customer VALUES (113280,
+        'Wilfred', '', 'Origo',
+        '', DATE '1967-01-11', 698669);
+INSERT INTO customer VALUES (981259,
+        'John', 'H', 'Daphnes',
+        '', DATE '1930-10-20', 116238);
+INSERT INTO customer VALUES (859908,
+        'Nia', '', 'Fermio',
+        '', DATE '1967-10-06', 698669);
+INSERT INTO customer VALUES (448527,
+        'Salvatore', '', 'Bowler',
+        '', DATE '1925-04-05', 116238);
+INSERT INTO customer VALUES (383201,
+        'Celia', '', 'Morris',
+        '', DATE '1992-12-07', 949824);
+INSERT INTO customer VALUES (846180,
+        'Kimberly', 'F', 'Bryant',
+        'I', DATE '1966-07-20', 949824);
+INSERT INTO customer VALUES (473900,
+        'Flora', '', 'Gadot',
+        '', DATE '1927-04-22', 949824);
+INSERT INTO customer VALUES (758389,
+        'Nick', '', 'Brownstone',
+        '', DATE '1972-07-08', 417885);
+INSERT INTO customer VALUES (035521,
+        'Greg', 'H', 'Wigg',
+        '', DATE '1969-12-08', 116238);
+INSERT INTO customer VALUES (729323,
+        'Simone', 'O', 'Barno',
+        '', DATE '1931-05-24', 116238);
+INSERT INTO customer VALUES (093879,
+        'Olivia', 'S', 'Finlay',
+        '', DATE '1945-03-31', 714582);
+INSERT INTO customer VALUES (114229,
+        'Shawna', '', 'Matser',
+        '', DATE '1957-11-07', 371262);
+INSERT INTO customer VALUES (106894,
+        'Lisa', '', 'Becker',
+        '', DATE '1973-05-08', 371262);
+INSERT INTO customer VALUES (882906,
+        'Sid', '', 'Persephone',
+        '', DATE '1939-06-19', 371262);
+INSERT INTO customer VALUES (011292,
+        'Jaylie', '', 'Nguyen',
+        '', DATE '1983-10-10', 698669);
+INSERT INTO customer VALUES (508162,
+        'Ricky', 'B', 'Toucanian',
+        '', DATE '1997-10-26', 417885);
+INSERT INTO customer VALUES (847409,
+        'Kai', 'J', 'Lucas',
+        'Jr.', DATE '1943-03-16', 116238);
+INSERT INTO customer VALUES (206776,
+        'Emma', 'C', 'Goguyeva',
+        'Esq.', DATE '1990-08-10', 714582);
+INSERT INTO customer VALUES (194157,
+        'Chuck', '', 'Dorn',
+        '', DATE '1972-03-27', 698669);
+INSERT INTO customer VALUES (790774,
+        'Catie', '', 'Thornley',
+        '', DATE '1978-02-23', 698669);
+INSERT INTO customer VALUES (994149,
+        'Brooks', '', 'Whitton',
+        '', DATE '1949-07-24', 714582);
+INSERT INTO customer VALUES (811979,
+        'Brian', 'E', 'Necker',
+        '', DATE '1977-11-30', 714582);
+INSERT INTO customer VALUES (392617,
+        'Spencer', '', 'Blake',
+        '', DATE '1968-03-14', 371262);
+INSERT INTO customer VALUES (385233,
+        'Katherine', 'B', 'Horn',
+        '', DATE '1991-11-23', 371262);
+INSERT INTO customer VALUES (657386,
+        'Curry', '', 'Sonair',
+        '', DATE '1962-05-17', 949824);
+INSERT INTO customer VALUES (614834,
+        'Adrian', 'F', 'Fibonacci',
+        '', DATE '1984-07-05', 714582);
+INSERT INTO customer VALUES (534132,
+        'Diane', '', 'Wenowski',
+        '', DATE '1932-03-28', 116238);
+INSERT INTO customer VALUES (965105,
+        'Kevin', '', 'Ocypete',
+        '', DATE '1954-07-27', 417885);
+INSERT INTO customer VALUES (252169,
+        'Eva', '', 'Briggs',
+        '', DATE '1930-07-08', 371262);
+INSERT INTO customer VALUES (723926,
+        'Courtney', '', 'Ping',
+        '', DATE '1974-08-29', 949824);
+INSERT INTO customer VALUES (863150,
+        'Jack', '', 'Lin',
+        '', DATE '1943-02-07', 371262);
+INSERT INTO customer VALUES (060734,
+        'Dion', '', 'Weaver',
+        'II', DATE '1956-06-04', 949824);

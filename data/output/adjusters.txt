@@ -1,7 +1,6 @@
-INSERT INTO adjuster VALUES (706459, 'Miles Welbis', 'machinery');
-INSERT INTO adjuster VALUES (098058, 'Courtney Ferdinand', 'property');
-INSERT INTO adjuster VALUES (547744, 'Olivia Intoch', 'collision');
-INSERT INTO adjuster VALUES (964444, 'Lisa Nguyen', 'machinery');
-INSERT INTO adjuster VALUES (705182, 'Mikhail Thornley', 'property');
-INSERT INTO adjuster VALUES (821281, 'Matthew Alphonse', 'collision');
-INSERT INTO adjuster VALUES (261732, 'Regina Matser', 'wellness');
+INSERT INTO adjuster VALUES (632069, 'Alfredo Ezra', 'wellness');
+INSERT INTO adjuster VALUES (063977, 'Debbie Welbis', 'wellness');
+INSERT INTO adjuster VALUES (860699, 'Joseph Perry', 'collision');
+INSERT INTO adjuster VALUES (199968, 'Mario Suda', 'property');
+INSERT INTO adjuster VALUES (087673, 'Barry Riddell', 'collision');
+INSERT INTO adjuster VALUES (728852, 'Devan Dlugosz', 'wellness');

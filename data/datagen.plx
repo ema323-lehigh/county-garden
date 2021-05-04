@@ -113,7 +113,7 @@ foreach my $key (keys %custrecs) {
             my $claim_loc = "$address, $state, $city, $zipcode";
             my $claim_id = &rand_id; my $description = $descriptions[rand(@descriptions)];
             my $date1 = rand_date( min => '2000-01-01', max => '2021-05-01' );
-            my $date2 = (int(rand(10)) * 86400); my $title = $titles[rand(@titles)];
+            my $date2 = int(rand(10)); my $title = $titles[rand(@titles)];
             print CLAIMS "INSERT INTO claim VALUES ($claim_id, '$title', '$claim_loc', '$description', DATE '$date1', DATE '$date1' + $date2, $policy_id);\n";
         }
     }
