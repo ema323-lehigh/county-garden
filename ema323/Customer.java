@@ -7,10 +7,10 @@ public class Customer {
         System.out.println("Which customer are you? I will provide a listing for convenience,");
         System.out.println("though it somewhat diminishes the disciplinary integrity of our system.");
         try (Statement s = c.createStatement();) {
-            ResultSet r = s.executeQuery("SELECT TO_CHAR(cust_id, '000009') AS cust_id, fname, lname FROM customer ORDER BY lname");
+            ResultSet r = s.executeQuery("SELECT cust_id, fname, lname FROM customer ORDER BY lname");
             String[][] custList = new String[100][2]; int i = 0; // assuming a safe reasonable number of customers
             while (r.next()) {
-                custList[i][0] = String.valueOf(r.getInt("cust_id"));
+                custList[i][0] = String.format("%06d", r.getInt("cust_id"));
                 custList[i][1] = r.getString("fname") + " " + r.getString("lname");
                 i++;
             }
@@ -32,8 +32,8 @@ public class Customer {
     private static void customerInfo(Connection c, int custID) throws SQLException {
         try (Statement s = c.createStatement();) {
             ResultSet r; // for symmetry/parallelism
-            r = s.executeQuery("SELECT TO_CHAR(cust_id, '000009') AS cust_id, fname, lname, minitial, suffix, birth_date, agent_id FROM customer WHERE cust_id = " + custID);
-            r.next(); //String custerID = r.getString("cust_id");
+            r = s.executeQuery("SELECT fname, lname, minitial, suffix, birth_date, agent_id FROM customer WHERE cust_id = " + custID);
+            r.next(); // we already have custID
             String custName = r.getString("lname") + ", " + r.getString("fname");
             String minitial = r.getString("minitial"); if (minitial != null) { custName += " " + minitial + "."; }
             String suffix = r.getString("suffix"); if (suffix != null) { custName += ", " + suffix; }
@@ -44,7 +44,7 @@ public class Customer {
             int numPolicies = 0; if (r.next()) { numPolicies = r.getInt(1); }
             r = s.executeQuery("SELECT COUNT(*) FROM dependentt WHERE cust_id = " + custID);
             int numDependents = 0; if (r.next()) { numDependents = r.getInt(1); }
-            System.out.println("(" + custID + ") " + custName + " | " + numPolicies + " policies | " + numDependents + " dependents");
+            System.out.printf("(%06d) %s | %d policies | %d dependents\n", custID, custName, numPolicies, numDependents);
         }
         catch (SQLException e) {
             throw e;

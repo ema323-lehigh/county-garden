@@ -6,10 +6,10 @@ public class Agent {
     public static void agentDriver(Connection c, Scanner input) throws SQLException {
         System.out.println("Which agent are you? I will provide a listing for convenience.");
         try (Statement s = c.createStatement();) {
-            ResultSet r = s.executeQuery("SELECT TO_CHAR(agent_id, '000009') AS agent_id, aname FROM agent ORDER BY aname");
+            ResultSet r = s.executeQuery("SELECT agent_id, aname FROM agent ORDER BY aname");
             String[][] agentList = new String[20][2]; int i = 0; // assuming a safe reasonable number of agents
             while (r.next()) {
-                agentList[i][0] = String.valueOf(r.getInt("agent_id"));
+                agentList[i][0] = String.format("%06d", r.getInt("agent_id"));
                 agentList[i][1] = r.getString("aname");
                 i++;
             }
