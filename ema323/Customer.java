@@ -2,23 +2,25 @@ import java.sql.*;
 import java.io.*;
 import java.util.Scanner;
 
-public class Adjuster {
-    public static void adjusterDriver(Connection c, Scanner input) throws SQLException {
-        System.out.println("Which adjuster are you? I will provide a listing for convenience.");
+public class Customer {
+    public static void customerDriver(Connection c, Scanner input) throws SQLException {
+        System.out.println("Which customer are you? I will provide a listing for convenience,");
+        System.out.println("though it somewhat diminishes the disciplinary integrity of our system.");
         try (Statement s = c.createStatement();) {
-            ResultSet r = s.executeQuery("SELECT TO_CHAR(adj_id, '000009') AS adj_id, aname FROM adjuster ORDER BY aname");
-            String[][] adjList = new String[20][2]; int i = 0; // assuming a safe reasonable number of adjusters
+            ResultSet r = s.executeQuery("SELECT TO_CHAR(cust_id, '000009') AS cust_id, fname, lname FROM customer ORDER BY lname");
+            String[][] custList = new String[100][2]; int i = 0; // assuming a safe reasonable number of customers
             while (r.next()) {
-                adjList[i][0] = String.valueOf(r.getInt("adj_id"));
-                adjList[i][1] = r.getString("aname");
+                custList[i][0] = String.valueOf(r.getInt("cust_id"));
+                custList[i][1] = r.getString("fname") + " " + r.getString("lname");
                 i++;
             }
             System.out.println("--------------------------------------------------------------------------------");
-            int adjID = inputRequestByID(adjList, input);
+            int custID = inputRequestByID(custList, input);
             System.out.println("--------------------------------------------------------------------------------");
-            r = s.executeQuery("SELECT aname FROM adjuster WHERE adj_id = " + adjID);
+            r = s.executeQuery("SELECT fname FROM customer WHERE cust_id = " + custID);
             r.next(); // returns a boolean so we have to advance from up here
-            System.out.println("Welcome, " + r.getString("aname").split(" ", 2)[0] + ".");
+            System.out.println("Welcome, " + r.getString("fname") + ". You are a distinguished member of our little");
+            System.out.println("insurance family, and we're glad to have you working with us today.");
         }
         catch (SQLException e) {
             throw e;
@@ -28,7 +30,7 @@ public class Adjuster {
     public static int inputRequestByID(String[][] choices, Scanner input) {
         int choice;
         for (int i = 0; i < choices.length; i++) {
-            if (choices[i][0] != null) { System.out.println((i + 1) + ") " + choices[i][1] + " (" + choices[i][0] + ")"); }
+            if (choices[i][0] != null) { System.out.println((i + 1) + ") " + choices[i][1]); }
         }
         while (true) {
             if (input.hasNextInt()) {

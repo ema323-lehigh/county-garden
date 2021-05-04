@@ -30,6 +30,7 @@ public class ema323 {
                     break;
                 case 3:
                     System.out.println("Wonderful to have you doing business with us.");
+                    Customer customer = new Customer(); customer.customerDriver(c, input);
                     break;
             }
             c.close();
