@@ -71,6 +71,7 @@ public class Customer {
             }
             else {
                 System.out.println("Huh, we don't have any phone numbers for you. We should fix that.");
+                addCustPhone(c, input, custID);
             }
         }
         catch (SQLException e) {
@@ -103,6 +104,30 @@ public class Customer {
                 p.executeQuery(); // replace it with the new one
                 c.commit();
                 System.out.println("Success! Your new address information has been saved.");
+            }
+            catch (SQLException e) {
+                c.rollback();
+                System.out.println("Something seems to have gone wrong. Please try again soon.");
+            }
+        }
+        catch (SQLException e) {
+            throw e;
+        }
+    }
+    private static void addCustPhone(Connection c, Scanner input, int custID) throws SQLException {
+        try (PreparedStatement p = c.prepareStatement("INSERT INTO phone_num VALUES (?, ?, ?)");) {
+
+            Utility custUtility = new Utility();
+            System.out.println("Enter the type of line (ex. home, work, cell):");
+            String kind = custUtility.inputRequestString(input, "^\\D+$");
+            System.out.println("Enter the 10-digit number (no formatting):");
+            String number = custUtility.inputRequestString(input, "^\\d{10}$");
+            p.setString(2, kind); p.setString(1, number); p.setInt(3, custID);
+
+            try { // no need to check for existing numbers here
+                p.executeQuery(); // let 'er rip
+                c.commit();
+                System.out.println("Success! Your new contact information has been saved.");
             }
             catch (SQLException e) {
                 c.rollback();
