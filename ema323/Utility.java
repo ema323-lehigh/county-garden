@@ -1,5 +1,6 @@
 import java.sql.*;
 import java.io.*;
+import java.util.regex.*;
 import java.util.Scanner;
 
 public class Utility {
@@ -123,6 +124,19 @@ public class Utility {
             else {
                 System.out.println("Please enter an integer corresponding to one of the choices above.");
                 input.nextLine();
+            }
+        }
+    }
+
+    public static String inputRequestString(Scanner input, String format) {
+        Pattern pattern = Pattern.compile(format);
+        while (true) {
+            String buffer = input.nextLine();
+            if (!pattern.matcher(buffer).find()) {
+                System.out.println("Please match the expected format.");
+            }
+            else {
+                return buffer;
             }
         }
     }

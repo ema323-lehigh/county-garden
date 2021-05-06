@@ -24,7 +24,7 @@ public class Customer {
                 System.out.println("Welcome, " + r.getString("fname") + ". You are a distinguished member of our little");
                 System.out.println("insurance family, and we're glad to have you working with us today.");
                 System.out.println("--------------------------------------------------------------------------------");
-                customerInfo(c, custID);
+                customerInfo(c, input, custID);
             }
             else {
                 System.out.println("--------------------------------------------------------------------------------");
@@ -37,7 +37,7 @@ public class Customer {
         }
     }
 
-    private static void customerInfo(Connection c, int custID) throws SQLException {
+    private static void customerInfo(Connection c, Scanner input, int custID) throws SQLException {
         try (Statement s = c.createStatement();) {
             ResultSet r; // for symmetry/parallelism
             r = s.executeQuery("SELECT fname, lname, minitial, suffix, birth_date, agent_id FROM customer WHERE cust_id = " + custID);
@@ -59,6 +59,7 @@ public class Customer {
             }
             else {
                 System.out.println("Huh, we don't have an address for you. We should fix that.");
+                addCustAddress(c, input, custID);
 
             }
             r = s.executeQuery("SELECT * FROM phone_num WHERE cust_id = " + custID);
@@ -70,6 +71,42 @@ public class Customer {
             }
             else {
                 System.out.println("Huh, we don't have any phone numbers for you. We should fix that.");
+            }
+        }
+        catch (SQLException e) {
+            throw e;
+        }
+    }
+
+    private static void addCustAddress(Connection c, Scanner input, int custID) throws SQLException {
+        try (Statement s = c.createStatement(); Statement t = c.createStatement();
+            PreparedStatement p = c.prepareStatement("INSERT INTO cust_add VALUES (?, ?, ?, ?, ?)");) {
+
+            Utility custUtility = new Utility();
+            System.out.println("Enter your street address (ex. 123 Sesame Place):");
+            String street = custUtility.inputRequestString(input, "^\\d{1,4} \\D+ \\D+$");
+            System.out.println("Enter your city/town (must be a word composed of letters only):");
+            String city = custUtility.inputRequestString(input, "^\\D+$");
+            System.out.println("Enter your state (ex. AB):");
+            String state = custUtility.inputRequestString(input, "^[A-Z]{2}$");
+            System.out.println("Enter your zipcode (five digits only):");
+            int zipcode = Integer.parseInt(custUtility.inputRequestString(input, "^\\d{5}$"));
+            p.setString(1, street); p.setString(2, city); p.setString(3, state); p.setInt(4, zipcode);
+
+            try { // instead of wrapper methods & passing things around just do it all here
+                // check if an address already exists for the customer
+                ResultSet r = s.executeQuery("SELECT * FROM cust_add WHERE cust_id = " + custID);
+                if (r.next()) { // delete that address
+                    t.executeQuery("DELETE FROM cust_add WHERE cust_id = " + custID);
+                }
+                p.setInt(5, custID);
+                p.executeQuery(); // replace it with the new one
+                c.commit();
+                System.out.println("Success! Your new address information has been saved.");
+            }
+            catch (SQLException e) {
+                c.rollback();
+                System.out.println("Something seems to have gone wrong. Please try again soon.");
             }
         }
         catch (SQLException e) {
