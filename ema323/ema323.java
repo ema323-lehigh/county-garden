@@ -15,9 +15,9 @@ public class ema323 {
 
         try (Connection c = DriverManager.getConnection(dbdeets, username, password);) {
             System.out.println("...connected.");
-            System.out.println("--------------------------------------------------------------------------------");
             c.setAutoCommit(false);
             while (true) {
+                System.out.println("--------------------------------------------------------------------------------");
                 System.out.println("Welcome. Are you...which type of user in our system?");
                 Utility mainUtility = new Utility(); // pull in object from shared functions class
                 int choice = mainUtility.inputRequest(new String[] {"agent", "adjuster", "customer"}, input);

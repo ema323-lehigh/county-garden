@@ -23,6 +23,7 @@ public class Customer {
                 r.next(); // returns a boolean so we have to advance from up here
                 System.out.println("Welcome, " + r.getString("fname") + ". You are a distinguished member of our little");
                 System.out.println("insurance family, and we're glad to have you working with us today.");
+                System.out.println("--------------------------------------------------------------------------------");
                 customerInfo(c, custID);
             }
             else {
@@ -52,6 +53,24 @@ public class Customer {
             r = s.executeQuery("SELECT COUNT(*) FROM dependentt WHERE cust_id = " + custID);
             int numDependents = 0; if (r.next()) { numDependents = r.getInt(1); }
             System.out.printf("(%06d) %s | %d policies | %d dependents\n", custID, custName, numPolicies, numDependents);
+            r = s.executeQuery("SELECT * FROM cust_add WHERE cust_id = " + custID);
+            if (r.next()) {
+                System.out.println(r.getString("street") + ", " + r.getString("city") + ", " + r.getString("astate") + ", " + String.format("%05d", r.getInt("zipcode")));
+            }
+            else {
+                System.out.println("Huh, we don't have an address for you. We should fix that.");
+
+            }
+            r = s.executeQuery("SELECT * FROM phone_num WHERE cust_id = " + custID);
+            if (r.next()) {
+                do {
+                    System.out.println(r.getString("kind") + " phone: (" + r.getString("numb").substring(0, 3) +
+                    ")-" +r.getString("numb").substring(3, 6) + "-" + r.getString("numb").substring(6));
+                } while (r.next());
+            }
+            else {
+                System.out.println("Huh, we don't have any phone numbers for you. We should fix that.");
+            }
         }
         catch (SQLException e) {
             throw e;
