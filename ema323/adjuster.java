@@ -27,7 +27,7 @@ public class Adjuster {
                     int choice = adjUtility.inputRequest(new String[] {"assign claims", "manage claims"}, input);
                     switch (choice) {
                         case 1:
-                            assignClaims(c, input, adjList);
+                            assignClaims(c, input);
                             break;
                         case 2:
                             manageClaims(c, input, adjID);
@@ -48,9 +48,8 @@ public class Adjuster {
         }
     }
 
-    private static void assignClaims(Connection c, Scanner input, String[][] adjList) throws SQLException {
-        try (Statement s = c.createStatement();
-            PreparedStatement p = c.prepareStatement("INSERT INTO manages VALUES (?, ?)");) {
+    private static void assignClaims(Connection c, Scanner input) throws SQLException {
+        try (Statement s = c.createStatement();) {
             ResultSet r = s.executeQuery("SELECT * FROM claim WHERE NOT EXISTS (SELECT * FROM manages WHERE manages.claim_id = claim.claim_id)");
             String[][] claimList = new String[100][2]; int i = 0; // assuming a safe reasonable number of claims
             if (r.next()) {
@@ -62,12 +61,7 @@ public class Adjuster {
                 System.out.println("--------------------------------------------------------------------------------");
                 Utility adjUtility = new Utility();
                 int claimID = adjUtility.inputRequestByID(claimList, input);
-                System.out.println("--------------------------------------------------------------------------------");
-                System.out.println("To which adjuster would you like to assign this claim? Specialties are noted.");
-                int adjID = adjUtility.inputRequestByIDAttribute(adjList, input);
-                p.setInt(1, claimID); p.setInt(2, adjID); p.executeQuery(); c.commit();
-                System.out.println("--------------------------------------------------------------------------------");
-                System.out.printf("Assignment successful; adjuster #%06d now manages claim #%06d.\n", adjID, claimID);
+                addAdjuster(c, input, claimID);
             }
             else {
                 System.out.println("--------------------------------------------------------------------------------");
@@ -95,6 +89,21 @@ public class Adjuster {
                 Utility adjUtility = new Utility();
                 int claimID = adjUtility.inputRequestByID(claimList, input);
                 claimInfo(c, claimID);
+                while (true) {
+                    System.out.println("What would you like to do?");
+                    int choice = adjUtility.inputRequest(new String[] {"add an adjuster", "add a contractor", "make a payment"}, input);
+                    switch (choice) {
+                        case 1:
+                            addAdjuster(c, input, claimID);
+                            break;
+                        case 2:
+                            addContractor(c, input, claimID);
+                            break;
+                        case 3:
+                            makePayment(c, input, claimID);
+                            break;
+                    }
+                }
             }
             else {
                 System.out.println("--------------------------------------------------------------------------------");
@@ -125,5 +134,72 @@ public class Adjuster {
         catch (SQLException e) {
             throw e;
         }
+    }
+
+    private static void addAdjuster(Connection c, Scanner input, int claimID) throws SQLException {
+        try (PreparedStatement p = c.prepareStatement("INSERT INTO manages VALUES (?, ?)");) {
+            System.out.println("To which adjuster would you like to assign this claim? Specialties are noted.");
+            int adjID = selectAdjuster(c, input);
+            p.setInt(1, claimID); p.setInt(2, adjID);
+            try {
+                p.executeQuery();
+                c.commit();
+                System.out.printf("Assignment successful; adjuster #%06d now manages claim #%06d.\n", adjID, claimID);
+            }
+            catch (SQLException e) {
+                System.out.println("Looks like something went wrong. Please try again later.");
+            }
+            System.out.println("--------------------------------------------------------------------------------");
+        }
+        catch (SQLException e) {
+            throw e;
+        }
+    }
+
+    private static void addContractor(Connection c, Scanner input, int claimID) throws SQLException {
+        /*try {
+            System.out.println("Shell method");
+        }
+        catch (SQLException e) {
+            throw e;
+        }*/
+        System.out.println("bloop");
+    }
+
+    private static void makePayment(Connection c, Scanner input, int claimID) throws SQLException {
+        /*try {
+            System.out.println("Shell method");
+        }
+        catch (SQLException e) {
+            throw e;
+        }*/
+        System.out.println("bloop");
+    }
+
+    private static int selectAdjuster(Connection c, Scanner input) throws SQLException {
+        try (Statement s = c.createStatement();) {
+            ResultSet r = s.executeQuery("SELECT adj_id, aname, specialty FROM adjuster ORDER BY aname");
+            String[][] adjList = new String[20][3]; int i = 0; // assuming a safe reasonable number of adjusters
+            if (r.next()) {
+                do {
+                    adjList[i][0] = String.format("%06d", r.getInt("adj_id"));
+                    adjList[i][1] = r.getString("aname");
+                    adjList[i][2] = r.getString("specialty");
+                    i++;
+                } while (r.next());
+                System.out.println("--------------------------------------------------------------------------------");
+                Utility adjUtility = new Utility();
+                int adjID = adjUtility.inputRequestByID(adjList, input);
+                System.out.println("--------------------------------------------------------------------------------");
+                return adjID;
+            }
+            else {
+                System.out.println("Uh...anybody home? I guess there are no adjusters around anyway.");
+            }
+        }
+        catch (SQLException e) {
+            throw e;
+        }
+        return -1;
     }
 }
