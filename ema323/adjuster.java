@@ -11,10 +11,11 @@ public class Adjuster {
                 ResultSet r = s.executeQuery("SELECT aname FROM adjuster WHERE adj_id = " + adjID);
                 r.next(); // returns a boolean so we have to advance from up here
                 System.out.println("Welcome, " + r.getString("aname").split(" ", 2)[0] + ".");
+                boolean backout = false;
                 while (true) {
                     System.out.println("What would you like to do?");
                     Utility adjUtility = new Utility();
-                    int choice = adjUtility.inputRequest(new String[] {"assign claims", "manage claims"}, input);
+                    int choice = adjUtility.inputRequest(new String[] {"assign claims", "manage claims", "back"}, input);
                     switch (choice) {
                         case 1:
                             assignClaims(c, input);
@@ -22,7 +23,11 @@ public class Adjuster {
                         case 2:
                             manageClaims(c, input, adjID);
                             break;
+                        case 3:
+                            backout = true;
+                            break;
                     }
+                    if (backout) { break; }
                 }
             }
             else {
@@ -79,9 +84,10 @@ public class Adjuster {
                 Utility adjUtility = new Utility();
                 int claimID = adjUtility.inputRequestByID(claimList, input);
                 claimInfo(c, claimID);
+                boolean backout = false;
                 while (true) {
                     System.out.println("What would you like to do?");
-                    int choice = adjUtility.inputRequest(new String[] {"add an adjuster", "add a contractor", "make a payment"}, input);
+                    int choice = adjUtility.inputRequest(new String[] {"add an adjuster", "add a contractor", "make a payment", "back"}, input);
                     switch (choice) {
                         case 1:
                             addAdjuster(c, input, claimID);
@@ -92,7 +98,11 @@ public class Adjuster {
                         case 3:
                             makePayment(c, input, claimID);
                             break;
+                        case 4:
+                            backout = true;
+                            break;
                     }
+                    if (backout) { break; }
                 }
             }
             else {

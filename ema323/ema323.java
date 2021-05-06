@@ -15,6 +15,7 @@ public class ema323 {
 
         try (Connection c = DriverManager.getConnection(dbdeets, username, password);) {
             System.out.println("...connected.");
+            System.out.println("(Please expand the height of your terminal window as much as possible!)");
             c.setAutoCommit(false);
             while (true) {
                 System.out.println("--------------------------------------------------------------------------------");

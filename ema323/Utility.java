@@ -11,26 +11,28 @@ public class Utility {
         }
         System.out.println((++i) + ") quit");
         while (true) {
-            if (input.hasNextInt()) {
-                choice = input.nextInt();
-                input.nextLine();
-                if (choice == i) {
-                    System.out.println("--------------------------------------------------------------------------------");
-                    System.out.println("Bye now!");
-                    System.out.println("--------------------------------------------------------------------------------");
-                    input.close();
-                    System.exit(0);
-                }
-                else if ((choice > 0) && (choice < i)) {
-                    return choice;
+            if (input.hasNextLine()) {
+                if (input.hasNextInt()) {
+                    choice = input.nextInt();
+                    input.nextLine();
+                    if (choice == i) {
+                        timeToGo(input);
+                    }
+                    else if ((choice > 0) && (choice < i)) {
+                        return choice;
+                    }
+                    else {
+                        System.out.println("Please enter an integer corresponding to one of the choices above.");
+                    }
                 }
                 else {
                     System.out.println("Please enter an integer corresponding to one of the choices above.");
+                    input.nextLine();
                 }
             }
             else {
-                System.out.println("Please enter an integer corresponding to one of the choices above.");
-                input.nextLine();
+                System.out.println("Since this isn't an actual update information entry, we'll take that to mean that you want to quit.");
+                timeToGo(input);
             }
         }
     }
@@ -47,26 +49,28 @@ public class Utility {
         }
         System.out.println((++i) + ") quit");
         while (true) {
-            if (input.hasNextInt()) {
-                choice = input.nextInt();
-                input.nextLine();
-                if (choice == i) {
-                    System.out.println("--------------------------------------------------------------------------------");
-                    System.out.println("Bye now!");
-                    System.out.println("--------------------------------------------------------------------------------");
-                    input.close();
-                    System.exit(0);
-                }
-                else if ((choice > 0) && (choice < i)) {
-                    return Integer.parseInt(choices[choice - 1][0]);
+            if (input.hasNextLine()) {
+                if (input.hasNextInt()) {
+                    choice = input.nextInt();
+                    input.nextLine();
+                    if (choice == i) {
+                        timeToGo(input);
+                    }
+                    else if ((choice > 0) && (choice < i)) {
+                        return Integer.parseInt(choices[choice - 1][0]);
+                    }
+                    else {
+                        System.out.println("Please enter an integer corresponding to one of the choices above.");
+                    }
                 }
                 else {
                     System.out.println("Please enter an integer corresponding to one of the choices above.");
+                    input.nextLine();
                 }
             }
             else {
-                System.out.println("Please enter an integer corresponding to one of the choices above.");
-                input.nextLine();
+                System.out.println("Since this isn't an actual update information entry, we'll take that to mean that you want to quit.");
+                timeToGo(input);
             }
         }
     }
@@ -83,26 +87,28 @@ public class Utility {
         }
         System.out.println((++i) + ") quit");
         while (true) {
-            if (input.hasNextInt()) {
-                choice = input.nextInt();
-                input.nextLine();
-                if (choice == i) {
-                    System.out.println("--------------------------------------------------------------------------------");
-                    System.out.println("Bye now!");
-                    System.out.println("--------------------------------------------------------------------------------");
-                    input.close();
-                    System.exit(0);
-                }
-                else if ((choice > 0) && (choice < i)) {
-                    return Integer.parseInt(choices[choice - 1][0]);
+            if (input.hasNextLine()) {
+                if (input.hasNextInt()) {
+                    choice = input.nextInt();
+                    input.nextLine();
+                    if (choice == i) {
+                        timeToGo(input);
+                    }
+                    else if ((choice > 0) && (choice < i)) {
+                        return Integer.parseInt(choices[choice - 1][0]);
+                    }
+                    else {
+                        System.out.println("Please enter an integer corresponding to one of the choices above.");
+                    }
                 }
                 else {
                     System.out.println("Please enter an integer corresponding to one of the choices above.");
+                    input.nextLine();
                 }
             }
             else {
-                System.out.println("Please enter an integer corresponding to one of the choices above.");
-                input.nextLine();
+                System.out.println("Since this isn't an actual update information entry, we'll take that to mean that you want to quit.");
+                timeToGo(input);
             }
         }
     }
@@ -119,26 +125,28 @@ public class Utility {
         }
         System.out.println((++i) + ") quit");
         while (true) {
-            if (input.hasNextInt()) {
-                choice = input.nextInt();
-                input.nextLine();
-                if (choice == i) {
-                    System.out.println("--------------------------------------------------------------------------------");
-                    System.out.println("Bye now!");
-                    System.out.println("--------------------------------------------------------------------------------");
-                    input.close();
-                    System.exit(0);
-                }
-                else if ((choice > 0) && (choice < i)) {
-                    return Integer.parseInt(choices[choice - 1][0]);
+            if (input.hasNextLine()) {
+                if (input.hasNextInt()) {
+                    choice = input.nextInt();
+                    input.nextLine();
+                    if (choice == i) {
+                        timeToGo(input);
+                    }
+                    else if ((choice > 0) && (choice < i)) {
+                        return Integer.parseInt(choices[choice - 1][0]);
+                    }
+                    else {
+                        System.out.println("Please enter an integer corresponding to one of the choices above.");
+                    }
                 }
                 else {
                     System.out.println("Please enter an integer corresponding to one of the choices above.");
+                    input.nextLine();
                 }
             }
             else {
-                System.out.println("Please enter an integer corresponding to one of the choices above.");
-                input.nextLine();
+                System.out.println("Since this isn't an actual update information entry, we'll take that to mean that you want to quit.");
+                timeToGo(input);
             }
         }
     }
@@ -146,13 +154,27 @@ public class Utility {
     public static String inputRequestString(Scanner input, String format) {
         Pattern pattern = Pattern.compile(format);
         while (true) {
-            String buffer = input.nextLine();
-            if (!pattern.matcher(buffer).find()) {
-                System.out.println("Please match the expected format.");
+            if (input.hasNextLine()) {
+                String buffer = input.nextLine();
+                if (!pattern.matcher(buffer).find()) {
+                    System.out.println("Please match the expected format.");
+                }
+                else {
+                    return buffer;
+                }
             }
             else {
-                return buffer;
+                System.out.println("Okay, we'll back out of this menu.");
+                return "__BACK__";
             }
         }
+    }
+
+    private static void timeToGo(Scanner input) {
+        System.out.println("--------------------------------------------------------------------------------");
+        System.out.println("Bye now!");
+        System.out.println("--------------------------------------------------------------------------------");
+        input.close();
+        System.exit(0);
     }
 }

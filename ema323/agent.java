@@ -21,14 +21,19 @@ public class Agent {
                 r = s.executeQuery("SELECT aname FROM agent WHERE agent_id = " + agentID);
                 r.next(); // returns a boolean so we have to advance from up here
                 System.out.println("Welcome, " + r.getString("aname").split(" ", 2)[0] + ".");
+                boolean backout = false;
                 while (true) {
                     System.out.println("What would you like to do?");
-                    int choice = agentUtility.inputRequest(new String[] {"tell me a joke"}, input);
+                    int choice = agentUtility.inputRequest(new String[] {"tell me a joke", "back"}, input);
                     switch (choice) {
                         case 1:
                             System.out.println("A joke? You're a joke, trying to get into our systems.");
                             break;
+                        case 2:
+                            backout = true;
+                            break;
                     }
+                    if (backout) { break; }
                 }
             }
             else {

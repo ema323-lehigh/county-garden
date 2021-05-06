@@ -24,9 +24,10 @@ public class Customer {
                 System.out.println("Welcome, " + r.getString("fname") + ". You are a distinguished member of our little");
                 System.out.println("insurance family, and we're glad to have you working with us today.");
                 customerInfo(c, input, custID);
+                boolean backout = false;
                 while (true) {
                     System.out.println("What would you like to do?");
-                    int choice = custUtility.inputRequest(new String[] {"display information", "update address", "update phone"}, input);
+                    int choice = custUtility.inputRequest(new String[] {"display information", "update address", "update phone", "back"}, input);
                     switch (choice) {
                         case 1:
                             customerInfo(c, input, custID);
@@ -37,7 +38,11 @@ public class Customer {
                         case 3:
                             addCustPhone(c, input, custID);
                             break;
+                        case 4:
+                            backout = true;
+                            break;
                     }
+                    if (backout) { break; }
                 }
             }
             else {
@@ -104,13 +109,18 @@ public class Customer {
             System.out.println("--------------------------------------------------------------------------------");
             System.out.println("Enter your street address (ex. 123 Sesame Place):");
             String street = custUtility.inputRequestString(input, "^\\d{1,4} \\D+ \\D+$");
+            if (street.equals("__BACK__")) { return; }
             System.out.println("Enter your city/town (must be a word composed of letters only):");
             String city = custUtility.inputRequestString(input, "^\\D+$");
+            if (city.equals("__BACK__")) { return; }
             System.out.println("Enter your state (ex. AB):");
             String state = custUtility.inputRequestString(input, "^[A-Z]{2}$");
+            if (state.equals("__BACK__")) { return; }
             System.out.println("Enter your zipcode (five digits only):");
-            int zipcode = Integer.parseInt(custUtility.inputRequestString(input, "^\\d{5}$"));
-            p.setString(1, street); p.setString(2, city); p.setString(3, state); p.setInt(4, zipcode);
+            String zipcode = custUtility.inputRequestString(input, "^\\d{5}$");
+            if (zipcode.equals("__BACK__")) { return; }
+            int zipcod = Integer.parseInt(zipcode);
+            p.setString(1, street); p.setString(2, city); p.setString(3, state); p.setInt(4, zipcod);
 
             try { // instead of wrapper methods & passing things around just do it all here
                 // check if an address already exists for the customer
@@ -140,8 +150,10 @@ public class Customer {
             System.out.println("--------------------------------------------------------------------------------");
             System.out.println("Enter the type of line (ex. home, work, cell):");
             String kind = custUtility.inputRequestString(input, "^\\D+$");
+            if (kind.equals("__BACK__")) { return; }
             System.out.println("Enter the 10-digit number (no formatting):");
             String number = custUtility.inputRequestString(input, "^\\d{10}$");
+            if (number.equals("__BACK__")) { return; }
             p.setString(2, kind); p.setString(1, number); p.setInt(3, custID);
 
             try { // no need to check for existing numbers here
