@@ -1,5 +1,5 @@
-INSERT into firm_add VALUES ('296 Cherry Ave.', 'Bloomis', 'DE', 6663, 720541);
-INSERT into firm_add VALUES ('182 Pine Blvd.', 'Canade', 'TB', 9019, 361700);
-INSERT into firm_add VALUES ('206 Birch Pike', 'Lackawanna', 'IT', 781, 275475);
-INSERT into firm_add VALUES ('94 Center Ln.', 'Placeau', 'EV', 6840, 060682);
-INSERT into firm_add VALUES ('67 Cherry Rd.', 'Bloomis', 'XE', 1935, 525755);
+INSERT into firm_add VALUES ('303 Birch Ln.', 'Runcham', 'LK', 90032, 093407);
+INSERT into firm_add VALUES ('559 Birch St.', 'Placeau', 'JH', 83628, 922195);
+INSERT into firm_add VALUES ('766 Center Ln.', 'Bloomis', 'VP', 41023, 608486);
+INSERT into firm_add VALUES ('58 Lamia Pike', 'Bloomis', 'MO', 37940, 883387);
+INSERT into firm_add VALUES ('305 Walnut Rd.', 'Wantage', 'HX', 57331, 058201);

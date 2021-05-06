@@ -76,9 +76,9 @@ foreach my $key (keys %custrecs) {
     print CUSTOMERS "INSERT INTO customer VALUES ($key,
         '$custrecs{$key}{$fname}', '$custrecs{$key}{$minitial}', '$custrecs{$key}{$lname}',
         '$custrecs{$key}{$suffix}', DATE '$custrecs{$key}{$dob}', $custrecs{$key}{$agent});\n";
-    my $address = int(rand(300)) . " " . $streets[rand(@streets)] . " " . $abbrevs[rand(@abbrevs)];
+    my $address = int(rand(1000)) . " " . $streets[rand(@streets)] . " " . $abbrevs[rand(@abbrevs)];
     my $state = $initials[rand(@initials)] . $initials[rand(@initials)];
-    my $city = $cities[rand(@cities)]; my $zipcode = int(rand(9999));
+    my $city = $cities[rand(@cities)]; my $zipcode = int(rand(100000));
     print ADDRESSES "INSERT into cust_add VALUES ('$address', '$city', '$state', $zipcode, $key);\n";
     #if ($custrecs{$key}{$dob} < '1990-01-01') {
         my $dep_bounds = int(rand(3));
@@ -107,9 +107,9 @@ foreach my $key (keys %custrecs) {
             }
         }
         if (int(rand(2)) % 2 == 0) {
-            my $address = int(rand(300)) . " " . $streets[rand(@streets)] . " " . $abbrevs[rand(@abbrevs)];
+            my $address = int(rand(1000)) . " " . $streets[rand(@streets)] . " " . $abbrevs[rand(@abbrevs)];
             my $state = $initials[rand(@initials)] . $initials[rand(@initials)];
-            my $city = $cities[rand(@cities)]; my $zipcode = int(rand(9999));
+            my $city = $cities[rand(@cities)]; my $zipcode = sprintf("%05d", int(rand(100000)));
             my $claim_loc = "$address, $state, $city, $zipcode";
             my $claim_id = &rand_id; my $description = $descriptions[rand(@descriptions)];
             my $date1 = rand_date( min => '2000-01-01', max => '2021-05-01' );
@@ -129,8 +129,8 @@ for (my $i = 0; $i < 5; $i++) {
     my $cname = shift(@businesses);
     print CONTRACTORS "INSERT INTO contractor VALUES ($curr_id, '$industry', '$cname', $firmnum);\n";
 
-    my $address = int(rand(300)) . " " . $streets[rand(@streets)] . " " . $abbrevs[rand(@abbrevs)];
+    my $address = int(rand(1000)) . " " . $streets[rand(@streets)] . " " . $abbrevs[rand(@abbrevs)];
     my $state = $initials[rand(@initials)] . $initials[rand(@initials)];
-    my $city = $cities[rand(@cities)]; my $zipcode = int(rand(9999));
+    my $city = $cities[rand(@cities)]; my $zipcode = int(rand(100000));
     print FIRMADDS "INSERT into firm_add VALUES ('$address', '$city', '$state', $zipcode, $curr_id);\n";
 }

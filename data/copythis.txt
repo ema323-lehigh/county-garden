@@ -1,460 +1,483 @@
 DELETE employee;
-INSERT INTO employee VALUES (632069, 'Alfredo Ezra');
-INSERT INTO employee VALUES (063977, 'Debbie Welbis');
-INSERT INTO employee VALUES (417885, 'Eugene Zhang');
-INSERT INTO employee VALUES (714582, 'Iona Smith');
-INSERT INTO employee VALUES (116238, 'Richie Bennett');
-INSERT INTO employee VALUES (860699, 'Joseph Perry');
-INSERT INTO employee VALUES (698669, 'Laura Salerno');
-INSERT INTO employee VALUES (199968, 'Mario Suda');
-INSERT INTO employee VALUES (087673, 'Barry Riddell');
-INSERT INTO employee VALUES (728852, 'Devan Dlugosz');
-INSERT INTO employee VALUES (949824, 'Tommy McKinnon');
-INSERT INTO employee VALUES (371262, 'Leland Yarpan');
+INSERT INTO employee VALUES (266696, 'Janine Thornley');
+INSERT INTO employee VALUES (693139, 'Wyatt Ventus');
+INSERT INTO employee VALUES (377225, 'Nicholas Katten');
+INSERT INTO employee VALUES (712523, 'Helen Becker');
+INSERT INTO employee VALUES (844953, 'Sander Bennett');
+INSERT INTO employee VALUES (890576, 'Jack Matser');
+INSERT INTO employee VALUES (152126, 'Zachary Weaver');
+INSERT INTO employee VALUES (363567, 'Mito Lin');
+INSERT INTO employee VALUES (294216, 'Ciara Wigg');
+INSERT INTO employee VALUES (184656, 'Ethan Finlay');
+INSERT INTO employee VALUES (289402, 'Katherine Cameron');
+INSERT INTO employee VALUES (125601, 'Bridget Tecrenzio');
 
 DELETE agent;
-INSERT INTO agent VALUES (417885, 'Eugene Zhang', 6);
-INSERT INTO agent VALUES (714582, 'Iona Smith', 24);
-INSERT INTO agent VALUES (116238, 'Richie Bennett', 24);
-INSERT INTO agent VALUES (698669, 'Laura Salerno', 12);
-INSERT INTO agent VALUES (949824, 'Tommy McKinnon', 11);
-INSERT INTO agent VALUES (371262, 'Leland Yarpan', 16);
+INSERT INTO agent VALUES (266696, 'Janine Thornley', 6);
+INSERT INTO agent VALUES (363567, 'Mito Lin', 15);
+INSERT INTO agent VALUES (184656, 'Ethan Finlay', 2);
+INSERT INTO agent VALUES (125601, 'Bridget Tecrenzio', 3);
 
 DELETE adjuster;
-INSERT INTO adjuster VALUES (632069, 'Alfredo Ezra', 'wellness');
-INSERT INTO adjuster VALUES (063977, 'Debbie Welbis', 'wellness');
-INSERT INTO adjuster VALUES (860699, 'Joseph Perry', 'collision');
-INSERT INTO adjuster VALUES (199968, 'Mario Suda', 'property');
-INSERT INTO adjuster VALUES (087673, 'Barry Riddell', 'collision');
-INSERT INTO adjuster VALUES (728852, 'Devan Dlugosz', 'wellness');
+INSERT INTO adjuster VALUES (693139, 'Wyatt Ventus', 'machinery');
+INSERT INTO adjuster VALUES (377225, 'Nicholas Katten', 'collision');
+INSERT INTO adjuster VALUES (712523, 'Helen Becker', 'machinery');
+INSERT INTO adjuster VALUES (844953, 'Sander Bennett', 'property');
+INSERT INTO adjuster VALUES (890576, 'Jack Matser', 'collision');
+INSERT INTO adjuster VALUES (152126, 'Zachary Weaver', 'valuables');
+INSERT INTO adjuster VALUES (294216, 'Ciara Wigg', 'wellness');
+INSERT INTO adjuster VALUES (289402, 'Katherine Cameron', 'property');
 
 DELETE customer;
-INSERT INTO customer VALUES (544106,
-        'Cassandra', '', 'Kent',
-        '', DATE '1930-02-10', 698669);
-INSERT INTO customer VALUES (021692,
-        'Pearl', '', 'Cameron',
-        '', DATE '1981-09-25', 949824);
-INSERT INTO customer VALUES (426821,
-        'Emily', '', 'Bledsoe',
-        '', DATE '1938-05-28', 698669);
-INSERT INTO customer VALUES (835072,
-        'Zelda', 'W', 'Katten',
-        '', DATE '1937-03-28', 417885);
-INSERT INTO customer VALUES (911930,
-        'Mito', '', 'Maxwell',
-        '', DATE '1983-08-14', 116238);
-INSERT INTO customer VALUES (630391,
-        'Trevor', 'N', 'Lyatt',
-        '', DATE '1992-07-06', 949824);
-INSERT INTO customer VALUES (024138,
-        'Jason', '', 'Hogeland',
-        '', DATE '1955-11-05', 371262);
-INSERT INTO customer VALUES (744137,
-        'Regina', '', 'Chan',
-        '', DATE '1971-09-09', 714582);
-INSERT INTO customer VALUES (823040,
-        'Nathan', 'S', 'Alphonse',
-        'III', DATE '1936-08-13', 698669);
-INSERT INTO customer VALUES (783849,
-        'Cody', '', 'Ritson',
-        '', DATE '1923-12-11', 116238);
-INSERT INTO customer VALUES (910198,
-        'Samantha', 'A', 'Lovelace',
-        '', DATE '1967-10-11', 714582);
-INSERT INTO customer VALUES (650974,
-        'David', 'R', 'Sheridan',
-        '', DATE '1984-10-18', 698669);
-INSERT INTO customer VALUES (931341,
-        'Jeremy', 'J', 'Clark',
-        '', DATE '1920-03-24', 698669);
-INSERT INTO customer VALUES (927567,
-        'Haedelich', 'E', 'Moyer',
-        '', DATE '1982-04-24', 698669);
-INSERT INTO customer VALUES (781706,
-        'Sue', 'T', 'Bresnen',
-        '', DATE '1996-04-03', 714582);
-INSERT INTO customer VALUES (456904,
-        'Sander', 'B', 'Kerbeck',
-        'Sr.', DATE '1980-09-23', 698669);
-INSERT INTO customer VALUES (144526,
-        'Dylan', 'I', 'Michelson',
-        '', DATE '1921-05-18', 116238);
-INSERT INTO customer VALUES (177695,
-        'Janine', '', 'Ferdinand',
-        '', DATE '1955-10-21', 116238);
-INSERT INTO customer VALUES (760056,
-        'Gustav', '', 'Intoch',
-        '', DATE '1979-06-29', 116238);
-INSERT INTO customer VALUES (501551,
-        'Carson', 'F', 'Hernandez',
-        '', DATE '1969-03-17', 949824);
-INSERT INTO customer VALUES (154100,
-        'Ezra', 'I', 'Docketti',
-        'Sr.', DATE '1920-02-01', 714582);
-INSERT INTO customer VALUES (835235,
-        'Vic', 'M', 'Sawamoto',
-        '', DATE '1990-12-19', 417885);
-INSERT INTO customer VALUES (920072,
-        'Bliss', 'P', 'Tecrenzio',
-        '', DATE '1982-04-10', 714582);
-INSERT INTO customer VALUES (112876,
-        'Rex', 'X', 'Scott',
-        '', DATE '1981-10-23', 949824);
-INSERT INTO customer VALUES (416852,
-        'Bob', '', 'Weghofer',
-        '', DATE '1941-11-04', 371262);
-INSERT INTO customer VALUES (539541,
-        'Simon', '', 'Kelbow',
-        '', DATE '1965-07-13', 714582);
-INSERT INTO customer VALUES (366966,
-        'Lauryn', '', 'Megrez',
-        '', DATE '1980-09-12', 714582);
-INSERT INTO customer VALUES (122107,
-        'Robbie', 'E', 'Wolfe',
-        '', DATE '1990-11-08', 698669);
-INSERT INTO customer VALUES (113280,
-        'Wilfred', '', 'Origo',
-        '', DATE '1967-01-11', 698669);
-INSERT INTO customer VALUES (981259,
-        'John', 'H', 'Daphnes',
-        '', DATE '1930-10-20', 116238);
-INSERT INTO customer VALUES (859908,
-        'Nia', '', 'Fermio',
-        '', DATE '1967-10-06', 698669);
-INSERT INTO customer VALUES (448527,
-        'Salvatore', '', 'Bowler',
-        '', DATE '1925-04-05', 116238);
-INSERT INTO customer VALUES (383201,
-        'Celia', '', 'Morris',
-        '', DATE '1992-12-07', 949824);
-INSERT INTO customer VALUES (846180,
-        'Kimberly', 'F', 'Bryant',
-        'I', DATE '1966-07-20', 949824);
-INSERT INTO customer VALUES (473900,
-        'Flora', '', 'Gadot',
-        '', DATE '1927-04-22', 949824);
-INSERT INTO customer VALUES (758389,
-        'Nick', '', 'Brownstone',
-        '', DATE '1972-07-08', 417885);
-INSERT INTO customer VALUES (035521,
-        'Greg', 'H', 'Wigg',
-        '', DATE '1969-12-08', 116238);
-INSERT INTO customer VALUES (729323,
-        'Simone', 'O', 'Barno',
-        '', DATE '1931-05-24', 116238);
-INSERT INTO customer VALUES (093879,
-        'Olivia', 'S', 'Finlay',
-        '', DATE '1945-03-31', 714582);
-INSERT INTO customer VALUES (114229,
-        'Shawna', '', 'Matser',
-        '', DATE '1957-11-07', 371262);
-INSERT INTO customer VALUES (106894,
-        'Lisa', '', 'Becker',
-        '', DATE '1973-05-08', 371262);
-INSERT INTO customer VALUES (882906,
-        'Sid', '', 'Persephone',
-        '', DATE '1939-06-19', 371262);
-INSERT INTO customer VALUES (011292,
-        'Jaylie', '', 'Nguyen',
-        '', DATE '1983-10-10', 698669);
-INSERT INTO customer VALUES (508162,
-        'Ricky', 'B', 'Toucanian',
-        '', DATE '1997-10-26', 417885);
-INSERT INTO customer VALUES (847409,
-        'Kai', 'J', 'Lucas',
-        'Jr.', DATE '1943-03-16', 116238);
-INSERT INTO customer VALUES (206776,
-        'Emma', 'C', 'Goguyeva',
-        'Esq.', DATE '1990-08-10', 714582);
-INSERT INTO customer VALUES (194157,
-        'Chuck', '', 'Dorn',
-        '', DATE '1972-03-27', 698669);
-INSERT INTO customer VALUES (790774,
-        'Catie', '', 'Thornley',
-        '', DATE '1978-02-23', 698669);
-INSERT INTO customer VALUES (994149,
-        'Brooks', '', 'Whitton',
-        '', DATE '1949-07-24', 714582);
-INSERT INTO customer VALUES (811979,
-        'Brian', 'E', 'Necker',
-        '', DATE '1977-11-30', 714582);
-INSERT INTO customer VALUES (392617,
-        'Spencer', '', 'Blake',
-        '', DATE '1968-03-14', 371262);
-INSERT INTO customer VALUES (385233,
-        'Katherine', 'B', 'Horn',
-        '', DATE '1991-11-23', 371262);
-INSERT INTO customer VALUES (657386,
-        'Curry', '', 'Sonair',
-        '', DATE '1962-05-17', 949824);
-INSERT INTO customer VALUES (614834,
-        'Adrian', 'F', 'Fibonacci',
-        '', DATE '1984-07-05', 714582);
-INSERT INTO customer VALUES (534132,
-        'Diane', '', 'Wenowski',
-        '', DATE '1932-03-28', 116238);
-INSERT INTO customer VALUES (965105,
-        'Kevin', '', 'Ocypete',
-        '', DATE '1954-07-27', 417885);
-INSERT INTO customer VALUES (252169,
-        'Eva', '', 'Briggs',
-        '', DATE '1930-07-08', 371262);
-INSERT INTO customer VALUES (723926,
-        'Courtney', '', 'Ping',
-        '', DATE '1974-08-29', 949824);
-INSERT INTO customer VALUES (863150,
-        'Jack', '', 'Lin',
-        '', DATE '1943-02-07', 371262);
-INSERT INTO customer VALUES (060734,
-        'Dion', '', 'Weaver',
-        'II', DATE '1956-06-04', 949824);
+INSERT INTO customer VALUES (673299,
+        'Simon', '', 'Perry',
+        '', DATE '1978-07-28', 266696);
+INSERT INTO customer VALUES (623641,
+        'Julie', '', 'Chan',
+        'II', DATE '1978-10-24', 363567);
+INSERT INTO customer VALUES (047743,
+        'Ernie', '', 'Ocypete',
+        '', DATE '1927-06-28', 125601);
+INSERT INTO customer VALUES (589410,
+        'Gary', '', 'Kerbeck',
+        '', DATE '1976-04-23', 266696);
+INSERT INTO customer VALUES (440373,
+        'Kai', 'R', 'Ezra',
+        '', DATE '1994-04-10', 266696);
+INSERT INTO customer VALUES (798715,
+        'Mario', '', 'Sonair',
+        'Esq.', DATE '1990-03-14', 266696);
+INSERT INTO customer VALUES (798630,
+        'Wilfred', 'U', 'Brownstone',
+        'Jr.', DATE '1969-11-27', 125601);
+INSERT INTO customer VALUES (781867,
+        'Brian', '', 'Bledsoe',
+        '', DATE '1971-06-10', 184656);
+INSERT INTO customer VALUES (862457,
+        'Derek', 'C', 'Barno',
+        '', DATE '1950-01-25', 266696);
+INSERT INTO customer VALUES (441653,
+        'Taylor', '', 'Origo',
+        '', DATE '1980-03-13', 184656);
+INSERT INTO customer VALUES (861015,
+        'Ezra', '', 'Wenowski',
+        '', DATE '1992-02-09', 363567);
+INSERT INTO customer VALUES (976406,
+        'Kathy', '', 'Morris',
+        '', DATE '1979-08-15', 125601);
+INSERT INTO customer VALUES (054697,
+        'Ricky', 'H', 'Lyatt',
+        '', DATE '1958-07-10', 266696);
+INSERT INTO customer VALUES (941337,
+        'Charlie', 'O', 'Sawamoto',
+        '', DATE '1952-08-01', 266696);
+INSERT INTO customer VALUES (127067,
+        'Tommy', '', 'Zekeret',
+        '', DATE '1940-11-23', 266696);
+INSERT INTO customer VALUES (358994,
+        'Henry', 'B', 'Blake',
+        '', DATE '1970-10-24', 363567);
+INSERT INTO customer VALUES (860411,
+        'Millicent', '', 'Jones',
+        '', DATE '1971-09-07', 184656);
+INSERT INTO customer VALUES (812526,
+        'Carson', 'P', 'Kelbow',
+        '', DATE '1981-10-31', 184656);
+INSERT INTO customer VALUES (059840,
+        'Joshua', 'T', 'Yarpan',
+        '', DATE '1922-07-27', 363567);
+INSERT INTO customer VALUES (542331,
+        'Katrina', '', 'Hernandez',
+        '', DATE '1982-09-20', 363567);
+INSERT INTO customer VALUES (913608,
+        'Shawna', '', 'Persephone',
+        'PhD.', DATE '1970-08-18', 184656);
+INSERT INTO customer VALUES (243670,
+        'Eva', 'A', 'Michelson',
+        'Sr.', DATE '1947-06-11', 363567);
+INSERT INTO customer VALUES (672997,
+        'Sharon', '', 'Whitton',
+        '', DATE '1954-11-26', 184656);
+INSERT INTO customer VALUES (133566,
+        'Richie', '', 'Gadot',
+        '', DATE '1955-01-23', 266696);
+INSERT INTO customer VALUES (212054,
+        'Jeremy', '', 'Salerno',
+        '', DATE '1969-03-24', 363567);
+INSERT INTO customer VALUES (371170,
+        'Jaylie', 'J', 'Zhang',
+        '', DATE '1975-07-31', 184656);
+INSERT INTO customer VALUES (176432,
+        'John', '', 'Bowler',
+        'III', DATE '1966-09-14', 125601);
+INSERT INTO customer VALUES (210420,
+        'Mildred', 'Q', 'Weghofer',
+        '', DATE '1973-02-01', 363567);
+INSERT INTO customer VALUES (274070,
+        'Cody', 'W', 'McKinnon',
+        '', DATE '1920-09-13', 125601);
+INSERT INTO customer VALUES (418123,
+        'Christopher', '', 'Myers',
+        'Jr.', DATE '1966-04-12', 363567);
+INSERT INTO customer VALUES (812362,
+        'Joseph', 'L', 'Fermio',
+        '', DATE '1981-04-04', 363567);
+INSERT INTO customer VALUES (527184,
+        'Olivia', 'J', 'Hogeland',
+        '', DATE '1943-02-19', 363567);
+INSERT INTO customer VALUES (242547,
+        'Barry', 'F', 'Megrez',
+        '', DATE '1968-02-20', 363567);
+INSERT INTO customer VALUES (280621,
+        'Nathanael', 'U', 'Bryant',
+        '', DATE '1985-02-20', 125601);
+INSERT INTO customer VALUES (950088,
+        'Samantha', 'T', 'Maxwell',
+        '', DATE '1979-04-02', 363567);
+INSERT INTO customer VALUES (473760,
+        'Lowell', '', 'Scott',
+        '', DATE '1974-03-24', 184656);
+INSERT INTO customer VALUES (987275,
+        'Dorothy', '', 'Fibonacci',
+        '', DATE '1989-04-12', 184656);
+INSERT INTO customer VALUES (380381,
+        'Brooks', '', 'Kent',
+        '', DATE '1951-09-11', 125601);
+INSERT INTO customer VALUES (267414,
+        'Trevor', 'V', 'Sheridan',
+        '', DATE '1925-11-11', 184656);
+INSERT INTO customer VALUES (144131,
+        'Herff', 'M', 'Welbis',
+        '', DATE '1975-06-13', 363567);
+INSERT INTO customer VALUES (813874,
+        'Sigmund', 'P', 'Intoch',
+        '', DATE '1963-06-02', 266696);
+INSERT INTO customer VALUES (356200,
+        'Sue', '', 'Nguyen',
+        'Sr.', DATE '1951-03-29', 266696);
+INSERT INTO customer VALUES (908247,
+        'Nick', '', 'Pelessian',
+        '', DATE '1929-09-08', 363567);
+INSERT INTO customer VALUES (699133,
+        'Luigi', 'K', 'Daphnes',
+        '', DATE '1950-11-21', 125601);
+INSERT INTO customer VALUES (750701,
+        'Dion', 'D', 'Smith',
+        '', DATE '1960-10-31', 266696);
+INSERT INTO customer VALUES (804350,
+        'Cheryl', '', 'Watson',
+        '', DATE '1960-01-17', 184656);
+INSERT INTO customer VALUES (282204,
+        'Ronald', 'B', 'Horn',
+        'Esq.', DATE '1922-06-13', 125601);
+INSERT INTO customer VALUES (950703,
+        'Robbie', '', 'Ritson',
+        '', DATE '1964-01-04', 125601);
+INSERT INTO customer VALUES (030146,
+        'Emily', 'N', 'Lucas',
+        '', DATE '1937-07-22', 363567);
+INSERT INTO customer VALUES (570328,
+        'Dawn', 'D', 'Goguyeva',
+        '', DATE '1995-01-14', 266696);
+INSERT INTO customer VALUES (984343,
+        'Gerry', 'Q', 'Bresnen',
+        '', DATE '1991-05-29', 266696);
+INSERT INTO customer VALUES (682205,
+        'Ryan', '', 'Clark',
+        'Esq.', DATE '1987-03-14', 363567);
+INSERT INTO customer VALUES (013893,
+        'Miles', 'C', 'Necker',
+        '', DATE '1991-09-15', 266696);
+INSERT INTO customer VALUES (688497,
+        'Haedelich', 'X', 'Briggs',
+        '', DATE '1955-06-25', 125601);
+INSERT INTO customer VALUES (151299,
+        'Mikhail', 'J', 'Ferdinand',
+        '', DATE '1976-05-08', 363567);
+INSERT INTO customer VALUES (947036,
+        'Celia', 'Q', 'Alphonse',
+        '', DATE '1933-10-22', 363567);
+INSERT INTO customer VALUES (507697,
+        'Rex', '', 'Dlugosz',
+        'PhD.', DATE '1926-07-07', 125601);
+INSERT INTO customer VALUES (150231,
+        'Kylie', 'D', 'Riddell',
+        'II', DATE '1961-05-02', 125601);
+INSERT INTO customer VALUES (151092,
+        'Allan', '', 'Toucanian',
+        '', DATE '1938-10-08', 363567);
+INSERT INTO customer VALUES (933318,
+        'Curry', 'X', 'Ping',
+        '', DATE '1932-03-27', 266696);
 
 DELETE cust_add;
-INSERT into cust_add VALUES ('186 Walnut Rd.', 'Lackawanna', 'NO', 7528, 544106);
-INSERT into cust_add VALUES ('92 Birch Rd.', 'Runcham', 'RU', 6919, 021692);
-INSERT into cust_add VALUES ('140 Winonine Rd.', 'Runcham', 'IA', 1449, 426821);
-INSERT into cust_add VALUES ('107 Pine St.', 'Canade', 'AM', 1225, 835072);
-INSERT into cust_add VALUES ('230 Walnut Blvd.', 'Bethlehem', 'SE', 3295, 911930);
-INSERT into cust_add VALUES ('78 Winonine Pike', 'Placeau', 'JK', 3404, 630391);
-INSERT into cust_add VALUES ('225 Cherry St.', 'Butzville', 'WB', 960, 024138);
-INSERT into cust_add VALUES ('159 Cole Blvd.', 'Lackawanna', 'PN', 1907, 744137);
-INSERT into cust_add VALUES ('16 Lamia Rd.', 'Bethlehem', 'WB', 9710, 823040);
-INSERT into cust_add VALUES ('217 Birch Ln.', 'Canade', 'GN', 9702, 783849);
-INSERT into cust_add VALUES ('220 Walnut St.', 'Canade', 'SB', 2477, 910198);
-INSERT into cust_add VALUES ('114 Winonine Pike', 'Canade', 'IC', 2493, 650974);
-INSERT into cust_add VALUES ('234 Winonine Pike', 'Runcham', 'IQ', 5517, 931341);
-INSERT into cust_add VALUES ('281 Pine Ave.', 'Placeau', 'VD', 654, 927567);
-INSERT into cust_add VALUES ('274 Walnut St.', 'Butzville', 'PW', 9282, 781706);
-INSERT into cust_add VALUES ('172 Pine St.', 'Bethlehem', 'JN', 2252, 456904);
-INSERT into cust_add VALUES ('131 Birch Blvd.', 'Lackawanna', 'CN', 3907, 144526);
-INSERT into cust_add VALUES ('276 Cherry Blvd.', 'Runcham', 'YH', 8002, 177695);
-INSERT into cust_add VALUES ('180 Walnut Pike', 'Placeau', 'VZ', 6888, 760056);
-INSERT into cust_add VALUES ('176 Cole Pike', 'Bloomis', 'PF', 842, 501551);
-INSERT into cust_add VALUES ('225 Pine Blvd.', 'Placeau', 'ZJ', 2013, 154100);
-INSERT into cust_add VALUES ('90 Center Ave.', 'Lackawanna', 'FM', 819, 835235);
-INSERT into cust_add VALUES ('93 Cherry Ln.', 'Bethlehem', 'IT', 2883, 920072);
-INSERT into cust_add VALUES ('41 Birch Rd.', 'Butzville', 'MK', 4413, 112876);
-INSERT into cust_add VALUES ('80 Walnut St.', 'Canade', 'YF', 4430, 416852);
-INSERT into cust_add VALUES ('249 Winonine Rd.', 'Canade', 'KN', 8257, 539541);
-INSERT into cust_add VALUES ('90 Winonine St.', 'Butzville', 'CD', 1981, 366966);
-INSERT into cust_add VALUES ('55 Lamia St.', 'Runcham', 'AX', 9156, 122107);
-INSERT into cust_add VALUES ('66 Cherry Ave.', 'Canade', 'NN', 9204, 113280);
-INSERT into cust_add VALUES ('77 Birch Blvd.', 'Bloomis', 'ZQ', 9790, 981259);
-INSERT into cust_add VALUES ('152 Cole St.', 'Bethlehem', 'IX', 5722, 859908);
-INSERT into cust_add VALUES ('86 Lamia Rd.', 'Butzville', 'ZN', 6244, 448527);
-INSERT into cust_add VALUES ('76 Walnut Pike', 'Bloomis', 'LD', 5534, 383201);
-INSERT into cust_add VALUES ('52 Pine Ave.', 'Placeau', 'EZ', 8212, 846180);
-INSERT into cust_add VALUES ('126 Center Ln.', 'Placeau', 'WS', 2001, 473900);
-INSERT into cust_add VALUES ('154 Lamia Blvd.', 'Butzville', 'FX', 9113, 758389);
-INSERT into cust_add VALUES ('294 Birch St.', 'Butzville', 'YG', 6942, 035521);
-INSERT into cust_add VALUES ('7 Pine Rd.', 'Wantage', 'FM', 7410, 729323);
-INSERT into cust_add VALUES ('103 Center Blvd.', 'Lackawanna', 'BZ', 7212, 093879);
-INSERT into cust_add VALUES ('240 Cole Blvd.', 'Wantage', 'LK', 9598, 114229);
-INSERT into cust_add VALUES ('293 Pine Blvd.', 'Wantage', 'LE', 7374, 106894);
-INSERT into cust_add VALUES ('73 Lamia Rd.', 'Canade', 'JN', 1909, 882906);
-INSERT into cust_add VALUES ('64 Cole Rd.', 'Wantage', 'MO', 4563, 011292);
-INSERT into cust_add VALUES ('299 Center Pike', 'Lackawanna', 'YR', 5256, 508162);
-INSERT into cust_add VALUES ('112 Walnut Rd.', 'Bloomis', 'PC', 1098, 847409);
-INSERT into cust_add VALUES ('299 Center Blvd.', 'Runcham', 'DB', 1019, 206776);
-INSERT into cust_add VALUES ('259 Winonine Rd.', 'Placeau', 'AN', 777, 194157);
-INSERT into cust_add VALUES ('192 Walnut Ave.', 'Bethlehem', 'CI', 2095, 790774);
-INSERT into cust_add VALUES ('119 Lamia Rd.', 'Placeau', 'KL', 6101, 994149);
-INSERT into cust_add VALUES ('128 Cherry Ln.', 'Lackawanna', 'KS', 5197, 811979);
-INSERT into cust_add VALUES ('290 Cole Blvd.', 'Bethlehem', 'CI', 3944, 392617);
-INSERT into cust_add VALUES ('45 Pine Rd.', 'Butzville', 'KW', 3206, 385233);
-INSERT into cust_add VALUES ('267 Lamia Ave.', 'Canade', 'ES', 8630, 657386);
-INSERT into cust_add VALUES ('296 Birch Ln.', 'Canade', 'DK', 6579, 614834);
-INSERT into cust_add VALUES ('210 Walnut Blvd.', 'Lackawanna', 'DW', 3315, 534132);
-INSERT into cust_add VALUES ('259 Lamia Ave.', 'Placeau', 'AK', 3320, 965105);
-INSERT into cust_add VALUES ('289 Winonine Pike', 'Lackawanna', 'DF', 876, 252169);
-INSERT into cust_add VALUES ('84 Pine Pike', 'Lackawanna', 'BE', 1748, 723926);
-INSERT into cust_add VALUES ('241 Birch Blvd.', 'Butzville', 'EY', 5861, 863150);
-INSERT into cust_add VALUES ('154 Lamia Blvd.', 'Placeau', 'OE', 7447, 060734);
+INSERT into cust_add VALUES ('65 Walnut St.', 'Placeau', 'CW', 40973, 673299);
+INSERT into cust_add VALUES ('76 Lamia Rd.', 'Canade', 'XN', 68656, 623641);
+INSERT into cust_add VALUES ('57 Winonine Ln.', 'Placeau', 'HU', 37218, 047743);
+INSERT into cust_add VALUES ('971 Cherry Pike', 'Lackawanna', 'VU', 1022, 589410);
+INSERT into cust_add VALUES ('435 Cherry St.', 'Wantage', 'ZZ', 68935, 440373);
+INSERT into cust_add VALUES ('641 Center Ln.', 'Bloomis', 'QI', 26959, 798715);
+INSERT into cust_add VALUES ('223 Center Rd.', 'Bloomis', 'VB', 81775, 798630);
+INSERT into cust_add VALUES ('212 Cherry Pike', 'Bethlehem', 'JX', 82802, 781867);
+INSERT into cust_add VALUES ('179 Center Blvd.', 'Lackawanna', 'GH', 96226, 862457);
+INSERT into cust_add VALUES ('555 Pine Ln.', 'Bethlehem', 'XF', 84367, 441653);
+INSERT into cust_add VALUES ('806 Cole St.', 'Canade', 'LZ', 84210, 861015);
+INSERT into cust_add VALUES ('529 Center Pike', 'Butzville', 'LC', 54818, 976406);
+INSERT into cust_add VALUES ('500 Pine Blvd.', 'Bloomis', 'YJ', 72115, 054697);
+INSERT into cust_add VALUES ('743 Cole Ln.', 'Bloomis', 'WK', 98425, 941337);
+INSERT into cust_add VALUES ('24 Birch Blvd.', 'Butzville', 'XF', 37827, 127067);
+INSERT into cust_add VALUES ('929 Lamia St.', 'Bloomis', 'AJ', 25257, 358994);
+INSERT into cust_add VALUES ('508 Walnut Pike', 'Lackawanna', 'ED', 11598, 860411);
+INSERT into cust_add VALUES ('31 Cherry St.', 'Wantage', 'NL', 58403, 812526);
+INSERT into cust_add VALUES ('114 Winonine St.', 'Butzville', 'WD', 63888, 059840);
+INSERT into cust_add VALUES ('134 Walnut Ave.', 'Bloomis', 'EW', 58371, 542331);
+INSERT into cust_add VALUES ('535 Cole Pike', 'Wantage', 'AG', 43302, 913608);
+INSERT into cust_add VALUES ('321 Birch Ln.', 'Runcham', 'XV', 31160, 243670);
+INSERT into cust_add VALUES ('110 Cherry Ave.', 'Bloomis', 'UF', 3602, 672997);
+INSERT into cust_add VALUES ('411 Center Pike', 'Bloomis', 'RU', 55523, 133566);
+INSERT into cust_add VALUES ('227 Lamia Ave.', 'Placeau', 'OY', 57054, 212054);
+INSERT into cust_add VALUES ('898 Pine Pike', 'Wantage', 'YC', 4607, 371170);
+INSERT into cust_add VALUES ('606 Lamia Ave.', 'Bethlehem', 'TV', 1256, 176432);
+INSERT into cust_add VALUES ('390 Walnut Pike', 'Runcham', 'HS', 78703, 210420);
+INSERT into cust_add VALUES ('446 Lamia Rd.', 'Bethlehem', 'ZV', 67208, 274070);
+INSERT into cust_add VALUES ('305 Cole Ave.', 'Bloomis', 'UO', 45836, 418123);
+INSERT into cust_add VALUES ('331 Cherry Rd.', 'Wantage', 'OF', 71318, 812362);
+INSERT into cust_add VALUES ('82 Walnut Ln.', 'Runcham', 'NH', 87162, 527184);
+INSERT into cust_add VALUES ('774 Winonine Ln.', 'Placeau', 'KG', 67389, 242547);
+INSERT into cust_add VALUES ('578 Pine Ln.', 'Bethlehem', 'PF', 80375, 280621);
+INSERT into cust_add VALUES ('345 Cherry Pike', 'Butzville', 'YF', 13868, 950088);
+INSERT into cust_add VALUES ('915 Birch Blvd.', 'Canade', 'HD', 23337, 473760);
+INSERT into cust_add VALUES ('166 Winonine Ln.', 'Wantage', 'NR', 34413, 987275);
+INSERT into cust_add VALUES ('839 Birch Ln.', 'Placeau', 'NZ', 6968, 380381);
+INSERT into cust_add VALUES ('773 Walnut Pike', 'Placeau', 'PK', 26549, 267414);
+INSERT into cust_add VALUES ('517 Winonine Ln.', 'Butzville', 'IN', 28079, 144131);
+INSERT into cust_add VALUES ('135 Walnut St.', 'Placeau', 'DP', 97279, 813874);
+INSERT into cust_add VALUES ('688 Winonine Ln.', 'Wantage', 'VK', 48005, 356200);
+INSERT into cust_add VALUES ('675 Winonine Pike', 'Bloomis', 'BY', 784, 908247);
+INSERT into cust_add VALUES ('590 Lamia St.', 'Lackawanna', 'RY', 37043, 699133);
+INSERT into cust_add VALUES ('296 Center St.', 'Runcham', 'DW', 12318, 750701);
+INSERT into cust_add VALUES ('273 Winonine Ln.', 'Wantage', 'BG', 60951, 804350);
+INSERT into cust_add VALUES ('618 Birch St.', 'Runcham', 'XW', 77241, 282204);
+INSERT into cust_add VALUES ('776 Cherry Ave.', 'Placeau', 'SM', 2100, 950703);
+INSERT into cust_add VALUES ('924 Cole Rd.', 'Canade', 'FN', 76759, 030146);
+INSERT into cust_add VALUES ('656 Winonine Ln.', 'Bethlehem', 'BS', 92480, 570328);
+INSERT into cust_add VALUES ('128 Walnut Ave.', 'Bethlehem', 'CK', 17886, 984343);
+INSERT into cust_add VALUES ('479 Lamia Rd.', 'Canade', 'OW', 2496, 682205);
+INSERT into cust_add VALUES ('253 Cherry Pike', 'Placeau', 'AR', 3806, 013893);
+INSERT into cust_add VALUES ('888 Walnut Rd.', 'Butzville', 'VL', 95638, 688497);
+INSERT into cust_add VALUES ('823 Center St.', 'Wantage', 'VB', 39409, 151299);
+INSERT into cust_add VALUES ('204 Birch St.', 'Placeau', 'RV', 91207, 947036);
+INSERT into cust_add VALUES ('510 Lamia Ln.', 'Bethlehem', 'XB', 89781, 507697);
+INSERT into cust_add VALUES ('168 Cole Ave.', 'Wantage', 'ZK', 26018, 150231);
+INSERT into cust_add VALUES ('125 Cole Ln.', 'Wantage', 'CP', 12920, 151092);
+INSERT into cust_add VALUES ('202 Winonine St.', 'Butzville', 'QJ', 69554, 933318);
 
 DELETE dependentt;
-INSERT INTO dependentt VALUES ('Christopher Cameron', 'ward', DATE '1989-04-09', 021692);
-INSERT INTO dependentt VALUES ('Julie Bledsoe', 'cousin', DATE '1943-09-28', 426821);
-INSERT INTO dependentt VALUES ('Ethan Katten', 'parent', DATE '1955-03-03', 835072);
-INSERT INTO dependentt VALUES ('Sigmund Katten', 'cousin', DATE '1980-02-28', 835072);
-INSERT INTO dependentt VALUES ('Jonathon Maxwell', 'sibling', DATE '2008-01-03', 911930);
-INSERT INTO dependentt VALUES ('Joshua Maxwell', 'child', DATE '1968-02-22', 911930);
-INSERT INTO dependentt VALUES ('Herff Lyatt', 'ward', DATE '1975-11-06', 630391);
-INSERT INTO dependentt VALUES ('Ronald Lyatt', 'cousin', DATE '1970-11-19', 630391);
-INSERT INTO dependentt VALUES ('Bridget Chan', 'cousin', DATE '1994-05-31', 744137);
-INSERT INTO dependentt VALUES ('Luigi Chan', 'cousin', DATE '1995-12-14', 744137);
-INSERT INTO dependentt VALUES ('Dorothy Ritson', 'cousin', DATE '1963-04-12', 783849);
-INSERT INTO dependentt VALUES ('Travis Clark', 'ward', DATE '1998-11-04', 931341);
-INSERT INTO dependentt VALUES ('Ernie Moyer', 'sibling', DATE '1941-10-22', 927567);
-INSERT INTO dependentt VALUES ('Danny Moyer', 'ward', DATE '1999-06-19', 927567);
-INSERT INTO dependentt VALUES ('Nathanael Bresnen', 'cousin', DATE '1939-04-28', 781706);
-INSERT INTO dependentt VALUES ('Jacob Bresnen', 'ward', DATE '1972-10-22', 781706);
-INSERT INTO dependentt VALUES ('Matthew Kerbeck', 'parent', DATE '1927-01-11', 456904);
-INSERT INTO dependentt VALUES ('Michael Kerbeck', 'sibling', DATE '1951-02-23', 456904);
-INSERT INTO dependentt VALUES ('Henry Michelson', 'child', DATE '2018-05-02', 144526);
-INSERT INTO dependentt VALUES ('Ryan Ferdinand', 'cousin', DATE '1991-09-27', 177695);
-INSERT INTO dependentt VALUES ('Derek Intoch', 'ward', DATE '1963-05-17', 760056);
-INSERT INTO dependentt VALUES ('Taylor Hernandez', 'ward', DATE '1969-10-15', 501551);
-INSERT INTO dependentt VALUES ('Katrina Tecrenzio', 'cousin', DATE '1934-03-15', 920072);
-INSERT INTO dependentt VALUES ('Gerry Megrez', 'parent', DATE '2003-02-03', 366966);
-INSERT INTO dependentt VALUES ('Jin Megrez', 'child', DATE '2019-05-05', 366966);
-INSERT INTO dependentt VALUES ('Nicholas Origo', 'ward', DATE '2012-04-19', 113280);
-INSERT INTO dependentt VALUES ('Wynona Origo', 'parent', DATE '1945-03-06', 113280);
-INSERT INTO dependentt VALUES ('Wyatt Morris', 'cousin', DATE '1962-02-01', 383201);
-INSERT INTO dependentt VALUES ('Tracy Morris', 'sibling', DATE '1933-11-15', 383201);
-INSERT INTO dependentt VALUES ('Jack Bryant', 'parent', DATE '1979-08-11', 846180);
-INSERT INTO dependentt VALUES ('Millicent Bryant', 'parent', DATE '1960-09-01', 846180);
-INSERT INTO dependentt VALUES ('Sharon Gadot', 'sibling', DATE '2012-05-03', 473900);
-INSERT INTO dependentt VALUES ('Dawn Brownstone', 'child', DATE '2009-12-11', 758389);
-INSERT INTO dependentt VALUES ('Charlie Wigg', 'parent', DATE '1927-09-17', 035521);
-INSERT INTO dependentt VALUES ('Gary Barno', 'parent', DATE '1935-05-23', 729323);
-INSERT INTO dependentt VALUES ('Brianna Finlay', 'child', DATE '2011-04-08', 093879);
-INSERT INTO dependentt VALUES ('Cheryl Matser', 'sibling', DATE '1987-09-06', 114229);
-INSERT INTO dependentt VALUES ('Ken Matser', 'sibling', DATE '1923-08-10', 114229);
-INSERT INTO dependentt VALUES ('Duncan Becker', 'parent', DATE '1921-10-28', 106894);
-INSERT INTO dependentt VALUES ('Rose Nguyen', 'ward', DATE '2010-03-21', 011292);
-INSERT INTO dependentt VALUES ('Allan Toucanian', 'sibling', DATE '1930-01-17', 508162);
-INSERT INTO dependentt VALUES ('Benjamin Lucas', 'parent', DATE '1933-09-13', 847409);
-INSERT INTO dependentt VALUES ('Mikhail Lucas', 'ward', DATE '1963-07-20', 847409);
-INSERT INTO dependentt VALUES ('Lowell Goguyeva', 'parent', DATE '1982-06-09', 206776);
-INSERT INTO dependentt VALUES ('Addam Dorn', 'sibling', DATE '1934-12-25', 194157);
-INSERT INTO dependentt VALUES ('Helen Whitton', 'cousin', DATE '2003-09-01', 994149);
-INSERT INTO dependentt VALUES ('Ciara Necker', 'child', DATE '1985-10-28', 811979);
-INSERT INTO dependentt VALUES ('Zachary Blake', 'sibling', DATE '1977-02-25', 392617);
-INSERT INTO dependentt VALUES ('Stephanie Blake', 'child', DATE '1986-01-30', 392617);
-INSERT INTO dependentt VALUES ('Kathy Sonair', 'parent', DATE '2017-12-14', 657386);
-INSERT INTO dependentt VALUES ('Cole Fibonacci', 'ward', DATE '1962-11-30', 614834);
-INSERT INTO dependentt VALUES ('Maggie Fibonacci', 'cousin', DATE '1951-12-06', 614834);
-INSERT INTO dependentt VALUES ('Wendy Wenowski', 'cousin', DATE '1955-06-02', 534132);
-INSERT INTO dependentt VALUES ('Sidney Briggs', 'ward', DATE '2016-04-26', 252169);
-INSERT INTO dependentt VALUES ('Mildred Weaver', 'parent', DATE '1942-12-13', 060734);
+INSERT INTO dependentt VALUES ('Courtney Perry', 'child', DATE '2002-10-12', 673299);
+INSERT INTO dependentt VALUES ('Cole Perry', 'sibling', DATE '2019-04-10', 673299);
+INSERT INTO dependentt VALUES ('Wendy Chan', 'ward', DATE '1985-10-27', 623641);
+INSERT INTO dependentt VALUES ('Brianna Chan', 'ward', DATE '1932-08-22', 623641);
+INSERT INTO dependentt VALUES ('Bob Kerbeck', 'sibling', DATE '1945-01-20', 589410);
+INSERT INTO dependentt VALUES ('Alfredo Ezra', 'cousin', DATE '1957-02-10', 440373);
+INSERT INTO dependentt VALUES ('Greg Ezra', 'cousin', DATE '1988-07-30', 440373);
+INSERT INTO dependentt VALUES ('Leland Sonair', 'cousin', DATE '1941-04-01', 798715);
+INSERT INTO dependentt VALUES ('Sid Sonair', 'parent', DATE '1998-07-06', 798715);
+INSERT INTO dependentt VALUES ('Matthew Bledsoe', 'child', DATE '1983-07-27', 781867);
+INSERT INTO dependentt VALUES ('Zelda Barno', 'parent', DATE '1996-02-25', 862457);
+INSERT INTO dependentt VALUES ('Lauryn Barno', 'cousin', DATE '1933-04-01', 862457);
+INSERT INTO dependentt VALUES ('Cassandra Origo', 'ward', DATE '1966-02-21', 441653);
+INSERT INTO dependentt VALUES ('Benjamin Origo', 'ward', DATE '1974-10-08', 441653);
+INSERT INTO dependentt VALUES ('Jack Wenowski', 'cousin', DATE '2007-05-14', 861015);
+INSERT INTO dependentt VALUES ('Rose Morris', 'cousin', DATE '1961-08-27', 976406);
+INSERT INTO dependentt VALUES ('Dylan Sawamoto', 'parent', DATE '1977-12-29', 941337);
+INSERT INTO dependentt VALUES ('Laura Sawamoto', 'parent', DATE '1967-01-24', 941337);
+INSERT INTO dependentt VALUES ('Bliss Zekeret', 'sibling', DATE '1963-07-29', 127067);
+INSERT INTO dependentt VALUES ('Jonathon Kelbow', 'cousin', DATE '2003-03-06', 812526);
+INSERT INTO dependentt VALUES ('Jacob Yarpan', 'child', DATE '1985-07-11', 059840);
+INSERT INTO dependentt VALUES ('Nia Persephone', 'cousin', DATE '2018-08-11', 913608);
+INSERT INTO dependentt VALUES ('Debbie Michelson', 'sibling', DATE '1961-08-15', 243670);
+INSERT INTO dependentt VALUES ('Ken Whitton', 'ward', DATE '1929-03-21', 672997);
+INSERT INTO dependentt VALUES ('Lisa Gadot', 'ward', DATE '1941-08-10', 133566);
+INSERT INTO dependentt VALUES ('David Salerno', 'ward', DATE '1942-10-25', 212054);
+INSERT INTO dependentt VALUES ('Pearl Weghofer', 'sibling', DATE '1969-05-31', 210420);
+INSERT INTO dependentt VALUES ('Adrian McKinnon', 'cousin', DATE '2015-08-26', 274070);
+INSERT INTO dependentt VALUES ('Danny Myers', 'ward', DATE '1978-01-10', 418123);
+INSERT INTO dependentt VALUES ('Jin Fermio', 'sibling', DATE '2018-09-04', 812362);
+INSERT INTO dependentt VALUES ('Maggie Fermio', 'sibling', DATE '1921-12-10', 812362);
+INSERT INTO dependentt VALUES ('Emma Hogeland', 'child', DATE '1979-12-03', 527184);
+INSERT INTO dependentt VALUES ('Regina Megrez', 'parent', DATE '2006-08-25', 242547);
+INSERT INTO dependentt VALUES ('Kimberly Bryant', 'cousin', DATE '1971-11-18', 280621);
+INSERT INTO dependentt VALUES ('Wynona Scott', 'cousin', DATE '1923-05-08', 473760);
+INSERT INTO dependentt VALUES ('Spencer Scott', 'parent', DATE '1981-04-11', 473760);
+INSERT INTO dependentt VALUES ('Gustav Fibonacci', 'child', DATE '1999-03-22', 987275);
+INSERT INTO dependentt VALUES ('Tracy Kent', 'ward', DATE '1939-10-20', 380381);
+INSERT INTO dependentt VALUES ('Iona Kent', 'sibling', DATE '1976-04-23', 380381);
+INSERT INTO dependentt VALUES ('Demeter Welbis', 'child', DATE '1992-10-02', 144131);
+INSERT INTO dependentt VALUES ('Devan Nguyen', 'ward', DATE '1997-08-26', 356200);
+INSERT INTO dependentt VALUES ('Jason Daphnes', 'parent', DATE '1976-05-23', 699133);
+INSERT INTO dependentt VALUES ('Hugo Watson', 'child', DATE '1933-06-14', 804350);
+INSERT INTO dependentt VALUES ('Kevin Watson', 'cousin', DATE '1992-04-12', 804350);
+INSERT INTO dependentt VALUES ('Addam Lucas', 'child', DATE '1937-01-04', 030146);
+INSERT INTO dependentt VALUES ('Diane Lucas', 'child', DATE '2003-07-13', 030146);
+INSERT INTO dependentt VALUES ('Simone Clark', 'sibling', DATE '2000-09-02', 682205);
+INSERT INTO dependentt VALUES ('Salvatore Necker', 'ward', DATE '1967-03-31', 013893);
+INSERT INTO dependentt VALUES ('Stephanie Necker', 'sibling', DATE '1925-09-24', 013893);
+INSERT INTO dependentt VALUES ('Travis Briggs', 'cousin', DATE '1957-01-22', 688497);
+INSERT INTO dependentt VALUES ('Vic Briggs', 'parent', DATE '1963-01-11', 688497);
+INSERT INTO dependentt VALUES ('Flora Ping', 'child', DATE '1954-09-16', 933318);
 
 DELETE polisy;
-INSERT INTO polisy VALUES (130876, 'machinery', 74.11, 0, 426821);
-INSERT INTO polisy VALUES (007186, 'wellness', 492.83, 1, 835072);
-INSERT INTO polisy VALUES (648875, 'machinery', 337.24, 0, 835072);
-INSERT INTO polisy VALUES (733244, 'valuables', 445.2, 1, 911930);
-INSERT INTO polisy VALUES (233987, 'machinery', 176.77, 0, 630391);
-INSERT INTO polisy VALUES (247552, 'collision', 341.07, 0, 744137);
-INSERT INTO polisy VALUES (973434, 'wellness', 104.9, 0, 744137);
-INSERT INTO polisy VALUES (476466, 'property', 150.22, 0, 783849);
-INSERT INTO polisy VALUES (991452, 'collision', 328.44, 0, 783849);
-INSERT INTO polisy VALUES (114554, 'property', 81.84, 0, 910198);
-INSERT INTO polisy VALUES (194624, 'collision', 374.18, 0, 910198);
-INSERT INTO polisy VALUES (317100, 'collision', 190.58, 0, 650974);
-INSERT INTO polisy VALUES (307289, 'collision', 495.39, 0, 650974);
-INSERT INTO polisy VALUES (473882, 'collision', 167.49, 0, 927567);
-INSERT INTO polisy VALUES (968489, 'property', 194.67, 0, 927567);
-INSERT INTO polisy VALUES (402920, 'valuables', 357.48, 0, 781706);
-INSERT INTO polisy VALUES (999619, 'wellness', 241.18, 0, 144526);
-INSERT INTO polisy VALUES (061677, 'valuables', 89.18, 0, 144526);
-INSERT INTO polisy VALUES (452940, 'valuables', 282.84, 1, 760056);
-INSERT INTO polisy VALUES (361851, 'valuables', 354.63, 0, 760056);
-INSERT INTO polisy VALUES (203673, 'valuables', 61.4, 0, 501551);
-INSERT INTO polisy VALUES (233927, 'wellness', 413.3, 0, 501551);
-INSERT INTO polisy VALUES (672357, 'wellness', 153.98, 1, 154100);
-INSERT INTO polisy VALUES (070868, 'collision', 249.97, 0, 416852);
-INSERT INTO polisy VALUES (586460, 'property', 96.39, 0, 416852);
-INSERT INTO polisy VALUES (539644, 'valuables', 339.57, 0, 539541);
-INSERT INTO polisy VALUES (139738, 'valuables', 240.51, 0, 539541);
-INSERT INTO polisy VALUES (223849, 'valuables', 312.97, 1, 122107);
-INSERT INTO polisy VALUES (106560, 'collision', 341.15, 0, 122107);
-INSERT INTO polisy VALUES (622981, 'collision', 176.68, 0, 981259);
-INSERT INTO polisy VALUES (998478, 'valuables', 353.27, 0, 448527);
-INSERT INTO polisy VALUES (537204, 'property', 242.04, 0, 383201);
-INSERT INTO polisy VALUES (899239, 'property', 467.99, 0, 846180);
-INSERT INTO polisy VALUES (580050, 'property', 151.18, 0, 846180);
-INSERT INTO polisy VALUES (526400, 'machinery', 198.26, 0, 473900);
-INSERT INTO polisy VALUES (762877, 'valuables', 414.16, 0, 758389);
-INSERT INTO polisy VALUES (511095, 'machinery', 438.32, 0, 093879);
-INSERT INTO polisy VALUES (022538, 'collision', 146.89, 0, 114229);
-INSERT INTO polisy VALUES (519610, 'property', 65.89, 0, 114229);
-INSERT INTO polisy VALUES (777307, 'property', 31.88, 0, 882906);
-INSERT INTO polisy VALUES (824784, 'machinery', 11.33, 1, 011292);
-INSERT INTO polisy VALUES (505168, 'collision', 81.79, 1, 011292);
-INSERT INTO polisy VALUES (660451, 'property', 422.09, 0, 508162);
-INSERT INTO polisy VALUES (392354, 'machinery', 360.94, 0, 847409);
-INSERT INTO polisy VALUES (120676, 'wellness', 238.88, 0, 847409);
-INSERT INTO polisy VALUES (999247, 'valuables', 273.62, 1, 206776);
-INSERT INTO polisy VALUES (624073, 'valuables', 361.02, 0, 206776);
-INSERT INTO polisy VALUES (138051, 'property', 71.05, 0, 392617);
-INSERT INTO polisy VALUES (166068, 'property', 334.65, 0, 392617);
-INSERT INTO polisy VALUES (261845, 'machinery', 219.66, 1, 614834);
-INSERT INTO polisy VALUES (624568, 'valuables', 169.06, 0, 252169);
-INSERT INTO polisy VALUES (348965, 'property', 471, 1, 252169);
-INSERT INTO polisy VALUES (024343, 'machinery', 301.47, 0, 863150);
-INSERT INTO polisy VALUES (097227, 'wellness', 57.8, 0, 060734);
+INSERT INTO polisy VALUES (557508, 'collision', 63.1, 0, 673299);
+INSERT INTO polisy VALUES (152298, 'machinery', 8.75, 0, 673299);
+INSERT INTO polisy VALUES (589376, 'collision', 331.2, 0, 623641);
+INSERT INTO polisy VALUES (465016, 'machinery', 320.53, 1, 623641);
+INSERT INTO polisy VALUES (174489, 'collision', 432.75, 0, 047743);
+INSERT INTO polisy VALUES (301654, 'collision', 102.06, 0, 440373);
+INSERT INTO polisy VALUES (048245, 'valuables', 215.57, 0, 798715);
+INSERT INTO polisy VALUES (492274, 'property', 144.98, 1, 798630);
+INSERT INTO polisy VALUES (248506, 'machinery', 326.77, 1, 798630);
+INSERT INTO polisy VALUES (869202, 'wellness', 147.08, 0, 781867);
+INSERT INTO polisy VALUES (983166, 'collision', 200.61, 0, 441653);
+INSERT INTO polisy VALUES (704428, 'property', 415.99, 0, 861015);
+INSERT INTO polisy VALUES (077592, 'property', 14.28, 0, 861015);
+INSERT INTO polisy VALUES (252849, 'property', 88.61, 0, 976406);
+INSERT INTO polisy VALUES (356658, 'valuables', 188.38, 0, 054697);
+INSERT INTO polisy VALUES (700704, 'property', 24.88, 0, 054697);
+INSERT INTO polisy VALUES (179059, 'wellness', 267.24, 0, 941337);
+INSERT INTO polisy VALUES (552740, 'property', 481.9, 1, 860411);
+INSERT INTO polisy VALUES (155532, 'valuables', 286.99, 1, 860411);
+INSERT INTO polisy VALUES (791061, 'property', 75.66, 0, 812526);
+INSERT INTO polisy VALUES (079564, 'collision', 427.51, 0, 542331);
+INSERT INTO polisy VALUES (064028, 'property', 316.96, 0, 913608);
+INSERT INTO polisy VALUES (101088, 'collision', 121.44, 0, 243670);
+INSERT INTO polisy VALUES (838805, 'machinery', 451.2, 0, 243670);
+INSERT INTO polisy VALUES (091343, 'machinery', 292.77, 0, 672997);
+INSERT INTO polisy VALUES (777671, 'wellness', 85.89, 0, 672997);
+INSERT INTO polisy VALUES (508369, 'valuables', 220.14, 0, 212054);
+INSERT INTO polisy VALUES (949617, 'property', 483.56, 0, 212054);
+INSERT INTO polisy VALUES (619472, 'property', 247.04, 0, 176432);
+INSERT INTO polisy VALUES (378474, 'property', 235.79, 0, 176432);
+INSERT INTO polisy VALUES (804642, 'valuables', 422.97, 1, 210420);
+INSERT INTO polisy VALUES (182475, 'wellness', 301.72, 0, 210420);
+INSERT INTO polisy VALUES (084320, 'valuables', 354.72, 0, 274070);
+INSERT INTO polisy VALUES (942310, 'property', 442.83, 0, 274070);
+INSERT INTO polisy VALUES (956595, 'property', 467.83, 0, 812362);
+INSERT INTO polisy VALUES (806314, 'valuables', 295.67, 0, 812362);
+INSERT INTO polisy VALUES (299101, 'machinery', 175.52, 0, 527184);
+INSERT INTO polisy VALUES (082386, 'machinery', 58.64, 0, 527184);
+INSERT INTO polisy VALUES (414089, 'machinery', 469.65, 0, 242547);
+INSERT INTO polisy VALUES (188725, 'machinery', 151.21, 0, 242547);
+INSERT INTO polisy VALUES (345704, 'wellness', 103.85, 0, 280621);
+INSERT INTO polisy VALUES (834458, 'wellness', 279.6, 0, 950088);
+INSERT INTO polisy VALUES (297905, 'valuables', 421.52, 0, 473760);
+INSERT INTO polisy VALUES (563491, 'machinery', 390.44, 0, 987275);
+INSERT INTO polisy VALUES (144562, 'wellness', 274.24, 0, 380381);
+INSERT INTO polisy VALUES (706433, 'valuables', 476.22, 0, 380381);
+INSERT INTO polisy VALUES (323565, 'valuables', 125.98, 0, 267414);
+INSERT INTO polisy VALUES (566115, 'machinery', 393.49, 0, 144131);
+INSERT INTO polisy VALUES (122928, 'wellness', 329.08, 0, 813874);
+INSERT INTO polisy VALUES (200066, 'machinery', 365.97, 0, 813874);
+INSERT INTO polisy VALUES (402277, 'wellness', 117.09, 0, 356200);
+INSERT INTO polisy VALUES (298696, 'property', 230.49, 0, 908247);
+INSERT INTO polisy VALUES (982554, 'collision', 235.59, 0, 699133);
+INSERT INTO polisy VALUES (045788, 'collision', 95.9, 1, 750701);
+INSERT INTO polisy VALUES (490509, 'collision', 55.53, 0, 750701);
+INSERT INTO polisy VALUES (797482, 'valuables', 151.59, 0, 804350);
+INSERT INTO polisy VALUES (190889, 'collision', 477.47, 0, 804350);
+INSERT INTO polisy VALUES (456554, 'property', 297.52, 0, 030146);
+INSERT INTO polisy VALUES (555482, 'wellness', 428.37, 0, 030146);
+INSERT INTO polisy VALUES (586053, 'collision', 317.2, 0, 570328);
+INSERT INTO polisy VALUES (820789, 'machinery', 262.04, 0, 570328);
+INSERT INTO polisy VALUES (018946, 'valuables', 290.22, 0, 984343);
+INSERT INTO polisy VALUES (926893, 'wellness', 268.07, 0, 984343);
+INSERT INTO polisy VALUES (864618, 'property', 336.23, 1, 013893);
+INSERT INTO polisy VALUES (204653, 'property', 94.05, 1, 688497);
+INSERT INTO polisy VALUES (559155, 'property', 34.64, 1, 151299);
+INSERT INTO polisy VALUES (030083, 'wellness', 311.24, 1, 507697);
+INSERT INTO polisy VALUES (571413, 'machinery', 215.63, 0, 150231);
+INSERT INTO polisy VALUES (442907, 'valuables', 129.71, 0, 151092);
 
 DELETE claim;
-INSERT INTO claim VALUES (292409, 'Bash-Up on Mile 42', '231 Center Rd., UF, Butzville, 1580', 'I demand full reparations!', DATE '2021-01-08', DATE '2021-01-08' + 5, 130876);
-INSERT INTO claim VALUES (193427, 'The Idiosyncrasy Files', '44 Winonine Rd., EP, Wantage, 2879', 'It was their fault', DATE '2006-06-09', DATE '2006-06-09' + 7, 007186);
-INSERT INTO claim VALUES (690513, 'Bash-Up on Mile 42', '92 Birch Pike, JZ, Bethlehem, 1637', 'They came at us so fast!', DATE '2012-11-04', DATE '2012-11-04' + 8, 648875);
-INSERT INTO claim VALUES (566917, 'Class of ''82 Brawler', '249 Pine Ave., SQ, Wantage, 7093', 'It was their fault', DATE '2013-07-22', DATE '2013-07-22' + 2, 233987);
-INSERT INTO claim VALUES (956113, 'Broken Legs Are Catching, You Know', '69 Cherry St., PU, Bethlehem, 2086', 'I demand full reparations!', DATE '2018-08-09', DATE '2018-08-09' + 5, 247552);
-INSERT INTO claim VALUES (102251, 'Somehow I Feel These Repeat', '254 Winonine Blvd., RX, Placeau, 294', 'I don''t remember it at all.', DATE '2009-10-22', DATE '2009-10-22' + 6, 973434);
-INSERT INTO claim VALUES (142398, 'Somehow I Feel These Repeat', '8 Winonine Ln., WF, Butzville, 719', 'I don''t remember it at all.', DATE '2015-11-04', DATE '2015-11-04' + 2, 317100);
-INSERT INTO claim VALUES (057193, 'Broken Legs Are Catching, You Know', '153 Birch Pike, OV, Runcham, 1168', 'It was their fault', DATE '2006-10-03', DATE '2006-10-03' + 9, 968489);
-INSERT INTO claim VALUES (025814, 'The _____ Incident', '183 Lamia Pike, ZO, Lackawanna, 178', 'Gosh it was awful.', DATE '2018-02-08', DATE '2018-02-08' + 6, 999619);
-INSERT INTO claim VALUES (104867, 'The Idiosyncrasy Files', '154 Center St., IF, Runcham, 3657', 'I don''t remember it at all.', DATE '2004-04-07', DATE '2004-04-07' + 6, 452940);
-INSERT INTO claim VALUES (151621, 'Bash-Up on Mile 42', '98 Winonine Pike, ST, Wantage, 4407', 'I don''t remember it at all.', DATE '2019-12-05', DATE '2019-12-05' + 9, 361851);
-INSERT INTO claim VALUES (421432, 'Bash-Up on Mile 42', '94 Winonine St., NC, Bethlehem, 2633', 'Gosh it was awful.', DATE '2001-10-28', DATE '2001-10-28' + 8, 233927);
-INSERT INTO claim VALUES (399662, 'Bash-Up on Mile 42', '172 Pine Blvd., IV, Runcham, 1515', 'I demand full reparations!', DATE '2007-07-28', DATE '2007-07-28' + 9, 672357);
-INSERT INTO claim VALUES (631613, 'Somehow I Feel These Repeat', '263 Cherry Blvd., PP, Butzville, 507', 'It was like this, you see...', DATE '2020-10-03', DATE '2020-10-03' + 9, 070868);
-INSERT INTO claim VALUES (755131, 'Nose Funk No. 9', '108 Lamia Pike, TE, Placeau, 3367', 'I demand full reparations!', DATE '2001-07-19', DATE '2001-07-19' + 0, 622981);
-INSERT INTO claim VALUES (929716, 'The Idiosyncrasy Files', '95 Cole Rd., AO, Butzville, 2241', 'It was their fault', DATE '2005-01-15', DATE '2005-01-15' + 6, 998478);
-INSERT INTO claim VALUES (323489, 'The Idiosyncrasy Files', '188 Cole Ln., DL, Butzville, 7090', 'They came at us so fast!', DATE '2020-06-19', DATE '2020-06-19' + 2, 537204);
-INSERT INTO claim VALUES (493806, 'Broken Legs Are Catching, You Know', '184 Winonine Blvd., ZZ, Canade, 2444', 'It was like this, you see...', DATE '2017-09-05', DATE '2017-09-05' + 5, 899239);
-INSERT INTO claim VALUES (134504, 'Somehow I Feel These Repeat', '268 Cherry Rd., EB, Runcham, 2620', 'It was their fault', DATE '2009-02-07', DATE '2009-02-07' + 9, 022538);
-INSERT INTO claim VALUES (487872, 'Broken Legs Are Catching, You Know', '208 Winonine Pike, TA, Canade, 4698', 'Gosh it was awful.', DATE '2007-10-29', DATE '2007-10-29' + 4, 777307);
-INSERT INTO claim VALUES (544245, 'Theft of Heart', '125 Walnut Ave., UP, Runcham, 6216', 'They came at us so fast!', DATE '2020-02-19', DATE '2020-02-19' + 7, 505168);
-INSERT INTO claim VALUES (107748, 'Somehow I Feel These Repeat', '121 Winonine Ave., DV, Canade, 347', 'It was their fault', DATE '2016-10-31', DATE '2016-10-31' + 2, 660451);
-INSERT INTO claim VALUES (539346, 'Why Do We Give These Titles, Anyway?', '170 Lamia Rd., TV, Lackawanna, 1206', 'I demand full reparations!', DATE '2006-05-16', DATE '2006-05-16' + 8, 392354);
-INSERT INTO claim VALUES (992961, 'Somehow I Feel These Repeat', '227 Pine Blvd., ZG, Wantage, 2462', 'Gosh it was awful.', DATE '2017-02-23', DATE '2017-02-23' + 7, 120676);
-INSERT INTO claim VALUES (768284, 'The Idiosyncrasy Files', '50 Center Ave., XP, Butzville, 2809', 'It was their fault', DATE '2009-10-23', DATE '2009-10-23' + 0, 624073);
-INSERT INTO claim VALUES (921089, 'The Idiosyncrasy Files', '171 Birch Blvd., BM, Bloomis, 5744', 'I demand full reparations!', DATE '2006-11-01', DATE '2006-11-01' + 3, 138051);
-INSERT INTO claim VALUES (901660, 'The _____ Incident', '36 Winonine Rd., DC, Lackawanna, 6537', 'I don''t remember it at all.', DATE '2005-09-21', DATE '2005-09-21' + 9, 348965);
+INSERT INTO claim VALUES (307945, 'Nose Funk No. 9', '655 Pine Blvd., YU, Placeau, 23165', 'It was their fault', DATE '2013-11-08', DATE '2013-11-08' + 0, 557508);
+INSERT INTO claim VALUES (140549, 'Class of ''82 Brawler', '566 Cherry Ln., HH, Canade, 01249', 'They came at us so fast!', DATE '2011-09-24', DATE '2011-09-24' + 4, 152298);
+INSERT INTO claim VALUES (134621, 'Theft of Heart', '699 Walnut Blvd., TK, Butzville, 90072', 'It was like this, you see...', DATE '2002-12-01', DATE '2002-12-01' + 2, 589376);
+INSERT INTO claim VALUES (844060, 'Broken Legs Are Catching, You Know', '341 Lamia Pike, TD, Butzville, 47342', 'It was their fault', DATE '2002-03-12', DATE '2002-03-12' + 9, 465016);
+INSERT INTO claim VALUES (467762, 'Why Do We Give These Titles, Anyway?', '709 Walnut Rd., ST, Bethlehem, 88741', 'I don''t remember it at all.', DATE '2010-10-31', DATE '2010-10-31' + 6, 174489);
+INSERT INTO claim VALUES (076423, 'The Idiosyncrasy Files', '450 Lamia Ln., MA, Canade, 48338', 'Gosh it was awful.', DATE '2002-09-13', DATE '2002-09-13' + 6, 301654);
+INSERT INTO claim VALUES (405109, 'Theft of Heart', '514 Lamia Pike, QR, Butzville, 91711', 'Gosh it was awful.', DATE '2004-07-25', DATE '2004-07-25' + 7, 048245);
+INSERT INTO claim VALUES (732512, 'Somehow I Feel These Repeat', '821 Lamia St., AO, Butzville, 82946', 'I don''t remember it at all.', DATE '2016-01-31', DATE '2016-01-31' + 0, 248506);
+INSERT INTO claim VALUES (765263, 'Broken Legs Are Catching, You Know', '710 Lamia Ln., VK, Wantage, 22004', 'It was their fault', DATE '2013-02-28', DATE '2013-02-28' + 1, 869202);
+INSERT INTO claim VALUES (276334, 'This Feels Like a Silly Choice of Field', '215 Pine Pike, QC, Lackawanna, 93213', 'It was their fault', DATE '2017-07-19', DATE '2017-07-19' + 9, 983166);
+INSERT INTO claim VALUES (371827, 'Somehow I Feel These Repeat', '766 Lamia Rd., ST, Butzville, 48924', 'They came at us so fast!', DATE '2011-11-01', DATE '2011-11-01' + 2, 704428);
+INSERT INTO claim VALUES (350212, 'Broken Legs Are Catching, You Know', '251 Birch Blvd., BK, Canade, 30790', 'It was their fault', DATE '2010-09-12', DATE '2010-09-12' + 0, 552740);
+INSERT INTO claim VALUES (751529, 'Nose Funk No. 9', '842 Cherry St., PO, Butzville, 79445', 'It was like this, you see...', DATE '2004-06-19', DATE '2004-06-19' + 2, 064028);
+INSERT INTO claim VALUES (638969, 'You''ll Never Believe It', '675 Walnut Ave., IU, Lackawanna, 12250', 'It was like this, you see...', DATE '2004-12-23', DATE '2004-12-23' + 9, 777671);
+INSERT INTO claim VALUES (117451, 'Somehow I Feel These Repeat', '333 Winonine Pike, EH, Placeau, 19442', 'It was their fault', DATE '2015-07-02', DATE '2015-07-02' + 4, 508369);
+INSERT INTO claim VALUES (493270, 'You''ll Never Believe It', '874 Walnut St., LX, Runcham, 79573', 'It was like this, you see...', DATE '2008-04-23', DATE '2008-04-23' + 9, 619472);
+INSERT INTO claim VALUES (344817, 'Bash-Up on Mile 42', '742 Center St., BC, Placeau, 89420', 'It was their fault', DATE '2020-05-17', DATE '2020-05-17' + 3, 378474);
+INSERT INTO claim VALUES (998654, 'Class of ''82 Brawler', '542 Cherry Rd., CV, Runcham, 25537', 'It was their fault', DATE '2004-01-20', DATE '2004-01-20' + 7, 804642);
+INSERT INTO claim VALUES (127467, 'Nose Funk No. 9', '802 Center Ave., RM, Bethlehem, 06179', 'They came at us so fast!', DATE '2010-07-23', DATE '2010-07-23' + 5, 084320);
+INSERT INTO claim VALUES (322098, 'Class of ''82 Brawler', '746 Winonine St., HR, Bethlehem, 34111', 'I don''t remember it at all.', DATE '2012-09-24', DATE '2012-09-24' + 5, 806314);
+INSERT INTO claim VALUES (639724, 'Somehow I Feel These Repeat', '491 Walnut Blvd., SV, Butzville, 50398', 'It was their fault', DATE '2019-09-12', DATE '2019-09-12' + 9, 299101);
+INSERT INTO claim VALUES (931969, 'Why Do We Give These Titles, Anyway?', '190 Pine Pike, FV, Wantage, 49616', 'I demand full reparations!', DATE '2009-10-02', DATE '2009-10-02' + 6, 414089);
+INSERT INTO claim VALUES (044439, 'Broken Legs Are Catching, You Know', '322 Cole Rd., QM, Butzville, 06367', 'It was like this, you see...', DATE '2004-05-13', DATE '2004-05-13' + 5, 345704);
+INSERT INTO claim VALUES (906852, 'Bash-Up on Mile 42', '185 Birch Blvd., NS, Runcham, 14687', 'I demand full reparations!', DATE '2005-07-11', DATE '2005-07-11' + 2, 297905);
+INSERT INTO claim VALUES (120405, 'Bash-Up on Mile 42', '49 Pine Rd., HN, Bethlehem, 46453', 'They came at us so fast!', DATE '2011-05-16', DATE '2011-05-16' + 4, 563491);
+INSERT INTO claim VALUES (674551, 'Nose Funk No. 9', '842 Walnut Rd., NA, Bethlehem, 89525', 'They came at us so fast!', DATE '2012-03-10', DATE '2012-03-10' + 5, 144562);
+INSERT INTO claim VALUES (189145, 'Somehow I Feel These Repeat', '497 Center St., FI, Lackawanna, 26040', 'I don''t remember it at all.', DATE '2003-01-14', DATE '2003-01-14' + 3, 706433);
+INSERT INTO claim VALUES (043182, 'The Idiosyncrasy Files', '391 Birch Ave., MW, Butzville, 71093', 'It was like this, you see...', DATE '2013-04-03', DATE '2013-04-03' + 5, 323565);
+INSERT INTO claim VALUES (474151, 'Broken Legs Are Catching, You Know', '475 Walnut Pike, GZ, Runcham, 34831', 'They came at us so fast!', DATE '2011-04-20', DATE '2011-04-20' + 9, 200066);
+INSERT INTO claim VALUES (234551, 'You''ll Never Believe It', '257 Lamia Rd., BV, Canade, 39074', 'They came at us so fast!', DATE '2016-07-09', DATE '2016-07-09' + 0, 298696);
+INSERT INTO claim VALUES (824406, 'The Idiosyncrasy Files', '802 Walnut Ave., PQ, Placeau, 91103', 'I demand full reparations!', DATE '2019-08-17', DATE '2019-08-17' + 4, 982554);
+INSERT INTO claim VALUES (777236, 'This Feels Like a Silly Choice of Field', '265 Lamia Pike, KR, Placeau, 07639', 'It was like this, you see...', DATE '2015-10-13', DATE '2015-10-13' + 9, 045788);
+INSERT INTO claim VALUES (388182, 'Why Do We Give These Titles, Anyway?', '936 Cole Blvd., AI, Bethlehem, 57663', 'They came at us so fast!', DATE '2010-04-09', DATE '2010-04-09' + 5, 490509);
+INSERT INTO claim VALUES (960338, 'The Idiosyncrasy Files', '198 Lamia Blvd., FW, Runcham, 79021', 'They came at us so fast!', DATE '2000-02-05', DATE '2000-02-05' + 0, 797482);
+INSERT INTO claim VALUES (496477, 'Theft of Heart', '497 Center Pike, KW, Canade, 23135', 'I don''t remember it at all.', DATE '2005-11-23', DATE '2005-11-23' + 1, 820789);
+INSERT INTO claim VALUES (274537, 'Bash-Up on Mile 42', '598 Walnut St., DA, Bethlehem, 17816', 'I don''t remember it at all.', DATE '2010-08-10', DATE '2010-08-10' + 3, 926893);
+INSERT INTO claim VALUES (292386, 'You''ll Never Believe It', '927 Center Ave., WB, Wantage, 24254', 'I don''t remember it at all.', DATE '2010-03-13', DATE '2010-03-13' + 6, 559155);
+INSERT INTO claim VALUES (678199, 'Class of ''82 Brawler', '600 Cherry St., PT, Canade, 83766', 'It was their fault', DATE '2016-08-29', DATE '2016-08-29' + 9, 030083);
+INSERT INTO claim VALUES (555315, 'You''ll Never Believe It', '216 Birch Rd., KK, Canade, 78642', 'I don''t remember it at all.', DATE '2011-04-07', DATE '2011-04-07' + 4, 442907);
 
 DELETE item;
-INSERT INTO item VALUES (829588, 'moped', 25451.13, 247552);
-INSERT INTO item VALUES (368059, 'moped', 72839.81, 247552);
-INSERT INTO item VALUES (996411, 'motorcycle', 99403.41, 194624);
-INSERT INTO item VALUES (226071, 'moped', 13657.28, 317100);
-INSERT INTO item VALUES (233145, 'moped', 32146.25, 307289);
-INSERT INTO item VALUES (735377, 'coupe', 70312.8, 307289);
-INSERT INTO item VALUES (044105, 'SUV', 79905.46, 473882);
-INSERT INTO item VALUES (024853, 'SUV', 84470.95, 473882);
-INSERT INTO item VALUES (389107, 'computer equipment', 10482.85, 402920);
-INSERT INTO item VALUES (741883, 'computer equipment', 79832.76, 402920);
-INSERT INTO item VALUES (525771, 'computer equipment', 57447.15, 061677);
-INSERT INTO item VALUES (974540, 'fine art', 51030.11, 452940);
-INSERT INTO item VALUES (280213, 'fine art', 94147.95, 452940);
-INSERT INTO item VALUES (931329, 'fine art', 53645.32, 361851);
-INSERT INTO item VALUES (551907, 'musical instruments', 31006.92, 361851);
-INSERT INTO item VALUES (831535, 'mobile home', 88549.21, 070868);
-INSERT INTO item VALUES (948549, 'moped', 38143.97, 070868);
-INSERT INTO item VALUES (933697, 'computer equipment', 19923.67, 539644);
-INSERT INTO item VALUES (433221, 'musical instruments', 48673.41, 539644);
-INSERT INTO item VALUES (443849, 'computer equipment', 21721, 223849);
-INSERT INTO item VALUES (253394, 'coupe', 49882.19, 106560);
-INSERT INTO item VALUES (015026, 'moped', 73091.1, 106560);
-INSERT INTO item VALUES (252340, 'musical instruments', 6386.51, 998478);
-INSERT INTO item VALUES (901872, 'computer equipment', 42992.95, 762877);
-INSERT INTO item VALUES (174107, 'coupe', 4173.18, 022538);
-INSERT INTO item VALUES (106605, 'musical instruments', 50047.19, 624073);
-INSERT INTO item VALUES (643156, 'computer equipment', 89440.32, 624568);
-INSERT INTO item VALUES (296208, 'jewelry', 73745.9, 624568);
+INSERT INTO item VALUES (997826, 'SUV', 61081.41, 557508);
+INSERT INTO item VALUES (107154, 'mobile home', 40487.29, 557508);
+INSERT INTO item VALUES (473494, 'moped', 17587.62, 589376);
+INSERT INTO item VALUES (605453, 'moped', 15350.86, 174489);
+INSERT INTO item VALUES (229028, 'fine art', 33984.6, 048245);
+INSERT INTO item VALUES (241841, 'musical instruments', 69624.9, 048245);
+INSERT INTO item VALUES (062186, 'musical instruments', 10942.16, 155532);
+INSERT INTO item VALUES (193384, 'fine art', 4210.21, 155532);
+INSERT INTO item VALUES (066810, 'sedan', 41741.49, 101088);
+INSERT INTO item VALUES (282315, 'computer equipment', 10537.4, 508369);
+INSERT INTO item VALUES (104747, 'musical instruments', 76186.25, 806314);
+INSERT INTO item VALUES (231908, 'computer equipment', 25628.83, 297905);
+INSERT INTO item VALUES (477226, 'computer equipment', 4570, 297905);
+INSERT INTO item VALUES (873749, 'fine art', 93849.53, 706433);
+INSERT INTO item VALUES (187567, 'computer equipment', 66172.06, 706433);
+INSERT INTO item VALUES (767051, 'computer equipment', 90429.73, 323565);
+INSERT INTO item VALUES (166098, 'musical instruments', 98742.1, 323565);
+INSERT INTO item VALUES (218824, 'sedan', 75007.76, 982554);
+INSERT INTO item VALUES (325536, 'moped', 51536.48, 982554);
+INSERT INTO item VALUES (472764, 'motorcycle', 2365.58, 490509);
+INSERT INTO item VALUES (158074, 'sedan', 34056.85, 490509);
+INSERT INTO item VALUES (241456, 'fine art', 29726.48, 797482);
+INSERT INTO item VALUES (105955, 'moped', 69278.07, 190889);
+INSERT INTO item VALUES (554905, 'sedan', 62633.98, 190889);
+INSERT INTO item VALUES (320120, 'coupe', 29129.87, 586053);
+INSERT INTO item VALUES (057568, 'computer equipment', 16229.61, 442907);
+INSERT INTO item VALUES (175437, 'fine art', 4554.57, 442907);
 
 DELETE contractor;
-INSERT INTO contractor VALUES (720541, 'collision', 'Great Value Ampersand Sons', 5555550000);
-INSERT INTO contractor VALUES (361700, 'wellness', 'John Rice Catastrophics', 5555550017);
-INSERT INTO contractor VALUES (275475, 'property', 'Everything You Hope You Never Need', 5555550034);
-INSERT INTO contractor VALUES (060682, 'valuables', 'Urgent Care For...Something', 5555550051);
-INSERT INTO contractor VALUES (525755, 'property', 'O''Reilly Associates', 5555550068);
+INSERT INTO contractor VALUES (093407, 'wellness', 'Great Value Ampersand Sons', 5555550000);
+INSERT INTO contractor VALUES (922195, 'property', 'John Rice Catastrophics', 5555550017);
+INSERT INTO contractor VALUES (608486, 'machinery', 'Everything You Hope You Never Need', 5555550034);
+INSERT INTO contractor VALUES (883387, 'valuables', 'Urgent Care For...Something', 5555550051);
+INSERT INTO contractor VALUES (058201, 'property', 'O''Reilly Associates', 5555550068);
 
 DELETE firm_add;
-INSERT into firm_add VALUES ('296 Cherry Ave.', 'Bloomis', 'DE', 6663, 720541);
-INSERT into firm_add VALUES ('182 Pine Blvd.', 'Canade', 'TB', 9019, 361700);
-INSERT into firm_add VALUES ('206 Birch Pike', 'Lackawanna', 'IT', 781, 275475);
-INSERT into firm_add VALUES ('94 Center Ln.', 'Placeau', 'EV', 6840, 060682);
-INSERT into firm_add VALUES ('67 Cherry Rd.', 'Bloomis', 'XE', 1935, 525755);
+INSERT into firm_add VALUES ('303 Birch Ln.', 'Runcham', 'LK', 90032, 093407);
+INSERT into firm_add VALUES ('559 Birch St.', 'Placeau', 'JH', 83628, 922195);
+INSERT into firm_add VALUES ('766 Center Ln.', 'Bloomis', 'VP', 41023, 608486);
+INSERT into firm_add VALUES ('58 Lamia Pike', 'Bloomis', 'MO', 37940, 883387);
+INSERT into firm_add VALUES ('305 Walnut Rd.', 'Wantage', 'HX', 57331, 058201);
 

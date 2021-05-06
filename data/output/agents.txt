@@ -1,6 +1,4 @@
-INSERT INTO agent VALUES (417885, 'Eugene Zhang', 6);
-INSERT INTO agent VALUES (714582, 'Iona Smith', 24);
-INSERT INTO agent VALUES (116238, 'Richie Bennett', 24);
-INSERT INTO agent VALUES (698669, 'Laura Salerno', 12);
-INSERT INTO agent VALUES (949824, 'Tommy McKinnon', 11);
-INSERT INTO agent VALUES (371262, 'Leland Yarpan', 16);
+INSERT INTO agent VALUES (266696, 'Janine Thornley', 6);
+INSERT INTO agent VALUES (363567, 'Mito Lin', 15);
+INSERT INTO agent VALUES (184656, 'Ethan Finlay', 2);
+INSERT INTO agent VALUES (125601, 'Bridget Tecrenzio', 3);
