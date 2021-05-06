@@ -67,7 +67,7 @@ public class Adjuster {
                 int adjID = adjUtility.inputRequestByIDAttribute(adjList, input);
                 p.setInt(1, claimID); p.setInt(2, adjID); p.executeQuery(); c.commit();
                 System.out.println("--------------------------------------------------------------------------------");
-                System.out.println("Assignment successful; adjuster #" + adjID + " now manages claim #" + claimID + ".");
+                System.out.printf("Assignment successful; adjuster #%06d now manages claim #%06d.\n", adjID, claimID);
             }
             else {
                 System.out.println("--------------------------------------------------------------------------------");
@@ -94,7 +94,6 @@ public class Adjuster {
                 System.out.println("--------------------------------------------------------------------------------");
                 Utility adjUtility = new Utility();
                 int claimID = adjUtility.inputRequestByID(claimList, input);
-                System.out.println("--------------------------------------------------------------------------------");
                 claimInfo(c, claimID);
             }
             else {
