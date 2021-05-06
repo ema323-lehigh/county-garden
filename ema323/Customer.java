@@ -23,8 +23,22 @@ public class Customer {
                 r.next(); // returns a boolean so we have to advance from up here
                 System.out.println("Welcome, " + r.getString("fname") + ". You are a distinguished member of our little");
                 System.out.println("insurance family, and we're glad to have you working with us today.");
-                System.out.println("--------------------------------------------------------------------------------");
                 customerInfo(c, input, custID);
+                while (true) {
+                    System.out.println("What would you like to do?");
+                    int choice = custUtility.inputRequest(new String[] {"display information", "update address", "update phone"}, input);
+                    switch (choice) {
+                        case 1:
+                            customerInfo(c, input, custID);
+                            break;
+                        case 2:
+                            addCustAddress(c, input, custID);
+                            break;
+                        case 3:
+                            addCustPhone(c, input, custID);
+                            break;
+                    }
+                }
             }
             else {
                 System.out.println("--------------------------------------------------------------------------------");
@@ -52,6 +66,8 @@ public class Customer {
             int numPolicies = 0; if (r.next()) { numPolicies = r.getInt(1); }
             r = s.executeQuery("SELECT COUNT(*) FROM dependentt WHERE cust_id = " + custID);
             int numDependents = 0; if (r.next()) { numDependents = r.getInt(1); }
+
+            System.out.println("--------------------------------------------------------------------------------");
             System.out.printf("(%06d) %s | %d policies | %d dependents\n", custID, custName, numPolicies, numDependents);
             r = s.executeQuery("SELECT * FROM cust_add WHERE cust_id = " + custID);
             if (r.next()) {
@@ -73,6 +89,7 @@ public class Customer {
                 System.out.println("Huh, we don't have any phone numbers for you. We should fix that.");
                 addCustPhone(c, input, custID);
             }
+            System.out.println("--------------------------------------------------------------------------------");
         }
         catch (SQLException e) {
             throw e;
