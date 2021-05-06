@@ -5,25 +5,15 @@ import java.util.Scanner;
 public class Adjuster {
     public static void adjusterDriver(Connection c, Scanner input) throws SQLException {
         System.out.println("Which adjuster are you? I will provide a listing for convenience.");
-        try (Statement s = c.createStatement();) {
-            ResultSet r = s.executeQuery("SELECT adj_id, aname, specialty FROM adjuster ORDER BY aname");
-            String[][] adjList = new String[20][3]; int i = 0; // assuming a safe reasonable number of adjusters
-            if (r.next()) {
-                do {
-                    adjList[i][0] = String.format("%06d", r.getInt("adj_id"));
-                    adjList[i][1] = r.getString("aname");
-                    adjList[i][2] = r.getString("specialty");
-                    i++;
-                } while (r.next());
-                System.out.println("--------------------------------------------------------------------------------");
-                Utility adjUtility = new Utility();
-                int adjID = adjUtility.inputRequestByID(adjList, input);
-                System.out.println("--------------------------------------------------------------------------------");
-                r = s.executeQuery("SELECT aname FROM adjuster WHERE adj_id = " + adjID);
+        try (Statement s = c.createStatement()) {
+            int adjID = selectAdjuster(c, input);
+            if (adjID != -1) {
+                ResultSet r = s.executeQuery("SELECT aname FROM adjuster WHERE adj_id = " + adjID);
                 r.next(); // returns a boolean so we have to advance from up here
                 System.out.println("Welcome, " + r.getString("aname").split(" ", 2)[0] + ".");
                 while (true) {
                     System.out.println("What would you like to do?");
+                    Utility adjUtility = new Utility();
                     int choice = adjUtility.inputRequest(new String[] {"assign claims", "manage claims"}, input);
                     switch (choice) {
                         case 1:
@@ -37,7 +27,7 @@ public class Adjuster {
             }
             else {
                 System.out.println("--------------------------------------------------------------------------------");
-                System.out.println("Well, looks like we don't have any agents after all.");
+                System.out.println("Well, looks like we don't have any adjusters after all.");
                 System.out.println("We've no mechanism by which to quit, so I don't see how that could be.");
                 System.out.println("Either way...scram! :)");
                 System.out.println("--------------------------------------------------------------------------------");
@@ -189,17 +179,17 @@ public class Adjuster {
                 } while (r.next());
                 System.out.println("--------------------------------------------------------------------------------");
                 Utility adjUtility = new Utility();
-                int adjID = adjUtility.inputRequestByID(adjList, input);
+                int adjID = adjUtility.inputRequestByIDAttribute(adjList, input);
                 System.out.println("--------------------------------------------------------------------------------");
                 return adjID;
             }
             else {
                 System.out.println("Uh...anybody home? I guess there are no adjusters around anyway.");
+                return -1;
             }
         }
         catch (SQLException e) {
             throw e;
         }
-        return -1;
     }
 }
