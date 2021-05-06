@@ -101,6 +101,7 @@ public class Customer {
             PreparedStatement p = c.prepareStatement("INSERT INTO cust_add VALUES (?, ?, ?, ?, ?)");) {
 
             Utility custUtility = new Utility();
+            System.out.println("--------------------------------------------------------------------------------");
             System.out.println("Enter your street address (ex. 123 Sesame Place):");
             String street = custUtility.inputRequestString(input, "^\\d{1,4} \\D+ \\D+$");
             System.out.println("Enter your city/town (must be a word composed of letters only):");
@@ -126,6 +127,7 @@ public class Customer {
                 c.rollback();
                 System.out.println("Something seems to have gone wrong. Please try again soon.");
             }
+            System.out.println("--------------------------------------------------------------------------------");
         }
         catch (SQLException e) {
             throw e;
@@ -135,6 +137,7 @@ public class Customer {
         try (PreparedStatement p = c.prepareStatement("INSERT INTO phone_num VALUES (?, ?, ?)");) {
 
             Utility custUtility = new Utility();
+            System.out.println("--------------------------------------------------------------------------------");
             System.out.println("Enter the type of line (ex. home, work, cell):");
             String kind = custUtility.inputRequestString(input, "^\\D+$");
             System.out.println("Enter the 10-digit number (no formatting):");
@@ -150,6 +153,7 @@ public class Customer {
                 c.rollback();
                 System.out.println("Something seems to have gone wrong. Please try again soon.");
             }
+            System.out.println("--------------------------------------------------------------------------------");
         }
         catch (SQLException e) {
             throw e;

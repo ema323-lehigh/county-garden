@@ -118,8 +118,10 @@ public class Adjuster {
             String claimDesc = r.getString("event_desc");
             String occurredDate = String.valueOf(r.getTimestamp("occurred_date"));
             String submittedDate = String.valueOf(r.getTimestamp("submitted_date"));
+            System.out.println("--------------------------------------------------------------------------------");
             System.out.printf("(%06d) %s | %s on %s | submitted on %s\n", claimID, claimTitle, claimLoc, occurredDate, submittedDate);
             System.out.println("The description says: " + claimDesc);
+            System.out.println("--------------------------------------------------------------------------------");
         }
         catch (SQLException e) {
             throw e;
