@@ -71,8 +71,8 @@ public class Adjuster {
     }
 
     private static void manageClaims(Connection c, Scanner input, int adjID) throws SQLException {
-        try (Statement s = c.createStatement();
-            PreparedStatement p = c.prepareStatement("INSERT INTO services VALUES (?, ?, ?)");) {
+        try (PreparedStatement p = c.prepareStatement("INSERT INTO services VALUES (?, ?, ?)");
+            Statement s = c.createStatement();) {
             ResultSet r = s.executeQuery("SELECT * FROM claim NATURAL JOIN manages WHERE manages.adj_id = " + adjID + " ORDER BY occurred_date");
             String[][] claimList = new String[100][2]; int i = 0; // assuming a safe reasonable number of claims
             if (r.next()) {
@@ -138,7 +138,15 @@ public class Adjuster {
     }
 
     private static void addAdjuster(Connection c, Scanner input, int claimID) throws SQLException {
-        try (PreparedStatement p = c.prepareStatement("INSERT INTO manages VALUES (?, ?)");) {
+        try (PreparedStatement p = c.prepareStatement("INSERT INTO manages VALUES (?, ?)");
+            Statement s = c.createStatement();) {
+            System.out.println("--------------------------------------------------------------------------------");
+            ResultSet r = s.executeQuery("SELECT * FROM payment WHERE claim_id = " + claimID);
+            if (r.next()) {
+                System.out.println("Looks like this claim's already been paid by us. Nothing else to do here.");
+                System.out.println("--------------------------------------------------------------------------------");
+                return;
+            }
             System.out.println("To which adjuster would you like to assign this claim? Specialties are noted.");
             int adjID = selectAdjuster(c, input);
             p.setInt(1, claimID); p.setInt(2, adjID);
@@ -160,6 +168,13 @@ public class Adjuster {
     private static void addContractor(Connection c, Scanner input, int claimID) throws SQLException {
         try (PreparedStatement p = c.prepareStatement("INSERT INTO services VALUES (?, ?, ?)");
             Statement s = c.createStatement();) {
+            System.out.println("--------------------------------------------------------------------------------");
+            ResultSet r = s.executeQuery("SELECT * FROM payment WHERE claim_id = " + claimID);
+            if (r.next()) {
+                System.out.println("Looks like this claim's already been paid by us. Nothing else to do here.");
+                System.out.println("--------------------------------------------------------------------------------");
+                return;
+            }
             int firmID = 0; // have to declare this before the loop header
             while (true) {
                 System.out.println("To which contractor would you like to assign this claim? Industries are noted.");
@@ -188,11 +203,17 @@ public class Adjuster {
     }
 
     private static void makePayment(Connection c, Scanner input, int claimID) throws SQLException {
-        try (Statement s = c.createStatement();
-            PreparedStatement p = c.prepareStatement("INSERT INTO payment VALUES (?, ?, ?, ?)");) {
+        try (PreparedStatement p = c.prepareStatement("INSERT INTO payment VALUES (?, ?, ?, ?)");
+            Statement s = c.createStatement();) {
             Utility adjUtility = new Utility();
             System.out.println("--------------------------------------------------------------------------------");
-            ResultSet r = s.executeQuery("SELECT * FROM item NATURAL JOIN polisy NATURAL JOIN claim WHERE claim_id = " + claimID);
+            ResultSet r = s.executeQuery("SELECT * FROM payment WHERE claim_id = " + claimID);
+            if (r.next()) {
+                System.out.println("Looks like this claim's already been paid by us. Nothing else to do here.");
+                System.out.println("--------------------------------------------------------------------------------");
+                return;
+            }
+            r = s.executeQuery("SELECT * FROM item NATURAL JOIN polisy NATURAL JOIN claim WHERE claim_id = " + claimID);
             double totalInsured = 0.0;
             while (r.next()) {
                 totalInsured += r.getDouble("approx_value");
