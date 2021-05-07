@@ -28,7 +28,7 @@ public class Customer {
                 boolean backout = false;
                 while (true) {
                     System.out.println("What would you like to do?");
-                    int choice = custUtility.inputRequest(new String[] {"display information", "make a claim", "view claims", "pay premiums", "cancel a policy", "update address", "add phone", "remove phone", "back"}, input);
+                    int choice = custUtility.inputRequest(new String[] {"display information", "make a claim", "view claims", "pay premiums", "insure items", "cancel a policy", "update address", "add phone", "remove phone", "back"}, input);
                     switch (choice) {
                         case 1:
                             customerInfo(c, input, custID);
@@ -43,18 +43,21 @@ public class Customer {
                             makePayment(c, input, custID);
                             break;
                         case 5:
-                            cancelPolicy(c, input, custID);
+                            addItem(c, input, custID);
                             break;
                         case 6:
-                            addCustAddress(c, input, custID);
+                            cancelPolicy(c, input, custID);
                             break;
                         case 7:
-                            addCustPhone(c, input, custID);
+                            addCustAddress(c, input, custID);
                             break;
                         case 8:
-                            removeCustPhone(c, input, custID);
+                            addCustPhone(c, input, custID);
                             break;
                         case 9:
+                            removeCustPhone(c, input, custID);
+                            break;
+                        case 10:
                             backout = true;
                             break;
                     }
@@ -227,7 +230,6 @@ public class Customer {
     private static void makeClaim(Connection c, Scanner input, int custID) throws SQLException {
         try (Statement s = c.createStatement();
             PreparedStatement p = c.prepareStatement("INSERT INTO claim VALUES (?, ?, ?, ?, ?, ?, ?)");) {
-
             Utility custUtility = new Utility();
             ResultSet r = s.executeQuery("SELECT * FROM polisy WHERE cancelled = 0 AND cust_id = " + custID);
             String[][] policyList = new String[20][2]; int i = 0; // assuming a safe reasonable number of policies
@@ -467,6 +469,54 @@ public class Customer {
                 System.out.println("Looks like this one's still under remediation.");
             }
             System.out.println("--------------------------------------------------------------------------------");
+        }
+        catch (SQLException e) {
+            throw e;
+        }
+    }
+
+    private static void addItem(Connection c, Scanner input, int custID) throws SQLException {
+        try (Statement s = c.createStatement();
+            PreparedStatement p = c.prepareStatement("INSERT INTO item VALUES (?, ?, ?, ?)");) {
+            Utility custUtility = new Utility();
+            ResultSet r = s.executeQuery("SELECT * FROM polisy WHERE cancelled = 0 AND cust_id = " + custID);
+            String[][] policyList = new String[20][2]; int i = 0; // assuming a safe reasonable number of policies
+            if (r.next()) {
+                do {
+                    policyList[i][0] = String.format("%06d", r.getInt("policy_id"));
+                    policyList[i][1] = r.getString("policy_type") + " - current premium: " +
+                                        String.format("$%.2f", r.getDouble("quoted_price"));
+                    i++;
+                } while (r.next());
+                System.out.println("--------------------------------------------------------------------------------");
+                System.out.println("On which policy would you like to add an item?");
+                int policyID = custUtility.inputRequestByID(policyList, input);
+                System.out.println("--------------------------------------------------------------------------------");
+                System.out.println("Enter a categorical description for the item (50 characters max):");
+                String itemDesc = custUtility.inputRequestString(input, "^(.{1,50})$");
+                if (itemDesc.equals("__BACK__")) { return; }
+                System.out.println("Enter an approximate value for the item (dollars & cents):");
+                String approxValStr = custUtility.inputRequestString(input, "^(\\d{1,6}.\\d{2})$");
+                if (approxValStr.equals("__BACK__")) { return; }
+                double approxValue = Double.parseDouble(approxValStr);
+                p.setInt(1, new Random().nextInt(1000000)); p.setString(2, itemDesc);
+                p.setDouble(3, approxValue); p.setInt(4, policyID);
+
+                try {
+                    p.executeQuery();
+                    c.commit();
+                    System.out.println("Success! Your new item has been added to your policy.");
+                }
+                catch (SQLException e) {
+                    c.rollback();
+                    System.out.println("Something seems to have gone wrong. Please try again soon.");
+                }
+                System.out.println("--------------------------------------------------------------------------------");
+            }
+            else {
+                System.out.println("You don't have any policies! How can you insure any items? An agent will need to help you with that.");
+                System.out.println("--------------------------------------------------------------------------------");
+            }
         }
         catch (SQLException e) {
             throw e;

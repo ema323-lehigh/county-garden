@@ -23,7 +23,9 @@ Customers can:
     - phone(s) - DONE
     - address - DONE
 - add or remove dependents
-- add or remove policy-covered items
+- manage policy-covered items
+    - add them - DONE
+    - remove them
 - make claims against their policies - DONE
 - pay their premiums - DONE
 - cancel policies - DONE
@@ -75,6 +77,7 @@ Some "pleas guilty":
 - I noticed a small mistake in my claim-location data generation: I accidentally placed the city before the state. Being particularly attached to the customers and interactions I had thus far, I instead edited each of those claims and left the erroneous insert statements in the current version of the output files (claims.txt & copythis.txt).
 - I added a field to the payment table that was not in the final ER diagram submission. This field indicates that the customer has paid off the balance of the claim after it was adjusted.
 - The premium does not depend on the number of items insured or the amount of claims made, it's just arbitrary at the discretion of the agent making the policy. Not very realistic, but easy to implement.
+- I renamed the category field on the item table to item_desc, again differing from the final ER diagram.
 
 
 Some helpful hints:

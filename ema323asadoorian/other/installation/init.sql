@@ -80,7 +80,7 @@ ALTER TABLE polisy MODIFY (
 DROP TABLE item CASCADE CONSTRAINTS;
 CREATE TABLE item (
     item_id NUMBER(6) NOT NULL,
-    category VARCHAR(20) NOT NULL,
+    item_desc VARCHAR(50) NOT NULL,
     approx_value NUMBER(8,2) NOT NULL,
     policy_id NUMBER(6) NOT NULL,
     FOREIGN KEY (policy_id) REFERENCES polisy(policy_id)
