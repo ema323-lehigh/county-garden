@@ -28,7 +28,7 @@ public class Customer {
                 boolean backout = false;
                 while (true) {
                     System.out.println("What would you like to do?");
-                    int choice = custUtility.inputRequest(new String[] {"display information", "make a claim", "pay premiums", "cancel a policy", "update address", "add phone", "remove phone", "back"}, input);
+                    int choice = custUtility.inputRequest(new String[] {"display information", "make a claim", "view claims", "pay premiums", "cancel a policy", "update address", "add phone", "remove phone", "back"}, input);
                     switch (choice) {
                         case 1:
                             customerInfo(c, input, custID);
@@ -37,21 +37,24 @@ public class Customer {
                             makeClaim(c, input, custID);
                             break;
                         case 3:
-                            makePayment(c, input, custID);
+                            viewClaims(c, input, custID);
                             break;
                         case 4:
-                            cancelPolicy(c, input, custID);
+                            makePayment(c, input, custID);
                             break;
                         case 5:
-                            addCustAddress(c, input, custID);
+                            cancelPolicy(c, input, custID);
                             break;
                         case 6:
-                            addCustPhone(c, input, custID);
+                            addCustAddress(c, input, custID);
                             break;
                         case 7:
-                            removeCustPhone(c, input, custID);
+                            addCustPhone(c, input, custID);
                             break;
                         case 8:
+                            removeCustPhone(c, input, custID);
+                            break;
+                        case 9:
                             backout = true;
                             break;
                     }
@@ -364,6 +367,63 @@ public class Customer {
                 System.out.println("You don't have any policies to cancel...nice try, but you won't fool us that fast.");
                 System.out.println("--------------------------------------------------------------------------------");
             }
+        }
+        catch (SQLException e) {
+            throw e;
+        }
+    }
+    
+    private static void viewClaims(Connection c, Scanner input, int custID) throws SQLException {
+        try (Statement s = c.createStatement();) {
+            ResultSet r = s.executeQuery("SELECT * FROM claim NATURAL JOIN polisy WHERE cust_id = " + custID);
+            String[][] claimList = new String[20][2]; int i = 0; // assuming a safe reasonable number of claims
+            if (r.next()) {
+                do {
+                    claimList[i][0] = String.format("%06d", r.getInt("claim_id"));
+                    claimList[i][1] = r.getString("claim_title") + " - " + r.getString("event_desc");
+                    i++;
+                } while (r.next());
+                System.out.println("--------------------------------------------------------------------------------");
+                Utility custUtility = new Utility();
+                int claimID = custUtility.inputRequestByID(claimList, input);
+                claimInfo(c, claimID);
+            }
+            else {
+                System.out.println("--------------------------------------------------------------------------------");
+                System.out.println("Looks like you don't have any claims. Feel free to file one!");
+                System.out.println("--------------------------------------------------------------------------------");
+            }
+        }
+        catch (SQLException e) {
+            throw e;
+        }
+    }
+
+    private static void claimInfo(Connection c, int claimID) throws SQLException {
+        try (Statement s = c.createStatement();) {
+            ResultSet r; // for symmetry/parallelism
+            r = s.executeQuery("SELECT * FROM claim WHERE claim_id = " + claimID);
+            r.next(); // we already have claimID
+            String claimTitle = r.getString("claim_title");
+            String claimLoc = r.getString("event_loc");
+            String claimDesc = r.getString("event_desc");
+            String occurredDate = String.valueOf(r.getDate("occurred_date"));
+            String submittedDate = String.valueOf(r.getDate("submitted_date"));
+            System.out.println("--------------------------------------------------------------------------------");
+            System.out.printf("(%06d) %s | %s\n", claimID, claimTitle, claimLoc);
+            System.out.printf("occured on %s | submitted on %s\n", occurredDate, submittedDate);
+            System.out.println("The description says: " + claimDesc);
+            r = s.executeQuery("SELECT * FROM payment WHERE claim_id = " + claimID);
+            if (r.next()) {
+                double amountPaid = r.getDouble("amount");
+                r = s.executeQuery("SELECT * FROM item NATURAL JOIN polisy NATURAL JOIN claim WHERE claim_id = " + claimID);
+                double totalInsured = 0.0;
+                while (r.next()) {
+                    totalInsured += r.getDouble("approx_value");
+                }
+                System.out.printf("The insurance company has paid $%.2f on this claim,  leaving you with $%.2f.\n", amountPaid, (totalInsured - amountPaid));
+            }
+            System.out.println("--------------------------------------------------------------------------------");
         }
         catch (SQLException e) {
             throw e;

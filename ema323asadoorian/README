@@ -26,7 +26,7 @@ Customers can:
 - make claims against their policies - DONE
 - pay their premiums - DONE
 - cancel policies - DONE
-- view current claims
+- view current claims - DONE
 
 
 Here are some notes/tenets I made while refining the design:

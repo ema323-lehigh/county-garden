@@ -128,10 +128,11 @@ public class Adjuster {
             String claimTitle = r.getString("claim_title");
             String claimLoc = r.getString("event_loc");
             String claimDesc = r.getString("event_desc");
-            String occurredDate = String.valueOf(r.getTimestamp("occurred_date"));
-            String submittedDate = String.valueOf(r.getTimestamp("submitted_date"));
+            String occurredDate = String.valueOf(r.getDate("occurred_date"));
+            String submittedDate = String.valueOf(r.getDate("submitted_date"));
             System.out.println("--------------------------------------------------------------------------------");
-            System.out.printf("(%06d) %s | %s on %s | submitted on %s\n", claimID, claimTitle, claimLoc, occurredDate, submittedDate);
+            System.out.printf("(%06d) %s | %s\n", claimID, claimTitle, claimLoc);
+            System.out.printf("occured on %s | submitted on %s\n", occurredDate, submittedDate);
             System.out.println("The description says: " + claimDesc);
             System.out.println("--------------------------------------------------------------------------------");
         }
