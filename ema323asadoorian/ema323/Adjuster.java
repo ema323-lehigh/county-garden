@@ -46,7 +46,7 @@ public class Adjuster {
 
     private static void assignClaims(Connection c, Scanner input) throws SQLException {
         try (Statement s = c.createStatement();) {
-            ResultSet r = s.executeQuery("SELECT * FROM claim WHERE NOT EXISTS (SELECT * FROM manages WHERE manages.claim_id = claim.claim_id) AND NOT EXISTS (SELECT * FROM payment WHERE payment.claim_id = claim.claim_id)");
+            ResultSet r = s.executeQuery("SELECT * FROM claim WHERE NOT EXISTS (SELECT * FROM manages WHERE manages.claim_id = claim.claim_id) AND NOT EXISTS (SELECT * FROM payment WHERE payment.claim_id = claim.claim_id) AND NOT EXISTS (SELECT * FROM polisy WHERE polisy.policy_id = claim.policy_id AND polisy.cancelled = 1)");
             String[][] claimList = new String[100][2]; int i = 0; // assuming a safe reasonable number of claims
             if (r.next()) {
                 do {
@@ -73,7 +73,7 @@ public class Adjuster {
     private static void manageClaims(Connection c, Scanner input, int adjID) throws SQLException {
         try (PreparedStatement p = c.prepareStatement("INSERT INTO services VALUES (?, ?, ?)");
             Statement s = c.createStatement();) {
-            ResultSet r = s.executeQuery("SELECT * FROM claim NATURAL JOIN manages WHERE manages.adj_id = " + adjID + " ORDER BY occurred_date");
+            ResultSet r = s.executeQuery("SELECT * FROM claim NATURAL JOIN manages NATURAL JOIN polisy WHERE polisy.cancelled = 0 AND manages.adj_id = " + adjID + " ORDER BY occurred_date");
             String[][] claimList = new String[100][2]; int i = 0; // assuming a safe reasonable number of claims
             if (r.next()) {
                 do {

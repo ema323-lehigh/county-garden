@@ -422,7 +422,7 @@ public class Customer {
     private static void claimInfo(Connection c, Scanner input, int claimID) throws SQLException {
         try (Statement s = c.createStatement();) {
             ResultSet r; // for symmetry/parallelism
-            r = s.executeQuery("SELECT * FROM claim WHERE claim_id = " + claimID);
+            r = s.executeQuery("SELECT * FROM claim NATURAL JOIN polisy WHERE claim_id = " + claimID);
             r.next(); // we already have claimID
             String claimTitle = r.getString("claim_title");
             String claimLoc = r.getString("event_loc");
@@ -430,7 +430,7 @@ public class Customer {
             String occurredDate = String.valueOf(r.getDate("occurred_date"));
             String submittedDate = String.valueOf(r.getDate("submitted_date"));
             System.out.println("--------------------------------------------------------------------------------");
-            System.out.printf("(%06d) %s | %s\n", claimID, claimTitle, claimLoc);
+            System.out.printf("(%06d) %s | %s | Policy #%06d\n", claimID, claimTitle, claimLoc, r.getInt("policy_id"));
             System.out.printf("occurred on %s | submitted on %s\n", occurredDate, submittedDate);
             System.out.println("The description says: " + claimDesc);
             r = s.executeQuery("SELECT * FROM payment WHERE claim_id = " + claimID);
