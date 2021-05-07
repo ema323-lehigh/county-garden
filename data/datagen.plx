@@ -110,7 +110,7 @@ foreach my $key (keys %custrecs) {
             my $address = int(rand(1000)) . " " . $streets[rand(@streets)] . " " . $abbrevs[rand(@abbrevs)];
             my $state = $initials[rand(@initials)] . $initials[rand(@initials)];
             my $city = $cities[rand(@cities)]; my $zipcode = sprintf("%05d", int(rand(100000)));
-            my $claim_loc = "$address, $state, $city, $zipcode";
+            my $claim_loc = "$address, $city, $state, $zipcode";
             my $claim_id = &rand_id; my $description = $descriptions[rand(@descriptions)];
             my $date1 = rand_date( min => '2000-01-01', max => '2021-05-01' );
             my $date2 = int(rand(10)); my $title = $titles[rand(@titles)];

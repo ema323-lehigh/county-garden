@@ -1,7 +1,7 @@
 # # # # # WELCOME TO COUNTY GARDEN INSURANCE # # # # #
 ------- Emily Asadoorian | CSE-341 Spring 2021 -------
 
-Hello! This, as you well know, is my course project submission for our databases course. When you run the included jar file, you will be greeted by a menu that prompts for Oracle username and password before entering the nitty-gritty of the database. You can choose to interact as either an agent, an adjuster, or a customer, with the various business functions available to each.
+Hello! This, as you well know, is my course project submission for our databases course. When you run the included jar file, you will be greeted by a menu that prompts for Oracle username and password before entering the nitty-gritty of the database. You can choose to interact as either an agent, an adjuster, or a customer, with the various business functions available to each. As you can see, the features planned are not exactly commensurate with the features offered (or vice versa), but I still believe my interface is fairly robust and substantial.
 
 
 Agents can:
@@ -26,6 +26,7 @@ Customers can:
 - make claims against their policies - DONE
 - pay their premiums - DONE
 - cancel policies - DONE
+- view current claims
 
 
 Here are some notes/tenets I made while refining the design:
@@ -66,6 +67,7 @@ Some "pleas guilty":
 - As yet, I haven't had complete success with "trapping" a Ctrl-D signal such that it doesn't travel any farther up the chain than the current input request. So, I tried, but perhaps don't use it please? Something like that, while important as a feature of quality, had to get left behind, and I think that's okay.
 - Along those lines, it's not quite feasible to back out of multiple switch and while scopes from within a function that brings yet its own scope, so the back menu option has to be manually inserted into most menus. Accordingly, it cannot appear in lists for data choice, so users must simply quit out completely at that stage, unfortunately.
 - I am simply relying on random six-digit numbers to not overlap with each other within tables. Is this a bad idea? Probably. Does it work fine for this project? Absolutely. I chose to save the time of grabbing all current IDs from whichever table and searching them for a duplicate, which hopefully will not come back to bite me when you test...
+- I noticed a small mistake in my claim-location data generation: I accidentally placed the city before the state. Being particularly attached to the customers and interactions I had thus far, I instead edited each of those claims and left the erroneous insert statements in the current version of the output files (claims.txt & copythis.txt).
 
 
 Some helpful hints:

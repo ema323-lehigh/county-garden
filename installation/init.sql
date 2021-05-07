@@ -158,7 +158,7 @@ DROP TABLE invoice CASCADE CONSTRAINTS;
 CREATE TABLE invoice (
     trans_id NUMBER(6) NOT NULL,
     due_date DATE NOT NULL,
-    payment_type VARCHAR(10),
+    payment_type VARCHAR(20),
     policy_id NUMBER(6) NOT NULL,
     FOREIGN KEY (policy_id) REFERENCES polisy(policy_id)
         ON DELETE CASCADE,

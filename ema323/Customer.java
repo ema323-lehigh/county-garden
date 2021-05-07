@@ -293,7 +293,7 @@ public class Customer {
                 int transID = custUtility.inputRequestByID(invoiceList, input);
                 System.out.println("--------------------------------------------------------------------------------");
                 System.out.println("Enter your payment type:");
-                String paymentType = custUtility.inputRequestString(input, "^\\D{1,10}$");
+                String paymentType = custUtility.inputRequestString(input, "^\\D{1,20}$");
                 if (paymentType.equals("__BACK__")) { return; }
                 p.setString(1, paymentType); p.setInt(2, transID);
 
