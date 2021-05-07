@@ -1,7 +1,8 @@
 import java.sql.*;
 import java.io.*;
+import java.util.*;
 import java.util.regex.*;
-import java.util.Scanner;
+import java.text.*;
 
 public class Utility {
     public static int inputRequest(String[] choices, Scanner input) {

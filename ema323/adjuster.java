@@ -1,6 +1,7 @@
 import java.sql.*;
 import java.io.*;
-import java.util.Scanner;
+import java.util.*;
+import java.text.*;
 
 public class Adjuster {
     public static void adjusterDriver(Connection c, Scanner input) throws SQLException {
@@ -157,13 +158,33 @@ public class Adjuster {
     }
 
     private static void addContractor(Connection c, Scanner input, int claimID) throws SQLException {
-        /*try {
-            System.out.println("Shell method");
+        try (PreparedStatement p = c.prepareStatement("INSERT INTO services VALUES (?, ?, ?)");
+            Statement s = c.createStatement();) {
+            int firmID = 0; // have to declare this before the loop header
+            while (true) {
+                System.out.println("To which contractor would you like to assign this claim? Industries are noted.");
+                firmID = selectContractor(c, input);
+                p.setInt(2, firmID); p.setInt(3, claimID);
+                p.setDate(1, new java.sql.Date(new java.util.Date().getTime()));
+                if (s.executeQuery("SELECT * FROM services WHERE claim_id = " + claimID + " AND firm_id = " + firmID).next()) {
+                    System.out.println("That firm already services this claim.");
+                    continue;
+                }
+                break;
+            }
+            try {
+                p.executeQuery();
+                c.commit();
+                System.out.printf("Assignment successful; contractor #%06d now services claim #%06d.\n", firmID, claimID);
+            }
+            catch (SQLException e) {
+                System.out.println("Looks like something went wrong. Please try again later.");
+            }
+            System.out.println("--------------------------------------------------------------------------------");
         }
         catch (SQLException e) {
             throw e;
-        }*/
-        System.out.println("bloop");
+        }
     }
 
     private static void makePayment(Connection c, Scanner input, int claimID) throws SQLException {
@@ -195,6 +216,32 @@ public class Adjuster {
             }
             else {
                 System.out.println("Uh...anybody home? I guess there are no adjusters around anyway.");
+                return -1;
+            }
+        }
+        catch (SQLException e) {
+            throw e;
+        }
+    }
+    private static int selectContractor(Connection c, Scanner input) throws SQLException {
+        try (Statement s = c.createStatement();) {
+            ResultSet r = s.executeQuery("SELECT firm_id, cname, industry FROM contractor ORDER BY cname");
+            String[][] firmList = new String[20][3]; int i = 0; // assuming a safe reasonable number of contractors
+            if (r.next()) {
+                do {
+                    firmList[i][0] = String.format("%06d", r.getInt("firm_id"));
+                    firmList[i][1] = r.getString("cname");
+                    firmList[i][2] = r.getString("industry");
+                    i++;
+                } while (r.next());
+                System.out.println("--------------------------------------------------------------------------------");
+                Utility firmUtility = new Utility();
+                int firmID = firmUtility.inputRequestByIDAttribute(firmList, input);
+                System.out.println("--------------------------------------------------------------------------------");
+                return firmID;
+            }
+            else {
+                System.out.println("Wow, looks like we don't have any contractors in here. Better add some.");
                 return -1;
             }
         }

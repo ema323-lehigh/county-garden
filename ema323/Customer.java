@@ -1,6 +1,7 @@
 import java.sql.*;
 import java.io.*;
-import java.util.Scanner;
+import java.util.*;
+import java.text.*;
 
 public class Customer {
     public static void customerDriver(Connection c, Scanner input) throws SQLException {
