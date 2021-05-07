@@ -338,6 +338,7 @@ public class Customer {
                 System.out.println("--------------------------------------------------------------------------------");
                 System.out.println("Are you sure? (Y/N):");
                 String paymentType = custUtility.inputRequestString(input, "^Y|N$");
+                if (paymentType.equals("__BACK__")) { return; }
                 if (paymentType.equals("N")) {
                     System.out.println("Okay, no worries!");
                     System.out.println("--------------------------------------------------------------------------------");

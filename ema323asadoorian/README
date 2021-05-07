@@ -8,6 +8,7 @@ Agents can:
 - sign up new customers - DONE
 - add new policies for existing customers - DONE
 - generate invoices for existing policies - DONE
+- boot out deliquent customers - DONE
 
 Adjusters can:
 - assign claims to other adjusters (or themselves) - DONE

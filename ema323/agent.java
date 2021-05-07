@@ -25,7 +25,7 @@ public class Agent {
                 boolean backout = false;
                 while (true) {
                     System.out.println("What would you like to do?");
-                    int choice = agentUtility.inputRequest(new String[] {"list my customers", "add a customer", "create a policy", "generate invoices", "back"}, input);
+                    int choice = agentUtility.inputRequest(new String[] {"list my customers", "add a customer", "create a policy", "generate invoices", "check for deliquency", "back"}, input);
                     switch (choice) {
                         case 1:
                             listCustomers(c, agentID);
@@ -40,6 +40,9 @@ public class Agent {
                             generateInvoices(c, input, agentID);
                             break;
                         case 5:
+                            reapDeliquents(c, input, agentID);
+                            break;
+                        case 6:
                             backout = true;
                             break;
                     }
@@ -296,6 +299,67 @@ public class Agent {
             else {
                 System.out.println("--------------------------------------------------------------------------------");
                 System.out.println("There are no active policies without a current standing invoice.");
+                System.out.println("--------------------------------------------------------------------------------");
+            }
+        }
+        catch (SQLException e) {
+            throw e;
+        }
+    }
+
+    private static void reapDeliquents(Connection c, Scanner input, int agentID) throws SQLException {
+        try (Statement s = c.createStatement();
+            PreparedStatement p = c.prepareStatement("DELETE FROM customer WHERE cust_id = ?");) {
+            ResultSet r = s.executeQuery("SELECT * FROM polisy NATURAL JOIN customer NATURAL JOIN invoice WHERE agent_id = " + agentID + " AND cancelled = 0 AND invoice.due_date <= CURRENT_DATE AND invoice.payment_type IS NULL");
+            if (r.next()) {
+                Integer[] custIDArray = new Integer[200]; int i = 0;
+                // assuming a safe reasonable number of customers
+                // and using an Integer array to check for nulls
+                System.out.println("--------------------------------------------------------------------------------");
+                do {
+                    System.out.printf("Customer #%06d - unpaid invoice dated %s\n", r.getInt("cust_id"), String.valueOf(r.getDate("due_date")));
+                    custIDArray[i] = r.getInt("cust_id");
+                    i++;
+                } while (r.next());
+                Utility agentUtility = new Utility();
+                System.out.println("--------------------------------------------------------------------------------");
+                System.out.println("Do you want to boot them from the system? (Y/N):");
+                String paymentType = agentUtility.inputRequestString(input, "^Y|N$");
+                if (paymentType.equals("__BACK__")) { return; }
+                if (paymentType.equals("N")) {
+                    System.out.println("Okay, no worries! They get to live another day...");
+                    System.out.println("--------------------------------------------------------------------------------");
+                    return;
+                }
+                for (int j = 0; j < custIDArray.length; j++) {
+                    if (custIDArray[j] != null) {
+                        p.setInt(1, custIDArray[j]);
+
+                        try {
+                            p.executeQuery();
+                            // don't commit here because we didn't finish generating yet
+                        }
+                        catch (SQLException e) {
+                            c.rollback();
+                            System.out.println("Something seems to have gone wrong. Please try again soon.");
+                            return;
+                        }
+                    }
+                }
+                try {
+                    c.commit(); // now we're free to commit
+                }
+                catch (SQLException e) {
+                    c.rollback();
+                    System.out.println("Something seems to have gone wrong. Please try again soon.");
+                    return;
+                }
+                System.out.println("Success! Your delinquet customers have been vanquished from our fair halls.");
+                System.out.println("--------------------------------------------------------------------------------");
+            }
+            else {
+                System.out.println("--------------------------------------------------------------------------------");
+                System.out.println("There are no customers with unpaid past-due invoices. ':)");
                 System.out.println("--------------------------------------------------------------------------------");
             }
         }
