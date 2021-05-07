@@ -25,7 +25,7 @@ public class Agent {
                 boolean backout = false;
                 while (true) {
                     System.out.println("What would you like to do?");
-                    int choice = agentUtility.inputRequest(new String[] {"list my customers", "add a customer", "back"}, input);
+                    int choice = agentUtility.inputRequest(new String[] {"list my customers", "add a customer", "create a policy", "back"}, input);
                     switch (choice) {
                         case 1:
                             listCustomers(c, agentID);
@@ -34,6 +34,9 @@ public class Agent {
                             addNewCustomer(c, input, agentID);
                             break;
                         case 3:
+                            addCustomerPolicy(c, input, agentID);
+                            break;
+                        case 4:
                             backout = true;
                             break;
                     }
@@ -150,6 +153,71 @@ public class Agent {
                 System.out.println("Huh, they don't have any phone numbers. They should fix that.");
             }
             System.out.println("--------------------------------------------------------------------------------");
+        }
+        catch (SQLException e) {
+            throw e;
+        }
+    }
+
+    private static void addCustomerPolicy(Connection c, Scanner input, int agentID) throws SQLException {
+       try (Statement s = c.createStatement();
+            PreparedStatement p = c.prepareStatement("INSERT INTO polisy VALUES (?, ?, ?, 0, ?)");) {
+            Utility agentUtility = new Utility();
+            System.out.println("Which customer is requesting a new policy?");
+            int custID = selectCustomer(c, input, agentID);
+            if (custID != -1) {
+                System.out.println("--------------------------------------------------------------------------------");
+                System.out.println("Enter the type of policy:");
+                String policyType = agentUtility.inputRequestString(input, "^\\D{1,20}$");
+                if (policyType.equals("__BACK__")) { return; }
+                System.out.println("Enter the monthly premium price you're quoting (dollars & cents):");
+                String premiumStr = agentUtility.inputRequestString(input, "^\\d+.\\d{2}$");
+                if (premiumStr.equals("__BACK__")) { return; }
+                double quotedPrice = Double.parseDouble(premiumStr);
+                p.setInt(1, new Random().nextInt(1000000)); p.setInt(4, custID);
+                p.setString(2, policyType); p.setDouble(3, quotedPrice);
+
+                try {
+                    p.executeQuery();
+                    c.commit();
+                    System.out.println("Success! Your customer now has a new policy.");
+                }
+                catch (SQLException e) {
+                    c.rollback();
+                    System.out.println("Something seems to have gone wrong. Please try again soon.");
+                }
+                System.out.println("--------------------------------------------------------------------------------");
+            }
+            else {
+                System.out.println("--------------------------------------------------------------------------------");
+                return;
+            }
+        }
+        catch (SQLException e) {
+            throw e;
+        }
+    }
+
+    private static int selectCustomer(Connection c, Scanner input, int agentID) throws SQLException {
+        try (Statement s = c.createStatement()) {
+            ResultSet r = s.executeQuery("SELECT cust_id, fname, lname FROM customer WHERE agent_id = " + agentID + " ORDER BY lname");
+            String[][] custList = new String[100][2]; int i = 0; // assuming a safe reasonable number of customers
+            if (r.next()) {
+                do {
+                    custList[i][0] = String.format("%06d", r.getInt("cust_id"));
+                    custList[i][1] = r.getString("fname") + " " + r.getString("lname");
+                    i++;
+                } while (r.next());
+                System.out.println("--------------------------------------------------------------------------------");
+                Utility custUtility = new Utility();
+                int custID = custUtility.inputRequestByMutedID(custList, input);
+                System.out.println("--------------------------------------------------------------------------------");
+                return custID;
+            }
+            else {
+                System.out.println("Whoops, guess you don't have any. Sorry!");
+                return -1;
+            }
         }
         catch (SQLException e) {
             throw e;
