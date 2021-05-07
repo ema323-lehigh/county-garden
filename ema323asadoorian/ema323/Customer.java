@@ -28,7 +28,7 @@ public class Customer {
                 boolean backout = false;
                 while (true) {
                     System.out.println("What would you like to do?");
-                    int choice = custUtility.inputRequest(new String[] {"display information", "make a claim", "view claims", "pay premiums", "insure items", "remove items", "cancel policies", "update address", "add phone", "remove phone", "back"}, input);
+                    int choice = custUtility.inputRequest(new String[] {"display information", "make a claim", "view claims", "view policies", "pay premiums", "insure items", "remove items", "cancel policies", "update address", "add phone", "remove phone", "back"}, input);
                     switch (choice) {
                         case 1:
                             customerInfo(c, input, custID);
@@ -40,32 +40,36 @@ public class Customer {
                             viewClaims(c, input, custID);
                             break;
                         case 4:
-                            makePayment(c, input, custID);
+                            viewPolicies(c, input, custID);
                             break;
                         case 5:
-                            addItem(c, input, custID);
+                            makePayment(c, input, custID);
                             break;
                         case 6:
-                            removeItem(c, input, custID);
+                            addItem(c, input, custID);
                             break;
                         case 7:
-                            cancelPolicy(c, input, custID);
+                            removeItem(c, input, custID);
                             break;
                         case 8:
-                            addCustAddress(c, input, custID);
+                            cancelPolicy(c, input, custID);
                             break;
                         case 9:
-                            addCustPhone(c, input, custID);
+                            addCustAddress(c, input, custID);
                             break;
                         case 10:
-                            removeCustPhone(c, input, custID);
+                            addCustPhone(c, input, custID);
                             break;
                         case 11:
+                            removeCustPhone(c, input, custID);
+                            break;
+                        case 12:
                             backout = true;
                             break;
                     }
                     if (backout) { break; }
                 }
+                System.out.println("--------------------------------------------------------------------------------");
             }
             else {
                 System.out.println("--------------------------------------------------------------------------------");
@@ -415,7 +419,6 @@ public class Customer {
             throw e;
         }
     }
-
     private static void claimInfo(Connection c, Scanner input, int claimID) throws SQLException {
         try (Statement s = c.createStatement();) {
             ResultSet r; // for symmetry/parallelism
@@ -471,6 +474,55 @@ public class Customer {
             else {
                 System.out.println("Looks like this one's still under remediation.");
             }
+            System.out.println("--------------------------------------------------------------------------------");
+        }
+        catch (SQLException e) {
+            throw e;
+        }
+    }
+
+    private static void viewPolicies(Connection c, Scanner input, int custID) throws SQLException {
+        try (Statement s = c.createStatement();) {
+            ResultSet r = s.executeQuery("SELECT * FROM polisy WHERE cust_id = " + custID);
+            String[][] policyList = new String[20][2]; int i = 0; // assuming a safe reasonable number of policies
+            if (r.next()) {
+                do {
+                    policyList[i][0] = String.format("%06d", r.getInt("policy_id"));
+                    policyList[i][1] = r.getString("policy_type");
+                    i++;
+                } while (r.next());
+                System.out.println("--------------------------------------------------------------------------------");
+                Utility custUtility = new Utility();
+                int policyID = custUtility.inputRequestByID(policyList, input);
+                policyInfo(c, input, policyID);
+            }
+            else {
+                System.out.println("--------------------------------------------------------------------------------");
+                System.out.println("Looks like you don't have any policies. An agent will need to sign you up.");
+                System.out.println("--------------------------------------------------------------------------------");
+            }
+        }
+        catch (SQLException e) {
+            throw e;
+        }
+    }
+    private static void policyInfo(Connection c, Scanner input, int policyID) throws SQLException {
+        try (Statement s = c.createStatement();) {
+            ResultSet r; // for symmetry/parallelism
+            r = s.executeQuery("SELECT * FROM polisy WHERE policy_id = " + policyID);
+            r.next(); // we already have policyID
+            String policyType = r.getString("policy_type");
+            double quotedPrice = r.getDouble("quoted_price");
+            String policyStatus = (r.getInt("cancelled") == 1) ? "cancelled" : "active";
+            System.out.println("--------------------------------------------------------------------------------");
+            System.out.printf("(%06d) %s\n", policyID, policyType);
+            System.out.printf("%s | $%.2f/month\n", policyStatus, quotedPrice);
+            r = s.executeQuery("SELECT * FROM item WHERE policy_id = " + policyID);
+            double totalInsured = 0.0;
+            while (r.next()) {
+                totalInsured += r.getDouble("approx_value");
+            }
+            System.out.printf("total value of items insured: $%.2f\n", totalInsured);
             System.out.println("--------------------------------------------------------------------------------");
         }
         catch (SQLException e) {
