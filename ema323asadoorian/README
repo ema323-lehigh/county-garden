@@ -26,35 +26,35 @@ Customers can:
 - pay their premiums
 
 
-Key tenets:
-- each customer has one (dedicated) agent ALWAYS
-- meanwhile, claims may be managed by multiple adjusters
-- all policies must be held, claims made but not immediately managed, etc.
-- no employee can be both an agent and an adjuster
-- contractors may service as many or as few claims
-- accordingly, not all claims are serviced
-- we don't care about employees' information
-- bills are expected to be paid, resulting in an initially null payment_type field
-- unpaid policy premiums result in customers getting booted
-- every claim is made against some individual policy, but not all policies have claims
-- one invoice can make payments against multiple policies (? bundles)
-- as policies can be new or cancelled, they do not have mandatory invoices
-- a policy can only be held by one customer, no matter how many are insured
-- likewise, a claim may only be made by a single customer
-- dependents may NOT[1] belong to multiple customers (ex. divorce) & no floating
-- a dependent is identified both by their name and their relationship to the customer
-- at the moment, the design is open to non-insurance-oriented employees, just in case
-- each payment goes towards one and only one claim, identified by its payment number on that claim
-- quoted prices need not always be available, so they will be null at first
-- all invoices are paid in full, while payments may be partial on claims
-- consider: should records (besides ex. dependents, contact info) remain after their controller disappears?
-- as it happens we can insure our contractors' stuff (by way of same address & owner's name)
-- zipcodes are stored as numbers, phone #s as strings...if i get in the mood to drop those tables and re-up, that strange decision may not stand
-- backout mechanism can't be modularized since it requires breaking out of a switch and a while, and an extra method scope would only make that worse
-- one can advance through data insertion prompts that they didn't want by giving EOF (Ctrl-D)
+Here are some notes/tenets I made while refining the design:
+- Each customer has one (dedicated) agent ALWAYS.
+- Meanwhile, claims may be managed by multiple adjusters.
+- All policies must be held, but claims will not be immediately managed upon creation.
+- No employee can be both an agent and an adjuster (skilled professionals !).
+- Contractors may service as many or as few claims as the adjusters desire.
+- Accordingly, not all claims are serviced at all.
+- Employees' information is not modeled/tracked beyond a couple of special attributes.
+- Bills are expected to be paid in future, so the payment_type field may be null.
+- Unpaid policy premiums should result in customers getting booted (!).
+- Every claim is made against some individual policy, but not all policies have claims.
+- One invoice can make payments against multiple policies, so the customer just pays their balance.
+- As policies can be new or cancelled, they do not have mandatory invoices.
+- A policy can only be held by one customer, no matter how many are insured.
+- Likewise, a claim may only be made by a single customer, no matter who was in the altercation.
+- In general, dependents may NOT[1] belong to multiple customers (ex. divorce) & no floating between customers,
+  but a dependent is identified both by their name and their relationship to the customer, so that is left abstract.
+- The design is open to the addition of non-agent/adjuster employees through the employee table system.
+- Each company payment goes towards one and only one claim, identified by its payment number on that claim.
+- Quoted prices might not always be available, so they will be null at first.
+- All invoices are paid in full, while payments may be partial on claims.
+- Records for cancelled policies are only maintained as long as the customer is doing business with us.
+- As it happens, we can insure our contractors' stuff, by way of the same address fields.
+- One peculiar choice: zipcodes are stored as numbers, but phone numbers are strings. It's just the way it is.
+- Users can skip past data insertion prompts by giving Ctrl-D for EOF, so in cases where there is no "back" option.
+
 
 Helpful links:
 - https://www.progressive.com/answers/how-to-file-an-auto-claim/
 - https://www.ehealthinsurance.com/resources/individual-and-family/can-added-dependent-health-insurance-plan [1]
 
-Data was not sourced from anywhere in particular, save perhaps a few searches to jog my recollection of unique first names. I didn't make my own data out of principle against using premade sources - it's just fun to create these little stories about people this way!
+Data was not sourced from anywhere in particular, save perhaps a few searches to jog my recollection of unique first names. I didn't make my own data out of principle against using premade sources, it's just fun to create these little stories about people this way!
