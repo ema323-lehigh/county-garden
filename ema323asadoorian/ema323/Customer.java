@@ -299,7 +299,7 @@ public class Customer {
             String[][] invoiceList = new String[20][2]; int i = 0; // assuming a safe reasonable number of invoices
             if (r.next()) {
                 do {
-                    invoiceList[i][0] = String.format("%06d", r.getInt("policy_id"));
+                    invoiceList[i][0] = String.format("%06d", r.getInt("trans_id"));
                     invoiceList[i][1] = r.getString("policy_type") + " - current premium: " +
                                         String.format("$%.2f", r.getDouble("quoted_price")) +
                                         " | due on " + r.getDate("due_date");
