@@ -354,7 +354,7 @@ public class Agent {
                     System.out.println("Something seems to have gone wrong. Please try again soon.");
                     return;
                 }
-                System.out.println("Success! Your delinquet customers have been vanquished from our fair halls.");
+                System.out.println("Success! Your delinquent customers have been vanquished from our fair halls.");
                 System.out.println("--------------------------------------------------------------------------------");
             }
             else {
