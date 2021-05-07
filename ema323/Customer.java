@@ -230,7 +230,7 @@ public class Customer {
                 do {
                     policyList[i][0] = String.format("%06d", r.getInt("policy_id"));
                     policyList[i][1] = r.getString("policy_type") + " - current premium: " +
-                                        String.format("%.2f", r.getDouble("quoted_price"));
+                                        String.format("$%.2f", r.getDouble("quoted_price"));
                     i++;
                 } while (r.next());
                 System.out.println("--------------------------------------------------------------------------------");
@@ -283,8 +283,8 @@ public class Customer {
             if (r.next()) {
                 do {
                     invoiceList[i][0] = String.format("%06d", r.getInt("policy_id"));
-                    invoiceList[i][1] = r.getString("policy_title") + " - current premium: " +
-                                        String.format("%.2f", r.getDouble("quoted_price")) +
+                    invoiceList[i][1] = r.getString("policy_type") + " - current premium: " +
+                                        String.format("$%.2f", r.getDouble("quoted_price")) +
                                         " | due on " + r.getDate("due_date");
                     i++;
                 } while (r.next());
@@ -329,7 +329,7 @@ public class Customer {
                 do {
                     policyList[i][0] = String.format("%06d", r.getInt("policy_id"));
                     policyList[i][1] = r.getString("policy_type") + " - current premium: " +
-                                        String.format("%.2f", r.getDouble("quoted_price"));
+                                        String.format("$%.2f", r.getDouble("quoted_price"));
                     i++;
                 } while (r.next());
                 System.out.println("--------------------------------------------------------------------------------");
