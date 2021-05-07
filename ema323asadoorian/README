@@ -1,4 +1,30 @@
-Consideration for the ER diagram: what is at the center? What is the focus? Where does everything else flow from? The design is mainly non-hierarchical -- actually, no, the relational part is what's non-hierarchical - but whatever is seen first, whatever is central, will take most importance as a first impression.
+# # # # # WELCOME TO COUNTY GARDEN INSURANCE # # # # #
+------- Emily Asadoorian | CSE-341 Spring 2021 -------
+
+Hello! This, as you well know, is my course project submission for our databases course. When you run the included jar file, you will be greeted by a menu that prompts for Oracle username and password before entering the nitty-gritty of the database. You can choose to interact as either an agent, an adjuster, or a customer, with the various business functions available to each.
+
+
+Agents can:
+- sign up new customers
+- add new policies for existing customers
+- generate invoices for existing policies
+
+Adjusters can:
+- assign claims to other adjusters (or themselves)
+- manage claims
+    - adjuster assignments
+    - servicing contractors
+    - payments to be made
+
+Customers can:
+- update their contact information
+    - phone(s)
+    - address
+- add or remove dependents
+- add or remove policy-covered items
+- make claims against their policies
+- pay their premiums
+
 
 Key tenets:
 - each customer has one (dedicated) agent ALWAYS
