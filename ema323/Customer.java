@@ -28,7 +28,7 @@ public class Customer {
                 boolean backout = false;
                 while (true) {
                     System.out.println("What would you like to do?");
-                    int choice = custUtility.inputRequest(new String[] {"display information", "make a claim", "pay premiums", "update address", "add phone", "remove phone", "back"}, input);
+                    int choice = custUtility.inputRequest(new String[] {"display information", "make a claim", "pay premiums", "cancel a policy", "update address", "add phone", "remove phone", "back"}, input);
                     switch (choice) {
                         case 1:
                             customerInfo(c, input, custID);
@@ -40,15 +40,18 @@ public class Customer {
                             makePayment(c, input, custID);
                             break;
                         case 4:
-                            addCustAddress(c, input, custID);
+                            cancelPolicy(c, input, custID);
                             break;
                         case 5:
-                            addCustPhone(c, input, custID);
+                            addCustAddress(c, input, custID);
                             break;
                         case 6:
-                            removeCustPhone(c, input, custID);
+                            addCustPhone(c, input, custID);
                             break;
                         case 7:
+                            removeCustPhone(c, input, custID);
+                            break;
+                        case 8:
                             backout = true;
                             break;
                     }
@@ -275,7 +278,7 @@ public class Customer {
         try (Statement s = c.createStatement();
             PreparedStatement p = c.prepareStatement("UPDATE invoice SET payment_type = ? WHERE trans_id = ?");) {
             Utility custUtility = new Utility();
-            ResultSet r = s.executeQuery("SELECT * FROM invoice NATURAL JOIN polisy WHERE cust_id = " + custID + " AND payment_type IS NULL");
+            ResultSet r = s.executeQuery("SELECT * FROM invoice NATURAL JOIN polisy WHERE cust_id = " + custID + " AND cancelled = 0 AND payment_type IS NULL");
             String[][] invoiceList = new String[20][2]; int i = 0; // assuming a safe reasonable number of invoices
             if (r.next()) {
                 do {
@@ -308,6 +311,54 @@ public class Customer {
             else {
                 System.out.println("--------------------------------------------------------------------------------");
                 System.out.println("You don't have any bills to pay! How nice.");
+                System.out.println("--------------------------------------------------------------------------------");
+            }
+        }
+        catch (SQLException e) {
+            throw e;
+        }
+    }
+
+    private static void cancelPolicy(Connection c, Scanner input, int custID) throws SQLException {
+        try (Statement s = c.createStatement();
+            PreparedStatement p = c.prepareStatement("UPDATE polisy SET cancelled = 1 WHERE policy_id = ?");) {
+            Utility custUtility = new Utility();
+            ResultSet r = s.executeQuery("SELECT * FROM polisy WHERE cancelled = 0 AND cust_id = " + custID);
+            String[][] policyList = new String[20][2]; int i = 0; // assuming a safe reasonable number of policies
+            if (r.next()) {
+                do {
+                    policyList[i][0] = String.format("%06d", r.getInt("policy_id"));
+                    policyList[i][1] = r.getString("policy_type") + " - current premium: " +
+                                        String.format("%.2f", r.getDouble("quoted_price"));
+                    i++;
+                } while (r.next());
+                System.out.println("--------------------------------------------------------------------------------");
+                System.out.println("Which policy would you like to cancel?");
+                int policyID = custUtility.inputRequestByID(policyList, input);
+                System.out.println("--------------------------------------------------------------------------------");
+                System.out.println("Are you sure? (Y/N):");
+                String paymentType = custUtility.inputRequestString(input, "^Y|N$");
+                if (paymentType.equals("N")) {
+                    System.out.println("Okay, no worries!");
+                    System.out.println("--------------------------------------------------------------------------------");
+                    return;
+                }
+                p.setInt(1, policyID);
+
+                try {
+                    p.executeQuery();
+                    c.commit();
+                    System.out.println("Success! Your policy has been cancelled.");
+                }
+                catch (SQLException e) {
+                    c.rollback();
+                    System.out.println("Something seems to have gone wrong. Please try again soon.");
+                }
+                System.out.println("--------------------------------------------------------------------------------");
+            }
+            else {
+                System.out.println("--------------------------------------------------------------------------------");
+                System.out.println("You don't have any policies to cancel...nice try, but you won't fool us that fast.");
                 System.out.println("--------------------------------------------------------------------------------");
             }
         }

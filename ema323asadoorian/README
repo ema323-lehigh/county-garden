@@ -24,7 +24,7 @@ Customers can:
 - add or remove policy-covered items
 - make claims against their policies - DONE
 - pay their premiums - DONE
-- cancel policies
+- cancel policies - DONE
 
 
 Here are some notes/tenets I made while refining the design:
@@ -51,7 +51,6 @@ Here are some notes/tenets I made while refining the design:
 - Records for cancelled policies are only maintained as long as the customer is doing business with us.
 - As it happens, we can insure our contractors' stuff, by way of the same address fields.
 - One peculiar choice: zipcodes are stored as numbers, but phone numbers are strings. It's just the way it is.
-- Users can skip past data insertion prompts by giving Ctrl-D for EOF, so in cases where there is no "back" option.
 
 
 Helpful links:
@@ -64,3 +63,4 @@ Data was not sourced from anywhere in particular, save perhaps a few searches to
 Some "pleas guilty":
 - Not all of my lines of divider dashes may be perfectly placed. The interest of efficiency in heavy testing doesn't mix well with catching every single one of those, and it's a price I'm somewhat willing to pay!
 - As yet, I haven't had complete success with "trapping" a Ctrl-D signal such that it doesn't travel any farther up the chain than the current input request. So, I tried, but perhaps don't use it please? Something like that, while important as a feature of quality, had to get left behind, and I think that's okay.
+- Along those lines, it's not quite feasible to back out of multiple switch and while scopes from within a function that brings yet its own scope, so the back menu option has to be manually inserted into most menus. Accordingly, it cannot appear in lists for data choice, so users must simply quit out completely at that stage, unfortunately.
