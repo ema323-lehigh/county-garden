@@ -68,7 +68,7 @@ public class Customer {
             String custName = r.getString("lname") + ", " + r.getString("fname");
             String minitial = r.getString("minitial"); if (minitial != null) { custName += " " + minitial + "."; }
             String suffix = r.getString("suffix"); if (suffix != null) { custName += ", " + suffix; }
-            //String birthDate = r.getString("birth_date");
+            String birthDate = String.valueOf(r.getDate("birth_date"));
             r = s.executeQuery("SELECT agent_id, aname FROM agent WHERE agent.agent_id = " + r.getInt("agent_id"));
             r.next(); String agentID = r.getString("agent_id"); String agentName = r.getString("aname");
             r = s.executeQuery("SELECT COUNT(*) FROM polisy WHERE cust_id = " + custID);
@@ -77,7 +77,7 @@ public class Customer {
             int numDependents = 0; if (r.next()) { numDependents = r.getInt(1); }
 
             System.out.println("--------------------------------------------------------------------------------");
-            System.out.printf("(%06d) %s | %d policies | %d dependents\n", custID, custName, numPolicies, numDependents);
+            System.out.printf("(%06d) %s | %d policies | %d dependents | DOB: %s\n", custID, custName, numPolicies, numDependents, birthDate);
             r = s.executeQuery("SELECT * FROM cust_add WHERE cust_id = " + custID);
             if (r.next()) {
                 System.out.println(r.getString("street") + ", " + r.getString("city") + ", " + r.getString("astate") + ", " + String.format("%05d", r.getInt("zipcode")));
@@ -85,7 +85,6 @@ public class Customer {
             else {
                 System.out.println("Huh, we don't have an address for you. We should fix that.");
                 addCustAddress(c, input, custID);
-
             }
             r = s.executeQuery("SELECT * FROM phone_num WHERE cust_id = " + custID);
             if (r.next()) {

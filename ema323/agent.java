@@ -25,12 +25,15 @@ public class Agent {
                 boolean backout = false;
                 while (true) {
                     System.out.println("What would you like to do?");
-                    int choice = agentUtility.inputRequest(new String[] {"add a customer", "back"}, input);
+                    int choice = agentUtility.inputRequest(new String[] {"list my customers", "add a customer", "back"}, input);
                     switch (choice) {
                         case 1:
-                            addNewCustomer(c, input, agentID);
+                            listCustomers(c, agentID);
                             break;
                         case 2:
+                            addNewCustomer(c, input, agentID);
+                            break;
+                        case 3:
                             backout = true;
                             break;
                     }
@@ -84,6 +87,67 @@ public class Agent {
             catch (SQLException e) {
                 c.rollback();
                 System.out.println("Something seems to have gone wrong. Please try again soon.");
+            }
+            System.out.println("--------------------------------------------------------------------------------");
+        }
+        catch (SQLException e) {
+            throw e;
+        }
+    }
+
+    private static void listCustomers(Connection c, int agentID) throws SQLException {
+        try (Statement s = c.createStatement();) {
+            ResultSet r = s.executeQuery("SELECT * FROM customer WHERE agent_id = " + agentID);
+            if (r.next()) {
+                do {
+                    customerInfo(c, r.getInt("cust_id"));
+                } while (r.next());
+            }
+            else {
+                System.out.println("--------------------------------------------------------------------------------");
+                System.out.println("What a schmuck! You don't have any customers!");
+                System.out.println("--------------------------------------------------------------------------------");
+            }
+        }
+        catch (SQLException e) {
+            throw e;
+        }
+    }
+
+    private static void customerInfo(Connection c, int custID) throws SQLException {
+        try (Statement s = c.createStatement();) {
+            ResultSet r; // for symmetry/parallelism
+            r = s.executeQuery("SELECT fname, lname, minitial, suffix, birth_date, agent_id FROM customer WHERE cust_id = " + custID);
+            r.next(); // we already have custID
+            String custName = r.getString("lname") + ", " + r.getString("fname");
+            String minitial = r.getString("minitial"); if (minitial != null) { custName += " " + minitial + "."; }
+            String suffix = r.getString("suffix"); if (suffix != null) { custName += ", " + suffix; }
+            String birthDate = String.valueOf(r.getDate("birth_date"));
+            r = s.executeQuery("SELECT agent_id, aname FROM agent WHERE agent.agent_id = " + r.getInt("agent_id"));
+            r.next(); String agentID = r.getString("agent_id"); String agentName = r.getString("aname");
+            r = s.executeQuery("SELECT COUNT(*) FROM polisy WHERE cust_id = " + custID);
+            int numPolicies = 0; if (r.next()) { numPolicies = r.getInt(1); }
+            r = s.executeQuery("SELECT COUNT(*) FROM dependentt WHERE cust_id = " + custID);
+            int numDependents = 0; if (r.next()) { numDependents = r.getInt(1); }
+
+            System.out.println("--------------------------------------------------------------------------------");
+            System.out.printf("(%06d) %s | %d policies | %d dependents | DOB: %s\n", custID, custName, numPolicies, numDependents, birthDate);
+            r = s.executeQuery("SELECT * FROM cust_add WHERE cust_id = " + custID);
+            if (r.next()) {
+                System.out.println(r.getString("street") + ", " + r.getString("city") + ", " + r.getString("astate") + ", " + String.format("%05d", r.getInt("zipcode")));
+            }
+            else {
+                System.out.println("Huh, they don't have an address. They should fix that.");
+            }
+            r = s.executeQuery("SELECT * FROM phone_num WHERE cust_id = " + custID);
+            if (r.next()) {
+                do {
+                    System.out.println(r.getString("kind") + " phone: (" + r.getString("numb").substring(0, 3) +
+                    ")-" +r.getString("numb").substring(3, 6) + "-" + r.getString("numb").substring(6));
+                } while (r.next());
+            }
+            else {
+                System.out.println("Huh, they don't have any phone numbers. They should fix that.");
             }
             System.out.println("--------------------------------------------------------------------------------");
         }
