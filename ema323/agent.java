@@ -168,7 +168,7 @@ public class Agent {
             if (custID != -1) {
                 System.out.println("--------------------------------------------------------------------------------");
                 System.out.println("Enter the type of policy:");
-                String policyType = agentUtility.inputRequestString(input, "^\\D{1,20}$");
+                String policyType = agentUtility.inputRequestString(input, "^\\D{1,50}$");
                 if (policyType.equals("__BACK__")) { return; }
                 System.out.println("Enter the monthly premium price you're quoting (dollars & cents):");
                 String premiumStr = agentUtility.inputRequestString(input, "^\\d+.\\d{2}$");

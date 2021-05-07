@@ -65,8 +65,8 @@ CREATE TABLE phone_num (
 DROP TABLE polisy CASCADE CONSTRAINTS;
 CREATE TABLE polisy (
     policy_id NUMBER(6) NOT NULL,
-    policy_type VARCHAR(20) NOT NULL,
-    quoted_price NUMBER(6,2),
+    policy_type VARCHAR(50) NOT NULL,
+    quoted_price NUMBER(9,2),
     cancelled NUMBER(1) NOT NULL CHECK(cancelled = 0 OR cancelled = 1),
     cust_id NUMBER(6) NOT NULL,
     FOREIGN KEY (cust_id) REFERENCES customer(cust_id)
