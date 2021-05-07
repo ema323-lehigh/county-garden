@@ -146,7 +146,6 @@ public class Customer {
     }
     private static void addCustPhone(Connection c, Scanner input, int custID) throws SQLException {
         try (PreparedStatement p = c.prepareStatement("INSERT INTO phone_num VALUES (?, ?, ?)");) {
-
             Utility custUtility = new Utility();
             System.out.println("--------------------------------------------------------------------------------");
             System.out.println("Enter the type of line (ex. home, work, cell):");

@@ -46,7 +46,7 @@ public class Adjuster {
 
     private static void assignClaims(Connection c, Scanner input) throws SQLException {
         try (Statement s = c.createStatement();) {
-            ResultSet r = s.executeQuery("SELECT * FROM claim WHERE NOT EXISTS (SELECT * FROM manages WHERE manages.claim_id = claim.claim_id)");
+            ResultSet r = s.executeQuery("SELECT * FROM claim WHERE NOT EXISTS (SELECT * FROM manages WHERE manages.claim_id = claim.claim_id) AND NOT EXISTS (SELECT * FROM payment WHERE payment.claim_id = claim.claim_id)");
             String[][] claimList = new String[100][2]; int i = 0; // assuming a safe reasonable number of claims
             if (r.next()) {
                 do {
@@ -188,13 +188,45 @@ public class Adjuster {
     }
 
     private static void makePayment(Connection c, Scanner input, int claimID) throws SQLException {
-        /*try {
-            System.out.println("Shell method");
+        try (Statement s = c.createStatement();
+            PreparedStatement p = c.prepareStatement("INSERT INTO payment VALUES (?, ?, ?, ?)");) {
+            Utility adjUtility = new Utility();
+            System.out.println("--------------------------------------------------------------------------------");
+            ResultSet r = s.executeQuery("SELECT * FROM item NATURAL JOIN polisy NATURAL JOIN claim WHERE claim_id = " + claimID);
+            double totalInsured = 0.0;
+            while (r.next()) {
+                totalInsured += r.getDouble("approx_value");
+            }
+            System.out.printf("The total value of the items insured by this claim's underlying policy is $%.2f.\n", totalInsured);
+            double amountAmt = 0.0; // have to declare this before the loop header
+            while (true) {
+                System.out.println("Enter the amount we will be compensating on this claim (dollars & cents):");
+                String amountStr = adjUtility.inputRequestString(input, "^\\d+.\\d{2}$");
+                if (amountStr.equals("__BACK__")) { return; }
+                amountAmt = Double.parseDouble(amountStr);
+                if (amountAmt > totalInsured) {
+                    System.out.println("Please enter a value no greater than the total amount insured.");
+                    continue;
+                }
+                break;
+            }
+            p.setInt(1, new Random().nextInt(1000000)); p.setDouble(2, amountAmt);
+            p.setDate(3, new java.sql.Date(new java.util.Date().getTime())); p.setInt(4, claimID);
+
+            try { // ID may fail? but probably not
+                p.executeQuery();
+                c.commit();
+                System.out.println("The payment update has been saved.");
+            }
+            catch (SQLException e) {
+                c.rollback();
+                System.out.println("Something seems to have gone wrong. Please try again soon.");
+            }
+            System.out.println("--------------------------------------------------------------------------------");
         }
         catch (SQLException e) {
             throw e;
-        }*/
-        System.out.println("bloop");
+        }
     }
 
     private static int selectAdjuster(Connection c, Scanner input) throws SQLException {
