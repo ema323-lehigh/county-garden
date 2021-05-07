@@ -168,7 +168,7 @@ CREATE TABLE invoice (
 DROP TABLE payment CASCADE CONSTRAINTS;
 CREATE TABLE payment (
     payment_id NUMBER(6) NOT NULL,
-    amount NUMBER(6,2) NOT NULL,
+    amount NUMBER(9,2) NOT NULL,
     paid_date DATE NOT NULL,
     claim_id NUMBER(6) NOT NULL,
     FOREIGN KEY (claim_id) REFERENCES claim(claim_id)
