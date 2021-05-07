@@ -119,7 +119,9 @@ public class Customer {
             Utility custUtility = new Utility();
             System.out.println("--------------------------------------------------------------------------------");
             System.out.println("Enter your street address (ex. 123 Sesame Place):");
-            String street = custUtility.inputRequestString(input, "^\\d{1,4} \\D+ \\D+$");
+            System.out.println("You can also optionally add a suite number (ex. Unit 4).");
+            System.out.println("(Separate the two portions of the field with a comma.)");
+            String street = custUtility.inputRequestString(input, "^\\d{1,4} \\D+ \\D+(, \\D+ \\d{1,4})?$");
             if (street.equals("__BACK__")) { return; }
             System.out.println("Enter your city/town (must be a word composed of letters only):");
             String city = custUtility.inputRequestString(input, "^\\D+$");
