@@ -68,21 +68,21 @@ public class Agent {
             Utility agentUtility = new Utility();
             System.out.println("--------------------------------------------------------------------------------");
             System.out.println("Enter the customer's first name:");
-            String fname = agentUtility.inputRequestString(input, "^\\D{1,50}$");
+            String fname = agentUtility.inputRequestString(input, "^(\\D{1,50})$");
             if (fname.equals("__BACK__")) { return; }
             System.out.println("Enter the customer's middle initial (a single '-' for none):");
-            String minitial = agentUtility.inputRequestString(input, "^\\D|-$");
+            String minitial = agentUtility.inputRequestString(input, "^(\\D|-)$");
             if (minitial.equals("__BACK__")) { return; }
             if (minitial.equals("-")) { minitial = ""; }
             System.out.println("Enter the customer's last name:");
-            String lname = agentUtility.inputRequestString(input, "^\\D{1,50}$");
+            String lname = agentUtility.inputRequestString(input, "^(\\D{1,50})$");
             if (lname.equals("__BACK__")) { return; }
             System.out.println("Enter the customer's suffix/title (a single '-' for none):");
-            String suffix = agentUtility.inputRequestString(input, "^\\D{1,10}$");
+            String suffix = agentUtility.inputRequestString(input, "^(\\D{1,10})$");
             if (suffix.equals("__BACK__")) { return; }
             if (suffix.equals("-")) { minitial = ""; }
             System.out.println("Enter the customer's date of birth (YYYY-MM-DD):");
-            String birthDate = agentUtility.inputRequestString(input, "^\\d{4}-\\d{2}-\\d{2}$");
+            String birthDate = agentUtility.inputRequestString(input, "^(\\d{4}-\\d{2}-\\d{2})$");
             if (birthDate.equals("__BACK__")) { return; }
             p.setInt(1, new Random().nextInt(1000000)); p.setInt(7, agentID);
             p.setDate(6, new java.sql.Date(0).valueOf(birthDate));
@@ -174,10 +174,10 @@ public class Agent {
             if (custID != -1) {
                 System.out.println("--------------------------------------------------------------------------------");
                 System.out.println("Enter the type of policy:");
-                String policyType = agentUtility.inputRequestString(input, "^\\D{1,50}$");
+                String policyType = agentUtility.inputRequestString(input, "^(\\D{1,50})$");
                 if (policyType.equals("__BACK__")) { return; }
                 System.out.println("Enter the monthly premium price you're quoting (dollars & cents):");
-                String premiumStr = agentUtility.inputRequestString(input, "^\\d+.\\d{2}$");
+                String premiumStr = agentUtility.inputRequestString(input, "^(\\d+.\\d{2})$");
                 if (premiumStr.equals("__BACK__")) { return; }
                 double quotedPrice = Double.parseDouble(premiumStr);
                 p.setInt(1, new Random().nextInt(1000000)); p.setInt(4, custID);
@@ -248,10 +248,10 @@ public class Agent {
                 System.out.println("--------------------------------------------------------------------------------");
                 System.out.println("How will you enter the due dates (enter 'x days out' or 'specific date')?");
                 String outDate = "";
-                switch (agentUtility.inputRequestString(input, "^(x days out)|(specific date)$")) {
+                switch (agentUtility.inputRequestString(input, "^((x days out)|(specific date))$")) {
                     case "x days out":
                         System.out.println("Enter a number of days (ex. 30):");
-                        outDate = agentUtility.inputRequestString(input, "^\\d{1,3}$");
+                        outDate = agentUtility.inputRequestString(input, "^(\\d{1,3})$");
                         // convert today to our desired format
                         String today = new SimpleDateFormat("YYYY-MM-dd").format(new java.util.Date());
                         // make a Gregorian hocus-pocus
@@ -263,7 +263,7 @@ public class Agent {
                         break;
                     case "specific date":
                         System.out.println("Enter a date in YYYY-MM-DD format:");
-                        outDate = agentUtility.inputRequestString(input, "^\\d{4}-\\d{2}-\\d{2}");
+                        outDate = agentUtility.inputRequestString(input, "^(\\d{4}-\\d{2}-\\d{2})$");
                         break;
                     case "__BACK__":
                         return;
@@ -324,7 +324,7 @@ public class Agent {
                 Utility agentUtility = new Utility();
                 System.out.println("--------------------------------------------------------------------------------");
                 System.out.println("Do you want to boot them from the system? (Y/N):");
-                String bootChoice = agentUtility.inputRequestString(input, "^Y|N$");
+                String bootChoice = agentUtility.inputRequestString(input, "^(Y|N)$");
                 if (bootChoice.equals("__BACK__")) { return; }
                 if (bootChoice.equals("N")) {
                     System.out.println("Okay, no worries! They get to live another day...");

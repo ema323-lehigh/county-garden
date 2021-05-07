@@ -215,7 +215,7 @@ public class Adjuster {
     }
 
     private static void makePayment(Connection c, Scanner input, int claimID) throws SQLException {
-        try (PreparedStatement p = c.prepareStatement("INSERT INTO payment VALUES (?, ?, ?, ?)");
+        try (PreparedStatement p = c.prepareStatement("INSERT INTO payment VALUES (?, ?, ?, 0, ?)");
             Statement s = c.createStatement();) {
             Utility adjUtility = new Utility();
             System.out.println("--------------------------------------------------------------------------------");
@@ -234,7 +234,7 @@ public class Adjuster {
             double amountAmt = 0.0; // have to declare this before the loop header
             while (true) {
                 System.out.println("Enter the amount we will be compensating on this claim (dollars & cents):");
-                String amountStr = adjUtility.inputRequestString(input, "^\\d+.\\d{2}$");
+                String amountStr = adjUtility.inputRequestString(input, "^(\\d{1,9}.\\d{2})$");
                 if (amountStr.equals("__BACK__")) { return; }
                 amountAmt = Double.parseDouble(amountStr);
                 if (amountAmt > totalInsured) {

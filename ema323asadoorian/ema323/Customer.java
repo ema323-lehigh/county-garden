@@ -124,16 +124,16 @@ public class Customer {
             System.out.println("Enter your street address (ex. 123 Sesame Place):");
             System.out.println("You can also optionally add a suite number (ex. Unit 4).");
             System.out.println("(Separate the two portions of the field with a comma.)");
-            String street = custUtility.inputRequestString(input, "^\\d{1,4} \\D+ \\D+(, \\D+ \\d{1,4})?$");
+            String street = custUtility.inputRequestString(input, "^(\\d{1,4} \\D+ \\D+(, \\D+ \\d{1,4})?)$");
             if (street.equals("__BACK__")) { return; }
             System.out.println("Enter your city/town (must be a word composed of letters only):");
-            String city = custUtility.inputRequestString(input, "^\\D+$");
+            String city = custUtility.inputRequestString(input, "^(\\D+)$");
             if (city.equals("__BACK__")) { return; }
             System.out.println("Enter your state (ex. AB):");
-            String state = custUtility.inputRequestString(input, "^[A-Z]{2}$");
+            String state = custUtility.inputRequestString(input, "^([A-Z]{2})$");
             if (state.equals("__BACK__")) { return; }
             System.out.println("Enter your zipcode (five digits only):");
-            String zipcode = custUtility.inputRequestString(input, "^\\d{5}$");
+            String zipcode = custUtility.inputRequestString(input, "^(\\d{5})$");
             if (zipcode.equals("__BACK__")) { return; }
             int zipcod = Integer.parseInt(zipcode);
             p.setString(1, street); p.setString(2, city); p.setString(3, state); p.setInt(4, zipcod);
@@ -164,10 +164,10 @@ public class Customer {
             Utility custUtility = new Utility();
             System.out.println("--------------------------------------------------------------------------------");
             System.out.println("Enter the type of line (ex. home, work, cell):");
-            String kind = custUtility.inputRequestString(input, "^\\D+$");
+            String kind = custUtility.inputRequestString(input, "^(\\D+)$");
             if (kind.equals("__BACK__")) { return; }
             System.out.println("Enter the 10-digit number (no formatting):");
-            String number = custUtility.inputRequestString(input, "^\\d{10}$");
+            String number = custUtility.inputRequestString(input, "^(\\d{10})$");
             if (number.equals("__BACK__")) { return; }
             p.setString(2, kind); p.setString(1, number); p.setInt(3, custID);
 
@@ -242,17 +242,17 @@ public class Customer {
                 System.out.println("On which policy would you like to make this claim?");
                 int policyID = custUtility.inputRequestByID(policyList, input);
                 System.out.println("--------------------------------------------------------------------------------");
-                System.out.println("Enter a title for the claim:");
-                String claimTitle = custUtility.inputRequestString(input, "^.{1,50}$");
+                System.out.println("Enter a title for the claim (50 characters max):");
+                String claimTitle = custUtility.inputRequestString(input, "^(.{1,50})$");
                 if (claimTitle.equals("__BACK__")) { return; }
-                System.out.println("Enter the location where it occurred:");
-                String claimLoc = custUtility.inputRequestString(input, "^.{1,100}$");
+                System.out.println("Enter the location where it occurred (100 characters max):");
+                String claimLoc = custUtility.inputRequestString(input, "^(.{1,100})$");
                 if (claimLoc.equals("__BACK__")) { return; }
                 System.out.println("Enter a description of the event (700 characters max):");
-                String claimDesc = custUtility.inputRequestString(input, "^.{1,700}$");
+                String claimDesc = custUtility.inputRequestString(input, "^(.{1,700})$");
                 if (claimDesc.equals("__BACK__")) { return; }
                 System.out.println("Enter the date this event occurred (YYYY-MM-DD):");
-                String occDate = custUtility.inputRequestString(input, "^\\d{4}-\\d{2}-\\d{2}$");
+                String occDate = custUtility.inputRequestString(input, "^(\\d{4}-\\d{2}-\\d{2})$");
                 if (occDate.equals("__BACK__")) { return; }
                 p.setInt(1, new Random().nextInt(1000000)); p.setString(2, claimTitle); p.setString(3, claimLoc);
                 p.setString(4, claimDesc);  p.setDate(5, new java.sql.Date(0).valueOf(occDate));
@@ -298,7 +298,7 @@ public class Customer {
                 int transID = custUtility.inputRequestByID(invoiceList, input);
                 System.out.println("--------------------------------------------------------------------------------");
                 System.out.println("Enter your payment type:");
-                String paymentType = custUtility.inputRequestString(input, "^\\D{1,20}$");
+                String paymentType = custUtility.inputRequestString(input, "^(\\D{1,20})$");
                 if (paymentType.equals("__BACK__")) { return; }
                 p.setString(1, paymentType); p.setInt(2, transID);
 
@@ -342,9 +342,9 @@ public class Customer {
                 int policyID = custUtility.inputRequestByID(policyList, input);
                 System.out.println("--------------------------------------------------------------------------------");
                 System.out.println("Are you sure? (Y/N):");
-                String paymentType = custUtility.inputRequestString(input, "^Y|N$");
-                if (paymentType.equals("__BACK__")) { return; }
-                if (paymentType.equals("N")) {
+                String cancelChoice = custUtility.inputRequestString(input, "^(Y|N)$");
+                if (cancelChoice.equals("__BACK__")) { return; }
+                if (cancelChoice.equals("N")) {
                     System.out.println("Okay, no worries!");
                     System.out.println("--------------------------------------------------------------------------------");
                     return;
@@ -423,10 +423,10 @@ public class Customer {
                 }
                 double balance = totalInsured - amountPaid;
                 if ((r.getInt("cust_fin") == 0) && (balance != 0)) {
-                    System.out.printf("The insurance company has paid $%.2f on this claim,  leaving you with $%.2f.\n", amountPaid, balance);
+                    System.out.printf("The insurance company has paid $%.2f on this claim, leaving you with $%.2f to cover.\n", amountPaid, balance);
                     Utility custUtility = new Utility();
                     System.out.println("Do you want to pay off the deductible? (Y/N):");
-                    String payChoice = custUtility.inputRequestString(input, "^Y|N$");
+                    String payChoice = custUtility.inputRequestString(input, "^(Y|N)$");
                     if (payChoice.equals("__BACK__")) { return; }
                     if (payChoice.equals("N")) {
                         System.out.println("Okay, no worries! It'll still be here later...");
@@ -434,7 +434,7 @@ public class Customer {
                         return;
                     }
                     System.out.println("Enter your payment type:"); // phantom input
-                    String paymentType = custUtility.inputRequestString(input, "^\\D{1,20}$");
+                    String paymentType = custUtility.inputRequestString(input, "^(\\D{1,20})$");
                     if (paymentType.equals("__BACK__")) { return; }
                     try {
                         s.executeQuery("UPDATE payment SET cust_fin = 1 WHERE claim_id = " + claimID);

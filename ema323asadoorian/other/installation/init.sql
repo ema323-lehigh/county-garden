@@ -171,7 +171,7 @@ CREATE TABLE invoice (
 DROP TABLE payment CASCADE CONSTRAINTS;
 CREATE TABLE payment (
     payment_id NUMBER(6) NOT NULL,
-    amount NUMBER(9,2) NOT NULL,
+    amount NUMBER(20,2) NOT NULL,
     paid_date DATE NOT NULL,
     cust_fin NUMBER(1) NOT NULL CHECK(cust_fin = 0 OR cust_fin = 1),
     claim_id NUMBER(6) NOT NULL,

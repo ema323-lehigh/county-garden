@@ -190,7 +190,7 @@ public class Utility {
     }
 
     public static String inputRequestString(Scanner input, String format) {
-        Pattern pattern = Pattern.compile(format.substring(0, format.length() - 1) + "|(__BACK__)$");
+        Pattern pattern = Pattern.compile(format.substring(0, (format.length() - 1)) + "|(__BACK__)$");
         while (true) {
             if (input.hasNextLine()) {
                 String buffer = input.nextLine();
