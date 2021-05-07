@@ -150,9 +150,17 @@ public class Adjuster {
                 System.out.println("--------------------------------------------------------------------------------");
                 return;
             }
-            System.out.println("To which adjuster would you like to assign this claim? Specialties are noted.");
-            int adjID = selectAdjuster(c, input);
-            p.setInt(1, claimID); p.setInt(2, adjID);
+            int adjID = 0; // have to declare this before the loop header
+            while (true) {
+                System.out.println("To which adjuster would you like to assign this claim? Specialties are noted.");
+                adjID = selectAdjuster(c, input);
+                p.setInt(1, claimID); p.setInt(2, adjID);
+                if (s.executeQuery("SELECT * FROM manages WHERE claim_id = " + claimID + " AND adj_id = " + adjID).next()) {
+                    System.out.println("That adjuster already manages this claim.");
+                    continue;
+                }
+                break;
+            }
             try {
                 p.executeQuery();
                 c.commit();
