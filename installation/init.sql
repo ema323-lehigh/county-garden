@@ -173,6 +173,7 @@ CREATE TABLE payment (
     claim_id NUMBER(6) NOT NULL,
     FOREIGN KEY (claim_id) REFERENCES claim(claim_id)
         ON DELETE CASCADE,
+    CONSTRAINT claim_payment UNIQUE (claim_id),
     PRIMARY KEY (payment_id)
 )
 
