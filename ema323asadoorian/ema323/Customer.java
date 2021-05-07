@@ -423,7 +423,7 @@ public class Customer {
             String submittedDate = String.valueOf(r.getDate("submitted_date"));
             System.out.println("--------------------------------------------------------------------------------");
             System.out.printf("(%06d) %s | %s\n", claimID, claimTitle, claimLoc);
-            System.out.printf("occured on %s | submitted on %s\n", occurredDate, submittedDate);
+            System.out.printf("occurred on %s | submitted on %s\n", occurredDate, submittedDate);
             System.out.println("The description says: " + claimDesc);
             r = s.executeQuery("SELECT * FROM payment WHERE claim_id = " + claimID);
             if (r.next()) {

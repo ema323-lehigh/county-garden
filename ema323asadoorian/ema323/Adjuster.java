@@ -132,7 +132,7 @@ public class Adjuster {
             String submittedDate = String.valueOf(r.getDate("submitted_date"));
             System.out.println("--------------------------------------------------------------------------------");
             System.out.printf("(%06d) %s | %s\n", claimID, claimTitle, claimLoc);
-            System.out.printf("occured on %s | submitted on %s\n", occurredDate, submittedDate);
+            System.out.printf("occurred on %s | submitted on %s\n", occurredDate, submittedDate);
             System.out.println("The description says: " + claimDesc);
             System.out.printf("Filed by %s %s, customer #%06d w/ policy #%06d.\n",
             r.getString("fname"), r.getString("lname"), r.getInt("cust_id"), r.getInt("policy_id"));
