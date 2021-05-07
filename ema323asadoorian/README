@@ -16,6 +16,7 @@ Adjusters can:
     - adjuster assignments - DONE
     - servicing contractors - DONE
     - payments to be made - DONE
+- add contractors to the arsenal
 
 Customers can:
 - update their contact information - DONE
@@ -28,6 +29,9 @@ Customers can:
 - cancel policies - DONE
 - view current claims - DONE
     - pay any deductible - DONE
+
+
+My suggested usage path is to start as an agent, signing up a couple of new customers and adding some policies for them. Then, go back up to the main menu and take the customer role, adding contact information and making claims. The third step will be adjusting those claims in the adjuster menu, with as much or as little hands-on management as you wish. After that, you can re-enter the customer menu to see if there is any remaining claim balance to be paid off or any policies to cancel. Agents can batch generate premium invoices for all their customers with either a period or due date in mind, and then the customers can pay those bills - stay on top of them! If the customers are not on time with their payments, the bills will no longer show up in their view and the agents will gain the ability to punt them out of the system >:).
 
 
 Here are some notes/tenets I made while refining the design:
