@@ -73,6 +73,9 @@ CREATE TABLE polisy (
         ON DELETE CASCADE,
     PRIMARY KEY (policy_id)
 )
+ALTER TABLE polisy MODIFY (
+    cancelled DEFAULT 0
+)
 
 DROP TABLE item CASCADE CONSTRAINTS;
 CREATE TABLE item (
@@ -170,10 +173,14 @@ CREATE TABLE payment (
     payment_id NUMBER(6) NOT NULL,
     amount NUMBER(9,2) NOT NULL,
     paid_date DATE NOT NULL,
+    cust_fin NUMBER(1) NOT NULL CHECK(cust_fin = 0 OR cust_fin = 1),
     claim_id NUMBER(6) NOT NULL,
     FOREIGN KEY (claim_id) REFERENCES claim(claim_id)
         ON DELETE CASCADE,
     CONSTRAINT claim_payment UNIQUE (claim_id),
     PRIMARY KEY (payment_id)
+)
+ALTER TABLE payment MODIFY (
+    cust_fin DEFAULT 0
 )
 

@@ -27,6 +27,7 @@ Customers can:
 - pay their premiums - DONE
 - cancel policies - DONE
 - view current claims - DONE
+    - pay any deductible - DONE
 
 
 Here are some notes/tenets I made while refining the design:
@@ -68,6 +69,7 @@ Some "pleas guilty":
 - Along those lines, it's not quite feasible to back out of multiple switch and while scopes from within a function that brings yet its own scope, so the back menu option has to be manually inserted into most menus. Accordingly, it cannot appear in lists for data choice, so users must simply quit out completely at that stage, unfortunately.
 - I am simply relying on random six-digit numbers to not overlap with each other within tables. Is this a bad idea? Probably. Does it work fine for this project? Absolutely. I chose to save the time of grabbing all current IDs from whichever table and searching them for a duplicate, which hopefully will not come back to bite me when you test...
 - I noticed a small mistake in my claim-location data generation: I accidentally placed the city before the state. Being particularly attached to the customers and interactions I had thus far, I instead edited each of those claims and left the erroneous insert statements in the current version of the output files (claims.txt & copythis.txt).
+- I added a field to the payment table that was not in the final ER diagram submission. This field indicates that the customer has paid off the balance of the claim after it was adjusted.
 
 
 Some helpful hints:

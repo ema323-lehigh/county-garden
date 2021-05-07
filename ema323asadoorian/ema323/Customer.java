@@ -386,7 +386,7 @@ public class Customer {
                 System.out.println("--------------------------------------------------------------------------------");
                 Utility custUtility = new Utility();
                 int claimID = custUtility.inputRequestByID(claimList, input);
-                claimInfo(c, claimID);
+                claimInfo(c, input, claimID);
             }
             else {
                 System.out.println("--------------------------------------------------------------------------------");
@@ -399,7 +399,7 @@ public class Customer {
         }
     }
 
-    private static void claimInfo(Connection c, int claimID) throws SQLException {
+    private static void claimInfo(Connection c, Scanner input, int claimID) throws SQLException {
         try (Statement s = c.createStatement();) {
             ResultSet r; // for symmetry/parallelism
             r = s.executeQuery("SELECT * FROM claim WHERE claim_id = " + claimID);
@@ -421,7 +421,37 @@ public class Customer {
                 while (r.next()) {
                     totalInsured += r.getDouble("approx_value");
                 }
-                System.out.printf("The insurance company has paid $%.2f on this claim,  leaving you with $%.2f.\n", amountPaid, (totalInsured - amountPaid));
+                double balance = totalInsured - amountPaid;
+                if ((r.getInt("cust_fin") == 0) && (balance != 0)) {
+                    System.out.printf("The insurance company has paid $%.2f on this claim,  leaving you with $%.2f.\n", amountPaid, balance);
+                    Utility custUtility = new Utility();
+                    System.out.println("Do you want to pay off the deductible? (Y/N):");
+                    String payChoice = custUtility.inputRequestString(input, "^Y|N$");
+                    if (payChoice.equals("__BACK__")) { return; }
+                    if (payChoice.equals("N")) {
+                        System.out.println("Okay, no worries! It'll still be here later...");
+                        System.out.println("--------------------------------------------------------------------------------");
+                        return;
+                    }
+                    System.out.println("Enter your payment type:"); // phantom input
+                    String paymentType = custUtility.inputRequestString(input, "^\\D{1,20}$");
+                    if (paymentType.equals("__BACK__")) { return; }
+                    try {
+                        s.executeQuery("UPDATE payment SET cust_fin = 1 WHERE claim_id = " + claimID);
+                        c.commit();
+                        System.out.println("Success! Your claim is now fully paid off.");
+                    }
+                    catch (SQLException e) {
+                        c.rollback();
+                        System.out.println("Something seems to have gone wrong. Please try again soon.");
+                    }
+                }
+                else {
+                    System.out.println("This claim's all paid up.");
+                }
+            }
+            else {
+                System.out.println("Looks like this one's still under remediation.");
             }
             System.out.println("--------------------------------------------------------------------------------");
         }

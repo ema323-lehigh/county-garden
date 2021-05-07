@@ -324,9 +324,9 @@ public class Agent {
                 Utility agentUtility = new Utility();
                 System.out.println("--------------------------------------------------------------------------------");
                 System.out.println("Do you want to boot them from the system? (Y/N):");
-                String paymentType = agentUtility.inputRequestString(input, "^Y|N$");
-                if (paymentType.equals("__BACK__")) { return; }
-                if (paymentType.equals("N")) {
+                String bootChoice = agentUtility.inputRequestString(input, "^Y|N$");
+                if (bootChoice.equals("__BACK__")) { return; }
+                if (bootChoice.equals("N")) {
                     System.out.println("Okay, no worries! They get to live another day...");
                     System.out.println("--------------------------------------------------------------------------------");
                     return;
