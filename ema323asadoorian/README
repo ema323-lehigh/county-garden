@@ -7,7 +7,7 @@ Hello! This, as you well know, is my course project submission for our databases
 Agents can:
 - sign up new customers - DONE
 - add new policies for existing customers - DONE
-- generate invoices for existing policies
+- generate invoices for existing policies - DONE
 
 Adjusters can:
 - assign claims to other adjusters (or themselves) - DONE
@@ -64,3 +64,4 @@ Some "pleas guilty":
 - Not all of my lines of divider dashes may be perfectly placed. The interest of efficiency in heavy testing doesn't mix well with catching every single one of those, and it's a price I'm somewhat willing to pay!
 - As yet, I haven't had complete success with "trapping" a Ctrl-D signal such that it doesn't travel any farther up the chain than the current input request. So, I tried, but perhaps don't use it please? Something like that, while important as a feature of quality, had to get left behind, and I think that's okay.
 - Along those lines, it's not quite feasible to back out of multiple switch and while scopes from within a function that brings yet its own scope, so the back menu option has to be manually inserted into most menus. Accordingly, it cannot appear in lists for data choice, so users must simply quit out completely at that stage, unfortunately.
+- I am simply relying on random six-digit numbers to not overlap with each other within tables. Is this a bad idea? Probably. Does it work fine for this project? Absolutely. I chose to save the time of grabbing all current IDs from whichever table and searching them for a duplicate, which hopefully will not come back to bite me when you test...

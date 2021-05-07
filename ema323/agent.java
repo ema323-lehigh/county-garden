@@ -25,7 +25,7 @@ public class Agent {
                 boolean backout = false;
                 while (true) {
                     System.out.println("What would you like to do?");
-                    int choice = agentUtility.inputRequest(new String[] {"list my customers", "add a customer", "create a policy", "back"}, input);
+                    int choice = agentUtility.inputRequest(new String[] {"list my customers", "add a customer", "create a policy", "generate invoices", "back"}, input);
                     switch (choice) {
                         case 1:
                             listCustomers(c, agentID);
@@ -37,6 +37,9 @@ public class Agent {
                             addCustomerPolicy(c, input, agentID);
                             break;
                         case 4:
+                            generateInvoices(c, input, agentID);
+                            break;
+                        case 5:
                             backout = true;
                             break;
                     }
@@ -209,14 +212,84 @@ public class Agent {
                     i++;
                 } while (r.next());
                 System.out.println("--------------------------------------------------------------------------------");
-                Utility custUtility = new Utility();
-                int custID = custUtility.inputRequestByMutedID(custList, input);
+                Utility agentUtility = new Utility();
+                int custID = agentUtility.inputRequestByMutedID(custList, input);
                 System.out.println("--------------------------------------------------------------------------------");
                 return custID;
             }
             else {
                 System.out.println("Whoops, guess you don't have any. Sorry!");
                 return -1;
+            }
+        }
+        catch (SQLException e) {
+            throw e;
+        }
+    }
+
+    private static void generateInvoices(Connection c, Scanner input, int agentID) throws SQLException {
+        try (Statement s = c.createStatement();
+            PreparedStatement p = c.prepareStatement("INSERT INTO invoice VALUES (?, ?, NULL, ?)");) {
+            ResultSet r = s.executeQuery("SELECT * FROM polisy WHERE cancelled = 0 AND NOT EXISTS (SELECT * FROM invoice WHERE invoice.policy_id = polisy.policy_id AND invoice.payment_type = NULL AND invoice.due_date > CURRENT_DATE)");
+            if (r.next()) {
+                Integer[] policyIDArray = new Integer[200]; int i = 0;
+                // assuming a safe reasonable number of policies
+                // and using an Integer array to check for nulls
+                System.out.println("--------------------------------------------------------------------------------");
+                do {
+                    System.out.printf("Policy #%06d - customer will owe $%.2f\n", r.getInt("policy_id"), r.getDouble("quoted_price"));
+                    policyIDArray[i] = r.getInt("policy_id");
+                    i++;
+                } while (r.next());
+                Utility agentUtility = new Utility();
+                System.out.println("--------------------------------------------------------------------------------");
+                System.out.println("How will you enter the due dates (enter 'x days out' or 'specific date')?");
+                String outDate = "";
+                switch (agentUtility.inputRequestString(input, "^(x days out)|(specific date)$")) {
+                    case "x days out":
+                        System.out.println("Enter a number of days (ex. 30):");
+                        outDate = agentUtility.inputRequestString(input, "^\\d{1,3}$");
+                        // convert today to our desired format
+                        String today = new SimpleDateFormat("YYYY-MM-dd").format(new java.util.Date());
+                        // make a Gregorian hocus-pocus
+                        Calendar cal = Calendar.getInstance();
+                        cal.add(Calendar.DAY_OF_YEAR, Integer.parseInt(outDate));
+                        java.util.Date outDays = cal.getTime();
+                        // put it back into our desired format
+                        outDate = new SimpleDateFormat("YYYY-MM-dd").format(outDays);
+                        break;
+                    case "specific date":
+                        System.out.println("Enter a date in YYYY-MM-DD format:");
+                        outDate = agentUtility.inputRequestString(input, "^\\d{4}-\\d{2}-\\d{2}");
+                        break;
+                    case "__BACK__":
+                        return;
+                }
+                for (int j = 0; j < policyIDArray.length; j++) {
+                    if (policyIDArray[j] != null) {
+                        p.setInt(1, new Random().nextInt(1000000));
+                        p.setInt(3, policyIDArray[j]);
+                        p.setDate(2, new java.sql.Date(0).valueOf(outDate));
+
+                        try {
+                            p.executeQuery();
+                            // don't commit here because we didn't finish generating yet
+                        }
+                        catch (SQLException e) {
+                            c.rollback();
+                            System.out.println("Something seems to have gone wrong. Please try again soon.");
+                            return;
+                        }
+                    }
+                }
+                try { c.commit(); } catch (SQLException e) {
+                    c.rollback(); System.out.println("Something seems to have gone wrong. Please try again soon.");
+                }
+                System.out.println("Success! Your customers' invoices have been generated.");
+                System.out.println("--------------------------------------------------------------------------------");
+            }
+            else {
+                System.out.println("There are no active policies without a current standing invoice.");
             }
         }
         catch (SQLException e) {
