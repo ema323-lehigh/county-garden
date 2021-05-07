@@ -28,7 +28,7 @@ public class Customer {
                 boolean backout = false;
                 while (true) {
                     System.out.println("What would you like to do?");
-                    int choice = custUtility.inputRequest(new String[] {"display information", "make a claim", "update address", "add phone", "remove phone", "back"}, input);
+                    int choice = custUtility.inputRequest(new String[] {"display information", "make a claim", "pay premiums", "update address", "add phone", "remove phone", "back"}, input);
                     switch (choice) {
                         case 1:
                             customerInfo(c, input, custID);
@@ -37,15 +37,18 @@ public class Customer {
                             makeClaim(c, input, custID);
                             break;
                         case 3:
-                            addCustAddress(c, input, custID);
+                            makePayment(c, input, custID);
                             break;
                         case 4:
-                            addCustPhone(c, input, custID);
+                            addCustAddress(c, input, custID);
                             break;
                         case 5:
-                            removeCustPhone(c, input, custID);
+                            addCustPhone(c, input, custID);
                             break;
                         case 6:
+                            removeCustPhone(c, input, custID);
+                            break;
+                        case 7:
                             backout = true;
                             break;
                     }
@@ -110,7 +113,6 @@ public class Customer {
     private static void addCustAddress(Connection c, Scanner input, int custID) throws SQLException {
         try (Statement s = c.createStatement(); Statement t = c.createStatement();
             PreparedStatement p = c.prepareStatement("INSERT INTO cust_add VALUES (?, ?, ?, ?, ?)");) {
-
             Utility custUtility = new Utility();
             System.out.println("--------------------------------------------------------------------------------");
             System.out.println("Enter your street address (ex. 123 Sesame Place):");
@@ -249,7 +251,7 @@ public class Customer {
                 p.setDate(6, new java.sql.Date(new java.util.Date().getTime())); p.setInt(7, policyID);
 
                 try {
-                    p.executeQuery(); 
+                    p.executeQuery();
                     c.commit();
                     System.out.println("Success! Your new claim has been made. An adjuster will take care of it soon.");
                 }
@@ -261,6 +263,51 @@ public class Customer {
             }
             else {
                 System.out.println("You don't have any policies! How can you make a claim? An agent will need to help you with that.");
+                System.out.println("--------------------------------------------------------------------------------");
+            }
+        }
+        catch (SQLException e) {
+            throw e;
+        }
+    }
+
+    private static void makePayment(Connection c, Scanner input, int custID) throws SQLException {
+        try (Statement s = c.createStatement();
+            PreparedStatement p = c.prepareStatement("UPDATE invoice SET payment_type = ? WHERE trans_id = ?");) {
+            Utility custUtility = new Utility();
+            ResultSet r = s.executeQuery("SELECT * FROM invoice NATURAL JOIN polisy WHERE cust_id = " + custID + " AND payment_type IS NULL");
+            String[][] invoiceList = new String[20][2]; int i = 0; // assuming a safe reasonable number of invoices
+            if (r.next()) {
+                do {
+                    invoiceList[i][0] = String.format("%06d", r.getInt("policy_id"));
+                    invoiceList[i][1] = r.getString("policy_title") + " - current premium: " +
+                                        String.format("%.2f", r.getDouble("quoted_price")) +
+                                        " | due on " + r.getDate("due_date");
+                    i++;
+                } while (r.next());
+                System.out.println("--------------------------------------------------------------------------------");
+                System.out.println("Which invoice would you like to pay down?");
+                int transID = custUtility.inputRequestByID(invoiceList, input);
+                System.out.println("--------------------------------------------------------------------------------");
+                System.out.println("Enter your payment type:");
+                String paymentType = custUtility.inputRequestString(input, "^\\D{1,10}$");
+                if (paymentType.equals("__BACK__")) { return; }
+                p.setString(1, paymentType); p.setInt(2, transID);
+
+                try {
+                    p.executeQuery();
+                    c.commit();
+                    System.out.println("Success! Your premium for this month has been paid.");
+                }
+                catch (SQLException e) {
+                    c.rollback();
+                    System.out.println("Something seems to have gone wrong. Please try again soon.");
+                }
+                System.out.println("--------------------------------------------------------------------------------");
+            }
+            else {
+                System.out.println("--------------------------------------------------------------------------------");
+                System.out.println("You don't have any bills to pay! How nice.");
                 System.out.println("--------------------------------------------------------------------------------");
             }
         }
