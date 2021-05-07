@@ -81,8 +81,20 @@ public class Agent {
             String suffix = agentUtility.inputRequestString(input, "^(\\D{1,10})$");
             if (suffix.equals("__BACK__")) { return; }
             if (suffix.equals("-")) { minitial = ""; }
-            System.out.println("Enter the customer's date of birth (YYYY-MM-DD):");
-            String birthDate = agentUtility.inputRequestString(input, "^(\\d{4}-\\d{2}-\\d{2})$");
+            String birthDate = ""; // have to declare this before the loop header
+            while (true) {
+                System.out.println("Enter the customer's date of birth (YYYY-MM-DD):");
+                birthDate = agentUtility.inputRequestString(input, "^(\\d{4}-\\d{2}-\\d{2})$");
+                if (birthDate.equals("__BACK__")) { return; }
+                try {
+                    java.sql.Date datum = new java.sql.Date(0).valueOf(birthDate);
+                }
+                catch (IllegalArgumentException e) {
+                    System.out.println("That date is invalid.");
+                    continue;
+                }
+                break;
+            }
             if (birthDate.equals("__BACK__")) { return; }
             p.setInt(1, new Random().nextInt(1000000)); p.setInt(7, agentID);
             p.setDate(6, new java.sql.Date(0).valueOf(birthDate));
@@ -262,8 +274,19 @@ public class Agent {
                         outDate = new SimpleDateFormat("YYYY-MM-dd").format(outDays);
                         break;
                     case "specific date":
-                        System.out.println("Enter a date in YYYY-MM-DD format:");
-                        outDate = agentUtility.inputRequestString(input, "^(\\d{4}-\\d{2}-\\d{2})$");
+                        while (true) {
+                            System.out.println("Enter a date in YYYY-MM-DD format:");
+                            outDate = agentUtility.inputRequestString(input, "^(\\d{4}-\\d{2}-\\d{2})$");
+                            if (outDate.equals("__BACK__")) { return; }
+                            try {
+                                java.sql.Date datum = new java.sql.Date(0).valueOf(outDate);
+                            }
+                            catch (IllegalArgumentException e) {
+                                System.out.println("That date is invalid.");
+                                continue;
+                            }
+                            break;
+                        }
                         break;
                     case "__BACK__":
                         return;

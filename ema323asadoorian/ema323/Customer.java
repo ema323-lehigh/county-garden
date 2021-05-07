@@ -251,8 +251,20 @@ public class Customer {
                 System.out.println("Enter a description of the event (700 characters max):");
                 String claimDesc = custUtility.inputRequestString(input, "^(.{1,700})$");
                 if (claimDesc.equals("__BACK__")) { return; }
-                System.out.println("Enter the date this event occurred (YYYY-MM-DD):");
-                String occDate = custUtility.inputRequestString(input, "^(\\d{4}-\\d{2}-\\d{2})$");
+                String occDate = ""; // have to declare this before the loop header
+                while (true) {
+                    System.out.println("Enter the date this event occurred (YYYY-MM-DD):");
+                    occDate = custUtility.inputRequestString(input, "^(\\d{4}-\\d{2}-\\d{2})$");
+                    if (occDate.equals("__BACK__")) { return; }
+                    try {
+                        java.sql.Date datum = new java.sql.Date(0).valueOf(occDate);
+                    }
+                    catch (IllegalArgumentException e) {
+                        System.out.println("That date is invalid.");
+                        continue;
+                    }
+                    break;
+                }
                 if (occDate.equals("__BACK__")) { return; }
                 p.setInt(1, new Random().nextInt(1000000)); p.setString(2, claimTitle); p.setString(3, claimLoc);
                 p.setString(4, claimDesc);  p.setDate(5, new java.sql.Date(0).valueOf(occDate));
