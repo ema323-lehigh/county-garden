@@ -74,7 +74,9 @@ Some "pleas guilty":
 - I am simply relying on random six-digit numbers to not overlap with each other within tables. Is this a bad idea? Probably. Does it work fine for this project? Absolutely. I chose to save the time of grabbing all current IDs from whichever table and searching them for a duplicate, which hopefully will not come back to bite me when you test...
 - I noticed a small mistake in my claim-location data generation: I accidentally placed the city before the state. Being particularly attached to the customers and interactions I had thus far, I instead edited each of those claims and left the erroneous insert statements in the current version of the output files (claims.txt & copythis.txt).
 - I added a field to the payment table that was not in the final ER diagram submission. This field indicates that the customer has paid off the balance of the claim after it was adjusted.
+- The premium does not depend on the number of items insured or the amount of claims made, it's just arbitrary at the discretion of the agent making the policy. Not very realistic, but easy to implement.
 
 
 Some helpful hints:
 - When generating invoices as an agent, there is no option to enter negative days, but I also haven't implemented rigorous integrity checking on the side of specific due dates. This is for the purpose of entering backdated invoices so that you can see how delinquent customers appear and can be removed.
+- Try some of the options multiple times! ex. paying premiums makes immediate changes for that menu, as you might expect.
