@@ -90,7 +90,7 @@ CREATE TABLE claim (
     claim_id NUMBER(6) NOT NULL,
     claim_title VARCHAR(50) NOT NULL,
     event_loc VARCHAR(100) NOT NULL,
-    event_desc VARCHAR(280) NOT NULL,
+    event_desc VARCHAR(700) NOT NULL,
     occurred_date DATE NOT NULL,
     submitted_date DATE NOT NULL,
     policy_id NUMBER(6) NOT NULL,

@@ -28,21 +28,24 @@ public class Customer {
                 boolean backout = false;
                 while (true) {
                     System.out.println("What would you like to do?");
-                    int choice = custUtility.inputRequest(new String[] {"display information", "update address", "add phone", "remove phone", "back"}, input);
+                    int choice = custUtility.inputRequest(new String[] {"display information", "make a claim", "update address", "add phone", "remove phone", "back"}, input);
                     switch (choice) {
                         case 1:
                             customerInfo(c, input, custID);
                             break;
                         case 2:
-                            addCustAddress(c, input, custID);
+                            makeClaim(c, input, custID);
                             break;
                         case 3:
-                            addCustPhone(c, input, custID);
+                            addCustAddress(c, input, custID);
                             break;
                         case 4:
-                            removeCustPhone(c, input, custID);
+                            addCustPhone(c, input, custID);
                             break;
                         case 5:
+                            removeCustPhone(c, input, custID);
+                            break;
+                        case 6:
                             backout = true;
                             break;
                     }
@@ -203,6 +206,61 @@ public class Customer {
             else {
                 System.out.println("--------------------------------------------------------------------------------");
                 System.out.println("You don't have any phone numbers! Is this a joke to you?");
+                System.out.println("--------------------------------------------------------------------------------");
+            }
+        }
+        catch (SQLException e) {
+            throw e;
+        }
+    }
+
+    private static void makeClaim(Connection c, Scanner input, int custID) throws SQLException {
+        try (Statement s = c.createStatement();
+            PreparedStatement p = c.prepareStatement("INSERT INTO claim VALUES (?, ?, ?, ?, ?, ?, ?)");) {
+
+            Utility custUtility = new Utility();
+            ResultSet r = s.executeQuery("SELECT * FROM polisy WHERE cust_id = " + custID);
+            String[][] policyList = new String[20][2]; int i = 0; // assuming a safe reasonable number of policies
+            if (r.next()) {
+                do {
+                    policyList[i][0] = String.format("%06d", r.getInt("policy_id"));
+                    policyList[i][1] = r.getString("policy_type") + " - current premium: " +
+                                        String.format("%.2f", r.getDouble("quoted_price"));
+                    i++;
+                } while (r.next());
+                System.out.println("--------------------------------------------------------------------------------");
+                System.out.println("On which policy would you like to make this claim?");
+                int policyID = custUtility.inputRequestByID(policyList, input);
+                System.out.println("--------------------------------------------------------------------------------");
+                System.out.println("Enter a title for the claim:");
+                String claimTitle = custUtility.inputRequestString(input, "^.{1,50}$");
+                if (claimTitle.equals("__BACK__")) { return; }
+                System.out.println("Enter the location where it occurred:");
+                String claimLoc = custUtility.inputRequestString(input, "^.{1,100}$");
+                if (claimLoc.equals("__BACK__")) { return; }
+                System.out.println("Enter a description of the event (700 characters max):");
+                String claimDesc = custUtility.inputRequestString(input, "^.{1,700}$");
+                if (claimDesc.equals("__BACK__")) { return; }
+                System.out.println("Enter the date this event occurred (YYYY-MM-DD):");
+                String occDate = custUtility.inputRequestString(input, "^\\d{4}-\\d{2}-\\d{2}$");
+                if (occDate.equals("__BACK__")) { return; }
+                p.setInt(1, new Random().nextInt(1000000)); p.setString(2, claimTitle); p.setString(3, claimLoc);
+                p.setString(4, claimDesc);  p.setDate(5, new java.sql.Date(0).valueOf(occDate));
+                p.setDate(6, new java.sql.Date(new java.util.Date().getTime())); p.setInt(7, policyID);
+
+                try {
+                    p.executeQuery(); 
+                    c.commit();
+                    System.out.println("Success! Your new claim has been made. An adjuster will take care of it soon.");
+                }
+                catch (SQLException e) {
+                    c.rollback();
+                    System.out.println("Something seems to have gone wrong. Please try again soon.");
+                }
+                System.out.println("--------------------------------------------------------------------------------");
+            }
+            else {
+                System.out.println("You don't have any policies! How can you make a claim? An agent will need to help you with that.");
                 System.out.println("--------------------------------------------------------------------------------");
             }
         }
