@@ -481,3 +481,4 @@ INSERT into firm_add VALUES ('766 Center Ln.', 'Bloomis', 'VP', 41023, 608486);
 INSERT into firm_add VALUES ('58 Lamia Pike', 'Bloomis', 'MO', 37940, 883387);
 INSERT into firm_add VALUES ('305 Walnut Rd.', 'Wantage', 'HX', 57331, 058201);
 
+EXEC phonenums;

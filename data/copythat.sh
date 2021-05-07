@@ -35,3 +35,5 @@ echo -e '' >> copythis.txt
 echo "DELETE firm_add;" >> copythis.txt
 cat output/firmadds.txt >> copythis.txt
 echo -e '' >> copythis.txt
+
+echo -e "EXEC phonenums;" >> copythis.txt
