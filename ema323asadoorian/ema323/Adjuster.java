@@ -88,7 +88,7 @@ public class Adjuster {
                 boolean backout = false;
                 while (true) {
                     System.out.println("What would you like to do?");
-                    int choice = adjUtility.inputRequest(new String[] {"display info", "add an adjuster", "add a contractor", "make a payment", "back"}, input);
+                    int choice = adjUtility.inputRequest(new String[] {"display information", "add an adjuster", "add a contractor", "make a payment", "back"}, input);
                     switch (choice) {
                         case 1:
                             claimInfo(c, claimID);
