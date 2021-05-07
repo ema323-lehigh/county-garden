@@ -230,7 +230,7 @@ public class Agent {
     private static void generateInvoices(Connection c, Scanner input, int agentID) throws SQLException {
         try (Statement s = c.createStatement();
             PreparedStatement p = c.prepareStatement("INSERT INTO invoice VALUES (?, ?, NULL, ?)");) {
-            ResultSet r = s.executeQuery("SELECT * FROM polisy WHERE cancelled = 0 AND NOT EXISTS (SELECT * FROM invoice WHERE invoice.policy_id = polisy.policy_id AND invoice.payment_type = NULL AND invoice.due_date > CURRENT_DATE)");
+            ResultSet r = s.executeQuery("SELECT * FROM polisy NATURAL JOIN customer WHERE agent_id = " + agentID + " AND cancelled = 0 AND NOT EXISTS (SELECT * FROM invoice WHERE invoice.policy_id = polisy.policy_id AND invoice.payment_type IS NULL AND invoice.due_date > CURRENT_DATE)");
             if (r.next()) {
                 Integer[] policyIDArray = new Integer[200]; int i = 0;
                 // assuming a safe reasonable number of policies
@@ -282,14 +282,21 @@ public class Agent {
                         }
                     }
                 }
-                try { c.commit(); } catch (SQLException e) {
-                    c.rollback(); System.out.println("Something seems to have gone wrong. Please try again soon.");
+                try {
+                    c.commit(); // now we're free to commit
+                }
+                catch (SQLException e) {
+                    c.rollback();
+                    System.out.println("Something seems to have gone wrong. Please try again soon.");
+                    return;
                 }
                 System.out.println("Success! Your customers' invoices have been generated.");
                 System.out.println("--------------------------------------------------------------------------------");
             }
             else {
+                System.out.println("--------------------------------------------------------------------------------");
                 System.out.println("There are no active policies without a current standing invoice.");
+                System.out.println("--------------------------------------------------------------------------------");
             }
         }
         catch (SQLException e) {
