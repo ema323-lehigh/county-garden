@@ -113,6 +113,43 @@ public class Utility {
             }
         }
     }
+    public static String inputRequestByMutedIDString(String[][] choices, Scanner input) {
+        int choice; int i;
+        for (i = 0; i < choices.length; i++) {
+            if (choices[i][0] != null) {
+                System.out.println((i + 1) + ") " + choices[i][1]);
+            }
+            else {
+                break;
+            }
+        }
+        System.out.println((++i) + ") quit");
+        while (true) {
+            if (input.hasNextLine()) {
+                if (input.hasNextInt()) {
+                    choice = input.nextInt();
+                    input.nextLine();
+                    if (choice == i) {
+                        timeToGo(input);
+                    }
+                    else if ((choice > 0) && (choice < i)) {
+                        return choices[choice - 1][0];
+                    }
+                    else {
+                        System.out.println("Please enter an integer corresponding to one of the choices above.");
+                    }
+                }
+                else {
+                    System.out.println("Please enter an integer corresponding to one of the choices above.");
+                    input.nextLine();
+                }
+            }
+            else {
+                System.out.println("Since this isn't an actual update information entry, we'll take that to mean that you want to quit.");
+                timeToGo(input);
+            }
+        }
+    }
 
     public static int inputRequestByIDAttribute(String[][] choices, Scanner input) {
         int choice; int i;

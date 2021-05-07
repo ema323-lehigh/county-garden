@@ -28,7 +28,7 @@ public class Customer {
                 boolean backout = false;
                 while (true) {
                     System.out.println("What would you like to do?");
-                    int choice = custUtility.inputRequest(new String[] {"display information", "update address", "update phone", "back"}, input);
+                    int choice = custUtility.inputRequest(new String[] {"display information", "update address", "add phone", "remove phone", "back"}, input);
                     switch (choice) {
                         case 1:
                             customerInfo(c, input, custID);
@@ -40,6 +40,9 @@ public class Customer {
                             addCustPhone(c, input, custID);
                             break;
                         case 4:
+                            removeCustPhone(c, input, custID);
+                            break;
+                        case 5:
                             backout = true;
                             break;
                     }
@@ -166,6 +169,43 @@ public class Customer {
                 System.out.println("Something seems to have gone wrong. Please try again soon.");
             }
             System.out.println("--------------------------------------------------------------------------------");
+        }
+        catch (SQLException e) {
+            throw e;
+        }
+    }
+    private static void removeCustPhone(Connection c, Scanner input, int custID) throws SQLException {
+        try (Statement s = c.createStatement();
+            PreparedStatement p = c.prepareStatement("DELETE FROM phone_num WHERE numb = ?");) {
+            Utility custUtility = new Utility();
+            ResultSet r = s.executeQuery("SELECT * FROM phone_num WHERE cust_id = " + custID);
+            String[][] phoneList = new String[20][2]; int i = 0; // assuming a safe reasonable number of numbers
+            if (r.next()) {
+                do {
+                    phoneList[i][0] = r.getString("numb");
+                    phoneList[i][1] = r.getString("kind") + " phone: (" + r.getString("numb").substring(0, 3) +
+                    ")-" +r.getString("numb").substring(3, 6) + "-" + r.getString("numb").substring(6);
+                    i++;
+                } while (r.next());
+                System.out.println("--------------------------------------------------------------------------------");
+                String phoneNumb = custUtility.inputRequestByMutedIDString(phoneList, input);
+                try {
+                    p.setString(1, phoneNumb);
+                    p.executeQuery();
+                    c.commit();
+                    System.out.println("Success! Your old contact information has been removed.");
+                }
+                catch (SQLException e) {
+                    c.rollback();
+                    System.out.println("Something seems to have gone wrong. Please try again soon.");
+                }
+                System.out.println("--------------------------------------------------------------------------------");
+            }
+            else {
+                System.out.println("--------------------------------------------------------------------------------");
+                System.out.println("You don't have any phone numbers! Is this a joke to you?");
+                System.out.println("--------------------------------------------------------------------------------");
+            }
         }
         catch (SQLException e) {
             throw e;
