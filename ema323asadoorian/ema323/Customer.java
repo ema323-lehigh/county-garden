@@ -28,7 +28,7 @@ public class Customer {
                 boolean backout = false;
                 while (true) {
                     System.out.println("What would you like to do?");
-                    int choice = custUtility.inputRequest(new String[] {"display information", "make a claim", "view claims", "pay premiums", "insure items", "cancel a policy", "update address", "add phone", "remove phone", "back"}, input);
+                    int choice = custUtility.inputRequest(new String[] {"display information", "make a claim", "view claims", "pay premiums", "insure items", "remove items", "cancel policies", "update address", "add phone", "remove phone", "back"}, input);
                     switch (choice) {
                         case 1:
                             customerInfo(c, input, custID);
@@ -46,18 +46,21 @@ public class Customer {
                             addItem(c, input, custID);
                             break;
                         case 6:
-                            cancelPolicy(c, input, custID);
+                            removeItem(c, input, custID);
                             break;
                         case 7:
-                            addCustAddress(c, input, custID);
+                            cancelPolicy(c, input, custID);
                             break;
                         case 8:
-                            addCustPhone(c, input, custID);
+                            addCustAddress(c, input, custID);
                             break;
                         case 9:
-                            removeCustPhone(c, input, custID);
+                            addCustPhone(c, input, custID);
                             break;
                         case 10:
+                            removeCustPhone(c, input, custID);
+                            break;
+                        case 11:
                             backout = true;
                             break;
                     }
@@ -512,6 +515,64 @@ public class Customer {
                     System.out.println("Something seems to have gone wrong. Please try again soon.");
                 }
                 System.out.println("--------------------------------------------------------------------------------");
+            }
+            else {
+                System.out.println("You don't have any policies! How can you insure any items? An agent will need to help you with that.");
+                System.out.println("--------------------------------------------------------------------------------");
+            }
+        }
+        catch (SQLException e) {
+            throw e;
+        }
+    }
+    private static void removeItem(Connection c, Scanner input, int custID) throws SQLException {
+        try (Statement s = c.createStatement();
+            PreparedStatement p = c.prepareStatement("DELETE FROM item WHERE item_id = ?");) {
+            Utility custUtility = new Utility();
+            ResultSet r; // for symmetry/parallelism
+            r = s.executeQuery("SELECT * FROM polisy WHERE cancelled = 0 AND cust_id = " + custID);
+            String[][] policyList = new String[20][2]; int i = 0; // assuming a safe reasonable number of policies
+            if (r.next()) {
+                do {
+                    policyList[i][0] = String.format("%06d", r.getInt("policy_id"));
+                    policyList[i][1] = r.getString("policy_type") + " - current premium: " +
+                                        String.format("$%.2f", r.getDouble("quoted_price"));
+                    i++;
+                } while (r.next());
+                System.out.println("--------------------------------------------------------------------------------");
+                System.out.println("From which policy would you like to remove an item?");
+                int policyID = custUtility.inputRequestByID(policyList, input);
+                System.out.println("--------------------------------------------------------------------------------");
+                r = s.executeQuery("SELECT * FROM item WHERE policy_id = " + policyID);
+                String[][] itemList = new String[100][2]; int j = 0; // assuming a safe reasonable number of items
+                if (r.next()) {
+                    do {
+                        itemList[j][0] = String.format("%06d", r.getInt("item_id"));
+                        itemList[j][1] = r.getString("item_desc") + " - approximate value: " +
+                                            String.format("$%.2f", r.getDouble("approx_value"));
+                        j++;
+                    } while (r.next());
+                    System.out.println("Which item would you like to remove?");
+                    int itemID = custUtility.inputRequestByID(itemList, input);
+                    System.out.println("--------------------------------------------------------------------------------");
+
+                    p.setInt(1, itemID);
+
+                    try {
+                        p.executeQuery();
+                        c.commit();
+                        System.out.println("Success! That item has been removed from your policy.");
+                    }
+                    catch (SQLException e) {
+                        c.rollback();
+                        System.out.println("Something seems to have gone wrong. Please try again soon.");
+                    }
+                    System.out.println("--------------------------------------------------------------------------------");
+                }
+                else {
+                    System.out.println("There are no items covered by this policy.");
+                    System.out.println("--------------------------------------------------------------------------------");
+                }
             }
             else {
                 System.out.println("You don't have any policies! How can you insure any items? An agent will need to help you with that.");
