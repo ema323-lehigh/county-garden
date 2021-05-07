@@ -416,13 +416,14 @@ public class Customer {
             r = s.executeQuery("SELECT * FROM payment WHERE claim_id = " + claimID);
             if (r.next()) {
                 double amountPaid = r.getDouble("amount");
+                boolean custFinished = (r.getInt("cust_fin") == 1) ? true : false;
                 r = s.executeQuery("SELECT * FROM item NATURAL JOIN polisy NATURAL JOIN claim WHERE claim_id = " + claimID);
                 double totalInsured = 0.0;
                 while (r.next()) {
                     totalInsured += r.getDouble("approx_value");
                 }
                 double balance = totalInsured - amountPaid;
-                if ((r.getInt("cust_fin") == 0) && (balance != 0)) {
+                if (!custFinished && (balance != 0)) {
                     System.out.printf("The insurance company has paid $%.2f on this claim, leaving you with $%.2f to cover.\n", amountPaid, balance);
                     Utility custUtility = new Utility();
                     System.out.println("Do you want to pay off the deductible? (Y/N):");
