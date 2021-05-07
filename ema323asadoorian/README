@@ -5,25 +5,26 @@ Hello! This, as you well know, is my course project submission for our databases
 
 
 Agents can:
-- sign up new customers
-- add new policies for existing customers
+- sign up new customers - DONE
+- add new policies for existing customers - DONE
 - generate invoices for existing policies
 
 Adjusters can:
-- assign claims to other adjusters (or themselves)
-- manage claims
-    - adjuster assignments
-    - servicing contractors
-    - payments to be made
+- assign claims to other adjusters (or themselves) - DONE
+- manage claims - DONE
+    - adjuster assignments - DONE
+    - servicing contractors - DONE
+    - payments to be made - DONE
 
 Customers can:
-- update their contact information
-    - phone(s)
-    - address
+- update their contact information - DONE
+    - phone(s) - DONE
+    - address - DONE
 - add or remove dependents
 - add or remove policy-covered items
-- make claims against their policies
+- make claims against their policies - DONE
 - pay their premiums
+- cancel policies
 
 
 Here are some notes/tenets I made while refining the design:

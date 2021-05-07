@@ -74,7 +74,7 @@ public class Customer {
             String birthDate = String.valueOf(r.getDate("birth_date"));
             r = s.executeQuery("SELECT agent_id, aname FROM agent WHERE agent.agent_id = " + r.getInt("agent_id"));
             r.next(); String agentID = r.getString("agent_id"); String agentName = r.getString("aname");
-            r = s.executeQuery("SELECT COUNT(*) FROM polisy WHERE cust_id = " + custID);
+            r = s.executeQuery("SELECT COUNT(*) FROM polisy WHERE cancelled = 0 AND cust_id = " + custID);
             int numPolicies = 0; if (r.next()) { numPolicies = r.getInt(1); }
             r = s.executeQuery("SELECT COUNT(*) FROM dependentt WHERE cust_id = " + custID);
             int numDependents = 0; if (r.next()) { numDependents = r.getInt(1); }
@@ -219,7 +219,7 @@ public class Customer {
             PreparedStatement p = c.prepareStatement("INSERT INTO claim VALUES (?, ?, ?, ?, ?, ?, ?)");) {
 
             Utility custUtility = new Utility();
-            ResultSet r = s.executeQuery("SELECT * FROM polisy WHERE cust_id = " + custID);
+            ResultSet r = s.executeQuery("SELECT * FROM polisy WHERE cancelled = 0 AND cust_id = " + custID);
             String[][] policyList = new String[20][2]; int i = 0; // assuming a safe reasonable number of policies
             if (r.next()) {
                 do {
