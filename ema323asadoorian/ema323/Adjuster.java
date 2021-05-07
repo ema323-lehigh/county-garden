@@ -235,8 +235,8 @@ public class Adjuster {
             System.out.printf("The total value of the items insured by this claim's underlying policy is $%.2f.\n", totalInsured);
             double amountAmt = 0.0; // have to declare this before the loop header
             while (true) {
-                System.out.println("Enter the amount we will be compensating on this claim (dollars & cents):");
-                String amountStr = adjUtility.inputRequestString(input, "^(\\d{1,9}.\\d{2})$");
+                System.out.println("Enter the amount we will be compensating on this claim (dollars & cents, up to 18 digits of dollars):");
+                String amountStr = adjUtility.inputRequestString(input, "^(\\d{1,18}\\.\\d{2})$");
                 if (amountStr.equals("__BACK__")) { return; }
                 amountAmt = Double.parseDouble(amountStr);
                 if (amountAmt > totalInsured) {

@@ -188,8 +188,8 @@ public class Agent {
                 System.out.println("Enter the type of policy:");
                 String policyType = agentUtility.inputRequestString(input, "^(\\D{1,50})$");
                 if (policyType.equals("__BACK__")) { return; }
-                System.out.println("Enter the monthly premium price you're quoting (dollars & cents):");
-                String premiumStr = agentUtility.inputRequestString(input, "^(\\d+.\\d{2})$");
+                System.out.println("Enter the monthly premium price you're quoting (dollars & cents, up to 7 digits of dollars):");
+                String premiumStr = agentUtility.inputRequestString(input, "^(\\d{1,7}\\.\\d{2})$");
                 if (premiumStr.equals("__BACK__")) { return; }
                 double quotedPrice = Double.parseDouble(premiumStr);
                 p.setInt(1, new Random().nextInt(1000000)); p.setInt(4, custID);

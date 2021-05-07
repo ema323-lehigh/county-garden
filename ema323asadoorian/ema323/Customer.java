@@ -135,7 +135,7 @@ public class Customer {
             System.out.println("Enter your city/town (must be a word composed of letters only):");
             String city = custUtility.inputRequestString(input, "^(\\D+)$");
             if (city.equals("__BACK__")) { return; }
-            System.out.println("Enter your state (ex. AB):");
+            System.out.println("Enter your state (ex. PA):");
             String state = custUtility.inputRequestString(input, "^([A-Z]{2})$");
             if (state.equals("__BACK__")) { return; }
             System.out.println("Enter your zipcode (five digits only):");
@@ -498,8 +498,8 @@ public class Customer {
                 System.out.println("Enter a categorical description for the item (50 characters max):");
                 String itemDesc = custUtility.inputRequestString(input, "^(.{1,50})$");
                 if (itemDesc.equals("__BACK__")) { return; }
-                System.out.println("Enter an approximate value for the item (dollars & cents):");
-                String approxValStr = custUtility.inputRequestString(input, "^(\\d{1,6}.\\d{2})$");
+                System.out.println("Enter an approximate value for the item (dollars & cents, up to 6 digits of dollars):");
+                String approxValStr = custUtility.inputRequestString(input, "^(\\d{1,6}\\.\\d{2})$");
                 if (approxValStr.equals("__BACK__")) { return; }
                 double approxValue = Double.parseDouble(approxValStr);
                 p.setInt(1, new Random().nextInt(1000000)); p.setString(2, itemDesc);
