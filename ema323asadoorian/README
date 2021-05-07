@@ -80,3 +80,4 @@ Some "pleas guilty":
 Some helpful hints:
 - When generating invoices as an agent, there is no option to enter negative days, but I also haven't implemented rigorous integrity checking on the side of specific due dates. This is for the purpose of entering backdated invoices so that you can see how delinquent customers appear and can be removed.
 - Try some of the options multiple times! ex. paying premiums makes immediate changes for that menu, as you might expect.
+- I'm pretty confident that it's basically impossible to SQL-inject my project. I hope that you won't prove me wrong!
