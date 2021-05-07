@@ -66,3 +66,7 @@ Some "pleas guilty":
 - As yet, I haven't had complete success with "trapping" a Ctrl-D signal such that it doesn't travel any farther up the chain than the current input request. So, I tried, but perhaps don't use it please? Something like that, while important as a feature of quality, had to get left behind, and I think that's okay.
 - Along those lines, it's not quite feasible to back out of multiple switch and while scopes from within a function that brings yet its own scope, so the back menu option has to be manually inserted into most menus. Accordingly, it cannot appear in lists for data choice, so users must simply quit out completely at that stage, unfortunately.
 - I am simply relying on random six-digit numbers to not overlap with each other within tables. Is this a bad idea? Probably. Does it work fine for this project? Absolutely. I chose to save the time of grabbing all current IDs from whichever table and searching them for a duplicate, which hopefully will not come back to bite me when you test...
+
+
+Some helpful hints:
+- When generating invoices as an agent, there is no option to enter negative days, but I also haven't implemented rigorous integrity checking on the side of specific due dates. This is for the purpose of entering backdated invoices so that you can see how delinquent customers appear and can be removed.
