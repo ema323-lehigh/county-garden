@@ -57,7 +57,7 @@ public class ema323 {
         }
         catch (SQLException e) {
             System.out.println("Failed to connect or execute. Please try again later.");
-            if ((args.length > 0) && args[0].equals("-d")) { System.out.println(e); }
+            //if ((args.length > 0) && args[0].equals("-d")) { System.out.println(e); }
         }
         finally {
             input.close();
