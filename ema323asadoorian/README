@@ -1,6 +1,34 @@
 # # # # # WELCOME TO COUNTY GARDEN INSURANCE # # # # #
 ------- Emily Asadoorian | CSE-341 Spring 2021 -------
 
+
+What's in this zip archive:
+
+ema323asadoorian
+    ├ README              <-- (you are here)
+    ├ ojdbc8.jar          <-- (critical libraries)
+    ├ ema323.jar          <-- (run this)
+    ├ ema323/
+    |  ├ Manifest.txt     <-- (jar properties)
+    |  ├ Adjuster.java    <-- (adjuster role)
+    |  ├ Agent.java       <-- (agent role)
+    |  ├ Customer.java    <-- (customer role)
+    |  ├ ema323.java      <-- (main driver menu)
+    ├-─┴ Utility.java     <-- (input functions)
+    ├ data/
+    |  ├ output/...       <-- (text files w/ blocks of insert statements)
+    |  ├ copythat.sh      <-- (Bash script to amalgamate them all)
+    |  ├ copythis.txt     <-- (text file containing all insert statements)
+    |  ├ datagen.plx      <-- (script that rolls out interconnected data)
+    ├-─┴ names.txt        <-- (lovingly handcrafted CSV of first & last names)
+    ├ other/
+    |  ├ installation/
+    |  |  ├ init.sql      <-- (the canonical list of my table definitions)
+    |  ├--┴ Install.java  <-- (a JDBC program to drop in those tables)
+    |  ├ procedures/...   <-- (working copies of stored procedures)
+    └--┴ triggers/...     <-- (working copies of stored triggers)
+
+
 Hello! This, as you well know, is my course project submission for our databases course. When you run the included jar file, you will be greeted by a menu that prompts for Oracle username and password before entering the nitty-gritty of the database. You can choose to interact as either an agent, an adjuster, or a customer, with the various business functions available to each. As you can see, the features planned are not exactly commensurate with the features offered (or vice versa), but I still believe my interface is fairly robust and substantial.
 
 
