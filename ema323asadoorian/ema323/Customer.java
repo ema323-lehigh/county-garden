@@ -291,6 +291,7 @@ public class Customer {
                 System.out.println("--------------------------------------------------------------------------------");
             }
             else {
+                System.out.println("--------------------------------------------------------------------------------");
                 System.out.println("You don't have any policies! How can you make a claim? An agent will need to help you with that.");
                 System.out.println("--------------------------------------------------------------------------------");
             }
@@ -396,7 +397,7 @@ public class Customer {
     
     private static void viewClaims(Connection c, Scanner input, int custID) throws SQLException {
         try (Statement s = c.createStatement();) {
-            ResultSet r = s.executeQuery("SELECT * FROM claim NATURAL JOIN polisy WHERE cust_id = " + custID);
+            ResultSet r = s.executeQuery("SELECT * FROM claim NATURAL JOIN polisy WHERE cust_id = " + custID + " AND polisy.cancelled = 0");
             String[][] claimList = new String[20][2]; int i = 0; // assuming a safe reasonable number of claims
             if (r.next()) {
                 do {
