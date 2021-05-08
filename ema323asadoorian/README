@@ -29,7 +29,7 @@ ema323asadoorian
     └--┴ triggers/...     <-- (working copies of stored triggers)
 
 
-Hello! This, as you well know, is my course project submission for our databases course. When you run the included jar file, you will be greeted by a menu that prompts for Oracle username and password before entering the nitty-gritty of the database. You can choose to interact as either an agent, an adjuster, or a customer, with the various business functions available to each. As you can see, the features planned are not exactly commensurate with the features offered (or vice versa), but I still believe my interface is fairly robust and substantial.
+Hello! This, as you well know, is my course project submission for our databases course. When you run the included jar file, you will be greeted by a menu that prompts for Oracle username and password before entering the nitty-gritty of the database. You can choose to interact as either an agent, an adjuster, or a customer, with the various business functions available to each. As you can see, the features planned are not exactly commensurate with the features offered (or vice versa), but I still believe my interface is fairly robust and substantial. It's not a case of quantity over quality, as is evidenced by the fact that the features not present do not constitute something significant and obviously missing from a general interface that is already there in the majority part. That is to say, the features I do have are congruent with each other.
 
 
 Agents can:
@@ -64,6 +64,8 @@ Customers can:
 
 My suggested usage path is to start as an agent, signing up a couple of new customers and adding some policies for them. Then, go back up to the main menu and take the customer role, adding contact information and making claims. The third step will be adjusting those claims in the adjuster menu, with as much or as little hands-on management as you wish. After that, you can re-enter the customer menu to see if there is any remaining claim balance to be paid off or any policies to cancel. Agents can batch generate premium invoices for all their customers with either a period or due date in mind, and then the customers can pay those bills - stay on top of them! If the customers are not on time with their payments, the bills will no longer show up in their view and the agents will gain the ability to punt them out of the system >:).
 
+Feel free to choose whichever items have the most enticing names, as the data was created evenly and testing interacted with that data fairly evenly as well. Any notably different records will have been those created during testing, so...I'll just leave those up to you to find ! It seems that I picked just the right balance of concentrated examples and a wide swath of variety in order to have a good experience.
+
 
 Here are some notes/tenets I made while refining the design:
 - Each customer has one (dedicated) agent ALWAYS.
@@ -76,7 +78,7 @@ Here are some notes/tenets I made while refining the design:
 - Bills are expected to be paid in future, so the payment_type field may be null.
 - Unpaid policy premiums should result in customers getting booted (!).
 - Every claim is made against some individual policy, but not all policies have claims.
-- One invoice can make payments against multiple policies, so the customer just pays their balance.
+- Invoices are generated per policy, so a customer will have multiple per billing cycle.
 - As policies can be new or cancelled, they do not have mandatory invoices.
 - A policy can only be held by one customer, no matter how many are insured.
 - Likewise, a claim may only be made by a single customer, no matter who was in the altercation.
@@ -89,6 +91,7 @@ Here are some notes/tenets I made while refining the design:
 - Records for cancelled policies are only maintained as long as the customer is doing business with us.
 - As it happens, we can insure our contractors' stuff, by way of the same address fields.
 - One peculiar choice: zipcodes are stored as numbers, but phone numbers are strings. It's just the way it is.
+- Policies cannot be uncancelled, so once those claims have been cancelled on, there's nothing more to say.
 
 
 Helpful links:
@@ -99,8 +102,8 @@ Data was not sourced from anywhere in particular, save perhaps a few searches to
 
 
 Some "pleas guilty":
-- Not all of my lines of divider dashes may be perfectly placed. The interest of efficiency in heavy testing doesn't mix well with catching every single one of those, and it's a price I'm somewhat willing to pay!
-- As yet, I haven't had complete success with "trapping" a Ctrl-D signal such that it doesn't travel any farther up the chain than the current input request. So, I tried, but perhaps don't use it please? Something like that, while important as a feature of quality, had to get left behind, and I think that's okay.
+- Not all of my lines of divider dashes may be perfectly and nonredundantly placed. The interest of efficiency in heavy testing doesn't mix well with catching every single one of those, and it's a price I'm somewhat willing to pay!
+- As of yet, I haven't had complete success with "trapping" a Ctrl-D signal such that it doesn't travel any farther up the chain than the current input request. So, I tried, but perhaps don't use it please? Something like that, while important as a feature of quality, had to get left behind, and I think that's okay.
 - Along those lines, it's not quite feasible to back out of multiple switch and while scopes from within a function that brings yet its own scope, so the back menu option has to be manually inserted into most menus. Accordingly, it cannot appear in lists for data choice, so users must simply quit out completely at that stage, unfortunately.
 - I am simply relying on random six-digit numbers to not overlap with each other within tables. Is this a bad idea? Probably. Does it work fine for this project? Absolutely. I chose to save the time of grabbing all current IDs from whichever table and searching them for a duplicate, which hopefully will not come back to bite me when you test...
 - I noticed a small mistake in my claim-location data generation: I accidentally placed the city before the state. Being particularly attached to the customers and interactions I had thus far, I instead edited each of those claims and left the erroneous insert statements in the current version of the output files (claims.txt & copythis.txt). (I understand that we are not supposed to submit a data sheet, but those text files containing the insert statements are indeed just part of my data generation code.)
