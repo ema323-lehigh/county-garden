@@ -402,7 +402,7 @@ public class Customer {
             if (r.next()) {
                 do {
                     claimList[i][0] = String.format("%06d", r.getInt("claim_id"));
-                    claimList[i][1] = r.getString("claim_title") + " - " + r.getString("event_desc");
+                    claimList[i][1] = r.getString("claim_title");
                     i++;
                 } while (r.next());
                 System.out.println("--------------------------------------------------------------------------------");
